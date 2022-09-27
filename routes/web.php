@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BalanceController;
+use App\Http\Controllers\BalanceCategoriesController;
+use App\Http\Controllers\ActivityCategoriesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,8 +20,10 @@ Route::get('/', function () {
     return view('dashboard');
 });
 
-Route::get('/debet_kredit', function () {
-    return view('backend.debet_kredit.show');
-});
-
+// Route::get('/debet_kredit', function () {
+//     return view('backend.balance.index');
+// });
+Route::resource('/balance', BalanceController::class);
+Route::resource('/balance_categories', BalanceCategoriesController::class);
+Route::resource('/activity_categories', ActivityCategoriesController::class);
 

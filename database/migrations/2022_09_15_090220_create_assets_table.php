@@ -21,8 +21,6 @@ return new class extends Migration
                 $table->foreignId('asset_categories_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
                 $table->foreignId('asset_details_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             });
-
-
     }
 
     /**

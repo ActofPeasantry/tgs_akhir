@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('asset_details', function (Blueprint $table) {
             $table->id();
             $table->integer('quality');
+            $table->string('photo')->nullable();
             $table->timestamps();
         });
     }

@@ -16,6 +16,7 @@ return new class extends Migration
             Schema::create('balances', function (Blueprint $table) {
                 $table->id();
                 $table->string('description');
+                $table->string('no_invoice')->nullable();
                 $table->dateTime('date_received');
                 $table->integer('total_amount');
                 $table->boolean('debit_credit');
