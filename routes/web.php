@@ -2,8 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BalanceController;
-use App\Http\Controllers\BalanceCategoriesController;
-use App\Http\Controllers\ActivityCategoriesController;
+use App\Http\Controllers\BalanceCategoryController;
+use App\Http\Controllers\ActivityCategoryController;
+use App\Http\Controllers\AssetCategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +25,7 @@ Route::get('/', function () {
 //     return view('backend.balance.index');
 // });
 Route::resource('/balance', BalanceController::class);
-Route::resource('/balance_categories', BalanceCategoriesController::class);
-Route::resource('/activity_categories', ActivityCategoriesController::class);
+Route::resource('/balance_categories', BalanceCategoryController::class);
+Route::resource('/activity_categories', ActivityCategoryController::class);
+Route::resource('/asset_categories', AssetCategoryController::class);
 

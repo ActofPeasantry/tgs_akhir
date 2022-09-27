@@ -1,18 +1,18 @@
 @extends('layouts/main')
 
-@section('title')
+@section('title')Aset
     <title>SMKK | Debet&Kredit</title>
 @endsection
 
 @section('page_name')
-    <h1>Kategori Aktivitas</h1>
+    <h1>Kategori Aset</h1>
 @endsection
 
 @section('breadcrumb')
     {{-- Custom helpers, cek app/Helpers/helpers.php dan composer.json di bagian file jalankan composer dump-autoload utk memakainya --}}
     {!!
         breadcrumb([
-            'Aktivitas' => 'Aktivitas'
+            'Aset' => 'Aset'
         ])
     !!}
 @endsection
@@ -24,10 +24,10 @@
         </div>
         <div class="card-body">
             <div class="container-fluid">
-                <form method="POST" action="{{ route('activity_categories.update', $ac_category->id) }}">
+                <form method="POST" action="{{ route('asset_categories.update', $as_category->id) }}">
                 @csrf
                 @method("PATCH")
-                    @include('backend.include.activity_categories_form')
+                    @include('backend.include.asset_categories_form')
                 </form>
             </div>
         </div>

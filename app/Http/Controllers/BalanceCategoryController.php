@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\BalanceCategories;
 use Illuminate\Http\Request;
 
-class BalanceCategoriesController extends Controller
+class BalanceCategoryController extends Controller
 {
     /**
      * Display a listing of the resource.

@@ -1,23 +1,20 @@
-@extends('layouts/main')
-
-@section('title')
+<?php $__env->startSection('title'); ?>
     <title>SMKK | Debet&Kredit</title>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('page_name')
+<?php $__env->startSection('page_name'); ?>
     <h1>Kategori Aset</h1>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('breadcrumb')
-    {{-- Custom helpers, cek app/Helpers/helpers.php dan composer.json di bagian file jalankan composer dump-autoload utk memakainya --}}
-    {!!
-        breadcrumb([
+<?php $__env->startSection('breadcrumb'); ?>
+    
+    <?php echo breadcrumb([
             'Aset' => 'Aset'
-        ])
-    !!}
-@endsection
+        ]); ?>
 
-@section('content')
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
    <div class="card">
         <div class="card-header">
             <h5>Daftar kategori</h5>
@@ -30,29 +27,30 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($as_categories as $as_category)
+                    <?php $__currentLoopData = $as_categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $as_category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <tr class="">
-                            <td>{{ $as_category->category_name }}</td>
+                            <td><?php echo e($as_category->category_name); ?></td>
                             <td class="text-center">
-                                <a class='btn btn-warning' href="{{route('asset_categories.edit', [$as_category->id])}}">Edit</a>
-                                <form action="{{route('asset_categories.destroy', [$as_category->id])}}" method="post" style="display: inline">
-                                    {{method_field('DELETE')}}
-                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                <a class='btn btn-warning' href="<?php echo e(route('asset_categories.edit', [$as_category->id])); ?>">Edit</a>
+                                <form action="<?php echo e(route('asset_categories.destroy', [$as_category->id])); ?>" method="post" style="display: inline">
+                                    <?php echo e(method_field('DELETE')); ?>
+
+                                    <input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>">
                                     <button onclick="return confirm('Menghapus kategori akan menghapus data aktivitas pada kategori tersebut. Apakah anda yakin?')" class="btn btn-danger" type="submit">Delete</button>
                                 </form>
                             </td>
                         </tr>
-                    @endforeach
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </tbody>
                 <tfoot>
-                    {{-- <tr><th rowspan="1" colspan="1">Rendering engine</th><th rowspan="1" colspan="1">Browser</th><th rowspan="1" colspan="1">Platform(s)</th><th rowspan="1" colspan="1">Engine version</th><th rowspan="1" colspan="1">CSS grade</th></tr> --}}
+                    
                 </tfoot>
               </table>
         </div>
     </div>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@push('child-scripts')
+<?php $__env->startPush('child-scripts'); ?>
     <script>
         $(function(){
             $('#example1').DataTable({
@@ -66,4 +64,6 @@
             });
         });
     </script>
-@endpush
+<?php $__env->stopPush(); ?>
+
+<?php echo $__env->make('layouts/main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\informationSystemStuff\laragon\www\tugas_akhir\resources\views/backend/mosque_asset/categories/index.blade.php ENDPATH**/ ?>
