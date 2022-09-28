@@ -1,9 +1,9 @@
-<?php $__env->startSection('title'); ?>Aset
+<?php $__env->startSection('title'); ?>
     <title>SMKK | Debet&Kredit</title>
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('page_name'); ?>
-    <h1>Kategori Aset</h1>
+    <h1>Aset Masjid</h1>
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('breadcrumb'); ?>
@@ -17,14 +17,13 @@
 <?php $__env->startSection('content'); ?>
    <div class="card col-md-10">
         <div class="card-header">
-            <h5>Ubah Data</h5>
+            <h5>Tambah Data</h5>
         </div>
         <div class="card-body">
             <div class="container-fluid">
-                <form method="POST" action="<?php echo e(route('asset_categories.update', $as_category->id)); ?>">
+                <form action="<?php echo e(route("asset.store")); ?>" method="POST">
                 <?php echo csrf_field(); ?>
-                <?php echo method_field("PATCH"); ?>
-                    <?php echo $__env->make('backend.include.asset_categories_form', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+                    <?php echo $__env->make('backend.include.asset_form', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
                 </form>
             </div>
         </div>
@@ -47,4 +46,4 @@
     </script>
 <?php $__env->stopPush(); ?>
 
-<?php echo $__env->make('layouts/main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\informationSystemStuff\laragon\www\tugas_akhir\resources\views/backend/mosque_asset/categories/edit.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts/main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\informationSystemStuff\laragon\www\tugas_akhir\resources\views/backend/mosque_asset/create.blade.php ENDPATH**/ ?>

@@ -34,7 +34,7 @@
                         <tr class="">
                             <td class="dtr-control sorting_1 text-center" tabindex="0">
                                 {{ $balance->created_at->format('d F Y') }} <br>
-                                {{ $balance->created_at->format('H:i:s') }} <br>
+                                {{ $balance->created_at->format('H:i:s') }}
                             </td>
                             <td>{{ $balance->no_invoice }}</td>
                             <td>{{ $balance->description }}</td>
@@ -54,7 +54,7 @@
                                 <form action="{{route('balance.destroy', [$balance->id])}}" method="post" style="display: inline">
                                     {{method_field('DELETE')}}
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                    <button onclick="return confirm('Yakin?')" class="btn btn-danger" type="submit">Delete</button>
+                                    <button onclick="return confirm('Apakah anda yakin?')" class="btn btn-danger" type="submit">Delete</button>
                                 </form>
                             </td>
                         </tr>

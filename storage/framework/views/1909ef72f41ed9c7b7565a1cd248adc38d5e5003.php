@@ -135,7 +135,7 @@ $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>" name="date_received"
-        value="<?php echo e(old('date_received')); ?> <?php if(isset($user)): ?> <?php echo e($balance->date_received); ?>  <?php endif; ?>"
+        value="<?php echo e(old('date_received')); ?>"
         required autocomplete="date_received">
 
         <?php $__errorArgs = ['date_received'];
@@ -162,7 +162,7 @@ $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>" name="description"
-        value="<?php echo e(old('description')); ?> <?php if(isset($user)): ?> <?php echo e($balance->description); ?>  <?php endif; ?>"
+        value="<?php echo e(old('description')); ?>"
         required autocomplete="description">
 
         <?php $__errorArgs = ['description'];
@@ -189,7 +189,7 @@ $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>" name="no_invoice"
-        value="<?php echo e(old('no_invoice')); ?> <?php if(isset($user)): ?> <?php echo e($balance->no_invoice); ?>  <?php endif; ?>"
+        value="<?php echo e(old('no_invoice')); ?>"
         required autocomplete="no_invoice">
 
         <?php $__errorArgs = ['no_invoice'];
@@ -233,7 +233,7 @@ $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>" name="total_amount"
-        value="<?php echo e(old('total_amount')); ?> <?php if(isset($user)): ?> <?php echo e($balance->total_amount); ?>  <?php endif; ?>"
+        value="<?php echo e(old('total_amount')); ?>"
         required autocomplete="total_amount">
 
         <?php $__errorArgs = ['total_amount'];

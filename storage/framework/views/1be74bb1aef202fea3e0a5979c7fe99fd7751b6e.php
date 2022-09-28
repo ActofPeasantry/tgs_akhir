@@ -31,7 +31,8 @@
                         <tr class="">
                             <td class="dtr-control sorting_1 text-center" tabindex="0">
                                 <?php echo e($balance->created_at->format('d F Y')); ?> <br>
-                                <?php echo e($balance->created_at->format('H:i:s')); ?> <br>
+                                <?php echo e($balance->created_at->format('H:i:s')); ?>
+
                             </td>
                             <td><?php echo e($balance->no_invoice); ?></td>
                             <td><?php echo e($balance->description); ?></td>
@@ -52,7 +53,7 @@
                                     <?php echo e(method_field('DELETE')); ?>
 
                                     <input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>">
-                                    <button onclick="return confirm('Yakin?')" class="btn btn-danger" type="submit">Delete</button>
+                                    <button onclick="return confirm('Apakah anda yakin?')" class="btn btn-danger" type="submit">Delete</button>
                                 </form>
                             </td>
                         </tr>

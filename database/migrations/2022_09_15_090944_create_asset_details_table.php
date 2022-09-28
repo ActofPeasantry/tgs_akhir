@@ -18,6 +18,8 @@ return new class extends Migration
             $table->integer('quality');
             $table->string('photo')->nullable();
             $table->timestamps();
+
+            $table->foreignId('asset_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

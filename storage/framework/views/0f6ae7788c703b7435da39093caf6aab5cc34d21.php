@@ -1,23 +1,20 @@
-@extends('layouts/main')
-
-@section('title')
+<?php $__env->startSection('title'); ?>
     <title>SMKK | Debet&Kredit</title>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('page_name')
+<?php $__env->startSection('page_name'); ?>
     <h1>Aset Masjid</h1>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('breadcrumb')
-    {{-- Custom helpers, cek app/Helpers/helpers.php dan composer.json di bagian file jalankan composer dump-autoload utk memakainya --}}
-    {!!
-        breadcrumb([
+<?php $__env->startSection('breadcrumb'); ?>
+    
+    <?php echo breadcrumb([
             'Aset Masjid' => 'Aset Masjid'
-        ])
-    !!}
-@endsection
+        ]); ?>
 
-@section('content')
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
    <div class="card">
         <div class="card-header">
             <h5>Daftar Aset</h5>
@@ -30,35 +27,36 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($assets as $asset)
+                    <?php $__currentLoopData = $assets; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $asset): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <tr class="">
                             <td class="dtr-control sorting_1 text-center" tabindex="0">
-                                {{ $asset->asset_name }} <br>
+                                <?php echo e($asset->asset_name); ?> <br>
                             </td>
-                            <td class="dtr-control sorting_1 text-center">{{ $asset->AssetCategory->category_name }}</td>
-                            <td class="dtr-control sorting_1 text-center">{{ $asset->totalAsset($asset->id) }}</td>
+                            <td class="dtr-control sorting_1 text-center"><?php echo e($asset->AssetCategory->category_name); ?></td>
+                            <td class="dtr-control sorting_1 text-center"><?php echo e($asset->totalAsset($asset->id)); ?></td>
 
                             <td class="text-center">
-                                <a class='btn btn-primary' href="{{route('asset.show', [$asset->id])}}">Detail</a>
-                                <a class='btn btn-warning' href="{{route('asset.edit', [$asset->id])}}">Edit</a>
-                                <form action="{{route('asset.destroy', [$asset->id])}}" method="post" style="display: inline">
-                                    {{method_field('DELETE')}}
-                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                <a class='btn btn-primary' href="<?php echo e(route('asset.show', [$asset->id])); ?>">Detail</a>
+                                <a class='btn btn-warning' href="<?php echo e(route('asset.edit', [$asset->id])); ?>">Edit</a>
+                                <form action="<?php echo e(route('asset.destroy', [$asset->id])); ?>" method="post" style="display: inline">
+                                    <?php echo e(method_field('DELETE')); ?>
+
+                                    <input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>">
                                     <button onclick="return confirm('Apakah anda yakin?')" class="btn btn-danger" type="submit">Delete</button>
                                 </form>
                             </td>
                         </tr>
-                    @endforeach
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </tbody>
                 <tfoot>
-                    {{-- <tr><th rowspan="1" colspan="1">Rendering engine</th><th rowspan="1" colspan="1">Browser</th><th rowspan="1" colspan="1">Platform(s)</th><th rowspan="1" colspan="1">Engine version</th><th rowspan="1" colspan="1">CSS grade</th></tr> --}}
+                    
                 </tfoot>
               </table>
         </div>
     </div>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@push('child-scripts')
+<?php $__env->startPush('child-scripts'); ?>
     <script>
         $(function(){
             $('#example1').DataTable({
@@ -72,4 +70,6 @@
             });
         });
     </script>
-@endpush
+<?php $__env->stopPush(); ?>
+
+<?php echo $__env->make('layouts/main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\informationSystemStuff\laragon\www\tugas_akhir\resources\views/backend/mosque_asset/index.blade.php ENDPATH**/ ?>

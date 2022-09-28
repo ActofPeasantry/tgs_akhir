@@ -23,7 +23,7 @@
             <div class="container-fluid">
                 <form action="<?php echo e(route("balance.store")); ?>" method="POST">
                 <?php echo csrf_field(); ?>
-                    <?php echo $__env->make("backend.include.balance_form", \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+                    <?php echo $__env->make('backend.include.balance_form', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
                 </form>
             </div>
         </div>
