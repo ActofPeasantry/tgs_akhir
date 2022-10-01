@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Asset;
 use App\Models\AssetCategory;
+use App\Models\AssetDetail;
 use Illuminate\Http\Request;
 
 class AssetController extends Controller
@@ -16,6 +17,7 @@ class AssetController extends Controller
     public function index()
     {
         $assets =  Asset::all();
+        // dd($assets[0]->AssetDetail->count());
         // dd($assets[0]->totalAsset(1));
         return view('backend.mosque_asset.index', compact('assets'));
     }
@@ -51,7 +53,10 @@ class AssetController extends Controller
      */
     public function show(Asset $asset)
     {
-        //
+        $as_details= AssetDetail::where('asset_id',$asset->id)->get();
+        $as_id = $asset->id;
+        // dd($asset_details[0]->qualitytext());
+        return view('backend.mosque_asset.show',compact('as_details', 'as_id'));
     }
 
     /**

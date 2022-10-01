@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Asset;
 use App\Models\AssetDetail;
 use Illuminate\Http\Request;
 
@@ -35,7 +36,16 @@ class AssetDetailController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd(isset($request->photo));
+        $asset = new AssetDetail;
+        $asset->quality = $request->quality;
+        $asset->asset_id = $request->asset_id;
+        if ( isset($request->photo) ) {
+            $path=$request->file('photo')->store('mosque_assets', 'public');
+            $asset->photo = '../../../storage/'.$path;
+        }
+        $asset->save();
+        return redirect()->back();
     }
 
     /**
@@ -46,7 +56,7 @@ class AssetDetailController extends Controller
      */
     public function show(AssetDetail $assetDetail)
     {
-        //
+        dd('coming soon');
     }
 
     /**
@@ -57,7 +67,9 @@ class AssetDetailController extends Controller
      */
     public function edit(AssetDetail $assetDetail)
     {
-        //
+        $as_detail = AssetDetail::find($assetDetail->id);
+        $as_id = $as_detail;
+        return view('backend.mosque_asset.details.edit', compact('as_detail', 'as_id'));
     }
 
     /**
@@ -69,7 +81,16 @@ class AssetDetailController extends Controller
      */
     public function update(Request $request, AssetDetail $assetDetail)
     {
-        //
+        // $asset = $assetDetail->asset_id;
+        // dd($asset);
+        $assetDetail->quality = $request->quality;
+        if ( isset($request->photo) ) {
+            $path=$request->file('photo')->store('mosque_assets', 'public');
+            $assetDetail->photo = '../../../storage/'.$path;
+        }
+        $assetDetail->save();
+        return redirect()->route('asset.show', ['asset' => $assetDetail->asset_id]);
+        // return redirect()->back();
     }
 
     /**
@@ -80,6 +101,9 @@ class AssetDetailController extends Controller
      */
     public function destroy(AssetDetail $assetDetail)
     {
-        //
+        // dd($assetDetail);
+        // $as_id = $assetDetail->asset_id;
+        AssetDetail::destroy($assetDetail->id);
+        return redirect()->back();
     }
 }

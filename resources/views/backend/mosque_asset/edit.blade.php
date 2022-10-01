@@ -20,7 +20,7 @@
 @section('content')
    <div class="card col-md-10">
         <div class="card-header">
-            <h5>Tambah Data</h5>
+            <h5>Ubah Data</h5>
         </div>
         <div class="card-body">
             <div class="container-fluid">

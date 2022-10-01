@@ -18,7 +18,7 @@ class Asset extends Model
     }
 
     public function totalAsset($id){
-        $total = $this->AssetDetail()->where('id', $id)->count();
+        $total = $this->AssetDetail()->where('asset_id', $id)->count();
         if ($total < 1) {
             return "Data Aset belum dimasukkan";
         } else {
