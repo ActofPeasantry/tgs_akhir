@@ -9,8 +9,8 @@ class ActivityCategory extends Model
 {
     protected $fillable = ['category_name'];
 
-    // public function Activity(){
-    //     return $this->hasMany('App\Models\Activity', 'activity_category_id', 'id');
-    // }
+    public function Activity(){
+        return $this->hasMany('App\Models\Activity', 'activity_category_id', 'id');
+    }
     use HasFactory;
 }

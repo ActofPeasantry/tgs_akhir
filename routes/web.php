@@ -6,6 +6,7 @@ use App\Http\Controllers\BalanceCategoryController;
 use App\Http\Controllers\AssetController;
 use App\Http\Controllers\AssetCategoryController;
 use App\Http\Controllers\AssetDetailController;
+use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\ActivityCategoryController;
 
 /*
@@ -31,5 +32,6 @@ Route::resource('/balance_categories', BalanceCategoryController::class);
 Route::resource('/asset', AssetController::class);
 Route::resource('/asset_categories', AssetCategoryController::class);
 Route::resource('/asset_detail', AssetDetailController::class);
+Route::resource('/activity', ActivityController::class);
 Route::resource('/activity_categories', ActivityCategoryController::class);
 

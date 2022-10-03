@@ -16,7 +16,9 @@ return new class extends Migration
             Schema::create('activities', function (Blueprint $table) {
                 $table->id();
                 $table->string('activity_name');
-                $table->dateTime('schedule');
+                $table->string('description');
+                $table->dateTime('schedule_start');
+                $table->dateTime('schedule_end');
                 $table->integer('status');
                 $table->foreignId('activity_categories_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
                 $table->timestamps();

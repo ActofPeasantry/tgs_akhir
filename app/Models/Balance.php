@@ -16,7 +16,7 @@ class Balance extends Model
         'balance_category_id'
     ];
 
-    // reecognise as date
+    // reecognised as date
     protected $dates = ['date_received'];
 
     public function BalanceCategories(){
