@@ -15,9 +15,9 @@
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('content'); ?>
-   <div class="card">
+   <div class="card card-primary">
         <div class="card-header">
-            <h5>Daftar Pembukuan</h5>
+            <h5 class="card-title">Daftar Pembukuan</h5>
         </div>
         <div class="card-body">
             <table id="example1" class="table table-bordered table-hover dataTable dtr-inline" role="grid" aria-describedby="example1_info">
@@ -41,11 +41,11 @@
                             <?php if($balance->debit_credit == 0): ?>
                                 <td><?php echo e($balance->total_amount); ?></td>
                                 <td>0</td>
-                                <td><?php echo e($balance->total_amount); ?></td>
+                                <td>-<?php echo e($balance->total_amount); ?></td>
                             <?php else: ?>
                                 <td>0</td>
                                 <td><?php echo e($balance->total_amount); ?></td>
-                                <td>-<?php echo e($balance->total_amount); ?></td>
+                                <td><?php echo e($balance->total_amount); ?></td>
                             <?php endif; ?>
                             <td class="text-center">
                                 <a class='btn btn-warning' href="<?php echo e(route('balance.edit', [$balance->id])); ?>">Edit</a>

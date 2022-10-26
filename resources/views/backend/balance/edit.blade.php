@@ -18,9 +18,9 @@
 @endsection
 
 @section('content')
-   <div class="card col-md-10">
+   <div class="card card-primary col-md-10">
         <div class="card-header">
-            <h5>Ubah Data</h5>
+            <h5 class="card-title">Ubah Data</h5>
         </div>
         <div class="card-body">
             <div class="container-fluid">

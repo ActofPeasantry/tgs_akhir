@@ -18,9 +18,9 @@
 @endsection
 
 @section('content')
-   <div class="card">
+   <div class="card card-primary">
         <div class="card-header">
-            <h5>Daftar Aset</h5>
+            <h5 class="card-title">Daftar Aset</h5>
         </div>
         <div class="card-body">
             <table id="example1" class="table table-bordered table-hover dataTable dtr-inline" role="grid" aria-describedby="example1_info">

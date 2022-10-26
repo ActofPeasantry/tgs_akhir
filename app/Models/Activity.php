@@ -13,6 +13,7 @@ class Activity extends Model
         'schedule_start',
         'schedule_end',
         'status',
+        'submission_status',
         'activity_categories_id'
     ];
 

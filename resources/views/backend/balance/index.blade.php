@@ -18,9 +18,9 @@
 @endsection
 
 @section('content')
-   <div class="card">
+   <div class="card card-primary">
         <div class="card-header">
-            <h5>Daftar Pembukuan</h5>
+            <h5 class="card-title">Daftar Pembukuan</h5>
         </div>
         <div class="card-body">
             <table id="example1" class="table table-bordered table-hover dataTable dtr-inline" role="grid" aria-describedby="example1_info">
@@ -43,11 +43,11 @@
                             @if ($balance->debit_credit == 0)
                                 <td>{{ $balance->total_amount }}</td>
                                 <td>0</td>
-                                <td>{{ $balance->total_amount }}</td>
+                                <td>-{{ $balance->total_amount }}</td>
                             @else
                                 <td>0</td>
                                 <td>{{ $balance->total_amount }}</td>
-                                <td>-{{ $balance->total_amount }}</td>
+                                <td>{{ $balance->total_amount }}</td>
                             @endif
                             <td class="text-center">
                                 <a class='btn btn-warning' href="{{route('balance.edit', [$balance->id])}}">Edit</a>

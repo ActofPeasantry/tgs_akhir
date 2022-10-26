@@ -17,6 +17,7 @@ return new class extends Migration
             Schema::create('assets', function (Blueprint $table) {
                 $table->id();
                 $table->string('asset_name');
+                $table->integer('submission_status')->nullable();
                 $table->timestamps();
                 $table->foreignId('asset_categories_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             });
