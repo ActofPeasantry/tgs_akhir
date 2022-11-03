@@ -8,6 +8,7 @@ use App\Http\Controllers\AssetCategoryController;
 use App\Http\Controllers\AssetDetailController;
 use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\ActivityCategoryController;
+use App\Http\Controllers\SantriController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,4 +35,5 @@ Route::resource('/asset_categories', AssetCategoryController::class);
 Route::resource('/asset_detail', AssetDetailController::class);
 Route::resource('/activity', ActivityController::class);
 Route::resource('/activity_categories', ActivityCategoryController::class);
+Route::resource('/santri', SantriController::class);
 
