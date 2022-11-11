@@ -9,6 +9,9 @@ use App\Http\Controllers\AssetDetailController;
 use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\ActivityCategoryController;
 use App\Http\Controllers\SantriController;
+use App\Http\Controllers\userController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -22,12 +25,14 @@ use App\Http\Controllers\SantriController;
 */
 
 Route::get('/', function () {
+    return view('auth.login');
+});
+
+Route::get('/home', function () {
     return view('dashboard');
 });
 
-// Route::get('/debet_kredit', function () {
-//     return view('backend.balance.index');
-// });
+Route::resource('/user', UserController::class);
 Route::resource('/balance', BalanceController::class);
 Route::resource('/balance_categories', BalanceCategoryController::class);
 Route::resource('/asset', AssetController::class);
