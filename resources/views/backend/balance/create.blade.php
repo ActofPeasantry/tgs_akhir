@@ -18,7 +18,7 @@
 @endsection
 
 @section('content')
-   <div class="card card-primary col-md-10">
+   <div class="card card-primary">
         <div class="card-header">
             <h5 class="card-title">Tambah Data</h5>
         </div>

@@ -15,7 +15,7 @@
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('content'); ?>
-   <div class="card card-primary col-md-10">
+   <div class="card card-primary">
         <div class="card-header">
             <h5 class="card-title">Ubah Data</h5>
         </div>

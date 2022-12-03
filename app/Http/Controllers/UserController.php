@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Role;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -15,6 +16,7 @@ class UserController extends Controller
     public function index()
     {
         $users =  User::all();
+
         // dd($users[0]->roles()->get());
         return view('backend.admin.users.index', compact('users'));
     }
@@ -26,8 +28,10 @@ class UserController extends Controller
      */
     public function create()
     {
-        $users =  User::pluck('id', 'category_name');
-        return view('backend.admin.users.create', compact('users'));
+        // $users =  User::pluck('id', 'category_name');
+        $roles = Role::all();
+        // dd($roles[0]->id);
+        return view('backend.admin.users.create', compact('roles'));
     }
 
     /**
@@ -38,7 +42,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request);
     }
 
     /**
@@ -49,7 +53,10 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        //
+        $user->find('id');
+        $roles = Role::pluck('id', 'role_name');
+        return view('backend.admin.users.edit', compact('user', 'roles'));
+
     }
 
     /**
@@ -60,7 +67,10 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        $user->find($user->id);
+        // dd($user->roles->pluck('id')->toArray());
+        $roles = Role::all();
+        return view('backend.admin.users.edit', compact('user', 'roles'));
     }
 
     /**

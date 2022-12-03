@@ -14,36 +14,41 @@
     {{-- Username --}}
     <div class="input-group mb-3">
         <input id="name" type="email" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="email" placeholder="Username" autofocus>
-        @error('name')
-            <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
-            </span>
-        @enderror
         <div class="input-group-append">
             <div class="input-group-text">
                 <span class="fas fa-user"></span>
             </div>
         </div>
+        @error('name')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror
     </div>
 
     {{-- Email --}}
     <div class="input-group mb-3">
         <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="E-mail Address" autofocus>
-        @error('email')
-            <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
-            </span>
-        @enderror
         <div class="input-group-append">
             <div class="input-group-text">
                 <span class="fas fa-envelope"></span>
             </div>
         </div>
+        @error('email')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror
     </div>
 
     {{-- Password --}}
     <div class="input-group mb-3">
         <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="Password">
+        <div class="input-group-append">
+            <div class="input-group-text">
+                <span class="fas fa-lock"></span>
+            </div>
+        </div>
 
         @error('password')
         <span class="invalid-feedback" role="alert">
@@ -51,11 +56,6 @@
         </span>
         @enderror
 
-        <div class="input-group-append">
-            <div class="input-group-text">
-                <span class="fas fa-lock"></span>
-            </div>
-        </div>
     </div>
 
     {{-- Confirmation Password --}}
@@ -77,8 +77,8 @@
     </div>
 </form>
 
-<p class="mb-1">
-    <a href="forgot-password.html">I forgot my password</a>
+<p class="mt-3 mb-1">
+    <a href="{{ route('password.request') }}">I forgot my password</a>
 </p>
 <p class="mb-0">
     <a href="{{ route('login') }}" class="text-center">Saya sudah memiliki akun</a>
