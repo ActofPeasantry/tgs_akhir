@@ -8,12 +8,12 @@
 @section('content')
 <p class="login-box-msg">Sign in to start your session</p>
 
-<form action="" method="POST">
+<form action="{{route('register')}}?role=jamaah" method="POST">
     @csrf
 
     {{-- Username --}}
     <div class="input-group mb-3">
-        <input id="name" type="email" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="email" placeholder="Username" autofocus>
+        <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="email" placeholder="Username" autofocus>
         <div class="input-group-append">
             <div class="input-group-text">
                 <span class="fas fa-user"></span>

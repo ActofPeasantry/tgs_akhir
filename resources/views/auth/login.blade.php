@@ -62,7 +62,7 @@
     <a href="{{ route('password.request') }}">I forgot my password</a>
 </p>
 <p class="mb-0">
-    <a href="{{ route('register') }}" class="text-center">Register sebagai jamaah</a>
+    <a href="{{ route('register') }}?role=jamaah" class="text-center">Register sebagai jamaah</a>
 </p>
 @endsection
 
