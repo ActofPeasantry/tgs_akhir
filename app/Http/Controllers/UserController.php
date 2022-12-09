@@ -16,7 +16,6 @@ class UserController extends Controller
     public function index()
     {
         $users =  User::all();
-
         // dd($users[0]->roles()->get());
         return view('backend.admin.users.index', compact('users'));
     }

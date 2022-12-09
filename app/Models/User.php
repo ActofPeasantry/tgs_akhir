@@ -12,6 +12,11 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    /** In-code roles */
+    const JAMAAH = 13;
+    const SEKRE = 24;
+    const ADMIN = 35;
+
     /**
      * The attributes that are mass assignable.
      *
@@ -42,8 +47,31 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function roles()
+    public function userRoles()
     {
-        return $this->belongsToMany('App\Models\Role');
+        return $this->hasMany('App\Models\UserRole', 'user_id');
     }
+
+    /**
+     * Calling role's name with value.
+     * @var int
+     * @return string
+     */
+    public function callRoleName($key){
+        switch ($key) {
+            case USER::JAMAAH:
+                return 'Jamaah';
+                break;
+            case USER::SEKRE:
+                return 'Sekretaris';
+                break;
+            case USER::ADMIN:
+                return 'Admin';
+                break;
+            default:
+                return NULL;
+                break;
+        }
+    }
+
 }

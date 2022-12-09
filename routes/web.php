@@ -24,6 +24,7 @@ use App\Http\Controllers\userController;
 |
 */
 
+
 Route::get('/', function () {
     return view('auth.login');
 });
