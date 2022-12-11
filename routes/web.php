@@ -32,14 +32,17 @@ Route::get('/', function () {
 Route::get('/home', function () {
     return view('dashboard');
 });
+// Route::get('/asset/approve', [AssetController::class, 'approve']);
 
-Route::resource('/user', UserController::class);
-Route::resource('/balance', BalanceController::class);
-Route::resource('/balance_categories', BalanceCategoryController::class);
-Route::resource('/asset', AssetController::class);
-Route::resource('/asset_categories', AssetCategoryController::class);
-Route::resource('/asset_detail', AssetDetailController::class);
-Route::resource('/activity', ActivityController::class);
-Route::resource('/activity_categories', ActivityCategoryController::class);
-Route::resource('/santri', SantriController::class);
+Route::middleware(['auth'])->group(function(){
+    Route::resource('/user', UserController::class);
+    Route::resource('/balance', BalanceController::class);
+    Route::resource('/balance_categories', BalanceCategoryController::class);
+    Route::resource('/asset', AssetController::class);
+    Route::resource('/asset_categories', AssetCategoryController::class);
+    Route::resource('/asset_detail', AssetDetailController::class);
+    Route::resource('/activity', ActivityController::class);
+    Route::resource('/activity_categories', ActivityCategoryController::class);
+    Route::resource('/santri', SantriController::class);
+});
 

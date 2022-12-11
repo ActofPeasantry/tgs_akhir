@@ -40,8 +40,8 @@
                             <td>{{ $user->name}}</td>
                             <td>{{ $user->email }}</td>
                             <td>
-                            @foreach ( $user->roles as $role)
-                                <span class="badge badge-primary">{{$role->role_name}}</span>
+                            @foreach ( $user->userRoles as $userRoles)
+                                <span class="badge badge-primary">{{$user->callRoleName($userRoles->role_id)}}</span>
                             @endforeach
                             </td>
                             <td class="text-center">

@@ -96,4 +96,15 @@ class AssetController extends Controller
         Asset::destroy($asset->id);
         return redirect()->route('asset.index');
     }
+
+    public function approve(Asset $asset)
+    {
+        // Asset::destroy($asset->id);
+        // return redirect()->route('asset.index');
+    }
+    public function disapprove(Asset $asset)
+    {
+        // Asset::destroy($asset->id);
+        // return redirect()->route('asset.index');
+    }
 }

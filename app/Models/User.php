@@ -12,7 +12,7 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    /** In-code roles */
+    /** In-model roles */
     const JAMAAH = 13;
     const SEKRE = 24;
     const ADMIN = 35;

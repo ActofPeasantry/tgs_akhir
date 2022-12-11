@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use App\Models\Role;
+use App\Models\UserRole;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -28,7 +28,7 @@ class UserController extends Controller
     public function create()
     {
         // $users =  User::pluck('id', 'category_name');
-        $roles = Role::all();
+        $roles = UserRole::all();
         // dd($roles[0]->id);
         return view('backend.admin.users.create', compact('roles'));
     }
@@ -53,7 +53,7 @@ class UserController extends Controller
     public function show(User $user)
     {
         $user->find('id');
-        $roles = Role::pluck('id', 'role_name');
+        // $roles = UserRole::pluck('id', 'role_name');
         return view('backend.admin.users.edit', compact('user', 'roles'));
 
     }
@@ -68,7 +68,8 @@ class UserController extends Controller
     {
         $user->find($user->id);
         // dd($user->roles->pluck('id')->toArray());
-        $roles = Role::all();
+        $roles = [USER::JAMAAH, USER::SEKRE, USER::ADMIN];
+        // dd($user->userRoles->pluck('role_id')->toArray());
         return view('backend.admin.users.edit', compact('user', 'roles'));
     }
 
@@ -81,7 +82,26 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        // $test = [];
+        // $x = 0;
+        // dd($request->role);
+        // dd($user->find($user->id)->userRoles()->pluck('role_id')->toArray() == $request->role);
+
+        $getUser = $user->find($user->id);
+        $getUserRole = $getUser->userRoles()->pluck('role_id')->toArray();
+        // ** check if either request->role == null or reques->role have exact value of current user_role data */
+        if (empty($request->role) OR $getUserRole == $request->role) {
+            dd('no changes');
+        }
+
+// ** Delete all user_roles data, then create a new one. On paper can exaust id's auto incr. but that won't happen right? :)*/
+        $getUser->userRoles()->delete();
+        foreach ($request->role as $newRole) {
+            // $test[$x] = $role;
+            // $x++;
+            $user->userRoles()->create(['user_id' => $user->id, 'role_id' => $newRole]);
+        }
+        dd('success');
     }
 
     /**
