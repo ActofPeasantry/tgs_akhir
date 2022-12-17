@@ -15,6 +15,12 @@ class UserController extends Controller
      */
     public function index()
     {
+        // if (Gate::allows('is-admin')) {
+        //     dd('success');
+        // }
+        // else {
+        //     dd('need admin credetials');
+        // }
         $users =  User::all();
         // dd($users[0]->roles()->get());
         return view('backend.admin.users.index', compact('users'));
@@ -68,7 +74,7 @@ class UserController extends Controller
     {
         $user->find($user->id);
         // dd($user->roles->pluck('id')->toArray());
-        $roles = [USER::JAMAAH, USER::SEKRE, USER::ADMIN];
+        $roles = [UserRole::JAMAAH, UserRole::SEKRE, UserRole::ADMIN];
         // dd($user->userRoles->pluck('role_id')->toArray());
         return view('backend.admin.users.edit', compact('user', 'roles'));
     }
@@ -82,11 +88,6 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        // $test = [];
-        // $x = 0;
-        // dd($request->role);
-        // dd($user->find($user->id)->userRoles()->pluck('role_id')->toArray() == $request->role);
-
         $getUser = $user->find($user->id);
         $getUserRole = $getUser->userRoles()->pluck('role_id')->toArray();
         // ** check if either request->role == null or reques->role have exact value of current user_role data */
@@ -94,11 +95,9 @@ class UserController extends Controller
             dd('no changes');
         }
 
-// ** Delete all user_roles data, then create a new one. On paper can exaust id's auto incr. but that won't happen right? :)*/
+        // ** Delete all user_roles data, then create a new one. On paper can exaust id's auto incr. but that won't happen right? :)*/
         $getUser->userRoles()->delete();
         foreach ($request->role as $newRole) {
-            // $test[$x] = $role;
-            // $x++;
             $user->userRoles()->create(['user_id' => $user->id, 'role_id' => $newRole]);
         }
         dd('success');

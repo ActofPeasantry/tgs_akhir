@@ -31,51 +31,76 @@
         </a>
     </li>
 
+    @can('is-admin')
+        <li class="nav-item">
+            <a href="" class="nav-link">
+                <i class="nav-icon fas fa-wrench"></i>
+                <p>
+                    Manajemen User
+                    <i class="right fas fa-angle-left"></i>
+                </p>
+            </a>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="{{ route('user.index') }}" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Lihat User</p>
+                    </a>
+                </li>
+                {{-- <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Lihat Role</p>
+                    </a>
+                </li> --}}
+            </ul>
+        </li>
+    @endcan
+
+    @canany(['is-admin', 'is-sekre'])
+        <li class="nav-item">
+            <a href="{{ route('balance.index') }}" class="nav-link">
+                <i class="nav-icon fas fa-coins"></i>
+                <p>
+                    Debet & Kredit
+                </p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="{{ route('activity.index') }}" class="nav-link">
+                <i class="nav-icon fas fa-user"></i>
+                <p>
+                    Kegiatan Masjid
+                </p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="{{ route('asset.index') }}" class="nav-link">
+                <i class="nav-icon fas fa-file"></i>
+                <p>
+                    Aset Masjid
+                </p>
+            </a>
+        </li>
+    @endcanany
+
     <li class="nav-item">
         <a href="" class="nav-link">
-            <i class="nav-icon fas fa-wrench"></i>
+            <i class="nav-icon fas fa-file"></i>
             <p>
-                Manajemen User
+                Santri Masjid
                 <i class="right fas fa-angle-left"></i>
             </p>
         </a>
-        <ul class="nav nav-treeview">
-            <li class="nav-item">
-                <a href="{{ route('user.index') }}" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Lihat User</p>
-                </a>
-            </li>
-            {{-- <li class="nav-item">
-                <a href="#" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Lihat Role</p>
-                </a>
-            </li> --}}
-        </ul>
-    </li>
-    <li class="nav-item">
-        <a href="{{ route('balance.index') }}" class="nav-link">
-            <i class="nav-icon fas fa-coins"></i>
-            <p>
-                Debet & Kredit
-            </p>
-        </a>
-    </li>
-    <li class="nav-item">
-        <a href="{{ route('activity.index') }}" class="nav-link">
-            <i class="nav-icon fas fa-user"></i>
-            <p>
-                Kegiatan Masjid
-            </p>
-        </a>
-    </li>
-    <li class="nav-item">
-        <a href="{{ route('asset.index') }}" class="nav-link">
-            <i class="nav-icon fas fa-file"></i>
-            <p>
-                Aset Masjid
-            </p>
-        </a>
+        @can('is-jamaah')
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="{{ route('santri.create') }}" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Pendaftaran Santri</p>
+                    </a>
+                </li>
+            </ul>
+        @endcan
     </li>
 </ul>

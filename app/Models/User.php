@@ -12,11 +12,6 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    /** In-model roles */
-    const JAMAAH = 13;
-    const SEKRE = 24;
-    const ADMIN = 35;
-
     /**
      * The attributes that are mass assignable.
      *
@@ -59,19 +54,46 @@ class User extends Authenticatable
      */
     public function callRoleName($key){
         switch ($key) {
-            case USER::JAMAAH:
+            case UserRole::JAMAAH:
                 return 'Jamaah';
                 break;
-            case USER::SEKRE:
+            case UserRole::SEKRE:
                 return 'Sekretaris';
                 break;
-            case USER::ADMIN:
+            case UserRole::ADMIN:
                 return 'Admin';
                 break;
             default:
                 return NULL;
                 break;
         }
+    }
+
+    /**
+     * Check if user has a role.
+     * @var int
+     * @return bool
+     */
+    public function hasAnyRole($role){
+        return null !== $this->userRoles()->where('role_id', $role)->first();
+    }
+    public function isAdmin(){
+        return $this->hasAnyRole(UserRole::ADMIN);
+    }
+    public function isSekre(){
+        return $this->hasAnyRole(UserRole::SEKRE);
+    }
+    public function isJamaah(){
+        return $this->hasAnyRole(UserRole::JAMAAH);
+    }
+
+    /**
+     * Check if user has either of any role. Unused atm.
+     * @var array
+     * @return bool
+     */
+    public function hasAnyRoles($role){
+        return null !== $this->userRoles()->whereIn('role_id', $role)->first();
     }
 
 }
