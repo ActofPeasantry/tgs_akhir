@@ -33,9 +33,15 @@ Route::get('/home', function () {
     return view('dashboard');
 });
 // Route::get('/asset/approve', [AssetController::class, 'approve']);
-
-Route::middleware(['auth'])->group(function(){
+Route::middleware(['auth', 'auth.accessAdmin'])->group(function(){
     Route::resource('/user', UserController::class);
+});
+
+Route::middleware(['auth', 'auth.accessJamaah'])->group(function(){
+    Route::resource('/santri', SantriController::class);
+});
+
+Route::middleware(['auth', 'auth.accessAdmin', 'auth.accessSekre'])->group(function(){
     Route::resource('/balance', BalanceController::class);
     Route::resource('/balance_categories', BalanceCategoryController::class);
     Route::resource('/asset', AssetController::class);
@@ -43,6 +49,5 @@ Route::middleware(['auth'])->group(function(){
     Route::resource('/asset_detail', AssetDetailController::class);
     Route::resource('/activity', ActivityController::class);
     Route::resource('/activity_categories', ActivityCategoryController::class);
-    Route::resource('/santri', SantriController::class);
 });
 
