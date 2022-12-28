@@ -42,7 +42,7 @@
             </a>
             <ul class="nav nav-treeview">
                 <li class="nav-item">
-                    <a href="{{ route('user.index') }}" class="nav-link">
+                    <a href="{{ route('admin.user.index') }}" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Lihat User</p>
                     </a>
@@ -95,9 +95,18 @@
         @can('is-jamaah')
             <ul class="nav nav-treeview">
                 <li class="nav-item">
-                    <a href="{{ route('santri.create') }}" class="nav-link">
+                    <a href="{{ route('santri.index') }}" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Pendaftaran Santri</p>
+                    </a>
+                </li>
+            </ul>
+        @elsecan('is-admin')
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="{{ route('admin.accept_santri.index') }}" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Menerima Santri</p>
                     </a>
                 </li>
             </ul>

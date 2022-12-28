@@ -96,4 +96,8 @@ class User extends Authenticatable
         return null !== $this->userRoles()->whereIn('role_id', $role)->first();
     }
 
+    public function isAdminOrSekre(){
+        return null !== $this->userRoles()->whereIn('role_id', [UserRole::ADMIN, UserRole::JAMAAH])->first();
+    }
+
 }

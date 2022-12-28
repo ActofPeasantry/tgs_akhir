@@ -8,13 +8,19 @@ use Illuminate\Database\Eloquent\Model;
 class Santri extends Model
 {
     protected $fillable = [
-        'nama_santri',
-        'born_place',
-        'born_date',
-        'gender',
+        'santri_name',
+        'tpq_grade',
+        'birth_place',
+        'birth_date',
+        'sex',
+        'address',
+        'father_name',
+        'mother_name',
         'school_name',
-        'school_class',
-        'telp_number'
+        'school_grade',
+        'photo',
+        'telp_number',
+        'submission_status'
     ];
     use HasFactory;
 }

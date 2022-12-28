@@ -14,7 +14,8 @@ class SantriController extends Controller
      */
     public function index()
     {
-        //
+        $santries = Santri::all();
+        return view('backend.santri.index', compact('santries'));
     }
 
     /**
@@ -24,7 +25,7 @@ class SantriController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.santri.create');
     }
 
     /**
@@ -35,7 +36,9 @@ class SantriController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request->all());
+        Santri::create($request->all());
+        return redirect()->route('santri.index');
     }
 
     /**
@@ -46,7 +49,8 @@ class SantriController extends Controller
      */
     public function show(Santri $santri)
     {
-        //
+        $santri->find($santri->id);
+        return view('backend.santri.show', compact('santri'));
     }
 
     /**
@@ -57,7 +61,9 @@ class SantriController extends Controller
      */
     public function edit(Santri $santri)
     {
-        //
+        $santri->find($santri->id);
+        // dd($santri);
+        return view('backend.santri.edit', compact('santri'));
     }
 
     /**
@@ -69,7 +75,8 @@ class SantriController extends Controller
      */
     public function update(Request $request, Santri $santri)
     {
-        //
+        Santri::find($santri->id)->update($request->all());
+        return redirect()->route('santri.index');
     }
 
     /**
@@ -80,6 +87,7 @@ class SantriController extends Controller
      */
     public function destroy(Santri $santri)
     {
-        //
+        Santri::destroy($santri->id);
+        return redirect()->route('santri.index');
     }
 }

@@ -171,7 +171,10 @@
     <!-- ChartJS -->
     <script src= "<?php echo e(asset("assets/plugins/chart.js/Chart.min.js")); ?>"></script>
     <script src= "<?php echo e(asset("assets/plugins/chart.js/Chart.min.js")); ?>"></script>
-    <!-- daterangepicker -->
+    <!-- InputMask -->
+    <script src= "<?php echo e(asset("assets/plugins/moment/moment.min.js")); ?>"></script>
+    <script src= "<?php echo e(asset("assets/plugins/inputmask/jquery.inputmask.min.js")); ?>"></script>
+    <!-- date-range-picker -->
     <script src= "<?php echo e(asset("assets/plugins/moment/moment.min.js")); ?>"></script>
     <script src= "<?php echo e(asset("assets/plugins/daterangepicker/daterangepicker.js")); ?>"></script>
 

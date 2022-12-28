@@ -20,7 +20,7 @@
             </a>
             <ul class="nav nav-treeview">
                 <li class="nav-item">
-                    <a href="<?php echo e(route('user.index')); ?>" class="nav-link">
+                    <a href="<?php echo e(route('admin.user.index')); ?>" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Lihat User</p>
                     </a>
@@ -68,9 +68,18 @@
         <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('is-jamaah')): ?>
             <ul class="nav nav-treeview">
                 <li class="nav-item">
-                    <a href="<?php echo e(route('santri.create')); ?>" class="nav-link">
+                    <a href="<?php echo e(route('santri.index')); ?>" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Pendaftaran Santri</p>
+                    </a>
+                </li>
+            </ul>
+        <?php elseif (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('is-admin')): ?>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="<?php echo e(route('admin.accept_santri.index')); ?>" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Menerima Santri</p>
                     </a>
                 </li>
             </ul>

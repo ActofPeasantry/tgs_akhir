@@ -25,7 +25,7 @@
          </div>
          <div class="card-body">
              <div class="container-fluid">
-                 <form action="{{ route("user.store") }}" method="POST">
+                 <form action="{{ route("admin.user.store") }}" method="POST">
                  @csrf
                      @include('backend.include.user_form')
                  </form>

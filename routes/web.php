@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AcceptSantriController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BalanceController;
 use App\Http\Controllers\BalanceCategoryController;
@@ -31,17 +32,21 @@ Route::get('/', function () {
 
 Route::get('/home', function () {
     return view('dashboard');
-});
+})->middleware('auth');
+
 // Route::get('/asset/approve', [AssetController::class, 'approve']);
-Route::middleware(['auth', 'auth.accessAdmin'])->group(function(){
+Route::prefix('admin')->middleware(['auth', 'auth.accessAdmin'])->name('admin.')->group(function(){
     Route::resource('/user', UserController::class);
+    Route::resource('/accept_santri', AcceptSantriController::class)->only(['index', 'show']);
+    Route::patch('/accept_santri/accept/{id}', [AcceptSantriController::class, 'accept'])->name('accept_santri.accept');
+    Route::patch('/accept_santri/deny/{id}', [AcceptSantriController::class, 'deny'])->name('accept_santri.deny');
 });
 
 Route::middleware(['auth', 'auth.accessJamaah'])->group(function(){
     Route::resource('/santri', SantriController::class);
 });
 
-Route::middleware(['auth', 'auth.accessAdmin', 'auth.accessSekre'])->group(function(){
+Route::middleware(['auth', 'auth.accessAdminAndSekre'])->group(function(){
     Route::resource('/balance', BalanceController::class);
     Route::resource('/balance_categories', BalanceCategoryController::class);
     Route::resource('/asset', AssetController::class);

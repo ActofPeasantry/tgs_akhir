@@ -25,7 +25,7 @@
          </div>
          <div class="card-body">
              <div class="container-fluid">
-                 <form method="POST" action="{{ route('user.update', $user->id) }}">
+                 <form method="POST" action="{{ route('admin.user.update', $user->id) }}">
                     @csrf
                     @method('PATCH')
                     @include('backend.include.user_form')

@@ -15,13 +15,19 @@ return new class extends Migration
     {
         Schema::create('santris', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_santri');
-            $table->string('born_place');
-            $table->date('born_date');
-            $table->boolean('gender');
+            $table->string('santri_name');
+            $table->integer('tpq_grade')->nullable();
+            $table->string('birth_place');
+            $table->date('birth_date');
+            $table->boolean('sex');
+            $table->string('address')->nullable();
+            $table->string('father_name')->nullable();
+            $table->string('mother_name')->nullable();
             $table->string('school_name');
-            $table->integer('school_class');
-            $table->string('telp_number');
+            $table->integer('school_grade');
+            $table->string('telp_number')->nullable();
+            $table->string('photo')->nullable();
+            $table->integer('submission_status')->default(0);
 
             $table->timestamps();
         });
