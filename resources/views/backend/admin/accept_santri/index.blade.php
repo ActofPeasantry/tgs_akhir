@@ -112,6 +112,13 @@
             }
             return false;
         }
+        function allTrue(nodeList) {
+            for (var i = 0; i < nodeList.length; i++) {
+                if (nodeList[i].checked === false) return false;
+            }
+            return true;
+        }
+        // alert(allTrue($('.santri_check')));
 
         function unlockButton(){
             $('.check_all_button').prop('disabled', true);
@@ -120,8 +127,15 @@
             }
         }
 
+        function checkedAllSantri(){
+            $('#all_santri').prop('checked', false);
+            if (allTrue( $('.santri_check') )) {
+                $('#all_santri').prop('checked', true);
+            }
+        }
+
         $('.santri_check').click(function(event){
-            $('.santri_check').click(unlockButton());
+            unlockButton(); checkedAllSantri();
         });
 
         $('#all_santri').change(function() {
