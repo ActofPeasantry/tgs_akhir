@@ -141,6 +141,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <script src="{{ asset("assets/plugins/datatables-buttons/js/buttons.print.min.js") }}"></script>
         <script src="{{ asset("assets/plugins/datatables-buttons/js/buttons.colVis.min.js") }}"></script>
 
+        <!-- ChartJS -->
+        <script src= "{{ asset("assets/plugins/chart.js/Chart.min.js") }}"></script>
+        <script src= "{{ asset("assets/plugins/chart.js/Chart.min.js") }}"></script>
+        <!-- InputMask -->
+        <script src= "{{ asset("assets/plugins/moment/moment.min.js") }}"></script>
+        <script src= "{{ asset("assets/plugins/inputmask/jquery.inputmask.min.js") }}"></script>
+        <!-- date-range-picker -->
+        <script src= "{{ asset("assets/plugins/moment/moment.min.js") }}"></script>
+        <script src= "{{ asset("assets/plugins/daterangepicker/daterangepicker.js") }}"></script>
+
 
         <!DOCTYPE html>
         <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->

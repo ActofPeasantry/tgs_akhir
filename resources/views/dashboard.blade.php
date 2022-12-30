@@ -174,7 +174,10 @@
     <!-- ChartJS -->
     <script src= "{{ asset("assets/plugins/chart.js/Chart.min.js") }}"></script>
     <script src= "{{ asset("assets/plugins/chart.js/Chart.min.js") }}"></script>
-    <!-- daterangepicker -->
+    <!-- InputMask -->
+    <script src= "{{ asset("assets/plugins/moment/moment.min.js") }}"></script>
+    <script src= "{{ asset("assets/plugins/inputmask/jquery.inputmask.min.js") }}"></script>
+    <!-- date-range-picker -->
     <script src= "{{ asset("assets/plugins/moment/moment.min.js") }}"></script>
     <script src= "{{ asset("assets/plugins/daterangepicker/daterangepicker.js") }}"></script>
 

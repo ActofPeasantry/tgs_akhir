@@ -40,13 +40,13 @@
                             <td>{{ $user->name}}</td>
                             <td>{{ $user->email }}</td>
                             <td>
-                            @foreach ( $user->roles as $role)
-                                <span class="badge badge-primary">{{$role->role_name}}</span>
+                            @foreach ( $user->userRoles as $userRoles)
+                                <span class="badge badge-primary">{{$user->callRoleName($userRoles->role_id)}}</span>
                             @endforeach
                             </td>
                             <td class="text-center">
-                                <a class='btn btn-warning' href="{{route('user.edit', [$user->id])}}">Edit</a>
-                                <form action="{{route('user.destroy', [$user->id])}}" method="post" style="display: inline">
+                                <a class='btn btn-warning' href="{{route('admin.user.edit', [$user->id])}}">Edit</a>
+                                <form action="{{route('admin.user.destroy', [$user->id])}}" method="post" style="display: inline">
                                     {{method_field('DELETE')}}
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                     <button onclick="return confirm('Apakah anda yakin?')" class="btn btn-danger" type="submit">Delete</button>

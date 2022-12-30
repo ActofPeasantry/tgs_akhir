@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AcceptSantriController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BalanceController;
 use App\Http\Controllers\BalanceCategoryController;
@@ -24,21 +25,35 @@ use App\Http\Controllers\userController;
 |
 */
 
+
 Route::get('/', function () {
     return view('auth.login');
 });
 
 Route::get('/home', function () {
     return view('dashboard');
+})->middleware('auth');
+
+// Route::get('/asset/approve', [AssetController::class, 'approve']);
+Route::prefix('admin')->middleware(['auth', 'auth.accessAdmin'])->name('admin.')->group(function(){
+    Route::resource('/user', UserController::class);
+    Route::resource('/accept_santri', AcceptSantriController::class)->only(['index', 'show']);
+    Route::patch('/accept_santri/accept/{id}', [AcceptSantriController::class, 'accept'])->name('accept_santri.accept');
+    Route::patch('/accept_santri/deny/{id}', [AcceptSantriController::class, 'deny'])->name('accept_santri.deny');
+    Route::patch('/accept_santri/accept_checked', [AcceptSantriController::class, 'accept_checked'])->name('accept_santri.accept_checked');
 });
 
-Route::resource('/user', UserController::class);
-Route::resource('/balance', BalanceController::class);
-Route::resource('/balance_categories', BalanceCategoryController::class);
-Route::resource('/asset', AssetController::class);
-Route::resource('/asset_categories', AssetCategoryController::class);
-Route::resource('/asset_detail', AssetDetailController::class);
-Route::resource('/activity', ActivityController::class);
-Route::resource('/activity_categories', ActivityCategoryController::class);
-Route::resource('/santri', SantriController::class);
+Route::middleware(['auth', 'auth.accessJamaah'])->group(function(){
+    Route::resource('/santri', SantriController::class);
+});
+
+Route::middleware(['auth', 'auth.accessAdminAndSekre'])->group(function(){
+    Route::resource('/balance', BalanceController::class);
+    Route::resource('/balance_categories', BalanceCategoryController::class);
+    Route::resource('/asset', AssetController::class);
+    Route::resource('/asset_categories', AssetCategoryController::class);
+    Route::resource('/asset_detail', AssetDetailController::class);
+    Route::resource('/activity', ActivityController::class);
+    Route::resource('/activity_categories', ActivityCategoryController::class);
+});
 

@@ -42,8 +42,62 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function roles()
+    public function userRoles()
     {
-        return $this->belongsToMany('App\Models\Role');
+        return $this->hasMany('App\Models\UserRole', 'user_id');
     }
+
+    /**
+     * Calling role's name with value.
+     * @var int
+     * @return string
+     */
+    public function callRoleName($key){
+        switch ($key) {
+            case UserRole::JAMAAH:
+                return 'Jamaah';
+                break;
+            case UserRole::SEKRE:
+                return 'Sekretaris';
+                break;
+            case UserRole::ADMIN:
+                return 'Admin';
+                break;
+            default:
+                return NULL;
+                break;
+        }
+    }
+
+    /**
+     * Check if user has a role.
+     * @var int
+     * @return bool
+     */
+    public function hasAnyRole($role){
+        return null !== $this->userRoles()->where('role_id', $role)->first();
+    }
+    public function isAdmin(){
+        return $this->hasAnyRole(UserRole::ADMIN);
+    }
+    public function isSekre(){
+        return $this->hasAnyRole(UserRole::SEKRE);
+    }
+    public function isJamaah(){
+        return $this->hasAnyRole(UserRole::JAMAAH);
+    }
+
+    /**
+     * Check if user has either of any role. Unused atm.
+     * @var array
+     * @return bool
+     */
+    public function hasAnyRoles($role){
+        return null !== $this->userRoles()->whereIn('role_id', $role)->first();
+    }
+
+    public function isAdminOrSekre(){
+        return null !== $this->userRoles()->whereIn('role_id', [UserRole::ADMIN, UserRole::JAMAAH])->first();
+    }
+
 }
