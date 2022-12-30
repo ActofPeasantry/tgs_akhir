@@ -86,12 +86,19 @@ class AcceptSantriController extends Controller
     }
 
     public function accept(Request $request, $id){
-        $santri = Santri::find($id);
-        dd($santri);
+        Santri::find($id)->update(['submission_status' => 1]);
+        return redirect()->route('admin.accept_santri.index');
+        // dd($request->all());
     }
 
     public function deny(Request $request, $id){
-        $santri = Santri::find($id);
-        dd($santri);
+        Santri::find($id)->update(['submission_status' => 2]);
+        return redirect()->route('admin.accept_santri.index');
+    }
+
+    public function accept_checked(Request $request){
+        Santri::whereIn('id', $request->santri_id)->update(array('submission_status' => $request->accept_checked));
+        return redirect()->route('admin.accept_santri.index');
+        // dd($santri->get());
     }
 }

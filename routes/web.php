@@ -40,6 +40,7 @@ Route::prefix('admin')->middleware(['auth', 'auth.accessAdmin'])->name('admin.')
     Route::resource('/accept_santri', AcceptSantriController::class)->only(['index', 'show']);
     Route::patch('/accept_santri/accept/{id}', [AcceptSantriController::class, 'accept'])->name('accept_santri.accept');
     Route::patch('/accept_santri/deny/{id}', [AcceptSantriController::class, 'deny'])->name('accept_santri.deny');
+    Route::patch('/accept_santri/accept_checked', [AcceptSantriController::class, 'accept_checked'])->name('accept_santri.accept_checked');
 });
 
 Route::middleware(['auth', 'auth.accessJamaah'])->group(function(){

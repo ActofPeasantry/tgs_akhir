@@ -40,7 +40,7 @@
                             <td class="dtr-control sorting_1 text-center" tabindex="0">{{ $santri->santri_name }}</td>
                             <td class="dtr-control sorting_1 text-center">{{ $santri->school_name }}</td>
                             <td class="dtr-control sorting_1 text-center">{{ $santri->school_grade }}</td>
-                            <td class="dtr-control sorting_1 text-center">{{ helperGender($santri->sex) }}</td>
+                            <td class="dtr-control sorting_1 text-center">{{ genderStatus($santri->sex) }}</td>
                             <td class="dtr-control sorting_1 text-center">{{ submissionStatus($santri->submission_status) }}</td>
                             <td class="text-center">
                                 <a class='btn btn-primary' href="{{route('santri.show', [$santri->id])}}">Detail</a>
