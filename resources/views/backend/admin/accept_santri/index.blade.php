@@ -19,7 +19,8 @@
 
 @section('content')
 <form action="{{route('admin.accept_santri.accept_checked')}}" method="post" style="display: inline">
-   <div class="card card-primary">
+    @csrf {{ method_field('PATCH') }}
+    <div class="card card-primary">
         <div class="card-header">
             <h5 class="card-title">Daftar Kegiatan</h5>
             <div class="card-tools">
@@ -36,7 +37,6 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @csrf {{ method_field('PATCH') }}
                     <div id="santri_checkbox_list">
                         @foreach ($santries as $santri)
                             <tr class="">
@@ -55,14 +55,6 @@
                                 <td class="text-center">
                                     <a class='btn btn-primary' href="{{route('admin.accept_santri.show', [$santri->id])}}">Detail</a>
                                     {{-- <a class='btn btn-success' href="{{route('admin.accept_santri.accept', [$santri->id])}}">Edit</a> --}}
-                                    <form action="{{route('admin.accept_santri.accept', [$santri->id])}}" method="post" style="display: inline">
-                                        @csrf {{method_field('PATCH')}}
-                                        <button onclick="return confirm('Apakah anda yakin?')" class="btn btn-success" type="submit">Terima</button>
-                                    </form>
-                                    <form action="{{route('admin.accept_santri.deny', [$santri->id])}}" method="post" style="display: inline">
-                                        @csrf {{method_field('PATCH')}}
-                                        <button onclick="return confirm('Apakah anda yakin?')" class="btn btn-danger" type="submit">Tolak</button>
-                                    </form>
                                 </td>
                             </tr>
                         @endforeach

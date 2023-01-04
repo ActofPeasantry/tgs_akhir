@@ -34,8 +34,8 @@ class UserController extends Controller
     public function create()
     {
         // $users =  User::pluck('id', 'category_name');
-        $roles = UserRole::all();
-        // dd($roles[0]->id);
+        $roles = config('constants.user_role');
+        // dd($roles['jamaah']);
         return view('backend.admin.users.create', compact('roles'));
     }
 
@@ -47,7 +47,12 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
+        $user = User::create($request->all());
+        foreach ($request->role as $newRole) {
+            $user->userRoles()->create(['user_id' => $user->id, 'role_id' => $newRole]);
+        }
+        return redirect()->route('admin.user.index');
+        // dd($request->all());
     }
 
     /**
@@ -91,7 +96,7 @@ class UserController extends Controller
         $getUser = $user->find($user->id);
         $getUserRole = $getUser->userRoles()->pluck('role_id')->toArray();
         // ** check if either request->role == null or reques->role have exact value of current user_role data */
-        if (empty($request->role) OR $getUserRole == $request->role) {
+        if (empty($request->role) OR $getUserRole === $request->role) {
             dd('no changes');
         }
 

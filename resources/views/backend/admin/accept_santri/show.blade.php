@@ -85,10 +85,20 @@
                 </div>
 
                 <div class="form-group col-mb-3">
-                    <label class="form-label" for="address">Alamat</label>
+                    <label class="form-label" for="submission_status">Status</label>
                     <p>{{ submissionStatus($santri->submission_status) }}</p>
                 </div>
             </div>
+        </div>
+        <div class="card-footer">
+            <form action="{{route('admin.accept_santri.accept', [$santri->id])}}" method="post" style="display: inline">
+                @csrf {{method_field('PATCH')}}
+                <button onclick="return confirm('Apakah anda yakin?')" class="btn btn-success" type="submit">Terima</button>
+            </form>
+            <form action="{{route('admin.accept_santri.deny', [$santri->id])}}" method="post" style="display: inline">
+                @csrf {{method_field('PATCH')}}
+                <button onclick="return confirm('Apakah anda yakin?')" class="btn btn-danger" type="submit">Tolak</button>
+            </form>
         </div>
     </div>
 </div>

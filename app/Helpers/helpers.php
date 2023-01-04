@@ -50,4 +50,21 @@ function submissionStatus($status){
     }
 }
 
+function rolesName($role){
+    switch ($role) {
+        case 13:
+            return "Jamaah";
+            break;
+        case 24:
+            return "Sekretaris";
+            break;
+        case 35:
+            return "Admin";
+            break;
+        default:
+            return "Sedang diproses";
+            break;
+    }
+}
+
 ?>

@@ -92,12 +92,18 @@
 
     {{-- Roles --}}
     <div class="form-group">
-        @foreach ($roles as $role)
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="role[]" value={{ $role->id }} id="{{ $role->role_name }}">
-                <label class="form-check-label" for="{{ $role->role_name }}">{{ $role->role_name }}</label>
+                <input class="form-check-input" type="checkbox" name="role[]" value={{ $roles['jamaah'] }}>
+                <label class="form-check-label" for="">{{ rolesName($roles['jamaah']) }}</label>
             </div>
-        @endforeach
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="role[]" value={{ $roles['sekre'] }}>
+                <label class="form-check-label" for="">{{ rolesName($roles['sekre']) }}</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="role[]" value={{ $roles['admin'] }}>
+                <label class="form-check-label" for="">{{ rolesName($roles['admin']) }}</label>
+            </div>
     </div>
 @endif
 

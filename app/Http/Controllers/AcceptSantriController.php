@@ -86,6 +86,7 @@ class AcceptSantriController extends Controller
     }
 
     public function accept(Request $request, $id){
+        dd($request);
         Santri::find($id)->update(['submission_status' => 1]);
         return redirect()->route('admin.accept_santri.index');
         // dd($request->all());
