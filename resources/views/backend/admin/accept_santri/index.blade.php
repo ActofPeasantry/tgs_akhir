@@ -40,8 +40,8 @@
                     <div id="santri_checkbox_list">
                         @foreach ($santries as $santri)
                             <tr class="">
-                                <td class="dtr-control sorting_1 text-center" tabindex="0">
-                                    <div class="icheck-primary d-inline">
+                                <td class="dtr-control sorting_1" tabindex="0">
+                                    <div class="icheck-primary d-inline ml-2">
                                         <input class="santri_check" type="checkbox" id="santri_id_{{ $santri->id }}" name="santri_id[]" value="{{ $santri->id }}">
                                         <label for="submission_status">
                                             {{ $santri->santri_name }}

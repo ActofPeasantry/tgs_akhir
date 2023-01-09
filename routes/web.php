@@ -1,14 +1,15 @@
 <?php
 
-use App\Http\Controllers\AcceptSantriController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\BalanceController;
-use App\Http\Controllers\BalanceCategoryController;
+use App\Http\Controllers\AcceptSantriController;
+use App\Http\Controllers\AcceptAssetController;
 use App\Http\Controllers\AssetController;
-use App\Http\Controllers\AssetCategoryController;
-use App\Http\Controllers\AssetDetailController;
 use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\ActivityCategoryController;
+use App\Http\Controllers\AssetCategoryController;
+use App\Http\Controllers\AssetDetailController;
+use App\Http\Controllers\BalanceController;
+use App\Http\Controllers\BalanceCategoryController;
 use App\Http\Controllers\SantriController;
 use App\Http\Controllers\userController;
 
@@ -37,10 +38,16 @@ Route::get('/home', function () {
 // Route::get('/asset/approve', [AssetController::class, 'approve']);
 Route::prefix('admin')->middleware(['auth', 'auth.accessAdmin'])->name('admin.')->group(function(){
     Route::resource('/user', UserController::class);
+
     Route::resource('/accept_santri', AcceptSantriController::class)->only(['index', 'show']);
+    Route::patch('/accept_santri/accept_checked', [AcceptSantriController::class, 'accept_checked'])->name('accept_santri.accept_checked');
     Route::patch('/accept_santri/accept/{id}', [AcceptSantriController::class, 'accept'])->name('accept_santri.accept');
     Route::patch('/accept_santri/deny/{id}', [AcceptSantriController::class, 'deny'])->name('accept_santri.deny');
-    Route::patch('/accept_santri/accept_checked', [AcceptSantriController::class, 'accept_checked'])->name('accept_santri.accept_checked');
+
+    Route::resource('/accept_asset', AcceptAssetController::class)->only(['index', 'show']);
+    Route::patch('/accept_asset/accept_checked', [AcceptAssetController::class, 'accept_checked'])->name('accept_asset.accept_checked');
+    Route::patch('/accept_asset/accept/{id}', [AcceptAssetController::class, 'accept'])->name('accept_asset.accept');
+    Route::patch('/accept_asset/deny/{id}', [AcceptAssetController::class, 'deny'])->name('accept_asset.deny');
 });
 
 Route::middleware(['auth', 'auth.accessJamaah'])->group(function(){
