@@ -39,15 +39,15 @@ Route::get('/home', function () {
 Route::prefix('admin')->middleware(['auth', 'auth.accessAdmin'])->name('admin.')->group(function(){
     Route::resource('/user', UserController::class);
 
-    Route::resource('/accept_santri', AcceptSantriController::class)->only(['index', 'show']);
     Route::patch('/accept_santri/accept_checked', [AcceptSantriController::class, 'accept_checked'])->name('accept_santri.accept_checked');
     Route::patch('/accept_santri/accept/{id}', [AcceptSantriController::class, 'accept'])->name('accept_santri.accept');
     Route::patch('/accept_santri/deny/{id}', [AcceptSantriController::class, 'deny'])->name('accept_santri.deny');
+    Route::resource('/accept_santri', AcceptSantriController::class)->only(['index', 'show']);
 
-    Route::resource('/accept_asset', AcceptAssetController::class)->only(['index', 'show']);
     Route::patch('/accept_asset/accept_checked', [AcceptAssetController::class, 'accept_checked'])->name('accept_asset.accept_checked');
     Route::patch('/accept_asset/accept/{id}', [AcceptAssetController::class, 'accept'])->name('accept_asset.accept');
     Route::patch('/accept_asset/deny/{id}', [AcceptAssetController::class, 'deny'])->name('accept_asset.deny');
+    Route::resource('/accept_asset', AcceptAssetController::class)->only(['index', 'show']);
 });
 
 Route::middleware(['auth', 'auth.accessJamaah'])->group(function(){
@@ -55,7 +55,9 @@ Route::middleware(['auth', 'auth.accessJamaah'])->group(function(){
 });
 
 Route::middleware(['auth', 'auth.accessAdminAndSekre'])->group(function(){
+    Route::get('/balance/search', [BalanceController::class, 'search'])->name('balance.search');
     Route::resource('/balance', BalanceController::class);
+
     Route::resource('/balance_categories', BalanceCategoryController::class);
     Route::resource('/asset', AssetController::class);
     Route::resource('/asset_categories', AssetCategoryController::class);

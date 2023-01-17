@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Balance;
 use App\Models\BalanceCategories;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class BalanceController extends Controller
 {
@@ -15,9 +16,16 @@ class BalanceController extends Controller
      */
     public function index()
     {
-        $balances =  Balance::all();
-        // dd($balances[0]->BalanceCategories->category_name);
-        return view('backend.balance.index', compact('balances'));
+        $new_balance = new Balance;
+        $years = $new_balance->getYear();
+
+        $model_balances =  Balance::oldest();
+        $balances = $model_balances->whereMonth('created_at', date('m'))->whereYear('created_at', date('Y'))->get();
+        $sum_debit = $balances->where('debit_credit', 0)->sum('total_amount');
+        $sum_credit = $balances->where('debit_credit', 1)->sum('total_amount');
+        $total_sum = $sum_debit-$sum_credit;
+
+        return view('backend.balance.index', compact('balances','years', 'sum_debit', 'sum_credit', 'total_sum'));
     }
 
     /**
@@ -92,5 +100,11 @@ class BalanceController extends Controller
     {
         Balance::destroy($balance->id);
         return redirect()->route('balance.index');
+    }
+
+    public function search(Request $request){
+        // dd('test');
+        $data['month'] = $request->month;
+        dd($data);
     }
 }

@@ -15,6 +15,72 @@
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('content'); ?>
+    <div class="card">
+        <div class="card-box">
+            <div class="text-center mt-5">
+                <div class="form-group">
+                    <div class="row">
+                        <h5 class="col-2 mt-1">Pilih Data</h5>
+                        <div class="col-4 ">
+                            <div class="input-group input-group-sm">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Bulan</span>
+                                </div>
+                                <select class="custom-select" name="month[]" id="month">
+                                    <?php $__currentLoopData = monthNameArray(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $value => $month): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <option value="<?php echo e($value); ?>"><?php echo e($month); ?></option>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="input-group input-group-sm">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Tahun</span>
+                                </div>
+                                <select class="custom-select" name="year[]" id="year">
+                                    <?php $__currentLoopData = $years; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <option value="<?php echo e($value); ?>"><?php echo e($value); ?></option>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-1">
+                            <div class="input-group">
+                                <button id="search_button" name="search_button" onclick="search()" class="btn btn-primary btn-sm waves-effect waves-light btn">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-body">
+            <div class="text-center">
+                <div class="row">
+                    <div class="col-xs-6 col-sm-4">
+                        <div class="m-t-20 m-b-20">
+                            <h3 class="m-b-10 text-success"><b><?php echo e($sum_debit); ?></b></h3>
+                            <p class="text-uppercase m-b-5 font-13 font-600">Total Debet</p>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4">
+                        <div class="m-t-20 m-b-20">
+                           <h3 class="m-b-10 text-danger"><b><?php echo e($sum_credit); ?></b></h3>
+                            <p class="text-uppercase m-b-5 font-13 font-600">Total Kredit</p>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4">
+                        <div class="m-t-20 m-b-20">
+                            <h3 class="m-b-10 text-primary"><b><?php echo e($total_sum); ?></b></h3>
+                            <p class="text-uppercase m-b-5 font-13 font-600">Sisa Saldo</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
    <div class="card card-primary">
         <div class="card-header">
             <h5 class="card-title">Daftar Pembukuan</h5>
@@ -23,7 +89,8 @@
             <table id="example1" class="table table-bordered table-hover dataTable dtr-inline" role="grid" aria-describedby="example1_info">
                 <thead>
                     <tr role="row">
-                        <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column descending" aria-sort="ascending">Tgl Input</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">No. Invoice</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Keterangan</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Kategori</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Tanggal Diterima</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Debet (Rp)</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">kredit (Rp)</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Saldo (Rp)</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Detail</th>
+                        <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column descending" aria-sort="ascending">Tgl Input</th>
+                        <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">No. Invoice</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Keterangan</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Kategori</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Tanggal Diterima</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Debet (Rp)</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">kredit (Rp)</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Saldo (Rp)</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Detail</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -41,11 +108,11 @@
                             <?php if($balance->debit_credit == 0): ?>
                                 <td><?php echo e($balance->total_amount); ?></td>
                                 <td>0</td>
-                                <td>-<?php echo e($balance->total_amount); ?></td>
+                                <td><?php echo e($balance->total_amount); ?></td>
                             <?php else: ?>
                                 <td>0</td>
                                 <td><?php echo e($balance->total_amount); ?></td>
-                                <td><?php echo e($balance->total_amount); ?></td>
+                                <td>-<?php echo e($balance->total_amount); ?></td>
                             <?php endif; ?>
                             <td class="text-center">
                                 <a class='btn btn-warning' href="<?php echo e(route('balance.edit', [$balance->id])); ?>">Edit</a>
@@ -72,14 +139,25 @@
         $(function(){
             $('#example1').DataTable({
                 "paging": true,
-                "lengthChange": false,
-                "searching": false,
+                "lengthChange": true,
+                "searching": true,
                 "ordering": true,
                 "info": true,
                 "autoWidth": false,
                 "responsive": true,
             });
         });
+    </script>
+    <script>
+        function search(){
+            var month = $('#month').val();
+            var year = $('#year').val();
+            $.ajax({
+                type: "Get",
+                url: "<?php echo e(url('balance/search')); ?>",
+                data: "month" +month
+            })
+        }
     </script>
 <?php $__env->stopPush(); ?>
 
