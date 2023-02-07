@@ -27,11 +27,11 @@ class Balance extends Model
         $result=[];
         $year_balances = Balance::pluck('created_at');
         $x = $year_balances[0]->format('Y');
-        array_push($result, $x);
+        // array_push($result, $x);
         foreach ($year_balances as $year) {
             if ($year->format('Y') != $x) {
-                $x = $year->format('Y');
                 array_push($result, $x);
+                $x = $year->format('Y');
             }
         }
         return $result;

@@ -19,7 +19,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <link rel="stylesheet" href="{{ asset('assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
         <!-- Theme style -->
         <link rel="stylesheet" href="{{ asset('assets/dist/css/adminlte.min.css') }}">
-
+        <link rel="stylesheet" href="{{ asset('assets/dist/css/adminlte.min.css?v=3.2.0') }}">
+        <!-- FullCalendar 4 -->
+        <link rel="stylesheet" href="{{asset('assets/plugins/fullcalendar/main.css')}}">
     </head>
     <body class="hold-transition sidebar-mini">
         <div class="wrapper">
@@ -141,6 +143,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <script src="{{ asset("assets/plugins/datatables-buttons/js/buttons.print.min.js") }}"></script>
         <script src="{{ asset("assets/plugins/datatables-buttons/js/buttons.colVis.min.js") }}"></script>
 
+        <!-- FullCalendar 4 -->
+        <script src="{{ asset("assets/plugins/moment/moment.min.js") }}"></script>
+        <script src="{{ asset("assets/plugins/fullcalendar/main.js") }}"></script>
         <!-- ChartJS -->
         <script src= "{{ asset("assets/plugins/chart.js/Chart.min.js") }}"></script>
         <script src= "{{ asset("assets/plugins/chart.js/Chart.min.js") }}"></script>

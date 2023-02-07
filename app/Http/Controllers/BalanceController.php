@@ -103,8 +103,26 @@ class BalanceController extends Controller
     }
 
     public function search(Request $request){
-        // dd('test');
-        $data['month'] = $request->month;
-        dd($data);
+        // dd($request->all());
+        $new_balance = new Balance;
+        $years = $new_balance->getYear();
+
+        $month = $request->month[0];
+        $year = $request->year[0];
+        // dd($request->month[0]);
+        if ($month != 0) {
+            $model_balances =  Balance::oldest();
+            $balances = $model_balances->whereMonth('created_at', $month)->whereYear('created_at', $year)->get();
+            $sum_debit = $balances->where('debit_credit', 0)->sum('total_amount');
+            $sum_credit = $balances->where('debit_credit', 1)->sum('total_amount');
+            $total_sum = $sum_debit-$sum_credit;
+            return view('backend.balance.index', compact('balances','years', 'sum_debit', 'sum_credit', 'total_sum'));
+        }
+            $model_balances =  Balance::oldest();
+            $balances = $model_balances->whereYear('created_at', $year)->get();
+            $sum_debit = $balances->where('debit_credit', 0)->sum('total_amount');
+            $sum_credit = $balances->where('debit_credit', 1)->sum('total_amount');
+            $total_sum = $sum_debit-$sum_credit;
+            return view('backend.balance.index', compact('balances','years', 'sum_debit', 'sum_credit', 'total_sum'));
     }
 }

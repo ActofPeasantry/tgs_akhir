@@ -55,7 +55,7 @@ Route::middleware(['auth', 'auth.accessJamaah'])->group(function(){
 });
 
 Route::middleware(['auth', 'auth.accessAdminAndSekre'])->group(function(){
-    Route::get('/balance/search', [BalanceController::class, 'search'])->name('balance.search');
+    Route::post('/balance/search', [BalanceController::class, 'search'])->name('balance.search');
     Route::resource('/balance', BalanceController::class);
 
     Route::resource('/balance_categories', BalanceCategoryController::class);

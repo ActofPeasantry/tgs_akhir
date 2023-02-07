@@ -20,6 +20,8 @@
 @section('content')
     <div class="card">
         <div class="card-box">
+            <form action="{{ route("balance.search") }}" method="POST">
+            @csrf
             <div class="text-center mt-5">
                 <div class="form-group">
                     <div class="row">
@@ -50,12 +52,13 @@
                         </div>
                         <div class="col-md-1">
                             <div class="input-group">
-                                <button id="search_button" name="search_button" onclick="search()" class="btn btn-primary btn-sm waves-effect waves-light btn">Submit</button>
+                                <button id="search_button" name="search_button" class="btn btn-primary btn-sm waves-effect waves-light btn">Submit</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            </form>
         </div>
 
         <div class="card-body">
