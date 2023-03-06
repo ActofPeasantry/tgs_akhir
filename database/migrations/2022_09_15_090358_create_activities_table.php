@@ -16,7 +16,7 @@ return new class extends Migration
             Schema::create('activities', function (Blueprint $table) {
                 $table->id();
                 $table->string('activity_name');
-                $table->string('description');
+                $table->string('description')->nullable();
                 $table->dateTime('schedule_start');
                 $table->dateTime('schedule_end');
                 $table->integer('status');

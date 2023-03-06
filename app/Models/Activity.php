@@ -10,7 +10,7 @@ class Activity extends Model
     protected $fillable = [
         'activity_name',
         'description',
-        'schedule_start',
+        '',
         'schedule_end',
         'status',
         'submission_status',
@@ -18,7 +18,7 @@ class Activity extends Model
     ];
 
     // reecognise as date
-    protected $dates = ['schedule', 'schedule_end'];
+    // protected $dates = ['schedule_start', 'schedule_end'];
 
     public function ActivityCategory(){
         return $this->belongsTo('App\Models\ActivityCategory', 'activity_categories_id');

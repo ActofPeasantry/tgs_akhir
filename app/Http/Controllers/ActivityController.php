@@ -15,8 +15,51 @@ class ActivityController extends Controller
      */
     public function index()
     {
+        $events = array();
         $activities = Activity::all();
-        return view('backend.activity.index', compact('activities'));
+        foreach($activities as $activity){
+            // if($activity->submission_status == 1 ){ }
+            switch ($activity->status) {
+                case 1:
+                    $events[] = [
+                        'title' => $activity->activity_name,
+                        'start' => $activity->schedule_start,
+                        'end' => $activity->schedule_end,
+                        'backgroundColor'=> '#f39c12', //yellow
+                        'borderColor'    => '#f39c12' //yellow
+                    ];
+                    break;
+                case 2:
+                    $events[] = [
+                        'title' => $activity->activity_name,
+                        'start' => $activity->schedule_start,
+                        'end' => $activity->schedule_end,
+                        'backgroundColor'=> '#00a65a', //Success (green)
+                        'borderColor'    => '#00a65a', //Success (green)
+                    ];
+                    break;
+                case 3:
+                    $events[] = [
+                        'title' => $activity->activity_name,
+                        'start' => $activity->schedule_start,
+                        'end' => $activity->schedule_end,
+                        'backgroundColor'=> '#dc3545', //red
+                        'borderColor'    => '#dc3545', //red
+                    ];
+                    break;
+                default:
+                    $events[] = [
+                        'title' => $activity->activity_name,
+                        'start' => $activity->schedule_start,
+                        'end' => $activity->schedule_end,
+                        'backgroundColor'=> '#00c0ef', //Info (aqua)
+                        'borderColor'    => '#00c0ef' //Info (aqua)
+                    ];
+                    break;
+            }
+        }
+        // dd($events);
+        return view('backend.activity.index', compact('activities', 'events'));
     }
 
     /**
