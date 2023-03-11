@@ -47,32 +47,86 @@
                         <p>Lihat User</p>
                     </a>
                 </li>
-                {{-- <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Lihat Role</p>
-                    </a>
-                </li> --}}
             </ul>
         </li>
+        {{-- <li class="nav-item">
+            <a href="" class="nav-link">
+                <i class="nav-icon fas fa-wrench"></i>
+                <p>
+                    Administrasi
+                    <i class="right fas fa-angle-left"></i>
+                </p>
+            </a>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="{{ route('admin.accept_santri.index') }}" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Menerima Santri</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('admin.accept_asset.index') }}" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>menyetujui Asset</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('admin.accept_activity.index') }}" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>menyetujui Kegiatan</p>
+                    </a>
+                </li>
+            </ul>
+        </li> --}}
     @endcan
 
     @canany(['is-admin', 'is-sekre'])
         <li class="nav-item">
-            <a href="{{ route('balance.index') }}" class="nav-link">
+            <a href="" class="nav-link">
                 <i class="nav-icon fas fa-coins"></i>
                 <p>
                     Debet & Kredit
+                    <i class="right fas fa-angle-left"></i>
                 </p>
             </a>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="{{ route('balance.index') }}" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Lihat Debet & Kredit</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('balance.create') }}" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Tambah Debet/Kredit</p>
+                    </a>
+                </li>
+            </ul>
         </li>
         <li class="nav-item">
-            <a href="{{ route('activity.index') }}" class="nav-link">
+            <a href="" class="nav-link">
                 <i class="nav-icon fas fa-user"></i>
                 <p>
-                    Kegiatan Masjid
+                    Kegiatan Masjid <i class="right fas fa-angle-left"></i>
                 </p>
             </a>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="{{ route('activity.index') }}" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Lihat Kegiatan</p>
+                    </a>
+                </li>
+                @can('is-admin')
+                <li class="nav-item">
+                    <a href="{{ route('admin.accept_activity.index') }}" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Menyetujui Kegiatan</p>
+                    </a>
+                </li>
+                @endcan
+            </ul>
         </li>
         <li class="nav-item">
             <a href="{{ route('asset.index') }}" class="nav-link">

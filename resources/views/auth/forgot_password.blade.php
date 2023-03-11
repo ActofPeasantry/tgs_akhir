@@ -14,7 +14,7 @@
     </div>
 @endif
 
-<form  method="POST" action="{{ route('password.request') }}">
+<form  method="POST" action="{{ route('password.email') }}">
     @csrf
     <div class="input-group mb-3">
         <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="E-mail Address" autofocus>

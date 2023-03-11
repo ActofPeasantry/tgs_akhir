@@ -25,27 +25,58 @@
                         <p>Lihat User</p>
                     </a>
                 </li>
-                
             </ul>
         </li>
+        
     <?php endif; ?>
 
     <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->any(['is-admin', 'is-sekre'])): ?>
         <li class="nav-item">
-            <a href="<?php echo e(route('balance.index')); ?>" class="nav-link">
+            <a href="" class="nav-link">
                 <i class="nav-icon fas fa-coins"></i>
                 <p>
                     Debet & Kredit
+                    <i class="right fas fa-angle-left"></i>
                 </p>
             </a>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="<?php echo e(route('balance.index')); ?>" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Lihat Debet & Kredit</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?php echo e(route('balance.create')); ?>" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Tambah Debet/Kredit</p>
+                    </a>
+                </li>
+            </ul>
         </li>
         <li class="nav-item">
-            <a href="<?php echo e(route('activity.index')); ?>" class="nav-link">
+            <a href="" class="nav-link">
                 <i class="nav-icon fas fa-user"></i>
                 <p>
-                    Kegiatan Masjid
+                    Kegiatan Masjid <i class="right fas fa-angle-left"></i>
                 </p>
             </a>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="<?php echo e(route('activity.index')); ?>" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Lihat Kegiatan</p>
+                    </a>
+                </li>
+                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('is-admin')): ?>
+                <li class="nav-item">
+                    <a href="<?php echo e(route('admin.accept_activity.index')); ?>" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Menyetujui Kegiatan</p>
+                    </a>
+                </li>
+                <?php endif; ?>
+            </ul>
         </li>
         <li class="nav-item">
             <a href="<?php echo e(route('asset.index')); ?>" class="nav-link">

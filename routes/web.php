@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AcceptSantriController;
+use App\Http\Controllers\AcceptActivityController;
 use App\Http\Controllers\AcceptAssetController;
 use App\Http\Controllers\AssetController;
 use App\Http\Controllers\ActivityController;
@@ -48,6 +49,11 @@ Route::prefix('admin')->middleware(['auth', 'auth.accessAdmin'])->name('admin.')
     Route::patch('/accept_asset/accept/{id}', [AcceptAssetController::class, 'accept'])->name('accept_asset.accept');
     Route::patch('/accept_asset/deny/{id}', [AcceptAssetController::class, 'deny'])->name('accept_asset.deny');
     Route::resource('/accept_asset', AcceptAssetController::class)->only(['index', 'show']);
+
+    Route::patch('/accept_activity/accept_checked', [AcceptActivityController::class, 'accept_checked'])->name('accept_activity.accept_checked');
+    Route::patch('/accept_activity/accept/{id}', [AcceptActivityController::class, 'accept'])->name('accept_activity.accept');
+    Route::patch('/accept_activity/deny/{id}', [AcceptActivityController::class, 'deny'])->name('accept_activity.deny');
+    Route::resource('/accept_activity', AcceptActivityController::class)->only(['index', 'show']);
 });
 
 Route::middleware(['auth', 'auth.accessJamaah'])->group(function(){
