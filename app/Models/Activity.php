@@ -10,7 +10,7 @@ class Activity extends Model
     protected $fillable = [
         'activity_name',
         'description',
-        '',
+        'schedule_start',
         'schedule_end',
         'status',
         'submission_status',

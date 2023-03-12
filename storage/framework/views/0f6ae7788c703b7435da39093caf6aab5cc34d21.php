@@ -28,6 +28,7 @@
                 </thead>
                 <tbody>
                     <?php $__currentLoopData = $assets; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $asset): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <?php if($asset->submission_status == config('constants.submission_status.accepted')): ?>
                         <tr class="">
                             <td class="dtr-control sorting_1 text-center" tabindex="0">
                                 <?php echo e($asset->asset_name); ?> <br>
@@ -46,6 +47,7 @@
                                 </form>
                             </td>
                         </tr>
+                    <?php endif; ?>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </tbody>
                 <tfoot>

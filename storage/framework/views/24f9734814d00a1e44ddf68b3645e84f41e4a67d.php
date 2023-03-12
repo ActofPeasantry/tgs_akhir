@@ -68,6 +68,18 @@
                         <p>Lihat Kegiatan</p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="<?php echo e(route('activity_categories.index')); ?>" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Lihat Kategori Kegiatan</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?php echo e(route('activity.create')); ?>" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Mengajukan Kegiatan</p>
+                    </a>
+                </li>
                 <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('is-admin')): ?>
                 <li class="nav-item">
                     <a href="<?php echo e(route('admin.accept_activity.index')); ?>" class="nav-link">
@@ -79,12 +91,40 @@
             </ul>
         </li>
         <li class="nav-item">
-            <a href="<?php echo e(route('asset.index')); ?>" class="nav-link">
-                <i class="nav-icon fas fa-file"></i>
+            <a href="" class="nav-link">
+                <i class="nav-icon fas fa-user"></i>
                 <p>
-                    Aset Masjid
+                    Aset Masjid <i class="right fas fa-angle-left"></i>
                 </p>
             </a>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="<?php echo e(route('asset.index')); ?>" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Lihat Aset</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?php echo e(route('asset_categories.index')); ?>" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Lihat Kategori Aset</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?php echo e(route('asset.create')); ?>" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Mengajukan Aset</p>
+                    </a>
+                </li>
+                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('is-admin')): ?>
+                <li class="nav-item">
+                    <a href="<?php echo e(route('admin.accept_asset.index')); ?>" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Menyetujui Aset</p>
+                    </a>
+                </li>
+                <?php endif; ?>
+            </ul>
         </li>
     <?php endif; ?>
 

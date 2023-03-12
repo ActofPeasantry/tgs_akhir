@@ -31,6 +31,7 @@
                 </thead>
                 <tbody>
                     @foreach ($assets as $asset)
+                    @if ($asset->submission_status == config('constants.submission_status.accepted'))
                         <tr class="">
                             <td class="dtr-control sorting_1 text-center" tabindex="0">
                                 {{ $asset->asset_name }} <br>
@@ -48,6 +49,7 @@
                                 </form>
                             </td>
                         </tr>
+                    @endif
                     @endforeach
                 </tbody>
                 <tfoot>
