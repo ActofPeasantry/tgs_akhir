@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Santri extends Model
 {
     protected $fillable = [
+        'user_id',
         'santri_name',
         'tpq_grade',
         'birth_place',
@@ -22,5 +23,10 @@ class Santri extends Model
         'telp_number',
         'submission_status'
     ];
+
+    public function users()
+    {
+        return $this->belongsTo('App\Models\User', 'user_id');
+    }
     use HasFactory;
 }

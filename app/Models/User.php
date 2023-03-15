@@ -47,6 +47,27 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\UserRole', 'user_id');
     }
 
+    public function balances()
+    {
+        return $this->hasMany('App\Models\Balance', 'user_id');
+    }
+
+    public function activities()
+    {
+        return $this->hasMany('App\Models\Activity', 'user_id');
+    }
+
+    public function assets()
+    {
+        return $this->hasMany('App\Models\Asset', 'user_id');
+    }
+
+    public function santries()
+    {
+        return $this->hasMany('App\Models\Santri', 'user_id');
+    }
+
+
     /**
      * Calling role's name with value.
      * @var int
@@ -86,6 +107,9 @@ class User extends Authenticatable
     public function isJamaah(){
         return $this->hasAnyRole(UserRole::JAMAAH);
     }
+    public function isAdminOrSekre(){
+        return null !== $this->userRoles()->whereIn('role_id', [UserRole::ADMIN, UserRole::SEKRE])->first();
+    }
 
     /**
      * Check if user has either of any role. Unused atm.
@@ -96,8 +120,5 @@ class User extends Authenticatable
         return null !== $this->userRoles()->whereIn('role_id', $role)->first();
     }
 
-    public function isAdminOrSekre(){
-        return null !== $this->userRoles()->whereIn('role_id', [UserRole::ADMIN, UserRole::SEKRE])->first();
-    }
 
 }

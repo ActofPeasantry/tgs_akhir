@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Santri;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class SantriController extends Controller
@@ -14,7 +15,9 @@ class SantriController extends Controller
      */
     public function index()
     {
-        $santries = Santri::all();
+        $user = User::find(auth()->user()->id);
+        $santries = $user->Santries()->get();
+        // dd($santries);
         return view('backend.santri.index', compact('santries'));
     }
 
@@ -75,6 +78,7 @@ class SantriController extends Controller
      */
     public function update(Request $request, Santri $santri)
     {
+        // dd($request->all());
         Santri::find($santri->id)->update($request->all());
         return redirect()->route('santri.index');
     }

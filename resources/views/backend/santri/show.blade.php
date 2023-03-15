@@ -22,7 +22,7 @@
 <div class="col-md-10">
     <div class="card card-primary">
         <div class="card-header">
-            <h5 class="card-title" >Ubah Data</h5>
+            <h5 class="card-title" >Data Santri</h5>
         </div>
         <div class="card-body">
             <div class="container-fluid">
@@ -43,8 +43,12 @@
 
                 <div class="form-group col-mb-3">
                     <label class="form-label" for="telp_number">Nomor Telepon</label>
-                    <p>{{ splitPhoneNumber($santri->telp_number) }}</p>
+                    <p>{{ $santri->telp_number }}</p>
                 </div>
+                {{-- <div class="form-group col-mb-3">
+                    <label class="form-label" for="telp_number">Nomor Telepon</label>
+                    <p>{{ splitPhoneNumber($santri->telp_number) }}</p>
+                </div> --}}
 
                 <div class="form-group col-mb-3">
                     <label class="form-label" for="address">Alamat</label>
@@ -86,6 +90,11 @@
 
                 <div class="form-group col-mb-3">
                     <label class="form-label" for="address">Alamat</label>
+                    <p>{{ $santri->address }}</p>
+                </div>
+
+                <div class="form-group col-mb-3">
+                    <label class="form-label" for="status">Status Pengajuan</label>
                     <p>{{ submissionStatus($santri->submission_status) }}</p>
                 </div>
             </div>

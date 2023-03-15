@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Asset;
 use App\Models\AssetCategory;
 use App\Models\AssetDetail;
@@ -21,6 +22,7 @@ class AssetController extends Controller
         // dd($assets[0]->totalAsset(1));
         return view('backend.mosque_asset.index', compact('assets'));
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -106,5 +108,12 @@ class AssetController extends Controller
     {
         // Asset::destroy($asset->id);
         // return redirect()->route('asset.index');
+    }
+
+    public function propose()
+    {
+        $user = User::find(auth()->user()->id);
+        $assets = $user->Assets()->get();
+        return view('backend.mosque_asset.propose', compact('assets'));
     }
 }

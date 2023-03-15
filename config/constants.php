@@ -2,10 +2,13 @@
 
 return [
     'user_role' => [
-        'jamaah' => 13, 'sekre' => 24, 'admin' => 35,
+        'jamaah' => '13', 'sekre' => '24', 'admin' => '35',
     ],
     'submission_status' => [
-        'accepted' => 1, 'denied' => 2
-    ]
+        'accepted' => '1', 'denied' => '2'
+    ],
+    'activity_status' => [
+        'not_yet' => '1', 'ongoing' => '2', 'cancelled' => '3'
+    ],
 ];
 

@@ -19,6 +19,7 @@ return new class extends Migration
                 $table->string('asset_name');
                 $table->integer('submission_status')->default(0);
                 $table->timestamps();
+                $table->foreignId('user_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
                 $table->foreignId('asset_categories_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             });
     }

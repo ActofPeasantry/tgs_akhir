@@ -73,4 +73,18 @@ function rolesName($role){
             break;
     }
 }
+
+    function activityStatus($status){
+        switch ($status) {
+            case 1:
+                return 'Belum berjalan';
+                break;
+            case 2:
+                return 'Sudah berjalan';
+                break;
+            default:
+                return 'Dibatalkan';
+                break;
+        }
+    }
 ?>

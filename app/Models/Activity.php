@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Activity extends Model
 {
     protected $fillable = [
+        'user_id',
         'activity_name',
         'description',
         'schedule_start',
@@ -24,5 +25,9 @@ class Activity extends Model
         return $this->belongsTo('App\Models\ActivityCategory', 'activity_categories_id');
     }
 
+    public function users()
+    {
+        return $this->belongsTo('App\Models\User', 'user_id');
+    }
     use HasFactory;
 }

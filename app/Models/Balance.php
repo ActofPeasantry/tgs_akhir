@@ -23,7 +23,7 @@ class Balance extends Model
         return $this->belongsTo('App\Models\BalanceCategories', 'balance_category_id');
     }
 
-     public function getYear(){
+    public function getYear(){
         $result=[];
         $year_balances = Balance::pluck('created_at');
         $x = $year_balances[0]->format('Y');
@@ -35,7 +35,11 @@ class Balance extends Model
             }
         }
         return $result;
-     }
+    }
 
+    public function users()
+    {
+        return $this->belongsTo('App\Models\User', 'user_id');
+    }
     use HasFactory;
 }

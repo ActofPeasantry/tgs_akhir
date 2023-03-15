@@ -1,18 +1,18 @@
 @extends('layouts/main')
 
 @section('title')
-    <title>SMKK | Debet&Kredit</title>
+    <title>SMKK | Laporan Keuangan</title>
 @endsection
 
 @section('page_name')
-    <h1>Kategori Debet & Kredit</h1>
+    <h1>Kategori Laporan Keuangan</h1>
 @endsection
 
 @section('breadcrumb')
     {{-- Custom helpers, cek app/Helpers/helpers.php dan composer.json di bagian file jalankan composer dump-autoload utk memakainya --}}
     {!!
         breadcrumb([
-            'Debet & Kredit' => 'Debet & Kredit'
+            'Laporan Keuangan' => 'Laporan Keuangan'
         ])
     !!}
 @endsection

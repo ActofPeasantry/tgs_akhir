@@ -48,7 +48,8 @@
     <div class="form-group col-mb-3">
         <label class="form-label" for="telp_number">Nomor Telepon</label>
         {{-- <input id="telp_number" type="text" class="form-control @error('telp_number') is-invalid @enderror" name="telp_number" value="{{ old('telp_number', $santri->telp_number) }}" autocomplete="telp_number" required> --}}
-        <input id="telp_number" type="text" class="form-control" name="telp_number" value="{{ old('telp_number', $santri->telp_number) }}" data-inputmask="'mask': ['9999-9999-99999', '+999 9999 99999']" inputmode="text" placeholder="____-____-_____ " required>
+        <input id="telp_number" type="text" class="form-control" name="telp_number" value="{{ old('telp_number', $santri->telp_number) }}" data-inputmask="'mask': ['999-999-9999 [x99999]', '+099 99 99 9999[9]-9999']" data-mask="" inputmode="text" placeholder="____-____-_____ " required>
+
     </div>
 
     <div class="form-group col-mb-3">
@@ -133,6 +134,7 @@
             <label class="custom-file-label" for="photo">Pilih Foto</label>
         </div>
     </div>
+    <input type="hidden"  id="user_id" name="user_id" value="{{ auth()->user()->id}}">
 @else
     {{-- Nama Santri --}}
     <div class="form-group col-mb-3">
@@ -269,6 +271,7 @@
             <label class="custom-file-label" for="photo">Pilih Foto</label>
         </div>
     </div>
+    <input type="hidden"  id="user_id" name="user_id" value="{{ auth()->user()->id}}">
     {{-- <div class="form-group mb-3">
         <label class="form-label" for="asset_categories_id">Jenis Aset</label>
         <select name="asset_categories_id" id="asset_categories_id" class="form-control">

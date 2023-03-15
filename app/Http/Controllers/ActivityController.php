@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\user;
 use App\Models\Activity;
 use App\Models\ActivityCategory;
 use Illuminate\Http\Request;
@@ -25,8 +26,8 @@ class ActivityController extends Controller
                         'title' => $activity->activity_name,
                         'start' => $activity->schedule_start,
                         'end' => $activity->schedule_end,
-                        'backgroundColor'=> '#f39c12', //yellow
-                        'borderColor'    => '#f39c12' //yellow
+                        'backgroundColor'=> '#00c0ef', //Info (aqua)
+                        'borderColor'    => '#00c0ef' //Info (aqua)
                     ];
                     break;
                 case 2:
@@ -38,22 +39,13 @@ class ActivityController extends Controller
                         'borderColor'    => '#00a65a', //Success (green)
                     ];
                     break;
-                case 3:
-                    $events[] = [
-                        'title' => $activity->activity_name,
-                        'start' => $activity->schedule_start,
-                        'end' => $activity->schedule_end,
-                        'backgroundColor'=> '#dc3545', //red
-                        'borderColor'    => '#dc3545', //red
-                    ];
-                    break;
                 default:
                     $events[] = [
                         'title' => $activity->activity_name,
                         'start' => $activity->schedule_start,
                         'end' => $activity->schedule_end,
-                        'backgroundColor'=> '#00c0ef', //Info (aqua)
-                        'borderColor'    => '#00c0ef' //Info (aqua)
+                        'backgroundColor'=> '#dc3545', //red
+                        'borderColor'    => '#dc3545' //red
                     ];
                     break;
             }
@@ -93,7 +85,9 @@ class ActivityController extends Controller
      */
     public function show(Activity $activity)
     {
-        //
+        $activity->find($activity->id);
+        // dd($activity->ActivityCategory->category_name);
+        return view('backend.activity.show', compact('activity'));
     }
 
     /**
@@ -106,7 +100,8 @@ class ActivityController extends Controller
     {
         $activity = Activity::find($activity->id);
         $categories =  ActivityCategory::pluck('id', 'category_name');
-        // dd($activity);
+        $activity_status = config('constants.activity_status');
+        dd($activity_status);
         return view('backend.activity.edit', compact('activity', 'categories'));
     }
 
@@ -132,5 +127,12 @@ class ActivityController extends Controller
     {
         Activity::destroy($activity->id);
         return redirect()->route('activity.index');
+    }
+
+    public function propose()
+    {
+        $user = User::find(auth()->user()->id);
+        $activities = $user->Activities()->get();
+        return view('backend.activity.propose', compact('activities'));
     }
 }

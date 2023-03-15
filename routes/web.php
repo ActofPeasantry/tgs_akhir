@@ -63,11 +63,14 @@ Route::middleware(['auth', 'auth.accessJamaah'])->group(function(){
 Route::middleware(['auth', 'auth.accessAdminAndSekre'])->group(function(){
     Route::post('/balance/search', [BalanceController::class, 'search'])->name('balance.search');
     Route::resource('/balance', BalanceController::class);
-
     Route::resource('/balance_categories', BalanceCategoryController::class);
+
+    Route::get('/asset/propose', [AssetController::class, 'propose'])->name('asset.propose');
     Route::resource('/asset', AssetController::class);
     Route::resource('/asset_categories', AssetCategoryController::class);
     Route::resource('/asset_detail', AssetDetailController::class);
+
+    Route::get('/activity/propose', [ActivityController::class, 'propose'])->name('activity.propose');
     Route::resource('/activity', ActivityController::class);
     Route::resource('/activity_categories', ActivityCategoryController::class);
 });

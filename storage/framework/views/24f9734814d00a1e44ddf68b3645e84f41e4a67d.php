@@ -35,7 +35,7 @@
             <a href="" class="nav-link">
                 <i class="nav-icon fas fa-coins"></i>
                 <p>
-                    Debet & Kredit
+                    Laporan Keuangan
                     <i class="right fas fa-angle-left"></i>
                 </p>
             </a>
@@ -43,13 +43,13 @@
                 <li class="nav-item">
                     <a href="<?php echo e(route('balance.index')); ?>" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
-                        <p>Lihat Debet & Kredit</p>
+                        <p>Lihat Laporan Keuangan</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="<?php echo e(route('balance.create')); ?>" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
-                        <p>Tambah Debet/Kredit</p>
+                        <p>Tambah L. Keuangan</p>
                     </a>
                 </li>
             </ul>
@@ -75,7 +75,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="<?php echo e(route('activity.create')); ?>" class="nav-link">
+                    <a href="<?php echo e(route('activity.propose')); ?>" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Mengajukan Kegiatan</p>
                     </a>
@@ -111,7 +111,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="<?php echo e(route('asset.create')); ?>" class="nav-link">
+                    <a href="<?php echo e(route('asset.propose')); ?>" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Mengajukan Aset</p>
                     </a>
@@ -145,7 +145,8 @@
                     </a>
                 </li>
             </ul>
-        <?php elseif (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('is-admin')): ?>
+        <?php endif; ?>
+        <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('is-admin')): ?>
             <ul class="nav nav-treeview">
                 <li class="nav-item">
                     <a href="<?php echo e(route('admin.accept_santri.index')); ?>" class="nav-link">

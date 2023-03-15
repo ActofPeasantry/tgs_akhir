@@ -21,6 +21,7 @@ return new class extends Migration
                 $table->dateTime('schedule_end');
                 $table->integer('status');
                 $table->integer('submission_status')->default(0);
+                $table->foreignId('user_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
                 $table->foreignId('activity_categories_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
                 $table->timestamps();
             });

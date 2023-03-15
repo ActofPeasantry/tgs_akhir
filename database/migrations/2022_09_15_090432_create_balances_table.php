@@ -20,6 +20,7 @@ return new class extends Migration
                 $table->dateTime('date_received');
                 $table->integer('total_amount');
                 $table->boolean('debit_credit');
+                $table->foreignId('user_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
                 $table->foreignId('balance_category_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
                 $table->timestamps();
             });
