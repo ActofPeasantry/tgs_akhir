@@ -29,6 +29,7 @@
             </div>
         </div>
         <div class="card-body">
+            <a type="button" class="btn btn-success btn-sm" href="{{ route("activity.create") }}"> <i class="fa fa-plus"></i> Ajukan Kegiatan</a>
             <table id="example1" class="table table-bordered table-hover dataTable dtr-inline" role="grid" aria-describedby="example1_info">
                 <thead>
                     <tr role="row">
