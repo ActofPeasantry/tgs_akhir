@@ -68,6 +68,7 @@
         </span>
         @enderror
     </div>
+    <input type="hidden"  id="user_id" name="user_id" value="{{ auth()->user()->id}}">
 @else
     <div class="form-group mb-3">
         <label class="form-label" for="date_received">Tanggal Diterima</label>
@@ -137,6 +138,7 @@
         </span>
         @enderror
     </div>
+    <input type="hidden"  id="user_id" name="user_id" value="{{ auth()->user()->id}}">
 @endif
 
 <div class="row">

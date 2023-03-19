@@ -124,6 +124,7 @@ if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
     </div>
+    <input type="hidden"  id="user_id" name="user_id" value="<?php echo e(auth()->user()->id); ?>">
 <?php else: ?>
     <div class="form-group mb-3">
         <label class="form-label" for="date_received">Tanggal Diterima</label>
@@ -249,6 +250,7 @@ if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
     </div>
+    <input type="hidden"  id="user_id" name="user_id" value="<?php echo e(auth()->user()->id); ?>">
 <?php endif; ?>
 
 <div class="row">

@@ -20,6 +20,7 @@
             @endforeach
         </select>
     </div>
+    <input type="hidden"  id="user_id" name="user_id" value="{{ auth()->user()->id}}">
 @else
     <div class="form-group col-mb-3">
         <label class="form-label" for="asset_name">Nama Aset</label>
@@ -42,6 +43,7 @@
             @endforeach
         </select>
     </div>
+    <input type="hidden"  id="user_id" name="user_id" value="{{ auth()->user()->id}}">
 @endif
 
 <div class="row">

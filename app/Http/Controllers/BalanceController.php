@@ -18,6 +18,7 @@ class BalanceController extends Controller
     {
         $new_balance = new Balance;
         $years = $new_balance->getYear();
+        // dd($years);
 
         $model_balances =  Balance::oldest();
         $balances = $model_balances->whereMonth('created_at', date('m'))->whereYear('created_at', date('Y'))->get();

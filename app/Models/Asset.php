@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Asset extends Model
 {
-    protected $fillable = ['asset_name','submission_status','asset_categories_id'];
+    protected $fillable = ['user_id', 'asset_name','submission_status','asset_categories_id'];
 
     public function AssetCategory(){
         return $this->belongsTo('App\Models\AssetCategory', 'asset_categories_id');

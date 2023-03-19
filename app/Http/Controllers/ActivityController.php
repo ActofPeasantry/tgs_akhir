@@ -23,6 +23,8 @@ class ActivityController extends Controller
             switch ($activity->status) {
                 case 1:
                     $events[] = [
+                        'id' => $activity->id,
+                        'url' => route('activity.show', $activity->id),
                         'title' => $activity->activity_name,
                         'start' => $activity->schedule_start,
                         'end' => $activity->schedule_end,
@@ -32,6 +34,8 @@ class ActivityController extends Controller
                     break;
                 case 2:
                     $events[] = [
+                        'id' => $activity->id,
+                        'url' => route('activity.show', $activity->id),
                         'title' => $activity->activity_name,
                         'start' => $activity->schedule_start,
                         'end' => $activity->schedule_end,
@@ -41,6 +45,8 @@ class ActivityController extends Controller
                     break;
                 default:
                     $events[] = [
+                        'id' => $activity->id,
+                        'url' => route('activity.show', $activity->id),
                         'title' => $activity->activity_name,
                         'start' => $activity->schedule_start,
                         'end' => $activity->schedule_end,
