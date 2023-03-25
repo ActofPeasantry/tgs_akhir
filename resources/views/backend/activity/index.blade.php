@@ -110,7 +110,7 @@
       var calendarEl = document.getElementById('calendar');
       var activities = @json($events);
     //   var modal = document.getElementById('modal-xl')
-      console.log(activities[0]);
+      console.log(activities);
 
       // initialize the external events
       // -----------------------------------------------------------------

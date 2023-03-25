@@ -34,6 +34,7 @@ unset($__errorArgs, $__bag); ?>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </select>
     </div>
+    <input type="hidden"  id="user_id" name="user_id" value="<?php echo e(auth()->user()->id); ?>">
 <?php else: ?>
     <div class="form-group col-mb-3">
         <label class="form-label" for="asset_name">Nama Aset</label>
@@ -70,6 +71,7 @@ unset($__errorArgs, $__bag); ?>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </select>
     </div>
+    <input type="hidden"  id="user_id" name="user_id" value="<?php echo e(auth()->user()->id); ?>">
 <?php endif; ?>
 
 <div class="row">

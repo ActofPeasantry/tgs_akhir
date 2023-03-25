@@ -56,7 +56,6 @@ class ActivityController extends Controller
                     break;
             }
         }
-        // dd($events);
         return view('backend.activity.index', compact('activities', 'events'));
     }
 

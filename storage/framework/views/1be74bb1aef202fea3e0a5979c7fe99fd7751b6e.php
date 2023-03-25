@@ -63,19 +63,19 @@
                 <div class="row">
                     <div class="col-xs-6 col-sm-4">
                         <div class="m-t-20 m-b-20">
-                            <h3 class="m-b-10 text-success"><b><?php echo e($sum_debit); ?></b></h3>
+                            <h3 class="m-b-10 text-success"><b><?php echo e(balanceFormat($sum_debit)); ?></b></h3>
                             <p class="text-uppercase m-b-5 font-13 font-600">Total Debet</p>
                         </div>
                     </div>
                     <div class="col-xs-6 col-sm-4">
                         <div class="m-t-20 m-b-20">
-                           <h3 class="m-b-10 text-danger"><b><?php echo e($sum_credit); ?></b></h3>
+                           <h3 class="m-b-10 text-danger"><b><?php echo e(balanceFormat($sum_credit)); ?></b></h3>
                             <p class="text-uppercase m-b-5 font-13 font-600">Total Kredit</p>
                         </div>
                     </div>
                     <div class="col-xs-6 col-sm-4">
                         <div class="m-t-20 m-b-20">
-                            <h3 class="m-b-10 text-primary"><b><?php echo e($total_sum); ?></b></h3>
+                            <h3 class="m-b-10 text-primary"><b><?php echo e(balanceFormat($total_sum)); ?></b></h3>
                             <p class="text-uppercase m-b-5 font-13 font-600">Sisa Saldo</p>
                         </div>
                     </div>
@@ -109,13 +109,13 @@
                             <td><?php echo e($balance->BalanceCategories->category_name); ?></td>
                             <td><?php echo e($balance->date_received->format('d F Y')); ?></td>
                             <?php if($balance->debit_credit == 0): ?>
-                                <td><?php echo e($balance->total_amount); ?></td>
+                                <td><?php echo e(balanceFormat($balance->total_amount)); ?></td>
                                 <td>0</td>
-                                <td><?php echo e($balance->total_amount); ?></td>
+                                <td><?php echo e(balanceFormat($balance->total_amount)); ?></td>
                             <?php else: ?>
                                 <td>0</td>
-                                <td><?php echo e($balance->total_amount); ?></td>
-                                <td>-<?php echo e($balance->total_amount); ?></td>
+                                <td><?php echo e(balanceFormat($balance->total_amount)); ?></td>
+                                <td> - <?php echo e(balanceFormat($balance->total_amount)); ?></td>
                             <?php endif; ?>
                             <td class="text-center">
                                 <a class='btn btn-warning' href="<?php echo e(route('balance.edit', [$balance->id])); ?>">Edit</a>

@@ -13,12 +13,72 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        // return view('dashboard', compact(''));
-        $model_balances =  Balance::oldest();
-        $balances = $model_balances->whereMonth('created_at', date('m'))->whereYear('created_at', date('Y'))->get();
+        $debit_data = array();
+        $credit_data = array();
+        $new_balance = new Balance;
+        $months = $new_balance->getMonth();
+        foreach ($months as $month) {
+            // array_push($test, $month);
+            $insert_credit = Balance::where('debit_credit', 1)->whereYear('date_received', date('Y'))->whereMonth('date_received', $month)->get()->sum('total_amount');
+            array_push($credit_data, $insert_credit);
 
-        $test = $balances;
-        dd($test);
-        return view('dashboard');
+            $insert_debit = Balance::where('debit_credit', 0)->whereYear('date_received', date('Y'))->whereMonth('date_received', $month)->get()->sum('total_amount');
+            array_push($debit_data, $insert_debit);
+        }
+        $asset_labels = array();
+        $asset_data = array();
+        $assets = Asset::where('submission_status', config('constants.submission_status.accepted'))->get();
+        foreach ($assets as $asset) {
+            // 'labels' => $asset->asset_name,
+            // 'data' => $asset->AssetDetail()->where('asset_id', $asset->id)->count()
+            array_push($asset_labels, $asset->asset_name);
+            array_push($asset_data, $asset->AssetDetail()->where('asset_id', $asset->id)->count());
+        }
+        // dd(Asset::pluck('asset_name'));
+        // dd($asset[0]->totalAsset(1));
+        $sum_debit = Balance::whereYear('date_received', date('Y'))->where('debit_credit', 0)->sum('total_amount');
+        $sum_credit = Balance::whereYear('date_received', date('Y'))->where('debit_credit', 1)->sum('total_amount');
+        $total_sum = $sum_debit-$sum_credit;
+
+        $events = array();
+        $activities = Activity::all();
+        foreach($activities as $activity){
+            // if($activity->submission_status == 1 ){ }
+            switch ($activity->status) {
+                case 1:
+                    $events[] = [
+                        'id' => $activity->id,
+                        'title' => $activity->activity_name,
+                        'start' => $activity->schedule_start,
+                        'end' => $activity->schedule_end,
+                        'backgroundColor'=> '#00c0ef', //Info (aqua)
+                        'borderColor'    => '#00c0ef' //Info (aqua)
+                    ];
+                    break;
+                case 2:
+                    $events[] = [
+                        'id' => $activity->id,
+                        'title' => $activity->activity_name,
+                        'start' => $activity->schedule_start,
+                        'end' => $activity->schedule_end,
+                        'backgroundColor'=> '#00a65a', //Success (green)
+                        'borderColor'    => '#00a65a', //Success (green)
+                    ];
+                    break;
+                default:
+                    $events[] = [
+                        'id' => $activity->id,
+                        'title' => $activity->activity_name,
+                        'start' => $activity->schedule_start,
+                        'end' => $activity->schedule_end,
+                        'backgroundColor'=> '#dc3545', //red
+                        'borderColor'    => '#dc3545' //red
+                    ];
+                    break;
+            }
+        }
+        // dd([$credit_data, $debit_data]);
+        // dd([$asset_labels, $asset_data]);
+        return view('dashboard', compact('debit_data', 'credit_data', 'asset_labels', 'asset_data', 'events', 'sum_debit', 'sum_credit', 'total_sum'));
     }
 }

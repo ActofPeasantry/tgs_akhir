@@ -32,6 +32,11 @@ function genderStatus($sex){
     return "Perempuan";
 }
 
+function balanceFormat($balance){
+    $balance = "Rp " . number_format($balance,2,',','.');
+    return $balance;
+}
+
 function splitPhoneNumber($phone){
     $s_phone = str_split($phone, 4);
     if (isset($s_phone[3])) {

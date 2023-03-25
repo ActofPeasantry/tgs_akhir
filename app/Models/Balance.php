@@ -26,13 +26,31 @@ class Balance extends Model
 
     public function getYear(){
         $result=[];
-        $year_balances = Balance::pluck('created_at');
+        $year_balances = Balance::orderBy('date_received','DESC')->pluck('date_received');
+
         $x = $year_balances[0]->format('Y');
-        // array_push($result, $x);
+        array_push($result, $x);
+
         foreach ($year_balances as $year) {
             if ($year->format('Y') != $x) {
-                array_push($result, $x);
                 $x = $year->format('Y');
+                array_push($result, $x);
+            }
+        }
+        return $result;
+    }
+
+    public function getMonth(){
+        $result=[];
+        $month_balances = Balance::orderBy('date_received','ASC')->whereYear('date_received', date('Y'))->pluck('date_received');
+
+        $x = $month_balances[0]->format('m');
+        array_push($result, $x);
+
+        foreach ($month_balances as $month) {
+            if ($month->format('m') != $x) {
+                $x = $month->format('m');
+                array_push($result, $x);
             }
         }
         return $result;

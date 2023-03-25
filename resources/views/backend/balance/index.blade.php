@@ -66,19 +66,19 @@
                 <div class="row">
                     <div class="col-xs-6 col-sm-4">
                         <div class="m-t-20 m-b-20">
-                            <h3 class="m-b-10 text-success"><b>{{ $sum_debit }}</b></h3>
+                            <h3 class="m-b-10 text-success"><b>{{ balanceFormat($sum_debit) }}</b></h3>
                             <p class="text-uppercase m-b-5 font-13 font-600">Total Debet</p>
                         </div>
                     </div>
                     <div class="col-xs-6 col-sm-4">
                         <div class="m-t-20 m-b-20">
-                           <h3 class="m-b-10 text-danger"><b>{{ $sum_credit }}</b></h3>
+                           <h3 class="m-b-10 text-danger"><b>{{ balanceFormat($sum_credit) }}</b></h3>
                             <p class="text-uppercase m-b-5 font-13 font-600">Total Kredit</p>
                         </div>
                     </div>
                     <div class="col-xs-6 col-sm-4">
                         <div class="m-t-20 m-b-20">
-                            <h3 class="m-b-10 text-primary"><b>{{ $total_sum }}</b></h3>
+                            <h3 class="m-b-10 text-primary"><b>{{ balanceFormat($total_sum) }}</b></h3>
                             <p class="text-uppercase m-b-5 font-13 font-600">Sisa Saldo</p>
                         </div>
                     </div>
@@ -111,13 +111,13 @@
                             <td>{{ $balance->BalanceCategories->category_name }}</td>
                             <td>{{ $balance->date_received->format('d F Y') }}</td>
                             @if ($balance->debit_credit == 0)
-                                <td>{{ $balance->total_amount }}</td>
+                                <td>{{ balanceFormat($balance->total_amount) }}</td>
                                 <td>0</td>
-                                <td>{{ $balance->total_amount }}</td>
+                                <td>{{ balanceFormat($balance->total_amount) }}</td>
                             @else
                                 <td>0</td>
-                                <td>{{ $balance->total_amount }}</td>
-                                <td>-{{ $balance->total_amount }}</td>
+                                <td>{{ balanceFormat($balance->total_amount) }}</td>
+                                <td> - {{ balanceFormat($balance->total_amount) }}</td>
                             @endif
                             <td class="text-center">
                                 <a class='btn btn-warning' href="{{route('balance.edit', [$balance->id])}}">Edit</a>
