@@ -51,7 +51,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <!-- Sidebar -->
                 <div class="sidebar">
                     <!-- Sidebar user panel (optional) -->
-                    {{-- @include('layouts/user_panel') --}}
+                    @include('layouts/user_panel')
 
                     <!-- SidebarSearch Form -->
                     {{-- @include('layouts/sidebar_search') --}}

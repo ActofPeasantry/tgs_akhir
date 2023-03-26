@@ -19,6 +19,8 @@ class BalanceController extends Controller
         // dd(rolesName(1));
         $new_balance = new Balance;
         $years = $new_balance->getYear();
+        $year = $years[0];
+        $month = 0;
         // dd($years);
 
         $model_balances =  Balance::oldest();
@@ -27,7 +29,7 @@ class BalanceController extends Controller
         $sum_credit = $balances->where('debit_credit', 1)->sum('total_amount');
         $total_sum = $sum_debit-$sum_credit;
 
-        return view('backend.balance.index', compact('balances','years', 'sum_debit', 'sum_credit', 'total_sum'));
+        return view('backend.balance.index', compact('month', 'year','balances', 'years', 'sum_debit', 'sum_credit', 'total_sum'));
     }
 
     /**
@@ -111,20 +113,21 @@ class BalanceController extends Controller
 
         $month = $request->month[0];
         $year = $request->year[0];
-        // dd($request->month[0]);
+        // dd($year);
         if ($month != 0) {
             $model_balances =  Balance::oldest();
             $balances = $model_balances->whereMonth('date_received', $month)->whereYear('date_received', $year)->get();
             $sum_debit = $balances->where('debit_credit', 0)->sum('total_amount');
             $sum_credit = $balances->where('debit_credit', 1)->sum('total_amount');
             $total_sum = $sum_debit-$sum_credit;
-            return view('backend.balance.index', compact('balances','years', 'sum_debit', 'sum_credit', 'total_sum'));
+            // dd($balances);
+            return view('backend.balance.index', compact('balances', 'month', 'year', 'years', 'sum_debit', 'sum_credit', 'total_sum'));
         }
             $model_balances =  Balance::oldest();
             $balances = $model_balances->whereYear('date_received', $year)->get();
             $sum_debit = $balances->where('debit_credit', 0)->sum('total_amount');
             $sum_credit = $balances->where('debit_credit', 1)->sum('total_amount');
             $total_sum = $sum_debit-$sum_credit;
-            return view('backend.balance.index', compact('balances','years', 'sum_debit', 'sum_credit', 'total_sum'));
+            return view('backend.balance.index', compact('balances', 'month', 'year', 'years', 'sum_debit', 'sum_credit', 'total_sum'));
     }
 }

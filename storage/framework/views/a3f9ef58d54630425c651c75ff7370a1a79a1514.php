@@ -5,11 +5,9 @@
     </li>
 
     <li class="nav-item d-none d-sm-inline-block">
-        <a href="index3.html" class="nav-link">Home</a>
+        <a href="<?php echo e(route('profile.index')); ?>" class="nav-link">Profil User</a>
     </li>
 
-    <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Contact</a>
-    </li>
+    
 </ul>
 <?php /**PATH D:\informationSystemStuff\laragon\www\tugas_akhir\resources\views/layouts/navbar_left.blade.php ENDPATH**/ ?>

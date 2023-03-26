@@ -14,6 +14,7 @@ use App\Http\Controllers\BalanceController;
 use App\Http\Controllers\BalanceCategoryController;
 use App\Http\Controllers\SantriController;
 use App\Http\Controllers\userController;
+use App\Http\Controllers\ProfileController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
@@ -33,6 +34,7 @@ Route::get('/', function () {
 });
 
 Route::get('/home', [DashboardController::class, 'index'])->middleware('auth')->name('dashboard');
+Route::resource('/profile', ProfileController::class)->only('index');
 // Route::get('/home', function () {
 //     return view('dashboard');
 // })->middleware('auth');

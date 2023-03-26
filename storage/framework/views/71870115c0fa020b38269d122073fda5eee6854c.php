@@ -51,7 +51,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <!-- Sidebar -->
                 <div class="sidebar">
                     <!-- Sidebar user panel (optional) -->
-                    
+                    <?php echo $__env->make('layouts/user_panel', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
                     <!-- SidebarSearch Form -->
                     

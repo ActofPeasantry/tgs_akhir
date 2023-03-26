@@ -23,8 +23,7 @@
         <label class="form-label" for="quality">Kualitas Aset</label>
         <select name="quality" id="quality" class="form-control">
             <option value=1>Bagus</option>
-            <option value=2>Sedang</option>
-            <option value=3>Buruk</option>
+            <option value=2>Tidak Bagus</option>
         </select>
     </div>
 

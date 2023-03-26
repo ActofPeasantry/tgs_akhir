@@ -3,7 +3,7 @@
         <img src=" <?php echo e(asset('assets/dist/img/user2-160x160.jpg')); ?>" class="img-circle elevation-2" alt="User Image">
     </div>
     <div class="info">
-        <a href="#" class="d-block">Alexander Pierce</a>
+        <a href="<?php echo e(route('profile.index')); ?>" class="d-block"><?php echo e(auth()->user()->name); ?></a>
     </div>
 </div>
 <?php /**PATH D:\informationSystemStuff\laragon\www\tugas_akhir\resources\views/layouts/user_panel.blade.php ENDPATH**/ ?>

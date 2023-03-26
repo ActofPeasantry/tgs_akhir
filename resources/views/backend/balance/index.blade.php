@@ -32,22 +32,22 @@
                                     <span class="input-group-text">Bulan</span>
                                 </div>
                                 <select class="custom-select" name="month[]" id="month">
-                                    @foreach ( monthNameArray() as $value => $month)
-                                        <option value="{{ $value }}">{{ $month }}</option>
+                                    @foreach ( monthNameArray() as $value => $month_name)
+                                        <option value="{{ $value }}" {{ $month == $value ? 'selected' : ''}} >{{ $month_name }}</option>
                                     @endforeach
                                 </select>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="input-group input-group-sm">
+                            <div class="col-4">
+                                <div class="input-group input-group-sm">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">Tahun</span>
                                 </div>
                                 <select class="custom-select" name="year[]" id="year">
-                                    @foreach ($years as $value)
-                                        <option value="{{ $value }}">{{ $value }}</option>
+                                    @foreach ($years as $year_list => $value)
+                                        <option value="{{ $value }}" {{ $value == $year ? 'selected' : ''}} >{{ $value }}</option>
                                     @endforeach
-                                </select>
+                            </select>
                             </div>
                         </div>
                         <div class="col-md-1">
@@ -96,7 +96,7 @@
                 <thead>
                     <tr role="row">
                         <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column descending" aria-sort="ascending">Tgl Input</th>
-                        <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">No. Invoice</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Keterangan</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Kategori</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Tanggal Diterima</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Debet (Rp)</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">kredit (Rp)</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Saldo (Rp)</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Detail</th>
+                        <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Deskripsi</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Kategori</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">No. Invoice</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Tanggal Diterima</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Debet (Rp)</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">kredit (Rp)</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Saldo (Rp)</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Detail</th>
                     </tr>
                 </thead>
                 <tbody>

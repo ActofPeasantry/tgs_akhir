@@ -17,9 +17,9 @@ class ActivityController extends Controller
     public function index()
     {
         $events = array();
-        $activities = Activity::all();
+        $activities = Activity::all()->where('submission_status', 1);
+        // dd($activities->where('submission_status', 1));
         foreach($activities as $activity){
-            // if($activity->submission_status == 1 ){ }
             switch ($activity->status) {
                 case 1:
                     $events[] = [

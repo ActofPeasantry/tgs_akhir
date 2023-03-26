@@ -33,7 +33,7 @@ function genderStatus($sex){
 }
 
 function balanceFormat($balance){
-    $balance = "Rp " . number_format($balance,2,',','.');
+    $balance = "Rp " . number_format($balance,0,',','.');
     return $balance;
 }
 

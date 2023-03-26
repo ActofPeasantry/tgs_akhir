@@ -1,15 +1,15 @@
 <?php $__env->startSection('title'); ?>
-    <title>SMKK | Debet&Kredit</title>
+    <title>SMKK | Laporan Keuangan</title>
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('page_name'); ?>
-    <h1>Debet & Kredit</h1>
+    <h1>Laporan Keuangan</h1>
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('breadcrumb'); ?>
     
     <?php echo breadcrumb([
-            'Debet & Kredit' => 'Debet & Kredit'
+            'Laporan Keuangan' => 'Laporan Keuangan'
         ]); ?>
 
 <?php $__env->stopSection(); ?>
