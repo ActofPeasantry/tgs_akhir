@@ -104,9 +104,9 @@
                                 <?php echo e($balance->created_at->format('H:i:s')); ?>
 
                             </td>
-                            <td><?php echo e($balance->no_invoice); ?></td>
                             <td><?php echo e($balance->description); ?></td>
                             <td><?php echo e($balance->BalanceCategories->category_name); ?></td>
+                            <td><?php echo e($balance->no_invoice); ?></td>
                             <td><?php echo e($balance->date_received->format('d F Y')); ?></td>
                             <?php if($balance->debit_credit == 0): ?>
                                 <td><?php echo e(balanceFormat($balance->total_amount)); ?></td>

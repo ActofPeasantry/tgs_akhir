@@ -18,11 +18,7 @@ class AssetDetail extends Model
                 return "Baik";
                 break;
             case '2':
-                return "Sedang";
-                break;
-            case '3':
-                return "Buruk";
-                break;
+                return "Tidak Baik";
             default:
                 return "Tidak ada pada kategori kualitas";
                 break;

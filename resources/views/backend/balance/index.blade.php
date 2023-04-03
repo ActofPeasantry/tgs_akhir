@@ -106,9 +106,9 @@
                                 {{ $balance->created_at->format('d F Y') }} <br>
                                 {{ $balance->created_at->format('H:i:s') }}
                             </td>
-                            <td>{{ $balance->no_invoice }}</td>
                             <td>{{ $balance->description }}</td>
                             <td>{{ $balance->BalanceCategories->category_name }}</td>
+                            <td>{{ $balance->no_invoice }}</td>
                             <td>{{ $balance->date_received->format('d F Y') }}</td>
                             @if ($balance->debit_credit == 0)
                                 <td>{{ balanceFormat($balance->total_amount) }}</td>
