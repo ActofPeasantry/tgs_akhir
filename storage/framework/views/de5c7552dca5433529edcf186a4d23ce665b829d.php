@@ -16,70 +16,69 @@
 
 <?php $__env->startSection('content'); ?>
 
-<!-- Small boxes (Stat box) -->
+<!-- Info boxes -->
 <div class="row">
-    <div class="col-lg-3 col-6">
-      <!-- small box -->
-      <div class="small-box bg-info">
-        <div class="inner">
-          <h3><?php echo e($s_male); ?></h3>
+    <div class="col-12 col-sm-6 col-md-3">
+      <div class="info-box">
+        <span class="info-box-icon bg-info elevation-1"><i class="fas fa-male"></i></span>
 
-          <p>Jumlah Santri Laki-Laki</p>
-        </div>
-        <div class="icon">
-          <i class="ion ion-bag"></i>
-        </div>
-        
-      </div>
-    </div>
-    <!-- ./col -->
-    <div class="col-lg-3 col-6">
-      <!-- small box -->
-      <div class="small-box bg-success">
-        <div class="inner">
-          <h3><?php echo e($s_female); ?></h3>
+        <div class="info-box-content">
+          <span class="info-box-text">Jumlah Santri Laki-Laki</span>
+          <span class="info-box-number">
+            <?php echo e($s_male); ?>
 
-          <p>Jumlah Santri Perempuan</p>
+          </span>
         </div>
-        <div class="icon">
-          <i class="ion ion-stats-bars"></i>
-        </div>
-        
+        <!-- /.info-box-content -->
       </div>
+      <!-- /.info-box -->
     </div>
-    <!-- ./col -->
-    <div class="col-lg-3 col-6">
-      <!-- small box -->
-      <div class="small-box bg-warning">
-        <div class="inner">
-          <h3><?php echo e($s_total); ?></h3>
+    <!-- /.col -->
+    <div class="col-12 col-sm-6 col-md-3">
+      <div class="info-box mb-3">
+        <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-female"></i></span>
 
-          <p>Total Santri</p>
+        <div class="info-box-content">
+          <span class="info-box-text">Jumlah Santri Perempuan</span>
+          <span class="info-box-number"><?php echo e($s_female); ?></span>
         </div>
-        <div class="icon">
-          <i class="ion ion-person-add"></i>
-        </div>
-        
+        <!-- /.info-box-content -->
       </div>
+      <!-- /.info-box -->
     </div>
-    <!-- ./col -->
-    <div class="col-lg-3 col-6">
-      <!-- small box -->
-      <div class="small-box bg-danger">
-        <div class="inner">
-          <h3><?php echo e($jamaah); ?></h3>
+    <!-- /.col -->
 
-          <p>Total Jamaah</p>
+    <!-- fix for small devices only -->
+    <div class="clearfix hidden-md-up"></div>
+
+    <div class="col-12 col-sm-6 col-md-3">
+      <div class="info-box mb-3">
+        <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span>
+
+        <div class="info-box-content">
+          <span class="info-box-text">Total santri</span>
+          <span class="info-box-number"><?php echo e($s_total); ?></span>
         </div>
-        <div class="icon">
-          <i class="ion ion-pie-graph"></i>
-        </div>
-        
+        <!-- /.info-box-content -->
       </div>
+      <!-- /.info-box -->
     </div>
-    <!-- ./col -->
-</div>
-<!-- /.row -->
+    <!-- /.col -->
+    <div class="col-12 col-sm-6 col-md-3">
+      <div class="info-box mb-3">
+        <span class="info-box-icon bg-success elevation-1"><i class="fas fa-praying-hands"></i></span>
+
+        <div class="info-box-content">
+          <span class="info-box-text">Total Jamaah</span>
+          <span class="info-box-number"><?php echo e($jamaah); ?></span>
+        </div>
+        <!-- /.info-box-content -->
+      </div>
+      <!-- /.info-box -->
+    </div>
+    <!-- /.col -->
+  </div>
+  <!-- /.row -->
 
 <div class="row">
     <!-- BAR CHART -->
