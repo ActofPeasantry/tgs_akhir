@@ -6,13 +6,14 @@
 @endsection
 
 @section('content')
-<p class="login-box-msg">Sign in to start your session</p>
+{{-- <p class="login-box-msg">Sign in to start your session</p> --}}
+<p class="login-box-msg">Login</p>
 
 <form  method="POST" action="{{ route('login') }}">
     @csrf
 
     <div class="input-group mb-3">
-        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="E-mail Address" autofocus>
+        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Alamat e-mail" autofocus>
         <div class="input-group-append">
             <div class="input-group-text">
                 <span class="fas fa-envelope"></span>
@@ -46,7 +47,7 @@
             <div class="icheck-primary">
             <input type="checkbox" id="remember">
             <label for="remember">
-                Remember Me
+                Ingat Saya
             </label>
             </div>
         </div>
@@ -59,7 +60,7 @@
 </form>
 
 <p class="mb-1">
-    <a href="{{ route('password.request') }}">I forgot my password</a>
+    <a href="{{ route('password.request') }}">Saya Lupa Password</a>
 </p>
 <p class="mb-0">
     <a href="{{ route('register') }}?role=jamaah" class="text-center">Register sebagai jamaah</a>

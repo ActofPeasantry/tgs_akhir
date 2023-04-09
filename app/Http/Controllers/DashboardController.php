@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\UserRole;
 use App\Models\Balance;
 use App\Models\Asset;
 use App\Models\Activity;
@@ -13,6 +14,12 @@ class DashboardController extends Controller
 {
     public function index()
     {
+        $s_male = count(Santri::where(['sex' => 1, 'submission_status' => 1 ])->get());
+        $s_female = count(Santri::where(['sex' => 2, 'submission_status' => 1 ])->get());
+        $s_total = count(Santri::where(['submission_status' => 1 ])->get());
+        $jamaah = count(UserRole::where(['role_id' => config('constants.user_role.jamaah')] )->get());
+        // dd($jamaah);
+
         $debit_data = array();
         $credit_data = array();
         $new_balance = new Balance;
@@ -79,6 +86,6 @@ class DashboardController extends Controller
         }
         // dd([$credit_data, $debit_data]);
         // dd([$asset_labels, $asset_data]);
-        return view('dashboard', compact('debit_data', 'credit_data', 'asset_labels', 'asset_data', 'events', 'sum_debit', 'sum_credit', 'total_sum'));
+        return view('dashboard', compact('debit_data', 'credit_data', 'asset_labels', 'asset_data', 'events', 'sum_debit', 'sum_credit', 'total_sum', 's_male', 's_female', 's_total', 'jamaah'));
     }
 }

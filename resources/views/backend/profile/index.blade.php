@@ -13,7 +13,7 @@
     {!!
         breadcrumb([
             'Pendaftaran Santri' => route('santri.index'),
-            'Profil Useran' => 'Profil User'
+            'Profil User' => 'Profil User'
         ])
     !!}
 @endsection
@@ -34,6 +34,10 @@
                 <div class="form-group col-mb-3">
                     <label class="form-label" for="birth_place">Email</label>
                     <p>{{ $user->email }}</p>
+                </div>
+
+                <div class="form-group col-mb-3">
+                    <a class="btn-sm btn-primary" type="button" href="{{ route('password.update') }}">Klik Tombol Untuk Tukar Password</a>
                 </div>
             </div>
         </div>

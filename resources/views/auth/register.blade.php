@@ -6,7 +6,7 @@
 @endsection
 
 @section('content')
-<p class="login-box-msg">Sign in to start your session</p>
+<p class="login-box-msg">Register Sebagai Jamaah</p>
 
 <form action="{{route('register')}}?role=jamaah" method="POST">
     @csrf
@@ -28,7 +28,7 @@
 
     {{-- Email --}}
     <div class="input-group mb-3">
-        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="E-mail Address" autofocus>
+        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Alamat e-mail" autofocus>
         <div class="input-group-append">
             <div class="input-group-text">
                 <span class="fas fa-envelope"></span>

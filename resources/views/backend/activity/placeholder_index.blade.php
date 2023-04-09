@@ -133,7 +133,7 @@
                             <td class="dtr-control sorting_1 text-center">{{ $activity->schedule_end }}</td>
                             <td class="dtr-control sorting_1 text-center">{{ $activity->status }}</td>
                             <td class="text-center">
-                                <a class='btn btn-primary' href="{{route('activity.show', [$activity->id])}}">Detail</a>
+                                <a class='btn btn-primary' href="{{route('activity.show', [$activity->id])}}">Opsi</a>
                                 <a class='btn btn-warning' href="{{route('activity.edit', [$activity->id])}}">Edit</a>
                                 <form action="{{route('activity.destroy', [$activity->id])}}" method="post" style="display: inline">
                                     {{method_field('DELETE')}}
