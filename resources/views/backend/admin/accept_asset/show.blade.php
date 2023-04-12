@@ -36,7 +36,6 @@
                             <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column descending" aria-sort="ascending">ID Aset</th>
                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Foto Aset</th>
                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Kualitas Aset</th>
-                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Opsi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -53,16 +52,6 @@
                                     </td>
                                 @endif
                                 <td class="dtr-control sorting_1 text-center">{{ $as_detail->qualityText($as_detail->quality) }}</td>
-
-                                <td class="text-center">
-                                    <a class='btn btn-primary' href="{{route('asset_detail.show', [$as_detail->id])}}">Detail</a>
-                                    <a class='btn btn-warning' href="{{route('asset_detail.edit', [$as_detail->id])}}">Edit</a>
-                                    <form action="{{route('asset_detail.destroy', [$as_detail->id])}}" method="post" style="display: inline">
-                                        {{method_field('DELETE')}}
-                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                        <button onclick="return confirm('Apakah anda yakin?')" class="btn btn-danger" type="submit">Delete</button>
-                                    </form>
-                                </td>
                             </tr>
                         @endforeach
                     </tbody>

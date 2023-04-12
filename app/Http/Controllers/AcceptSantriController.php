@@ -15,7 +15,9 @@ class AcceptSantriController extends Controller
     public function index()
     {
         $santries = Santri::all();
-        return view('backend.admin.accept_santri.index', compact('santries'));
+        $x_santries =  Santri::where('submission_status', 0)->get();
+        $y_santries=  Santri::where('submission_status', '!=',0)->get();
+        return view('backend.admin.accept_santri.index', compact('x_santries', 'y_santries'));
     }
 
     /**

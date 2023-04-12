@@ -14,8 +14,9 @@ class AcceptActivityController extends Controller
      */
     public function index()
     {
-        $activities = Activity::all();
-        return view('backend.admin.accept_activity.index', compact('activities'));
+        $x_activities =  Activity::where('submission_status', 0)->get();
+        $y_activities=  Activity::where('submission_status', '!=',0)->get();
+        return view('backend.admin.accept_activity.index', compact('x_activities', 'y_activities'));
     }
 
 

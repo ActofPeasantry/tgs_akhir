@@ -15,8 +15,10 @@ class AcceptAssetController extends Controller
      */
     public function index()
     {
-        $assets =  Asset::all();
-        return view('backend.admin.accept_asset.index', compact('assets'));
+        $x_assets =  Asset::where('submission_status', 0)->get();
+        $y_assets=  Asset::where('submission_status', '!=',0)->get();
+        // dd($y_assets);
+        return view('backend.admin.accept_asset.index', compact('x_assets', 'y_assets'));
     }
 
     /**

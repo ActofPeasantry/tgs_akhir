@@ -32,7 +32,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($assets as $asset)
+                    @foreach ($x_assets as $asset)
                         <tr class="">
                             <td class="dtr-control sorting_1" tabindex="0">
                                 <div class="icheck-primary d-inline ml-2">
@@ -69,6 +69,47 @@
         </div>
     </div>
 </form>
+
+<div class="card card-success">
+    <div class="card-header">
+        <h5 class="card-title">Data yang Sudah Diproses</h5>
+        <div class="card-tools">
+            <button id="card-collapse" type="button" class="btn btn-tool" data-card-widget="collapse">
+                <i class="fas fa-minus"></i>
+            </button>
+            <button type="button" class="btn btn-tool" data-card-widget="remove">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    </div>
+    <div class="card-body">
+        <table id="example1" class="table table-bordered table-hover dataTable dtr-inline" role="grid" aria-describedby="example1_info">
+            <thead>
+                <tr role="row">
+                    <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column descending" aria-sort="ascending">Nama Aset</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Kategori Aset</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Jumlah Aset</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Nama Pengaju</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($y_assets as $asset)
+                    <tr class="">
+                        <td class="dtr-control sorting_1" tabindex="0">
+                            <div class="icheck-primary d-inline ml-2">
+                                <label for="submission_status">{{ $asset->asset_name }}</label>
+                            </div>
+                        </td>
+                        <td class="dtr-control sorting_1 text-center">{{ $asset->AssetCategory->category_name }}</td>
+                        <td class="dtr-control sorting_1 text-center">{{ $asset->totalAsset($asset->id) }}</td>
+                        <td class="dtr-control sorting_1 text-center">{{ $asset->users->name }}</td>
+                        <td class="dtr-control sorting_1 text-center">{{ submissionStatus($asset->submission_status) }}</td>
+                    </tr>
+                @endforeach
+            </tbody>
+            <tfoot>
+                {{-- <tr><th rowspan="1" colspan="1">Rendering engine</th><th rowspan="1" colspan="1">Browser</th><th rowspan="1" colspan="1">Platform(s)</th><th rowspan="1" colspan="1">Engine version</th><th rowspan="1" colspan="1">CSS grade</th></tr> --}}
+            </tfoot>
+          </table>
+    </div>
+</div>
 @endsection
 
 @push('child-scripts')
@@ -86,6 +127,9 @@
         });
     </script>
     <script>
+        // Toggle collapse
+        $('#card-collapse').CardWidget('toggle');
+
         function anyTrue(nodeList) {
             for (var i = 0; i < nodeList.length; i++) {
                 if (nodeList[i].checked === true) return true;
