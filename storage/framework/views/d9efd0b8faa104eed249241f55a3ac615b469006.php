@@ -20,6 +20,7 @@
             <h5 class="card-title">Daftar kategori</h5>
         </div>
         <div class="card-body">
+            <a type="button" class="btn btn-success btn-sm" href="<?php echo e(route("asset_categories.create")); ?>"> <i class="fa fa-plus"></i> Tambah Kategori</a>
             <table id="example1" class="table table-bordered table-hover dataTable dtr-inline" role="grid" aria-describedby="example1_info">
                 <thead>
                     <tr role="row">

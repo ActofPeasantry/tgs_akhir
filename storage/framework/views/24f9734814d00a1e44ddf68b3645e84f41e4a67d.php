@@ -52,6 +52,12 @@
                         <p>Tambah L. Keuangan</p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="<?php echo e(route('balance_categories.index')); ?>" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Lihat Kategori</p>
+                    </a>
+                </li>
             </ul>
         </li>
         <li class="nav-item">

@@ -34,7 +34,9 @@ Route::get('/', function () {
 });
 
 Route::get('/home', [DashboardController::class, 'index'])->middleware('auth')->name('dashboard');
-Route::resource('/profile', ProfileController::class)->only('index');
+
+Route::get('/password_update', [ProfileController::class, 'password_update'])->name('password_update');
+Route::resource('/profile', ProfileController::class)->middleware('auth')->only(['index']);
 // Route::get('/home', function () {
 //     return view('dashboard');
 // })->middleware('auth');

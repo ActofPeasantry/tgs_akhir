@@ -35,14 +35,24 @@
                     <label class="form-label" for="birth_place">Email</label>
                     <p>{{ $user->email }}</p>
                 </div>
-
                 <div class="form-group col-mb-3">
-                    <a class="btn-sm btn-primary" type="button" href="{{ route('password.update') }}">Klik Tombol Untuk Tukar Password</a>
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ __('Password Berhasil Diubah') }}
+                        </div>
+                    @elseif (session('error'))
+                        <div class="alert alert-danger" role="alert">
+                            {{ __('Password Lama Tidak Sesuai') }}
+                        </div>
+                    @endif
+                    <a class="btn-sm btn-primary" type="button" data-toggle="modal" data-target="#con-close-modal">Klik Tombol Untuk Tukar Password</a>
+                    {{-- <a class="btn-sm btn-primary" type="button" href="{{ route('password.request') }}">Klik Tombol Untuk Tukar Password</a> --}}
                 </div>
             </div>
         </div>
     </div>
 </div>
+@include('backend.include.modal.update_password_modal')
 @endsection
 
 @push('child-scripts')

@@ -18,7 +18,7 @@
 @endsection
 
 @section('content')
-   <div class="card">
+   <div class="card card-primary">
         <div class="card-header">
             <h5 class="card-title">Daftar kategori</h5>
         </div>
@@ -30,6 +30,7 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <a type="button" class="btn btn-success btn-sm" href="{{ route("balance_categories.create") }}"> <i class="fa fa-plus"></i> Tambah Kategori</a>
                     @foreach ($b_categories as $b_category)
                         <tr class="">
                             <td>{{ $b_category->category_name }}</td>

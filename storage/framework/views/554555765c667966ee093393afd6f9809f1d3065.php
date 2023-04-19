@@ -15,7 +15,7 @@
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('content'); ?>
-   <div class="card">
+   <div class="card card-primary">
         <div class="card-header">
             <h5 class="card-title">Daftar kategori</h5>
         </div>
@@ -23,10 +23,11 @@
             <table id="example1" class="table table-bordered table-hover dataTable dtr-inline" role="grid" aria-describedby="example1_info">
                 <thead>
                     <tr role="row">
-                        <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column descending" aria-sort="ascending">Nama Kategori</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Detail</th>
+                        <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column descending" aria-sort="ascending">Nama Kategori</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Opsi</th>
                     </tr>
                 </thead>
                 <tbody>
+                    <a type="button" class="btn btn-success btn-sm" href="<?php echo e(route("balance_categories.create")); ?>"> <i class="fa fa-plus"></i> Tambah Kategori</a>
                     <?php $__currentLoopData = $b_categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $b_category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <tr class="">
                             <td><?php echo e($b_category->category_name); ?></td>
