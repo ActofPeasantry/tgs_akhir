@@ -21,7 +21,7 @@ class Balance extends Model
     protected $dates = ['date_received'];
 
     public function BalanceCategories(){
-        return $this->belongsTo('App\Models\BalanceCategories', 'balance_category_id');
+        return $this->belongsTo('App\Models\BalanceCategory', 'balance_category_id');
     }
 
     public function getYear(){

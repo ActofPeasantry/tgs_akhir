@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\BalanceCategories;
+use App\Models\BalanceCategory;
 use Illuminate\Http\Request;
 
 class BalanceCategoryController extends Controller
@@ -14,8 +14,8 @@ class BalanceCategoryController extends Controller
      */
     public function index()
     {
-        $b_categories =  BalanceCategories::all();
-        // dd($balances[0]->BalanceCategories->category_name);
+        $b_categories =  BalanceCategory::all();
+        // dd($b_categories[0]->id);
         return view('backend.balance.categories.index', compact('b_categories'));
     }
 
@@ -37,17 +37,17 @@ class BalanceCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        BalanceCategories::create($request->all());
+        BalanceCategory::create($request->all());
         return redirect()->route('balance_categories.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\BalanceCategories  $balanceCategories
+     * @param  \App\Models\BalanceCategory  $balanceCategories
      * @return \Illuminate\Http\Response
      */
-    public function show(BalanceCategories $balanceCategories)
+    public function show(BalanceCategory $balanceCategories)
     {
         //
     }
@@ -55,13 +55,13 @@ class BalanceCategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\BalanceCategories  $balanceCategories
+     * @param  \App\Models\BalanceCategory  $balanceCategories
      * @return \Illuminate\Http\Response
      */
-    public function edit(BalanceCategories $balanceCategories, $id)
+    public function edit(BalanceCategory $balanceCategories, $id)
     {
          // dd(Balance::find($balance->id));
-         $b_category = BalanceCategories::find($id);
+         $b_category = BalanceCategory::find($id);
          //  dd($b_category);
          return view('backend.balance.categories.edit', compact('b_category'));
     }
@@ -70,24 +70,25 @@ class BalanceCategoryController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\BalanceCategories  $balanceCategories
+     * @param  \App\Models\BalanceCategory  $balanceCategories
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, BalanceCategories $balanceCategories)
+    public function update(Request $request, BalanceCategory $balanceCategories, $id)
     {
-        BalanceCategories::find($balanceCategories->id)->update($request->all());
+        BalanceCategory::find($id)->update($request->all());
         return redirect()->route('balance_categories.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\BalanceCategories  $balanceCategories
+     * @param  \App\Models\BalanceCategory  $balanceCategories
      * @return \Illuminate\Http\Response
      */
-    public function destroy(BalanceCategories $balanceCategories)
+    public function destroy(BalanceCategory $balanceCategories, $id)
     {
-        BalanceCategories::destroy($balanceCategories->id);
+        // dd($id);
+        BalanceCategory::destroy($id);
         return redirect()->route('balance_categories.index');
     }
 }

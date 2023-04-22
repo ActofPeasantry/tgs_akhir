@@ -39,7 +39,7 @@
                                 <form action="{{route('balance_categories.destroy', [$b_category->id])}}" method="post" style="display: inline">
                                     {{method_field('DELETE')}}
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                    <button onclick="return confirm('Menghapus kategori akan menghapus data debet dan kredit pada kategori tersebut. Apakah anda yakin?')" class="btn btn-danger" type="submit">Delete</button>
+                                    <button onclick="return confirm('Menghapus kategori akan menghapus data laporan keuangan pada kategori tersebut. Apakah anda yakin?')" class="btn btn-danger" type="submit">Delete</button>
                                 </form>
                             </td>
                         </tr>

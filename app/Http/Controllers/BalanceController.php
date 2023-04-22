@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Balance;
-use App\Models\BalanceCategories;
+use App\Models\BalanceCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -39,7 +39,7 @@ class BalanceController extends Controller
      */
     public function create()
     {
-        $categories =  BalanceCategories::pluck('id', 'category_name');
+        $categories =  BalanceCategory::pluck('id', 'category_name');
         return view('backend.balance.create', compact('categories'));
     }
 
@@ -77,7 +77,7 @@ class BalanceController extends Controller
         // dd(Balance::find($balance->id));
         $balance->find($balance->id);
         // dd($balance->debit_credit);
-        $categories =  BalanceCategories::pluck('id', 'category_name');
+        $categories =  BalanceCategory::pluck('id', 'category_name');
         return view('backend.balance.edit', compact('balance', 'categories'));
     }
 
