@@ -28,6 +28,6 @@
 
 <div class="row">
     <div class="col-md-6">
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary toastrDefaultSuccess">Submit</button>
     </div>
 </div>

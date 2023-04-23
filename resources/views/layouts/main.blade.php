@@ -23,7 +23,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!-- FullCalendar 4 -->
         <link rel="stylesheet" href="{{asset('assets/plugins/fullcalendar/main.css')}}">
         <!-- Toastr -->
-        {{-- <link rel="stylesheet" href="{{ asset('assets/plugins/toastr/toastr.min.css') }}"> --}}
+        <link rel="stylesheet" href="{{ asset('assets/plugins/toastr/toastr.min.css') }}">
+        <!-- SweetAlert2 -->
+        <link rel="stylesheet" href="{{ asset('assets/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css') }}">
 
     </head>
     <body class="hold-transition sidebar-mini">
@@ -159,7 +161,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <script src= "{{ asset("assets/plugins/moment/moment.min.js") }}"></script>
         <script src= "{{ asset("assets/plugins/daterangepicker/daterangepicker.js") }}"></script>
         <!-- Toastr -->
-        {{-- <script src="{{ asset('assets/plugins/toastr/toastr.min.js') }}"></script> --}}
+        <script src="{{ asset('assets/plugins/toastr/toastr.min.js') }}"></script>
+        <!-- SweetAlert2 -->
+        <script src="{{ asset('assets/plugins/sweetalert2/sweetalert2.min.js') }}"></script>
 
 
         <!DOCTYPE html>

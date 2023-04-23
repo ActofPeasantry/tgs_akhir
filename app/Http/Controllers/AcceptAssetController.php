@@ -48,7 +48,7 @@ class AcceptAssetController extends Controller
 
     public function accept_checked(Request $request){
         Asset::whereIn('id', $request->asset_id)->update(array('submission_status' => $request->accept_checked));
-        return redirect()->route('admin.accept_asset.index');
+        return redirect()->route('admin.accept_asset.index')->with('success', 'Data berhasil diubah');
         // dd($santri->get());
     }
 }

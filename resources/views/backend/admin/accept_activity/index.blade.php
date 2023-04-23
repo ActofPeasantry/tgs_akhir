@@ -185,5 +185,6 @@
         $('.activity_check').click(unlockButton());
     });
 </script>
-
+    @include('backend.include.alert.toastr')
+    @include('backend.include.alert.swalert')
 @endpush

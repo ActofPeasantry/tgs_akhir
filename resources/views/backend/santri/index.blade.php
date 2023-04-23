@@ -49,7 +49,8 @@
                                 <form action="{{route('santri.destroy', [$santri->id])}}" method="post" style="display: inline">
                                     {{method_field('DELETE')}}
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                    <button onclick="return confirm('Apakah anda yakin?')" class="btn btn-danger" type="submit">Delete</button>
+                                    <button class="btn btn-danger show_confirm" data-toggle="tooltip">Delete</button>
+                                    {{-- <button onclick="return confirm('Apakah anda yakin?')" class="btn btn-danger" type="submit">Delete</button> --}}
                                 </form>
                             </td>
                         </tr>
@@ -78,4 +79,6 @@
             }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
         });
     </script>
+     @include('backend.include.alert.toastr')
+     @include('backend.include.alert.swalert')
 @endpush

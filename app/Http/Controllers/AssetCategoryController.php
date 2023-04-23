@@ -37,7 +37,7 @@ class AssetCategoryController extends Controller
     public function store(Request $request)
     {
         AssetCategory::create($request->all());
-        return redirect()->route('asset_categories.index');
+        return redirect()->route('asset_categories.index')->with('success', 'Data berhasil ditambahkan');
     }
 
     /**
@@ -73,7 +73,7 @@ class AssetCategoryController extends Controller
     public function update(Request $request, AssetCategory $assetCategory)
     {
         AssetCategory::find($assetCategory->id)->update($request->all());
-        return redirect()->route('asset_categories.index');
+        return redirect()->route('asset_categories.index')->with('success', 'Data berhasil diubah');
     }
 
     /**
@@ -85,6 +85,9 @@ class AssetCategoryController extends Controller
     public function destroy(AssetCategory $assetCategory)
     {
         AssetCategory::destroy($assetCategory->id);
-        return redirect()->route('asset_categories.index');
+        // return response()->json([
+        //     'success' => 'Record deleted successfully!'
+        // ]);
+        return redirect()->route('asset_categories.index')->with('error', 'Data berhasil dihapus');
     }
 }

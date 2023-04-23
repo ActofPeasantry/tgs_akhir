@@ -37,8 +37,9 @@ class BalanceCategoryController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->session());
         BalanceCategory::create($request->all());
-        return redirect()->route('balance_categories.index');
+        return redirect()->route('balance_categories.index')->with('success', 'Data berhasil ditambahkan');
     }
 
     /**
@@ -76,7 +77,7 @@ class BalanceCategoryController extends Controller
     public function update(Request $request, BalanceCategory $balanceCategories, $id)
     {
         BalanceCategory::find($id)->update($request->all());
-        return redirect()->route('balance_categories.index');
+        return redirect()->route('balance_categories.index')->with('success', 'Data berhasil diubah');
     }
 
     /**
@@ -89,6 +90,6 @@ class BalanceCategoryController extends Controller
     {
         // dd($id);
         BalanceCategory::destroy($id);
-        return redirect()->route('balance_categories.index');
+        return redirect()->route('balance_categories.index')->with('error', 'Data berhasil dihapus');
     }
 }

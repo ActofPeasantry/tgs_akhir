@@ -34,18 +34,18 @@ class AcceptActivityController extends Controller
     public function accept($id)
     {
         Activity::find($id)->update(['submission_status' => 1]);
-        return redirect()->route('admin.accept_activity.index');
+        return redirect()->route('admin.accept_activity.index')->with('success', 'Data berhasil diubah');
     }
 
     public function deny($id)
     {
         Activity::find($id)->update(['submission_status' => 2]);
-        return redirect()->route('admin.accept_activity.index');
+        return redirect()->route('admin.accept_activity.index')->with('success', 'Data berhasil diubah');
     }
 
     public function accept_checked(Request $request)
     {
         Activity::whereIn('id', $request->activity_id)->update(array('submission_status' => $request->accept_checked));
-        return redirect()->route('admin.accept_activity.index');
+        return redirect()->route('admin.accept_activity.index')->with('success', 'Data berhasil diubah');
     }
 }

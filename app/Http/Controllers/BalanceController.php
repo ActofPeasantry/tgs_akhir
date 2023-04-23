@@ -52,7 +52,7 @@ class BalanceController extends Controller
     public function store(Request $request)
     {
         $balance = Balance::create($request->all());
-        return redirect()->route('balance.index');
+        return redirect()->route('balance.index')->with('success', 'Data berhasil ditambahkan');
     }
 
     /**
@@ -91,7 +91,7 @@ class BalanceController extends Controller
     public function update(Request $request, Balance $balance)
     {
         Balance::find($balance->id)->update($request->all());
-        return redirect()->route('balance.index');
+        return redirect()->route('balance.index')->with('success', 'Data berhasil diubah');
     }
 
     /**
@@ -103,7 +103,7 @@ class BalanceController extends Controller
     public function destroy(Balance $balance)
     {
         Balance::destroy($balance->id);
-        return redirect()->route('balance.index');
+        return redirect()->route('balance.index')->with('error', 'Data berhasil dihapus');
     }
 
     public function search(Request $request){

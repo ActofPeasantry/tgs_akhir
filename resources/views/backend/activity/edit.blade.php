@@ -29,6 +29,7 @@
                     <div class="container-fluid">
                         <form action="{{ route("activity.update", $activity->id) }}" method="POST">
                         @csrf
+                        @method("PATCH")
                             @include('backend.include.activity_form')
                         </form>
                     </div>

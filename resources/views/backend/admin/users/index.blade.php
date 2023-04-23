@@ -55,7 +55,8 @@
                                 <form action="{{route('admin.user.destroy', [$user->id])}}" method="post" style="display: inline">
                                     {{method_field('DELETE')}}
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                    <button onclick="return confirm('Apakah anda yakin?')" class="btn btn-danger" type="submit">Delete</button>
+                                    <button class="btn btn-danger show_confirm" data-toggle="tooltip">Delete</button>
+                                    {{-- <button onclick="return confirm('Apakah anda yakin?')" class="btn btn-danger" type="submit">Delete</button> --}}
                                 </form>
                             </td>
                         </tr>
@@ -83,4 +84,6 @@
             });
         });
     </script>
+     @include('backend.include.alert.toastr')
+     @include('backend.include.alert.swalert')
 @endpush

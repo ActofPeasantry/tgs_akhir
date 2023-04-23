@@ -163,6 +163,7 @@
             })
         }
     </script>
+    <?php echo $__env->make('backend.include.alert.toastr', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 <?php $__env->stopPush(); ?>
 
 <?php echo $__env->make('layouts/main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\informationSystemStuff\laragon\www\tugas_akhir\resources\views/backend/balance/index.blade.php ENDPATH**/ ?>

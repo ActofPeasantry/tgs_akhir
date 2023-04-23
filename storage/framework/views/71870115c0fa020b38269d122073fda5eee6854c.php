@@ -22,6 +22,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <link rel="stylesheet" href="<?php echo e(asset('assets/dist/css/adminlte.min.css?v=3.2.0')); ?>">
         <!-- FullCalendar 4 -->
         <link rel="stylesheet" href="<?php echo e(asset('assets/plugins/fullcalendar/main.css')); ?>">
+        <!-- Toastr -->
+        <link rel="stylesheet" href="<?php echo e(asset('assets/plugins/toastr/toastr.min.css')); ?>">
+        <!-- SweetAlert2 -->
+        <link rel="stylesheet" href="<?php echo e(asset('assets/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css')); ?>">
+
     </head>
     <body class="hold-transition sidebar-mini">
         <div class="wrapper">
@@ -148,6 +153,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!-- date-range-picker -->
         <script src= "<?php echo e(asset("assets/plugins/moment/moment.min.js")); ?>"></script>
         <script src= "<?php echo e(asset("assets/plugins/daterangepicker/daterangepicker.js")); ?>"></script>
+        <!-- Toastr -->
+        <script src="<?php echo e(asset('assets/plugins/toastr/toastr.min.js')); ?>"></script>
+        <!-- SweetAlert2 -->
+        <script src="<?php echo e(asset('assets/plugins/sweetalert2/sweetalert2.min.js')); ?>"></script>
 
 
         <!DOCTYPE html>

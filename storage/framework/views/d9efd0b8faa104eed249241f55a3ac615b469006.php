@@ -37,7 +37,8 @@
                                     <?php echo e(method_field('DELETE')); ?>
 
                                     <input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>">
-                                    <button onclick="return confirm('Menghapus kategori akan menghapus data aktivitas pada kategori tersebut. Apakah anda yakin?')" class="btn btn-danger" type="submit">Delete</button>
+                                    
+                                    <button class="btn btn-danger show_confirm" data-toggle="tooltip">Delete</button>
                                 </form>
                             </td>
                         </tr>
@@ -65,6 +66,8 @@
             });
         });
     </script>
+    <?php echo $__env->make('backend.include.alert.toastr', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+    <?php echo $__env->make('backend.include.alert.swalert', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 <?php $__env->stopPush(); ?>
 
 <?php echo $__env->make('layouts/main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\informationSystemStuff\laragon\www\tugas_akhir\resources\views/backend/mosque_asset/categories/index.blade.php ENDPATH**/ ?>

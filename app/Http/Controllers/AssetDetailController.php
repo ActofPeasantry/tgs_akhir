@@ -45,7 +45,7 @@ class AssetDetailController extends Controller
             $asset->photo = '../../../storage/'.$path;
         }
         $asset->save();
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Data berhasil ditambahkan');
     }
 
     /**
@@ -89,7 +89,7 @@ class AssetDetailController extends Controller
             $assetDetail->photo = '../../../storage/'.$path;
         }
         $assetDetail->save();
-        return redirect()->route('asset.show', ['asset' => $assetDetail->asset_id]);
+        return redirect()->route('asset.show', ['asset' => $assetDetail->asset_id])->with('success', 'Data berhasil diubah');
         // return redirect()->back();
     }
 
@@ -104,6 +104,6 @@ class AssetDetailController extends Controller
         // dd($assetDetail);
         // $as_id = $assetDetail->asset_id;
         AssetDetail::destroy($assetDetail->id);
-        return redirect()->back();
+        return redirect()->back()->with('error', 'Data berhasil dihapus');
     }
 }

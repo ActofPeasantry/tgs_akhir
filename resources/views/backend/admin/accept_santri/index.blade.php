@@ -193,4 +193,5 @@
             $('.santri_check').click(unlockButton());
         });
     </script>
+     @include('backend.include.alert.toastr')
 @endpush

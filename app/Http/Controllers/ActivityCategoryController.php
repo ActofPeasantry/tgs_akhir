@@ -37,7 +37,7 @@ class ActivityCategoryController extends Controller
     public function store(Request $request)
     {
         ActivityCategory::create($request->all());
-        return redirect()->route('activity_categories.index');
+        return redirect()->route('activity_categories.index')->with('success', 'Data berhasil ditambahkan');
     }
 
     /**
@@ -74,7 +74,7 @@ class ActivityCategoryController extends Controller
     public function update(Request $request, ActivityCategory $activityCategory)
     {
         ActivityCategory::find($activityCategory->id)->update($request->all());
-        return redirect()->route('activity_categories.index');
+        return redirect()->route('activity_categories.index')->with('success', 'Data berhasil diubah');
     }
 
     /**
@@ -86,6 +86,6 @@ class ActivityCategoryController extends Controller
     public function destroy(ActivityCategory $activityCategory)
     {
         ActivityCategory::destroy($activityCategory->id);
-        return redirect()->route('activity_categories.index');
+        return redirect()->route('activity_categories.index')->with('error', 'Data berhasil dihapus');
     }
 }

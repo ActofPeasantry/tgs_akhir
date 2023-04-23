@@ -41,7 +41,7 @@ class SantriController extends Controller
     {
         // dd($request->all());
         Santri::create($request->all());
-        return redirect()->route('santri.index');
+        return redirect()->route('santri.index')->with('success', 'Data berhasil ditambahkan');
     }
 
     /**
@@ -80,7 +80,7 @@ class SantriController extends Controller
     {
         // dd($request->all());
         Santri::find($santri->id)->update($request->all());
-        return redirect()->route('santri.index');
+        return redirect()->route('santri.index')->with('success', 'Data berhasil diubah');
     }
 
     /**
@@ -92,6 +92,6 @@ class SantriController extends Controller
     public function destroy(Santri $santri)
     {
         Santri::destroy($santri->id);
-        return redirect()->route('santri.index');
+        return redirect()->route('santri.index')->with('error', 'Data berhasil dihapus');
     }
 }

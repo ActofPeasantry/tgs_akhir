@@ -51,7 +51,7 @@ class UserController extends Controller
         foreach ($request->role as $newRole) {
             $user->userRoles()->create(['user_id' => $user->id, 'role_id' => $newRole]);
         }
-        return redirect()->route('admin.user.index');
+        return redirect()->route('admin.user.index')->with('success', 'Data berhasil ditambahkan');
         // dd($request->all());
     }
 
@@ -97,7 +97,8 @@ class UserController extends Controller
         $getUserRole = $getUser->userRoles()->pluck('role_id')->toArray();
         // ** check if either request->role == null or reques->role have exact value of current user_role data */
         if (empty($request->role) OR $getUserRole === $request->role) {
-            dd('no changes');
+            // dd('no changes');
+            return redirect()->route('admin.user.index')->with('info', 'Tidak ada data yang diubah');
         }
 
         // ** Delete all user_roles data, then create a new one. On paper can exaust id's auto incr. but that won't happen right? :)*/
@@ -105,7 +106,8 @@ class UserController extends Controller
         foreach ($request->role as $newRole) {
             $user->userRoles()->create(['user_id' => $user->id, 'role_id' => $newRole]);
         }
-        dd('success');
+        return redirect()->route('admin.user.index')->with('success', 'Data berhasil diubah');
+
     }
 
     /**

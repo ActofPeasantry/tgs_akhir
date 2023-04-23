@@ -46,7 +46,7 @@ class AcceptSantriController extends Controller
 
     public function accept_checked(Request $request){
         Santri::whereIn('id', $request->santri_id)->update(array('submission_status' => $request->accept_checked));
-        return redirect()->route('admin.accept_santri.index');
+        return redirect()->route('admin.accept_santri.index')->with('success', 'Data berhasil diubah');
         // dd($santri->get());
     }
 }

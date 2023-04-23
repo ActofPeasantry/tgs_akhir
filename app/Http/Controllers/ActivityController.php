@@ -79,7 +79,7 @@ class ActivityController extends Controller
     public function store(Request $request)
     {
         Activity::create($request->all());
-        return redirect()->route('activity.index');
+        return redirect()->route('activity.index')->with('success', 'Data berhasil ditambahkan');
     }
 
     /**
@@ -106,7 +106,7 @@ class ActivityController extends Controller
         $activity = Activity::find($activity->id);
         $categories =  ActivityCategory::pluck('id', 'category_name');
         $activity_status = config('constants.activity_status');
-        dd($activity_status);
+        // dd($activity_status);
         return view('backend.activity.edit', compact('activity', 'categories'));
     }
 
@@ -119,7 +119,8 @@ class ActivityController extends Controller
      */
     public function update(Request $request, Activity $activity)
     {
-        //
+        Activity::find($activity->id)->update($request->all());
+        return redirect()->route('activity.propose')->with('success', 'Data berhasil diubah');
     }
 
     /**
@@ -131,7 +132,7 @@ class ActivityController extends Controller
     public function destroy(Activity $activity)
     {
         Activity::destroy($activity->id);
-        return redirect()->route('activity.index');
+        return redirect()->route('activity.index')->with('error', 'Data berhasil dihapus');
     }
 
     public function propose()

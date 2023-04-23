@@ -56,7 +56,7 @@ unset($__errorArgs, $__bag); ?>
 
 <div class="row">
     <div class="col-md-6">
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary toastrDefaultSuccess">Submit</button>
     </div>
 </div>
 <?php /**PATH D:\informationSystemStuff\laragon\www\tugas_akhir\resources\views/backend/include/balance_categories_form.blade.php ENDPATH**/ ?>

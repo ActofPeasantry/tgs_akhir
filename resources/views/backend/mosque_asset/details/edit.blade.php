@@ -43,4 +43,5 @@
             bsCustomFileInput.init();
         });
     </script>
+     @include('backend.include.alert.toastr')
 @endpush

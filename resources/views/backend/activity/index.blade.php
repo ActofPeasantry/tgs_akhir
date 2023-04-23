@@ -152,4 +152,5 @@
     //   $('#calendar').fullCalendar()
     })
 </script>
+@include('backend.include.alert.toastr')
 @endpush
