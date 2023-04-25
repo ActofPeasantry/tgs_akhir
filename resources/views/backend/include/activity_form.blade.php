@@ -58,14 +58,14 @@
         @enderror
     </div>
 
-    {{-- <div class="form-group mb-3">
+    <div class="form-group mb-3">
         <label class="form-label" for="status">Status</label>
         <select name="status" id="status" class="form-control">
-            <option value=1 {{ old('status', $activity->status) == 1 ? "selected" : ''}}>On Hold</option>
-            <option value=2 {{ old('status', $activity->status) == 2 ? "selected" : ''}}>Cancelled</option>
-            <option value=3 {{ old('status', $activity->status) == 3 ? "selected" : ''}}>Success</option>
+            <option value=1 {{ old('status', $activity->status) == config('constants.activity_status.not_yet') ? "selected" : ''}}>Belum Berjalan</option>
+            <option value=2 {{ old('status', $activity->status) == config('constants.activity_status.cancelled') ? "selected" : ''}}>Sudah Berjalan</option>
         </select>
-    </div> --}}
+    </div>
+
     <input type="hidden"  id="user_id" name="user_id" value="{{ auth()->user()->id }}">
 @else
     <div class="form-group col-mb-3">

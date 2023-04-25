@@ -262,26 +262,26 @@
             labels  : ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Augustus', 'September', 'Oktober', 'November', 'December'],
             datasets: [
               {
-                label               : 'Debet',
-                backgroundColor     : 'rgba(60,141,188,0.9)',
+                label               : 'Kredit',
+                backgroundColor     : '#CAE2DC',
                 borderColor         : 'rgba(60,141,188,0.8)',
                 pointRadius          : false,
                 pointColor          : '#3b8bba',
                 pointStrokeColor    : 'rgba(60,141,188,1)',
                 pointHighlightFill  : '#fff',
                 pointHighlightStroke: 'rgba(60,141,188,1)',
-                data                : d_data
+                data                : c_data
               },
               {
-                label               : 'Kredit',
-                backgroundColor     : 'rgba(210, 214, 222, 1)',
+                label               : 'Debet',
+                backgroundColor     : '#5379C7',
                 borderColor         : 'rgba(210, 214, 222, 1)',
                 pointRadius         : false,
                 pointColor          : 'rgba(210, 214, 222, 1)',
                 pointStrokeColor    : '#c1c7d1',
                 pointHighlightFill  : '#fff',
                 pointHighlightStroke: 'rgba(220,220,220,1)',
-                data                : c_data
+                data                : d_data
               },
             ]
           }

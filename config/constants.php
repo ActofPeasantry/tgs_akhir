@@ -8,7 +8,7 @@ return [
         'accepted' => '1', 'denied' => '2'
     ],
     'activity_status' => [
-        'not_yet' => '1', 'ongoing' => '2', 'cancelled' => '3'
+        'not_yet' => '0', 'ongoing' => '1', 'success' => '2'
     ],
 ];
 

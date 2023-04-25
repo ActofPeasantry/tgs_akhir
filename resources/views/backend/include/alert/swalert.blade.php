@@ -38,7 +38,6 @@
             cancelButtonText: "Batal",
             confirmButtonColor: '#d33',
             cancelButtonColor: 'green',
-            reverseButtons: true
          })
          .then((willDelete) => {
            if (willDelete.isConfirmed) {
@@ -69,7 +68,6 @@
             cancelButtonText: "Batal",
             confirmButtonColor: '#d33',
             cancelButtonColor: 'green',
-            reverseButtons: true
          })
          .then((willDelete) => {
            if (willDelete.isConfirmed) {

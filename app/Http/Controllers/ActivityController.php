@@ -18,10 +18,10 @@ class ActivityController extends Controller
     {
         $events = array();
         $activities = Activity::all()->where('submission_status', 1);
-        // dd($activities->where('submission_status', 1));
+        // dd($activities);
         foreach($activities as $activity){
             switch ($activity->status) {
-                case 1:
+                case '0':
                     $events[] = [
                         'id' => $activity->id,
                         'url' => route('activity.show', $activity->id),
@@ -32,7 +32,18 @@ class ActivityController extends Controller
                         'borderColor'    => '#00c0ef' //Info (aqua)
                     ];
                     break;
-                case 2:
+                case '1':
+                    $events[] = [
+                        'id' => $activity->id,
+                        'url' => route('activity.show', $activity->id),
+                        'title' => $activity->activity_name,
+                        'start' => $activity->schedule_start,
+                        'end' => $activity->schedule_end,
+                        'backgroundColor'=> '#ffc107 ', //Warning (yellow)
+                        'borderColor'    => '#ffc107 ' //Warning (yellow)
+                    ];
+                    break;
+                case '2':
                     $events[] = [
                         'id' => $activity->id,
                         'url' => route('activity.show', $activity->id),
@@ -56,6 +67,7 @@ class ActivityController extends Controller
                     break;
             }
         }
+        // dd($events);
         return view('backend.activity.index', compact('activities', 'events'));
     }
 

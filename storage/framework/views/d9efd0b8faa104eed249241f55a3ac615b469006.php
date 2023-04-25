@@ -38,7 +38,7 @@
 
                                     <input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>">
                                     
-                                    <button class="btn btn-danger show_confirm" data-toggle="tooltip">Delete</button>
+                                    <button class="btn btn-danger show_confirm_category" data-toggle="tooltip">Delete</button>
                                 </form>
                             </td>
                         </tr>

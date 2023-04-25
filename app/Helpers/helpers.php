@@ -81,10 +81,13 @@ function rolesName($role){
 
     function activityStatus($status){
         switch ($status) {
-            case 1:
+            case config('constants.activity_status.not_yet'):
                 return 'Belum berjalan';
                 break;
-            case 2:
+            case config('constants.activity_status.ongoing'):
+                return 'Sedang berjalan';
+                break;
+            case config('constants.activity_status.success'):
                 return 'Sudah berjalan';
                 break;
             default:

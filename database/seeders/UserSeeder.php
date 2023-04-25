@@ -28,6 +28,14 @@ class UserSeeder extends Seeder
             'role_id' => 35,
             'user_id' => 1,
         ]);
+        DB::table('user_roles')->insert([
+            'role_id' => 24,
+            'user_id' => 1,
+        ]);
+        DB::table('user_roles')->insert([
+            'role_id' => 13,
+            'user_id' => 1,
+        ]);
 
         DB::table('users')->insert([
             'name' => 'jamaah',

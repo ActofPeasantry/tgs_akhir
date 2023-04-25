@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class BalanceCategory extends Model
 {
+    use HasFactory;
     protected $fillable = ['category_name'];
 
     public function Balances(){

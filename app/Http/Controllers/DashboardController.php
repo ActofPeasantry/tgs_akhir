@@ -23,15 +23,22 @@ class DashboardController extends Controller
         $debit_data = array();
         $credit_data = array();
         $new_balance = new Balance;
-        $months = $new_balance->getMonth();
-        foreach ($months as $month) {
-            // array_push($test, $month);
-            $insert_credit = Balance::where('debit_credit', 1)->whereYear('date_received', date('Y'))->whereMonth('date_received', $month)->get()->sum('total_amount');
+        for ($i=1; $i <= 12; $i++) {
+            $insert_credit = Balance::where('debit_credit', 1)->whereYear('date_received', date('Y'))->whereMonth('date_received', $i)->get()->sum('total_amount');
             array_push($credit_data, $insert_credit);
 
-            $insert_debit = Balance::where('debit_credit', 0)->whereYear('date_received', date('Y'))->whereMonth('date_received', $month)->get()->sum('total_amount');
+            $insert_debit = Balance::where('debit_credit', 0)->whereYear('date_received', date('Y'))->whereMonth('date_received', $i)->get()->sum('total_amount');
             array_push($debit_data, $insert_debit);
-        }
+        };
+        // $months = $new_balance->getMonth();
+        // foreach ($months as $month) {
+        //     // array_push($test, $month);
+        //     $insert_credit = Balance::where('debit_credit', 1)->whereYear('date_received', date('Y'))->whereMonth('date_received', $month)->get()->sum('total_amount');
+        //     array_push($credit_data, $insert_credit);
+
+        //     $insert_debit = Balance::where('debit_credit', 0)->whereYear('date_received', date('Y'))->whereMonth('date_received', $month)->get()->sum('total_amount');
+        //     array_push($debit_data, $insert_debit);
+        // }
         $asset_labels = array();
         $asset_data = array();
         $assets = Asset::where('submission_status', config('constants.submission_status.accepted'))->get();
