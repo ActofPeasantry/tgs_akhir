@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Asset extends Model
 {
+    use HasFactory;
+
     protected $fillable = ['user_id', 'asset_name','submission_status','asset_categories_id'];
 
     public function AssetCategory(){

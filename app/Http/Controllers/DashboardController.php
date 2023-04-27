@@ -46,7 +46,7 @@ class DashboardController extends Controller
             // 'labels' => $asset->asset_name,
             // 'data' => $asset->AssetDetail()->where('asset_id', $asset->id)->count()
             array_push($asset_labels, $asset->asset_name);
-            array_push($asset_data, $asset->AssetDetail()->where('asset_id', $asset->id)->count());
+            array_push($asset_data, $asset->AssetDetail()->where([['asset_id', $asset->id], ['quality', 1]])->count());
         }
         // dd(Asset::pluck('asset_name'));
         // dd($asset[0]->totalAsset(1));

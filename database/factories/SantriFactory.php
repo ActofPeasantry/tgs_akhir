@@ -23,7 +23,7 @@ class SantriFactory extends Factory
             'tpq_grade'=>1,
             'birth_place'=>$this->faker->word(),
             'birth_date'=>$this->faker->dateTime(),
-            'sex'=>$this->faker->numberBetween(0,3),
+            'sex'=>$this->faker->numberBetween(1,2),
             'address'=>$this->faker->address(),
             'father_name'=>$this->faker->firstNameMale(),
             'mother_name'=>$this->faker->firstNameFemale(),
