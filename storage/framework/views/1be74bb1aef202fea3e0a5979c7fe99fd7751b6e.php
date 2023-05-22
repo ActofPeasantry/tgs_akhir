@@ -89,6 +89,7 @@
             <h5 class="card-title">Daftar Pembukuan</h5>
         </div>
         <div class="card-body">
+            <a type="button" class="btn btn-success btn-sm" href="<?php echo e(route("balance.create")); ?>"> <i class="fa fa-plus"></i> Tambah Laporan Keuangan</a>
             <table id="example1" class="table table-bordered table-hover dataTable dtr-inline" role="grid" aria-describedby="example1_info">
                 <thead>
                     <tr role="row">

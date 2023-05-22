@@ -84,7 +84,7 @@ class AssetController extends Controller
     public function update(Request $request, Asset $asset)
     {
         Asset::find($asset->id)->update($request->all());
-        return redirect()->route('asset.index')->with('success', 'Data berhasil diubah');
+        return redirect()->route('asset.propose')->with('success', 'Data berhasil diubah');
     }
 
     /**

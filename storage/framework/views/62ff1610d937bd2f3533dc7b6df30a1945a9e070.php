@@ -3,13 +3,13 @@
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('page_name'); ?>
-    <h1>Kategori Aktivitas</h1>
+    <h1>Kategori Kegiatan</h1>
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('breadcrumb'); ?>
     
     <?php echo breadcrumb([
-            'Aktivitas' => 'Aktivitas'
+            'Kegiatan' => 'Kegiatan'
         ]); ?>
 
 <?php $__env->stopSection(); ?>

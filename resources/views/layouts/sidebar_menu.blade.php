@@ -96,12 +96,12 @@
                         <p>Lihat Laporan Keuangan</p>
                     </a>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a href="{{ route('balance.create') }}" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Tambah L. Keuangan</p>
                     </a>
-                </li>
+                </li> --}}
                 <li class="nav-item">
                     <a href="{{ route('balance_categories.index') }}" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
@@ -184,33 +184,35 @@
         </li>
     @endcanany
 
-    <li class="nav-item">
-        <a href="" class="nav-link">
-            <i class="nav-icon fas fa-file"></i>
-            <p>
-                Santri Masjid
-                <i class="right fas fa-angle-left"></i>
-            </p>
-        </a>
-        @can('is-jamaah')
-            <ul class="nav nav-treeview">
-                <li class="nav-item">
-                    <a href="{{ route('santri.index') }}" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Pendaftaran Santri</p>
-                    </a>
-                </li>
-            </ul>
-        @endcan
-        @can('is-admin')
-            <ul class="nav nav-treeview">
-                <li class="nav-item">
-                    <a href="{{ route('admin.accept_santri.index') }}" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Menerima Santri</p>
-                    </a>
-                </li>
-            </ul>
-        @endcan
-    </li>
+    @canany(['is-jamaah', 'is-admin'])
+        <li class="nav-item">
+            <a href="" class="nav-link">
+                <i class="nav-icon fas fa-file"></i>
+                <p>
+                    Santri Masjid
+                    <i class="right fas fa-angle-left"></i>
+                </p>
+            </a>
+            @can('is-jamaah')
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="{{ route('santri.index') }}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Pendaftaran Santri</p>
+                        </a>
+                    </li>
+                </ul>
+            @endcan
+            @can('is-admin')
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="{{ route('admin.accept_santri.index') }}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Menerima Santri</p>
+                        </a>
+                    </li>
+                </ul>
+            @endcan
+        </li>
+    @endcanany
 </ul>

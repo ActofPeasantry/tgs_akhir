@@ -1,11 +1,11 @@
 @extends('layouts/main')
 
 @section('title')
-    <title>Detail Aktivitas</title>
+    <title>Detail Kegiatan</title>
 @endsection
 
 @section('page_name')
-    <h1>Detail Aktivitas</h1>
+    <h1>Detail Kegiatan</h1>
 @endsection
 
 @section('breadcrumb')
@@ -13,7 +13,7 @@
     {!!
         breadcrumb([
             'Mengajukan Kegiatan' => route('activity.propose'),
-            'Detail Aktivitas' => 'Detail Aktivitas'
+            'Detail Kegiatan' => 'Detail Kegiatan'
         ])
     !!}
 @endsection
@@ -27,7 +27,7 @@
         <div class="card-body">
             <div class="container-fluid">
                 <div class="form-group col-mb-3">
-                    <label class="form-label" for="activity_name">Nama Aktivitas</label>
+                    <label class="form-label" for="activity_name">Nama Kegiatan</label>
                     <p>{{ $activity->activity_name }}</p>
                 </div>
 

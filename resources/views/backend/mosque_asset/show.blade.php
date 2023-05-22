@@ -76,7 +76,7 @@
                                 <td class="dtr-control sorting_1 text-center">{{ $as_detail->qualityText($as_detail->quality) }}</td>
 
                                 <td class="text-center">
-                                    <a class='btn btn-primary' href="{{route('asset_detail.show', [$as_detail->id])}}">Detail</a>
+                                    {{-- <a class='btn btn-primary' href="{{route('asset_detail.show', [$as_detail->id])}}">Detail</a> --}}
                                     <a class='btn btn-warning' href="{{route('asset_detail.edit', [$as_detail->id])}}">Edit</a>
                                     <form action="{{route('asset_detail.destroy', [$as_detail->id])}}" method="post" style="display: inline">
                                         {{method_field('DELETE')}}

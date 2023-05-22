@@ -34,6 +34,7 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <a type="button" class="btn btn-success btn-sm" href="{{ route("admin.user.create") }}"> <i class="fa fa-plus"></i> Tambah Pengguna</a> <br>
                     @foreach ($users as $user)
                         <tr class="">
                             <td>{{ $user->id}}</td>

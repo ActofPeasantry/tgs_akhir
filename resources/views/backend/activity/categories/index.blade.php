@@ -5,14 +5,14 @@
 @endsection
 
 @section('page_name')
-    <h1>Kategori Aktivitas</h1>
+    <h1>Kategori Kegiatan</h1>
 @endsection
 
 @section('breadcrumb')
     {{-- Custom helpers, cek app/Helpers/helpers.php dan composer.json di bagian file jalankan composer dump-autoload utk memakainya --}}
     {!!
         breadcrumb([
-            'Aktivitas' => 'Aktivitas'
+            'Kegiatan' => 'Kegiatan'
         ])
     !!}
 @endsection
@@ -40,7 +40,7 @@
                                     {{method_field('DELETE')}}
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                     <button class="btn btn-danger show_confirm_category" data-toggle="tooltip">Delete</button>
-                                    {{-- <button onclick="return confirm('Menghapus kategori akan menghapus data aktivitas pada kategori tersebut. Apakah anda yakin?')" class="btn btn-danger" type="submit">Delete</button> --}}
+                                    {{-- <button onclick="return confirm('Menghapus kategori akan menghapus data kegiatan pada kategori tersebut. Apakah anda yakin?')" class="btn btn-danger" type="submit">Delete</button> --}}
                                 </form>
                             </td>
                         </tr>

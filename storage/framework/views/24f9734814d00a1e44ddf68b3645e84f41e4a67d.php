@@ -46,12 +46,7 @@
                         <p>Lihat Laporan Keuangan</p>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="<?php echo e(route('balance.create')); ?>" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Tambah L. Keuangan</p>
-                    </a>
-                </li>
+                
                 <li class="nav-item">
                     <a href="<?php echo e(route('balance_categories.index')); ?>" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
@@ -134,34 +129,36 @@
         </li>
     <?php endif; ?>
 
-    <li class="nav-item">
-        <a href="" class="nav-link">
-            <i class="nav-icon fas fa-file"></i>
-            <p>
-                Santri Masjid
-                <i class="right fas fa-angle-left"></i>
-            </p>
-        </a>
-        <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('is-jamaah')): ?>
-            <ul class="nav nav-treeview">
-                <li class="nav-item">
-                    <a href="<?php echo e(route('santri.index')); ?>" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Pendaftaran Santri</p>
-                    </a>
-                </li>
-            </ul>
-        <?php endif; ?>
-        <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('is-admin')): ?>
-            <ul class="nav nav-treeview">
-                <li class="nav-item">
-                    <a href="<?php echo e(route('admin.accept_santri.index')); ?>" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Menerima Santri</p>
-                    </a>
-                </li>
-            </ul>
-        <?php endif; ?>
-    </li>
+    <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->any(['is-jamaah', 'is-admin'])): ?>
+        <li class="nav-item">
+            <a href="" class="nav-link">
+                <i class="nav-icon fas fa-file"></i>
+                <p>
+                    Santri Masjid
+                    <i class="right fas fa-angle-left"></i>
+                </p>
+            </a>
+            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('is-jamaah')): ?>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="<?php echo e(route('santri.index')); ?>" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Pendaftaran Santri</p>
+                        </a>
+                    </li>
+                </ul>
+            <?php endif; ?>
+            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('is-admin')): ?>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="<?php echo e(route('admin.accept_santri.index')); ?>" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Menerima Santri</p>
+                        </a>
+                    </li>
+                </ul>
+            <?php endif; ?>
+        </li>
+    <?php endif; ?>
 </ul>
 <?php /**PATH D:\informationSystemStuff\laragon\www\tugas_akhir\resources\views/layouts/sidebar_menu.blade.php ENDPATH**/ ?>

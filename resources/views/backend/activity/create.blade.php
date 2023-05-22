@@ -5,15 +5,15 @@
 @endsection
 
 @section('page_name')
-    <h1>Tambah Aktivitas</h1>
+    <h1>Tambah Kegiatan</h1>
 @endsection
 
 @section('breadcrumb')
     {{-- Custom helpers, cek app/Helpers/helpers.php dan composer.json di bagian file jalankan composer dump-autoload utk memakainya --}}
     {!!
         breadcrumb([
-            'Mengajukan Aktivitas' => route('activity.propose'),
-            'Tambah Aktivitas' => 'Tambah Aktivitas'
+            'Mengajukan Kegiatan' => route('activity.propose'),
+            'Tambah Kegiatan' => 'Tambah Kegiatan'
         ])
     !!}
 @endsection
