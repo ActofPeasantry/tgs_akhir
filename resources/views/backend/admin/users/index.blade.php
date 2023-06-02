@@ -44,7 +44,7 @@
                             @foreach ( $user->userRoles as $userRoles)
                                 @if ($userRoles->role_id ==  config('constants.user_role.admin'))
                                     <span class="badge badge-primary">{{$user->callRoleName($userRoles->role_id)}}</span>
-                                @elseif ($userRoles->role_id ==  config('constants.user_role.sekre'))
+                                @elseif ($userRoles->role_id ==  config('constants.user_role.pengurus'))
                                     <span class="badge badge-info">{{$user->callRoleName($userRoles->role_id)}}</span>
                                 @elseif ($userRoles->role_id ==  config('constants.user_role.jamaah'))
                                     <span class="badge badge-success">{{$user->callRoleName($userRoles->role_id)}}</span>

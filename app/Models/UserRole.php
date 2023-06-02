@@ -13,7 +13,7 @@ class UserRole extends Model
 
     /** stand-in for role's number */
     const JAMAAH = 13;
-    const SEKRE = 24;
+    const PENGURUS = 24;
     const ADMIN = 35;
 
     public function users()

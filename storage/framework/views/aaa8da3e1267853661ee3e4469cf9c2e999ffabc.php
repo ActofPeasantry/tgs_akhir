@@ -32,18 +32,52 @@
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startPush('child-scripts'); ?>
-    <script>
-        $(function(){
-            $('#example1').DataTable({
-                "paging": true,
-                "lengthChange": false,
-                "searching": false,
-                "ordering": true,
-                "info": true,
-                "autoWidth": false,
-                "responsive": true,
-            });
+    <script type="text/javascript">
+        $(function () {
+            $('#dtp_date_received').datetimepicker({format:'DD-MM-YYYY', locale:'id'});
         });
+    </script>
+    <script>
+        // Jquery Dependency
+
+        $("#total_amount").on({
+            focus: function () {
+                formatCurrency($(this));
+                $('#hidden_total_amount').val($('#total_amount').val().replace(/\D/g, ""));
+                console.log($('#total_amount').val().replace(/\D/g, ""));
+            }
+        });
+
+        $("#total_amount").on({
+            keyup: function () {
+                formatCurrency($(this));
+                $('#hidden_total_amount').val($('#total_amount').val().replace(/\D/g, ""));
+                console.log($('#total_amount').val().replace(/\D/g, ""));
+            }
+        });
+
+        function formatNumber(n) {
+            // format number 1000000 to 1,234,567
+            return n.replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+        }
+
+        function formatCurrency(input) {
+            // get input value
+            var input_val = input.val();
+
+            // don't validate empty input
+            if (input_val === "") {
+                return;
+            }
+
+            // no decimal entered
+            // remove all non-digits
+            input_val = formatNumber(input_val);
+            input_val = "Rp " + input_val;
+
+            // send updated string to input
+            input.val(input_val);
+        }
     </script>
 <?php $__env->stopPush(); ?>
 

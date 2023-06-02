@@ -43,12 +43,17 @@
 
                 <div class="form-group col-mb-3">
                     <label class="form-label" for="schedule_start">Tanggal Mulai</label>
-                    <p>{{ $activity->schedule_start }}</p>
+                    <p>
+                        {{ $activity->schedule_start->translatedFormat('d F Y') }},
+                        {{ $activity->schedule_start->translatedFormat('H:i') }}
+                    </p>
                 </div>
 
                 <div class="form-group col-mb-3">
                     <label class="form-label" for="schedule_end">Tanggal Selesai</label>
-                    <p>{{ $activity->schedule_end }}</p>
+                    <p>
+                        {{ $activity->schedule_end->translatedFormat('d F Y') }},
+                    </p>
                 </div>
 
                 <div class="form-group col-mb-3">

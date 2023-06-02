@@ -12,21 +12,22 @@
     {{-- Custom helpers, cek app/Helpers/helpers.php dan composer.json di bagian file jalankan composer dump-autoload utk memakainya --}}
     {!!
         breadcrumb([
-            'Aset' => 'Aset'
+            'Mengajukan Aset' => route('asset.propose'),
+            'Ubah Aset' => 'Ubah Aset'
         ])
     !!}
 @endsection
 
 @section('content')
-   <div class="card card-prmary col-md-10">
+    <div class="card card-primary">
         <div class="card-header">
             <h5 class="card-title">Ubah Data</h5>
         </div>
         <div class="card-body">
             <div class="container-fluid">
                 <form action="{{ route('asset.update', $asset->id) }}" method="POST">
-                @csrf
-                @method("PATCH")
+                    @csrf
+                    @method("PATCH")
                     @include('backend.include.asset_form')
                 </form>
             </div>

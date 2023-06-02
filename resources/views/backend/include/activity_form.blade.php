@@ -101,7 +101,7 @@
         </select>
     </div>
 
-    <div class="form-group mb-3">
+    {{-- <div class="form-group mb-3">
         <label class="form-label" for="schedule_start">Tanggal Mulai</label>
         <input id="schedule_start" type="datetime-local" class="form-control @error('schedule_start') is-invalid @enderror" name="schedule_start"
         value="{{ old('schedule_start') }}"
@@ -112,9 +112,18 @@
             <strong>{{ $message }}</strong>
         </span>
         @enderror
+    </div> --}}
+    <div class="form-group mb-3">
+        <label class="form-label" for="date_received">Tanggal Mulai</label>
+        <div class="input-group date" id="dtp_schedule-start" data-target-input="nearest">
+            <input name="schedule_start" type="text" class="form-control datetimepicker-input" data-target="#dtp_schedule-start" required />
+            <div class="input-group-append" data-target="#dtp_schedule-start" data-toggle="datetimepicker">
+                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+            </div>
+        </div>
     </div>
 
-    <div class="form-group mb-3">
+    {{-- <div class="form-group mb-3">
         <label class="form-label" for="schedule_end">Tanggal Selesai</label>
         <input id="schedule_end" type="datetime-local" class="form-control @error('schedule_end') is-invalid @enderror" name="schedule_end"
         value="{{ old('schedule_end') }}"
@@ -125,7 +134,17 @@
             <strong>{{ $message }}</strong>
         </span>
         @enderror
+    </div> --}}
+    <div class="form-group mb-3">
+        <label class="form-label" for="date_received">Tanggal Selesai</label>
+        <div class="input-group date" id="dtp_schedule-end" data-target-input="nearest">
+            <input name="schedule_end" type="text" class="form-control datetimepicker-input" data-target="#dtp_schedule-end" required />
+            <div class="input-group-append" data-target="#dtp_schedule-end" data-toggle="datetimepicker">
+                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+            </div>
+        </div>
     </div>
+
     <input type="hidden"  id="status" name="status" value="{{ config('constants.activity_status.not_yet') }}">
     <input type="hidden"  id="user_id" name="user_id" value="{{ auth()->user()->id }}">
 

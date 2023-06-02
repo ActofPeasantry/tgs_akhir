@@ -93,22 +93,29 @@
             <table id="example1" class="table table-bordered table-hover dataTable dtr-inline" role="grid" aria-describedby="example1_info">
                 <thead>
                     <tr role="row">
-                        <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column descending" aria-sort="ascending">Tgl Input</th>
-                        <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Deskripsi</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Kategori</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">No. Invoice</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Tanggal Diterima</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Debet (Rp)</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">kredit (Rp)</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Saldo (Rp)</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Opsi</th>
+                        <th  tabindex="0" aria-controls="example1" rowspan="1" colspan="1" >Tgl Input</th>
+                        <th  tabindex="0" aria-controls="example1" rowspan="1" colspan="1" >Deskripsi</th>
+                        <th  tabindex="0" aria-controls="example1" rowspan="1" colspan="1" >Kategori</th>
+                        <th  tabindex="0" aria-controls="example1" rowspan="1" colspan="1" >No. Invoice</th>
+                        <th  tabindex="0" aria-controls="example1" rowspan="1" colspan="1" >Tanggal Diterima</th>
+                        <th  tabindex="0" aria-controls="example1" rowspan="1" colspan="1" >Debet</th>
+                        <th  tabindex="0" aria-controls="example1" rowspan="1" colspan="1" >kredit</th>
+                        <th  tabindex="0" aria-controls="example1" rowspan="1" colspan="1" >Saldo</th>
+                        <th  tabindex="0" aria-controls="example1" rowspan="1" colspan="1" >Opsi</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php $__currentLoopData = $balances; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $balance): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <tr class="">
-                            <td class="dtr-control sorting_1 text-center" tabindex="0">
-                                <?php echo e($balance->created_at->format('d F Y')); ?> <br>
+                            <td>
+                                <?php echo e($balance->created_at->translatedFormat('d F Y')); ?> <br>
                                 <?php echo e($balance->created_at->format('H:i:s')); ?>
 
                             </td>
                             <td><?php echo e($balance->description); ?></td>
                             <td><?php echo e($balance->BalanceCategories->category_name); ?></td>
                             <td><?php echo e($balance->no_invoice); ?></td>
-                            <td><?php echo e($balance->date_received->format('d F Y')); ?></td>
+                            <td><?php echo e($balance->date_received->translatedFormat('d F Y')); ?></td>
                             <?php if($balance->debit_credit == 0): ?>
                                 <td><?php echo e(balanceFormat($balance->total_amount)); ?></td>
                                 <td>0</td>
@@ -150,7 +157,8 @@
                 "info": true,
                 "autoWidth": false,
                 "responsive": true,
-                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"],
+                "order": [4,'desc']
             }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
         });
     </script>

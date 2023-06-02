@@ -79,7 +79,7 @@ class UserController extends Controller
     {
         $user->find($user->id);
         // dd($user->roles->pluck('id')->toArray());
-        $roles = [UserRole::JAMAAH, UserRole::SEKRE, UserRole::ADMIN];
+        $roles = [UserRole::JAMAAH, UserRole::PENGURUS, UserRole::ADMIN];
         // dd($user->userRoles->pluck('role_id')->toArray());
         return view('backend.admin.users.edit', compact('user', 'roles'));
     }

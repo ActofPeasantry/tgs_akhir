@@ -5,7 +5,7 @@
 @endsection
 
 @section('page_name')
-    <h1>Kategori Kegiatan</h1>
+    <h1>Ubah Kegiatan</h1>
 @endsection
 
 @section('breadcrumb')
@@ -47,16 +47,14 @@
 @endsection
 
 @push('child-scripts')
-    <script>
-        $(function(){
-            $('#example1').DataTable({
-                "paging": true,
-                "lengthChange": false,
-                "searching": false,
-                "ordering": true,
-                "info": true,
-                "autoWidth": false,
-                "responsive": true,
+    <script type="text/javascript">
+        $(function () {
+            $('#dtp_schedule-start').datetimepicker({
+                format:'DD-MM-YYYY HH:mm',
+                locale:'id',
+                icons: {
+                    time: "far fa-clock"
+                }
             });
         });
     </script>

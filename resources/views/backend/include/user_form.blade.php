@@ -97,8 +97,8 @@
                 <label class="form-check-label" for="">{{ rolesName($roles['jamaah']) }}</label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="role[]" value={{ $roles['sekre'] }}>
-                <label class="form-check-label" for="">{{ rolesName($roles['sekre']) }}</label>
+                <input class="form-check-input" type="checkbox" name="role[]" value={{ $roles['pengurus'] }}>
+                <label class="form-check-label" for="">{{ rolesName($roles['pengurus']) }}</label>
             </div>
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" name="role[]" value={{ $roles['admin'] }}>

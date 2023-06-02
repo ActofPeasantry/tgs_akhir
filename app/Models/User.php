@@ -78,8 +78,8 @@ class User extends Authenticatable
             case UserRole::JAMAAH:
                 return 'Jamaah';
                 break;
-            case UserRole::SEKRE:
-                return 'Sekretaris';
+            case UserRole::PENGURUS:
+                return 'Pengurus Masjid';
                 break;
             case UserRole::ADMIN:
                 return 'Admin';
@@ -101,14 +101,14 @@ class User extends Authenticatable
     public function isAdmin(){
         return $this->hasAnyRole(UserRole::ADMIN);
     }
-    public function isSekre(){
-        return $this->hasAnyRole(UserRole::SEKRE);
+    public function isPENGURUS(){
+        return $this->hasAnyRole(UserRole::PENGURUS);
     }
     public function isJamaah(){
         return $this->hasAnyRole(UserRole::JAMAAH);
     }
-    public function isAdminOrSekre(){
-        return null !== $this->userRoles()->whereIn('role_id', [UserRole::ADMIN, UserRole::SEKRE])->first();
+    public function isAdminOrPENGURUS(){
+        return null !== $this->userRoles()->whereIn('role_id', [UserRole::ADMIN, UserRole::PENGURUS])->first();
     }
 
     /**

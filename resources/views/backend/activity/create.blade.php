@@ -46,16 +46,29 @@
 @endsection
 
 @push('child-scripts')
-    <script>
-        $(function(){
-            $('#example1').DataTable({
-                "paging": true,
-                "lengthChange": false,
-                "searching": false,
-                "ordering": true,
-                "info": true,
-                "autoWidth": false,
-                "responsive": true,
+    <script type="text/javascript">
+        $(function () {
+            $('#dtp_schedule-start').datetimepicker({
+                format:'DD-MM-YYYY HH:mm',
+                locale:'id',
+                icons: {
+                    time: "far fa-clock"
+                }
+            });
+            $('#dtp_schedule-end').datetimepicker({
+                useCurrent: false,
+                format:'DD-MM-YYYY HH:mm',
+                locale:'id',
+                icons: {
+                    time: "far fa-clock"
+                }
+            });
+
+            $("#dtp_schedule-start").on("change.datetimepicker", function (e) {
+                $('#dtp_schedule-end').datetimepicker('minDate', e.date);
+            });
+            $("#dtp_schedule-end").on("change.datetimepicker", function (e) {
+                $('#dtp_schedule-start').datetimepicker('maxDate', e.date);
             });
         });
     </script>

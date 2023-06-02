@@ -136,7 +136,7 @@
     </section>
 
     <!-- Right col -->
-    <section class="col-lg-8 connectedSortable">
+    <section class="col-lg-7 connectedSortable">
       <!-- Calendar -->
       <div class="card card-info">
           <div class="card-header border-0">
@@ -159,7 +159,9 @@
           <!-- /.card-header -->
           <div class="card-body pt-0">
             <!--The calendar -->
-            <div id="calendar" style="width: 100%"></div>
+            <div style="width: 95%; height: 50%">
+                <div id="calendar"></div>
+            </div>
           </div>
           <!-- /.card-body -->
       </div>
@@ -220,7 +222,6 @@
                 center: 'title',
                 right : '',
                 },
-                aspectRatio: 2.5,
                 themeSystem: 'bootstrap',
                 events: activities,
                 // testing seeding event form db
@@ -237,7 +238,7 @@
             });
 
             calendar.render();
-            $('#calendar').fullCalendar()
+            $('#calendar').fullCalendar();
         })
     </script>
 
@@ -297,8 +298,22 @@
           var barChartOptions = {
             responsive              : true,
             maintainAspectRatio     : false,
-            datasetFill             : false
-          }
+            datasetFill             : false,
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true,
+                        callback: function(value, index, values) {
+                            if(parseInt(value) >= 1000){
+                                return 'Rp.' + value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+                            } else {
+                                return 'Rp.' + value;
+                            }
+                        }
+                    }
+                }]
+            }
+        }
 
           new Chart(barChartCanvas, {
             type: 'bar',

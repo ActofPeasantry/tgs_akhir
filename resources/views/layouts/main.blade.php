@@ -26,6 +26,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <link rel="stylesheet" href="{{ asset('assets/plugins/toastr/toastr.min.css') }}">
         <!-- SweetAlert2 -->
         <link rel="stylesheet" href="{{ asset('assets/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css') }}">
+        <!-- DateRangePicker -->
+        <link rel="stylesheet" href="{{ asset('assets/plugins/daterangepicker/daterangepicker.css') }}">
+        <!-- TempusDominus -->
+        <link rel="stylesheet" href="{{ asset('assets/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">
+        <!-- JQueryUI -->
+        {{-- <link href='https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/ui-lightness/jquery-ui.css' rel='stylesheet'> --}}
 
     </head>
     <body class="hold-transition sidebar-mini">
@@ -33,7 +39,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
             <!-- Preloader -->
             <div class="preloader flex-column justify-content-center align-items-center">
-                <img class="animation__wobble" src="{{ asset("assets/dist/img/AdminLTELogo.png") }}" alt="AdminLTELogo" height="60" width="60">
+                <img class="animation__wobble" src="{{ asset("assets/dist/img/MosqueLogo.jpg") }}" alt="" height="60" width="60">
             </div>
 
             <!-- Navbar -->
@@ -49,8 +55,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <aside class="main-sidebar sidebar-dark-primary elevation-4">
                 <!-- Brand Logo -->
                 <a href="index3.html" class="brand-link">
-                    <img src="{{ asset('assets/dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-                    <span class="brand-text font-weight-light">AdminLTE 3</span>
+                    <img src="{{ asset('assets/dist/img/MosqueLogo.jpg') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+                    <span class="brand-text font-weight-light">Masjid Nurul Ikhlas</span>
                 </a>
 
                 <!-- Sidebar -->
@@ -124,14 +130,25 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
         <!-- REQUIRED SCRIPTS -->
 
-        <!-- jQuery -->
+
+        <!-- JQuery -->
+        {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" ></script> --}}
         <script src=" {{ asset("assets/plugins/jquery/jquery.min.js") }}"></script>
-        <!-- jQuery UI 1.11.4 -->
+
+        <!-- JQueryUI -->
+        {{-- <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" ></script> --}}
         <script src=" {{ asset("assets/plugins/jquery-ui/jquery-ui.min.js") }}"></script>
+
         <!-- Bootstrap 4 -->
         <script src=" {{ asset("assets/plugins/bootstrap/js/bootstrap.bundle.min.js") }}"></script>
         <!-- AdminLTE App -->
         <script src=" {{ asset("assets/dist/js/adminlte.min.js") }}"></script>
+        <!-- MomentWithLocaleJs -->
+        <script src="{{ asset('assets/plugins/moment/moment-with-locales.min.js') }}"></script>
+        <!-- DateRangePicker -->
+        <script src="{{ asset('assets/plugins/daterangepicker/daterangepicker.js') }}"></script>
+        <!-- TempusDominus -->
+        <script src="{{ asset('assets/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js') }}"></script>
         <!-- bs-custom-file-input -->
         <script src="{{ asset("assets/plugins/bs-custom-file-input/bs-custom-file-input.min.js") }}"></script>
         <!-- Datatables -->

@@ -91,7 +91,7 @@ class ActivityController extends Controller
     public function store(Request $request)
     {
         Activity::create($request->all());
-        return redirect()->route('activity.index')->with('success', 'Data berhasil ditambahkan');
+        return redirect()->route('activity.propose')->with('success', 'Data berhasil ditambahkan');
     }
 
     /**

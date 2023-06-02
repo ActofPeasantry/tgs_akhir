@@ -5,14 +5,14 @@
 @endsection
 
 @section('page_name')
-    <h1>Kegiatan Masjid</h1>
+    <h1>Menyetujui Kegiatan Masjid</h1>
 @endsection
 
 @section('breadcrumb')
     {{-- Custom helpers, cek app/Helpers/helpers.php dan composer.json di bagian file jalankan composer dump-autoload utk memakainya --}}
     {!!
         breadcrumb([
-            'Kegiatan Masjid' => 'Kegiatan Masjid'
+            'Menyetujui Kegiatan Masjid' => 'Menyetujui Kegiatan Masjid'
         ])
     !!}
 @endsection
@@ -48,8 +48,14 @@
                                 </div>
                             </td>
                             <td class="dtr-control sorting_1 text-center">{{ $activity->activityCategory->category_name }}</td>
-                            <td class="dtr-control sorting_1 text-center">{{ $activity->schedule_start }}</td>
-                            <td class="dtr-control sorting_1 text-center">{{ $activity->schedule_end }}</td>
+                            <td class="dtr-control sorting_1 text-center">
+                                {{ $activity->schedule_start->translatedFormat('d F Y') }}<br>
+                                {{ $activity->schedule_start->format('H:i') }}
+                            </td>
+                            <td class="dtr-control sorting_1 text-center">
+                                {{ $activity->schedule_end->translatedFormat('d F Y') }} <br>
+                                {{ $activity->schedule_end->translatedFormat('H:i') }}
+                            </td>
                             <td class="dtr-control sorting_1 text-center">{{ $activity->users->name }}</td>
                             <td class="dtr-control sorting_1 text-center">{{ submissionStatus($activity->submission_status) }}</td>
                             <td class="text-center">

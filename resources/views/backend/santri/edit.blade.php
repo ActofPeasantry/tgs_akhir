@@ -5,15 +5,15 @@
 @endsection
 
 @section('page_name')
-    <h1>Kategori Aktivitas</h1>
+    <h1>Ubah Santri</h1>
 @endsection
 
 @section('breadcrumb')
     {{-- Custom helpers, cek app/Helpers/helpers.php dan composer.json di bagian file jalankan composer dump-autoload utk memakainya --}}
     {!!
         breadcrumb([
-            'Santri' => route('santri.index'),
-            'Ubah Data' => 'Ubah Data'
+            'Pendaftaran Santri' => route('santri.index'),
+            'Ubah Data Santri' => 'Ubah Data Santri'
         ])
     !!}
 @endsection
@@ -51,6 +51,12 @@
         $(document).ready(function(){
             $(":input").inputmask();
         });
+        // $("#telp_number").on({
+        //     keyup: function () {
+        //         $('#hidden_telp_number').val($('#telp_number').val().replace(/\D/g, ""));
+        //         console.log($('#telp_number').val().replace(/\D/g, ""));
+        //     }
+        // });
     </script>
     <script>
         $(function () {

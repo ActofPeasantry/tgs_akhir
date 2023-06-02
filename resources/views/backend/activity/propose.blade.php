@@ -44,8 +44,14 @@
                                 {{ $activity->activity_name }} <br>
                             </td>
                             <td class="dtr-control sorting_1 text-center">{{ $activity->activityCategory->category_name }}</td>
-                            <td class="dtr-control sorting_1 text-center">{{ $activity->schedule_start }}</td>
-                            <td class="dtr-control sorting_1 text-center">{{ $activity->schedule_end }}</td>
+                            <td class="dtr-control sorting_1 text-center">
+                                {{ $activity->schedule_start->translatedFormat('d F Y') }} <br>
+                                {{ $activity->schedule_start->format('H:i') }}
+                            </td>
+                            <td class="dtr-control sorting_1 text-center">
+                                {{ $activity->schedule_end->translatedFormat('d F Y') }} <br>
+                                {{ $activity->schedule_end->translatedFormat('H:i') }}
+                            </td>
                             <td class="dtr-control sorting_1 text-center">{{ SubmissionStatus($activity->submission_status) }}</td>
                             <td class="text-center">
                                 <a class='btn btn-primary' href="{{route('activity.show', [$activity->id])}}">Detail</a>
@@ -78,6 +84,7 @@
                 "info": true,
                 "autoWidth": false,
                 "responsive": true,
+                "order": [4,'desc']
             });
         });
     </script>

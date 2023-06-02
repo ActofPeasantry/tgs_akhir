@@ -68,7 +68,7 @@ function rolesName($role){
             return "Jamaah";
             break;
         case 24:
-            return "Sekretaris";
+            return "Pengurus Masjid";
             break;
         case 35:
             return "Admin";

@@ -9,21 +9,22 @@
 <?php $__env->startSection('breadcrumb'); ?>
     
     <?php echo breadcrumb([
-            'Aset' => 'Aset'
+            'Mengajukan Aset' => route('asset.propose'),
+            'Ubah Aset' => 'Ubah Aset'
         ]); ?>
 
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('content'); ?>
-   <div class="card card-prmary col-md-10">
+    <div class="card card-primary">
         <div class="card-header">
             <h5 class="card-title">Ubah Data</h5>
         </div>
         <div class="card-body">
             <div class="container-fluid">
                 <form action="<?php echo e(route('asset.update', $asset->id)); ?>" method="POST">
-                <?php echo csrf_field(); ?>
-                <?php echo method_field("PATCH"); ?>
+                    <?php echo csrf_field(); ?>
+                    <?php echo method_field("PATCH"); ?>
                     <?php echo $__env->make('backend.include.asset_form', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
                 </form>
             </div>

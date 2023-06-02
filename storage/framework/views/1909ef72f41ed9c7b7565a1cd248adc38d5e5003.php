@@ -1,29 +1,13 @@
 <?php if(isset($balance->id)): ?>
+    
     <div class="form-group mb-3">
         <label class="form-label" for="date_received">Tanggal Diterima</label>
-        <input id="date_received" type="date" class="form-control <?php $__errorArgs = ['date_received'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>" name="date_received"
-        value="<?php echo e(old('date_received', $balance->date_received->format('Y-m-d'))); ?>"
-        required autocomplete="date_received">
-
-        <?php $__errorArgs = ['date_received'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?>
-        <span class="invalid-feedback" role="alert">
-            <strong><?php echo e($message); ?></strong>
-        </span>
-        <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>
+        <div class="input-group date" id="dtp_date_received" data-target-input="nearest">
+            <input name="date_received" type="text" class="form-control datetimepicker-input" data-target="#dtp_date_received" value="<?php echo e(old('date_received', $balance->date_received->format('d-m-Y'))); ?>" required />
+            <div class="input-group-append" data-target="#dtp_date_received" data-toggle="datetimepicker">
+                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+            </div>
+        </div>
     </div>
 
     <div class="form-group col-mb-3">
@@ -100,7 +84,7 @@ unset($__errorArgs, $__bag); ?>
 
     <div class="form-group mb-3">
         <label class="form-label" for="total_amount">Jumlah Dana (Rp)</label>
-        <input id="total_amount" type="number" class="form-control <?php $__errorArgs = ['total_amount'];
+        <input id="total_amount" type="text" class="form-control <?php $__errorArgs = ['total_amount'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -124,33 +108,18 @@ if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
     </div>
+    <input type="hidden"  id="hidden_total_amount" name="total_amount" value="">
     <input type="hidden"  id="user_id" name="user_id" value="<?php echo e(auth()->user()->id); ?>">
 <?php else: ?>
+    
     <div class="form-group mb-3">
         <label class="form-label" for="date_received">Tanggal Diterima</label>
-        <input id="date_received" type="date" class="form-control <?php $__errorArgs = ['date_received'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>" name="date_received"
-        value="<?php echo e(old('date_received')); ?>"
-        required autocomplete="date_received">
-
-        <?php $__errorArgs = ['date_received'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?>
-        <span class="invalid-feedback" role="alert">
-            <strong><?php echo e($message); ?></strong>
-        </span>
-        <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>
+        <div class="input-group date" id="dtp_date_received" data-target-input="nearest">
+            <input name="date_received" type="text" class="form-control datetimepicker-input" data-target="#dtp_date_received" required />
+            <div class="input-group-append" data-target="#dtp_date_received" data-toggle="datetimepicker">
+                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+            </div>
+        </div>
     </div>
 
     <div class="form-group col-mb-3">
@@ -226,16 +195,14 @@ unset($__errorArgs, $__bag); ?>
 
     <div class="form-group mb-3">
         <label class="form-label" for="total_amount">Jumlah Dana (Rp)</label>
-        <input id="total_amount" type="number" class="form-control <?php $__errorArgs = ['total_amount'];
+        <input id="total_amount" type="text" class="form-control <?php $__errorArgs = ['total_amount'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" name="total_amount"
-        value="<?php echo e(old('total_amount')); ?>"
-        required autocomplete="total_amount">
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('total_amount')); ?>" required autocomplete="total_amount">
 
         <?php $__errorArgs = ['total_amount'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -250,6 +217,7 @@ if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
     </div>
+    <input type="hidden"  id="hidden_total_amount" name="total_amount" value="">
     <input type="hidden"  id="user_id" name="user_id" value="<?php echo e(auth()->user()->id); ?>">
 <?php endif; ?>
 

@@ -5,14 +5,15 @@
 @endsection
 
 @section('page_name')
-    <h1>Kelola pengguna</h1>
+    <h1>Ubah Data Pengguna</h1>
 @endsection
 
 @section('breadcrumb')
     {{-- Custom helpers, cek app/Helpers/helpers.php dan composer.json di bagian file jalankan composer dump-autoload utk memakainya --}}
     {!!
         breadcrumb([
-            'Kelola pengguna' => 'Kelola pengguna'
+            'Kelola pengguna' => route('admin.user.index'),
+            'Ubah data pengguna' => 'Ubah data pengguna'
         ])
     !!}
 @endsection

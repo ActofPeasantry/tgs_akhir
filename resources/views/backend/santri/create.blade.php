@@ -50,6 +50,13 @@
         $(document).ready(function(){
             $(":input").inputmask();
         });
+
+        // $("#telp_number").on({
+        //     keyup: function () {
+        //         $('#hidden_telp_number').val($('#telp_number').val().replace(/\D/g, ""));
+        //         console.log($('#telp_number').val().replace(/\D/g, ""));
+        //     }
+        // });
     </script>
     <script>
         $(function () {

@@ -22,8 +22,8 @@
     <div class="form-group mb-3">
         <label class="form-label" for="quality">Kualitas Aset</label>
         <select name="quality" id="quality" class="form-control">
-            <option value=1>Bagus</option>
-            <option value=2>Tidak Bagus</option>
+            <option value=1>Baik</option>
+            <option value=2>Tidak Baik</option>
         </select>
     </div>
 

@@ -44,7 +44,7 @@ class AssetController extends Controller
     public function store(Request $request)
     {
         Asset::create($request->all());
-        return redirect()->route('asset.index')->with('success', 'Data berhasil ditambahkan');
+        return redirect()->route('asset.propose')->with('success', 'Data berhasil ditambahkan');
     }
 
     /**
@@ -96,7 +96,7 @@ class AssetController extends Controller
     public function destroy(Asset $asset)
     {
         Asset::destroy($asset->id);
-        return redirect()->route('asset.index')->with('error', 'Data berhasil dihapus');
+        return redirect()->route('asset.propose')->with('error', 'Data berhasil dihapus');
     }
 
     public function approve(Asset $asset)
