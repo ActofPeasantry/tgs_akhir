@@ -62,8 +62,9 @@
                     <label for="all_asset">Ceklis Seluruh Data</label>
                 </div>
                 <div class="col-8">
-                    <button id="accept_checked" name="accept_checked" value="1" onclick="return confirm('Apakah anda yakin?')" class="btn btn-success check_all_button" type="submit" disabled>Terima data diceklis</button>
-                    <button id="accept_checked" name="accept_checked" value="2" onclick="return confirm('Apakah anda yakin?')" class="btn btn-danger check_all_button" type="submit" disabled>Tolak data diceklis</button>
+                    <button id="accept_button" class="btn btn-success check_all_button show_accept" type="submit" disabled>Terima data diceklis</button>
+                    <button id="deny_button" class="btn btn-danger check_all_button show_deny" type="submit" disabled>Tolak data diceklis</button>
+                    <input type="hidden" id="accept_checked" name="accept_checked" value="">
                 </div>
             </div>
         </div>
@@ -127,6 +128,16 @@
             }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
         });
     </script>
+
+    <script>
+        $('.show_accept').click(function() {
+            $('#accept_checked').val(1);
+        })
+        $('.show_deny').click(function() {
+            $('#accept_checked').val(2);
+        })
+    </script>
+
     <script>
         // Toggle collapse
         $('#card-collapse').CardWidget('toggle');

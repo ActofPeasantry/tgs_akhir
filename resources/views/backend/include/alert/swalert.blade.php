@@ -84,5 +84,65 @@
            }
          });
      });
+    $('.show_accept').click(function(event) {
+         var form =  $(this).closest("form");
+         var name = $(this).data("name");
+         event.preventDefault();
+         Swal.fire({
+            title: "Apakah Anda Yakin?",
+            icon: 'question',
+            iconColor: 'red',
+            text: "Data yang sudah diterima tidak dapat dikembalikan",
+            showCancelButton: true,
+            confirmButtonText: "Terima",
+            cancelButtonText: "Batal",
+            confirmButtonColor: 'green',
+            cancelButtonColor: '#d33',
+         })
+         .then((result) => {
+           if (result.isConfirmed) {
+                swal.fire(
+                    'DITERIMA!',
+                    'Data Berhasil diterima.',
+                    'success'
+                )
+                // refresh page after 2 seconds
+                setTimeout(function(){
+                    location.reload();
+                },2000);
+                form.submit();
+           }
+         });
+     });
+    $('.show_deny').click(function(event) {
+         var form =  $(this).closest("form");
+         var name = $(this).data("name");
+         event.preventDefault();
+         Swal.fire({
+            title: "Apakah Anda Yakin?",
+            icon: 'question',
+            iconColor: 'red',
+            text: "Data yang sudah ditolak tidak dapat dikembalikan",
+            showCancelButton: true,
+            confirmButtonText: "Tolak",
+            cancelButtonText: "Batal",
+            confirmButtonColor: '#d33',
+            cancelButtonColor: 'green',
+         })
+         .then((result) => {
+           if (result.isConfirmed) {
+                swal.fire(
+                    'DITOLAK!',
+                    'Data Berhasil ditolak.',
+                    'success'
+                )
+                // refresh page after 2 seconds
+                setTimeout(function(){
+                    location.reload();
+                },2000);
+                form.submit();
+           }
+         });
+     });
 </script>
 
