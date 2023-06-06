@@ -18,139 +18,130 @@
 @endsection
 
 @section('content')
-    <!-- Main content -->
-    <section class="content">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col">
-              <div class="card card-primary">
-                <div class="card-body p-0">
-                  <!-- THE CALENDAR -->
-                  <div id="calendar"></div>
+    <div class="card">
+        <div class="card-box">
+            <form action="{{ route("activity.search") }}" method="POST">
+            @csrf
+            <div class="text-center mt-5">
+                <div class="form-group">
+                    <div class="row">
+                        <h5 class="col-2 mt-1">Pilih Data</h5>
+                        <div class="col-4 ">
+                            <div class="input-group input-group-sm">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Bulan</span>
+                                </div>
+                                <select class="custom-select" name="month[]" id="month">
+                                    @foreach ( monthNameArray() as $value => $month_name)
+                                        <option value="{{ $value }}" {{ $month == $value ? 'selected' : ''}} >{{ $month_name }}</option>
+                                    @endforeach
+                                </select>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="input-group input-group-sm">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Tahun</span>
+                                </div>
+                                <select class="custom-select" name="year[]" id="year">
+                                    @foreach ($years as $year_list => $value)
+                                        <option value="{{ $value }}" {{ $value == $year ? 'selected' : ''}} >{{ $value }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-1">
+                            <div class="input-group">
+                                <button id="search_button" name="search_button" class="btn btn-primary btn-sm waves-effect waves-light btn">Submit</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <!-- /.card-body -->
-              </div>
-              <!-- /.card -->
             </div>
-            <!-- /.col -->
-          </div>
-          <!-- /.row -->
-        </div><!-- /.container-fluid -->
-    </section>
-      <!-- /.content -->
+            </form>
+        </div>
+    </div>
 
-    @include('backend.include.modal.activity_detail_modal')
-
-    <!-- Control Sidebar -->
-    <aside class="control-sidebar control-sidebar-dark">
-      <!-- Control sidebar content goes here -->
-    </aside>
-    <!-- /.control-sidebar -->
-  </div>
+    <div class="card card-primary">
+        <div class="card-header">
+            <h5 class="card-title">Daftar Kegiatan</h5>
+            <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                    <i class="fas fa-minus"></i>
+                </button>
+            </div>
+        </div>
+        <div class="card-body">
+            <table id="example1" class="table table-bordered table-hover dataTable dtr-inline" role="grid" aria-describedby="example1_info">
+                <thead>
+                    <tr role="row">
+                        <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column descending" aria-sort="ascending">Nama Kegiatan</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Kategori Kegiatan</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Tanggal Mulai</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Tanggal Selesai</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Status</th>
+                        <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Opsi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($activities as $activity)
+                        <tr class="">
+                            <td class="dtr-control sorting_1 text-center" tabindex="0">
+                                {{ $activity->activity_name }} <br>
+                            </td>
+                            <td class="dtr-control sorting_1 text-center">{{ $activity->activityCategory->category_name }}</td>
+                            <td class="dtr-control sorting_1 text-center">
+                                {{ $activity->schedule_start->translatedFormat('d F Y') }} <br>
+                                {{ $activity->schedule_start->format('H:i') }}
+                            </td>
+                            <td class="dtr-control sorting_1 text-center">
+                                {{ $activity->schedule_end->translatedFormat('d F Y') }} <br>
+                                {{ $activity->schedule_end->translatedFormat('H:i') }}
+                            </td>
+                            <td class="dtr-control sorting_1 text-center">{{ SubmissionStatus($activity->submission_status) }}</td>
+                            <td class="text-center">
+                                <a class='btn btn-primary' href="{{route('activity.show', [$activity->id])}}">Detail</a>
+                                <a class='btn btn-warning' href="{{route('activity.edit', [$activity->id])}}">Edit</a>
+                                <form action="{{route('activity.destroy', [$activity->id])}}" method="post" style="display: inline">
+                                    {{method_field('DELETE')}}
+                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                    <button class="btn btn-danger show_confirm" data-toggle="tooltip">Delete</button>
+                                    {{-- <button onclick="return confirm('Apakah anda yakin?')" class="btn btn-danger" type="submit">Delete</button> --}}
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+                <tfoot>
+                </tfoot>
+              </table>
+        </div>
+    </div>
 @endsection
 
 @push('child-scripts')
-    {{-- <script>
+    <script>
         $(function(){
             $('#example1').DataTable({
                 "paging": true,
-                "lengthChange": false,
-                "searching": false,
+                "lengthChange": true,
+                "searching": true,
                 "ordering": true,
                 "info": true,
                 "autoWidth": false,
                 "responsive": true,
-            });
+                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"],
+                "order": [2,'desc']
+            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
         });
-    </script> --}}
-
-<!-- Page specific script -->
-<script>
-    $(function () {
-
-      /* initialize the external events
-       -----------------------------------------------------------------*/
-    //   function ini_events(ele) {
-    //     ele.each(function () {
-
-    //       // create an Event Object (https://fullcalendar.io/docs/event-object)
-    //       // it doesn't need to have a start or end
-    //       var eventObject = {
-    //         title: $.trim($(this).text()) // use the element's text as the event title
-    //       }
-
-    //       // store the Event Object in the DOM element so we can get to it later
-    //       $(this).data('eventObject', eventObject)
-
-    //       // make the event draggable using jQuery UI
-    //       $(this).draggable({
-    //         zIndex        : 1070,
-    //         revert        : true, // will cause the event to go back to its
-    //         revertDuration: 0  //  original position after the drag
-    //       })
-
-    //     })
-    //   }
-
-    //   ini_events($('#external-events div.external-event'))
-
-      /* initialize the calendar
-       -----------------------------------------------------------------*/
-      //Date for the calendar events (dummy data)
-      var date = new Date()
-      var d    = date.getDate(),
-          m    = date.getMonth(),
-          y    = date.getFullYear()
-
-      var Calendar = FullCalendar.Calendar;
-      var Draggable = FullCalendar.Draggable;
-
-      // var containerEl = document.getElementById('external-events');
-      var checkbox = document.getElementById('drop-remove');
-      var calendarEl = document.getElementById('calendar');
-      var activities = @json($events);
-    //   var modal = document.getElementById('modal-xl')
-      console.log(activities);
-
-      // initialize the external events
-      // -----------------------------------------------------------------
-
-      // new Draggable(containerEl, {
-      //   itemSelector: '.external-event',
-      //   eventData: function(eventEl) {
-      //     return {
-      //       title: eventEl.innerText,
-      //       backgroundColor: window.getComputedStyle( eventEl ,null).getPropertyValue('background-color'),
-      //       borderColor: window.getComputedStyle( eventEl ,null).getPropertyValue('background-color'),
-      //       textColor: window.getComputedStyle( eventEl ,null).getPropertyValue('color'),
-      //     };
-      //   }
-      // });
-
-      var calendar = new Calendar(calendarEl, {
-        headerToolbar: {
-          left  : 'prev,next today',
-          center: 'title',
-          right : 'dayGridMonth,timeGridWeek,timeGridDay'
-        },
-        themeSystem: 'bootstrap',
-        events: activities,
-        // testing seeding event form db
-        // event:
-        editable  : false,
-        droppable : true, // this allows things to be dropped onto the calendar !!!
-        drop      : function(info) {
-          // is the "remove after drop" checkbox checked?
-          if (checkbox.checked) {
-            // if so, remove the element from the "Draggable Events" list
-            info.draggedEl.parentNode.removeChild(info.draggedEl);
-          }
-        },
-      });
-
-      calendar.render();
-    //   $('#calendar').fullCalendar()
-    })
-</script>
-@include('backend.include.alert.toastr')
+    </script>
+    <script>
+        function search(){
+            var month = $('#month').val();
+            var year = $('#year').val();
+            $.ajax({
+                type: "Get",
+                url: "{{ url('activity/search') }}",
+                data: "month" +month
+            })
+        }
+    </script>
+    @include('backend.include.alert.toastr')
+    @include('backend.include.alert.swalert')
 @endpush

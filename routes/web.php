@@ -75,6 +75,7 @@ Route::middleware(['auth', 'auth.accessAdminAndSekre'])->group(function(){
     Route::resource('/asset_categories', AssetCategoryController::class);
     Route::resource('/asset_detail', AssetDetailController::class);
 
+    Route::post('/activity/search', [ActivityController::class, 'search'])->name('activity.search');
     Route::get('/activity/propose', [ActivityController::class, 'propose'])->name('activity.propose');
     Route::resource('/activity', ActivityController::class);
     Route::resource('/activity_categories', ActivityCategoryController::class);

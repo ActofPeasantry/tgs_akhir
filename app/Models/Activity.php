@@ -30,5 +30,36 @@ class Activity extends Model
     {
         return $this->belongsTo('App\Models\User', 'user_id');
     }
-    use HasFactory;
+
+    public function getYear(){
+        $result=[];
+        $year_activities = Activity::orderBy('schedule_start','DESC')->pluck('schedule_start');
+
+        $x = $year_activities[0]->format('Y');
+        array_push($result, $x);
+
+        foreach ($year_activities as $year) {
+            if ($year->format('Y') != $x) {
+                $x = $year->format('Y');
+                array_push($result, $x);
+            }
+        }
+        return $result;
+    }
+
+    public function getMonth(){
+        $result=[];
+        $month_activities = Activity::orderBy('schedule_start','ASC')->whereYear('schedule_start', date('Y'))->pluck('schedule_start');
+
+        $x = $month_activities[0]->format('m');
+        array_push($result, $x);
+
+        foreach ($month_activities as $month) {
+            if ($month->format('m') != $x) {
+                $x = $month->format('m');
+                array_push($result, $x);
+            }
+        }
+        return $result;
+    }
 }

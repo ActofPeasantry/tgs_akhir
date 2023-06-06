@@ -16,59 +16,14 @@ class ActivityController extends Controller
      */
     public function index()
     {
-        $events = array();
-        $activities = Activity::all()->where('submission_status', 1);
-        // dd($activities);
-        foreach($activities as $activity){
-            switch ($activity->status) {
-                case '0':
-                    $events[] = [
-                        'id' => $activity->id,
-                        'url' => route('activity.show', $activity->id),
-                        'title' => $activity->activity_name,
-                        'start' => $activity->schedule_start,
-                        'end' => $activity->schedule_end,
-                        'backgroundColor'=> '#00c0ef', //Info (aqua)
-                        'borderColor'    => '#00c0ef' //Info (aqua)
-                    ];
-                    break;
-                case '1':
-                    $events[] = [
-                        'id' => $activity->id,
-                        'url' => route('activity.show', $activity->id),
-                        'title' => $activity->activity_name,
-                        'start' => $activity->schedule_start,
-                        'end' => $activity->schedule_end,
-                        'backgroundColor'=> '#ffc107 ', //Warning (yellow)
-                        'borderColor'    => '#ffc107 ' //Warning (yellow)
-                    ];
-                    break;
-                case '2':
-                    $events[] = [
-                        'id' => $activity->id,
-                        'url' => route('activity.show', $activity->id),
-                        'title' => $activity->activity_name,
-                        'start' => $activity->schedule_start,
-                        'end' => $activity->schedule_end,
-                        'backgroundColor'=> '#00a65a', //Success (green)
-                        'borderColor'    => '#00a65a', //Success (green)
-                    ];
-                    break;
-                default:
-                    $events[] = [
-                        'id' => $activity->id,
-                        'url' => route('activity.show', $activity->id),
-                        'title' => $activity->activity_name,
-                        'start' => $activity->schedule_start,
-                        'end' => $activity->schedule_end,
-                        'backgroundColor'=> '#dc3545', //red
-                        'borderColor'    => '#dc3545' //red
-                    ];
-                    break;
-            }
-        }
-        // dd($events);
-        return view('backend.activity.index', compact('activities', 'events'));
+        $new_activity = new Activity;
+        $years = $new_activity->getYear();
+        $year = $years[0];
+        $month = 0;
+
+        $new_activities =  Activity::oldest();
+        $activities = $new_activities->whereYear('schedule_start', $year)->orderBy('schedule_start', 'DESC')->get();
+        return view('backend.activity.index', compact('activities', 'month', 'year', 'years', ));
     }
 
     /**
@@ -152,5 +107,25 @@ class ActivityController extends Controller
         $user = User::find(auth()->user()->id);
         $activities = $user->Activities()->get();
         return view('backend.activity.propose', compact('activities'));
+    }
+
+    public function search(Request $request){
+        // dd($request->all());
+        $new_activity = new Activity;
+        $years = $new_activity->getYear();
+
+        $month = $request->month[0];
+        $year = $request->year[0];
+        // dd($year);
+        if ($month != 0) {
+            $new_activities =  Activity::oldest();
+            $activities = $new_activities->whereMonth('schedule_start', $month)->whereYear('schedule_start', $year)->orderBy('schedule_start', 'DESC')->get();
+            // dd($activities);
+            return view('backend.activity.index', compact('activities', 'month', 'year', 'years', ));
+        }
+
+        $new_activities =  Activity::oldest();
+        $activities = $new_activities->whereYear('schedule_start', $year)->orderBy('schedule_start', 'DESC')->get();
+        return view('backend.activity.index', compact('activities', 'month', 'year', 'years', ));
     }
 }
