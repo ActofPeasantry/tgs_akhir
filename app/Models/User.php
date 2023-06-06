@@ -101,13 +101,13 @@ class User extends Authenticatable
     public function isAdmin(){
         return $this->hasAnyRole(UserRole::ADMIN);
     }
-    public function isPENGURUS(){
+    public function isSekre(){
         return $this->hasAnyRole(UserRole::PENGURUS);
     }
     public function isJamaah(){
         return $this->hasAnyRole(UserRole::JAMAAH);
     }
-    public function isAdminOrPENGURUS(){
+    public function isAdminOrSekre(){
         return null !== $this->userRoles()->whereIn('role_id', [UserRole::ADMIN, UserRole::PENGURUS])->first();
     }
 
