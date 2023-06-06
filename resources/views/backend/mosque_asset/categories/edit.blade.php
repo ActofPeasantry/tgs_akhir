@@ -1,6 +1,6 @@
 @extends('layouts/main')
 
-@section('title')Aset
+@section('title')
     <title>SMKK | Debet&Kredit</title>
 @endsection
 
@@ -12,13 +12,14 @@
     {{-- Custom helpers, cek app/Helpers/helpers.php dan composer.json di bagian file jalankan composer dump-autoload utk memakainya --}}
     {!!
         breadcrumb([
-            'Aset' => 'Aset'
+            'Kategori Aset' => route('asset_categories.index'),
+            'Ubah Kategori Aset' => 'Ubah Kategori Aset'
         ])
     !!}
 @endsection
 
 @section('content')
-   <div class="card col-md-10">
+   <div class="card card-primary">
         <div class="card-header">
             <h5 class="card-title">Ubah Data</h5>
         </div>

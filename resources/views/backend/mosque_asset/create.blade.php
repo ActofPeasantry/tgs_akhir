@@ -12,7 +12,8 @@
     {{-- Custom helpers, cek app/Helpers/helpers.php dan composer.json di bagian file jalankan composer dump-autoload utk memakainya --}}
     {!!
         breadcrumb([
-            'Aset' => 'Aset'
+            'Mengajukan Aset' => route('asset.propose'),
+            'Tambah Aset' => 'Tambah Aset'
         ])
     !!}
 @endsection

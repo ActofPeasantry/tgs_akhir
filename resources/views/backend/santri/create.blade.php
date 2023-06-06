@@ -12,7 +12,7 @@
     {{-- Custom helpers, cek app/Helpers/helpers.php dan composer.json di bagian file jalankan composer dump-autoload utk memakainya --}}
     {!!
         breadcrumb([
-            'Santri' => route('santri.index'),
+            'Pendaftaran Santri' => route('santri.index'),
             'Daftar Santri' => 'Daftar Santri'
         ])
     !!}

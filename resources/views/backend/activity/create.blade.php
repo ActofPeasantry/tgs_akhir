@@ -12,7 +12,7 @@
     {{-- Custom helpers, cek app/Helpers/helpers.php dan composer.json di bagian file jalankan composer dump-autoload utk memakainya --}}
     {!!
         breadcrumb([
-            'Mengajukan Kegiatan' => route('activity.propose'),
+            'Mengajukan Kegiatan Masjid' => route('activity.propose'),
             'Tambah Kegiatan' => 'Tambah Kegiatan'
         ])
     !!}

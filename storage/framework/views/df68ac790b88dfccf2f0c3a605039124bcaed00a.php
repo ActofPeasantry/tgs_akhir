@@ -1,4 +1,4 @@
-<?php $__env->startSection('title'); ?>Aset
+<?php $__env->startSection('title'); ?>
     <title>SMKK | Debet&Kredit</title>
 <?php $__env->stopSection(); ?>
 
@@ -9,13 +9,14 @@
 <?php $__env->startSection('breadcrumb'); ?>
     
     <?php echo breadcrumb([
-            'Aset' => 'Aset'
+            'Aset' => route('asset.index'),
+            'Ubah Kategori Aset' => 'Ubah Kategori Aset'
         ]); ?>
 
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('content'); ?>
-   <div class="card col-md-10">
+   <div class="card card-primary">
         <div class="card-header">
             <h5 class="card-title">Ubah Data</h5>
         </div>

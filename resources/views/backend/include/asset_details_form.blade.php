@@ -3,9 +3,8 @@
     <div class="form-group mb-3">
         <label class="form-label" for="quality">Kualitas Aset</label>
         <select name="quality" id="quality" class="form-control">
-            <option value="1" {{ old('quality', $as_detail->quality) == 1 ? "selected" : ''}}>Bagus</option>
-            <option value="2" {{ old('quality', $as_detail->quality) == 2 ? "selected" : ''}}>Sedang</option>
-            <option value="3" {{ old('quality', $as_detail->quality) == 3 ? "selected" : ''}}>Buruk</option>
+            <option value="1" {{ old('quality', $as_detail->quality) == 1 ? "selected" : ''}}>Baik</option>
+            <option value="2" {{ old('quality', $as_detail->quality) == 2 ? "selected" : ''}}>Tidak Baik</option>
         </select>
     </div>
 

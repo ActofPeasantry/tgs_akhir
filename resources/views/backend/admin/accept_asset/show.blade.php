@@ -12,7 +12,7 @@
     {{-- Custom helpers, cek app/Helpers/helpers.php dan composer.json di bagian file jalankan composer dump-autoload utk memakainya --}}
     {!!
         breadcrumb([
-            'Setujui Aset Masjid' => route('admin.accept_asset.index'),
+            'Menyetujui Aset Masjid' => route('admin.accept_asset.index'),
             'Detail Aset' => 'Detail Aset'
         ])
     !!}

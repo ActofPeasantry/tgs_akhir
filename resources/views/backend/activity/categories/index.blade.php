@@ -5,14 +5,14 @@
 @endsection
 
 @section('page_name')
-    <h1>Kategori Kegiatan</h1>
+    <h1>Kategori Kegiatan Masjid</h1>
 @endsection
 
 @section('breadcrumb')
     {{-- Custom helpers, cek app/Helpers/helpers.php dan composer.json di bagian file jalankan composer dump-autoload utk memakainya --}}
     {!!
         breadcrumb([
-            'Kegiatan' => 'Kegiatan'
+            'Kategori Kegiatan Masjid' => ' Kategori Kegiatan Masjid'
         ])
     !!}
 @endsection

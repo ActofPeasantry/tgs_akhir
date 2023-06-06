@@ -5,20 +5,21 @@
 @endsection
 
 @section('page_name')
-    <h1>Kategori Aktivitas</h1>
+    <h1>Kategori Kegiatan Masjid</h1>
 @endsection
 
 @section('breadcrumb')
     {{-- Custom helpers, cek app/Helpers/helpers.php dan composer.json di bagian file jalankan composer dump-autoload utk memakainya --}}
     {!!
         breadcrumb([
-            'Aktivitas' => 'Aktivitas'
+            'Kegiatan' => route('activity_categories.index'),
+            'Ubah Kategori Kegiatan Masjid' => 'Ubah Kategori Kegiatan Masjid'
         ])
     !!}
 @endsection
 
 @section('content')
-   <div class="card col-md-10">
+   <div class="card primary">
         <div class="card-header">
             <h5 class="card-title">Ubah Data</h5>
         </div>

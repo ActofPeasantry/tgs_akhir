@@ -9,7 +9,8 @@
 <?php $__env->startSection('breadcrumb'); ?>
     
     <?php echo breadcrumb([
-            'Aset' => 'Aset'
+            'Mengajukan Aset' => route('asset.propose'),
+            'Tambah Aset' => 'Tambah Aset'
         ]); ?>
 
 <?php $__env->stopSection(); ?>

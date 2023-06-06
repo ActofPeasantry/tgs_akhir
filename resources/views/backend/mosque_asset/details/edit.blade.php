@@ -22,7 +22,7 @@
 @section('content')
     <div class="card card-primary">
         <div class="card-header">
-            <h5 class="card-title">Tambah Data</h5>
+            <h5 class="card-title">Ubah Data</h5>
         </div>
         <div class="card-body">
             <div class="container-fluid">

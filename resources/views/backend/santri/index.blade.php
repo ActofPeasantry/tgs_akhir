@@ -20,7 +20,7 @@
 @section('content')
    <div class="card card-primary">
         <div class="card-header">
-            <h5 class="card-title">Daftar Kegiatan</h5>
+            <h5 class="card-title">Pendaftaran Santri</h5>
             <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                     <i class="fas fa-minus"></i>

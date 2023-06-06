@@ -12,7 +12,7 @@
     {{-- Custom helpers, cek app/Helpers/helpers.php dan composer.json di bagian file jalankan composer dump-autoload utk memakainya --}}
     {!!
         breadcrumb([
-            'Aset Masjid' => 'Aset Masjid'
+            'Lihat Aset Masjid' => 'Lihat Aset Masjid'
         ])
     !!}
 @endsection

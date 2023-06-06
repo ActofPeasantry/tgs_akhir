@@ -12,7 +12,8 @@
     {{-- Custom helpers, cek app/Helpers/helpers.php dan composer.json di bagian file jalankan composer dump-autoload utk memakainya --}}
     {!!
         breadcrumb([
-            'Laporan Keuangan' => 'Laporan Keuangan'
+            'Kategori Laporan Keuangan' => route('balance_categories.index'),
+            'Tambah Kategori Laporan Keuangan' => 'Tambah Kategori Laporan Keuangan'
         ])
     !!}
 @endsection
