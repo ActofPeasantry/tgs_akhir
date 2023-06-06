@@ -3,7 +3,7 @@
     
     <li class="nav-header"> Navigasi </li>
     <li class="nav-item">
-        <a href="/home" class="nav-link">
+        <a href="/home" class="nav-link <?php if(Route::is('dashboard')): ?> <?php echo e('active'); ?> <?php endif; ?>">
             <i class="nav-icon fas fa-desktop"></i>
             <p> Dashboard </p>
         </a>
@@ -20,7 +20,7 @@
             </a>
             <ul class="nav nav-treeview">
                 <li class="nav-item">
-                    <a href="<?php echo e(route('admin.user.index')); ?>" class="nav-link">
+                    <a href="<?php echo e(route('admin.user.index')); ?>" class="nav-link <?php if(Route::is('admin.user.index')): ?> <?php echo e('active'); ?> <?php endif; ?>">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Lihat User</p>
                     </a>
@@ -41,14 +41,14 @@
             </a>
             <ul class="nav nav-treeview">
                 <li class="nav-item">
-                    <a href="<?php echo e(route('balance.index')); ?>" class="nav-link">
+                    <a href="<?php echo e(route('balance.index')); ?>" class="nav-link <?php if(Route::is('balance.index')): ?> <?php echo e('active'); ?> <?php endif; ?>">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Lihat Laporan Keuangan</p>
                     </a>
                 </li>
                 
                 <li class="nav-item">
-                    <a href="<?php echo e(route('balance_categories.index')); ?>" class="nav-link">
+                    <a href="<?php echo e(route('balance_categories.index')); ?>" class="nav-link <?php if(Route::is('balance_categories.index')): ?> <?php echo e('active'); ?> <?php endif; ?>">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Lihat Kategori</p>
                     </a>
@@ -64,26 +64,26 @@
             </a>
             <ul class="nav nav-treeview">
                 <li class="nav-item">
-                    <a href="<?php echo e(route('activity.index')); ?>" class="nav-link">
+                    <a href="<?php echo e(route('activity.index')); ?>" class="nav-link <?php if(Route::is('activity.index')): ?> <?php echo e('active'); ?> <?php endif; ?>">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Lihat Kegiatan</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="<?php echo e(route('activity_categories.index')); ?>" class="nav-link">
+                    <a href="<?php echo e(route('activity_categories.index')); ?>" class="nav-link <?php if(Route::is('activity_categories.index')): ?> <?php echo e('active'); ?> <?php endif; ?>">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Lihat Kategori Kegiatan</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="<?php echo e(route('activity.propose')); ?>" class="nav-link">
+                    <a href="<?php echo e(route('activity.propose')); ?>" class="nav-link <?php if(Route::is('activity.propose')): ?> <?php echo e('active'); ?> <?php endif; ?>">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Mengajukan Kegiatan</p>
                     </a>
                 </li>
                 <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('is-admin')): ?>
                 <li class="nav-item">
-                    <a href="<?php echo e(route('admin.accept_activity.index')); ?>" class="nav-link">
+                    <a href="<?php echo e(route('admin.accept_activity.index')); ?>" class="nav-link <?php if(Route::is('admin.accept_activity.index')): ?> <?php echo e('active'); ?> <?php endif; ?>">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Menyetujui Kegiatan</p>
                     </a>
@@ -100,26 +100,26 @@
             </a>
             <ul class="nav nav-treeview">
                 <li class="nav-item">
-                    <a href="<?php echo e(route('asset.index')); ?>" class="nav-link">
+                    <a href="<?php echo e(route('asset.index')); ?>" class="nav-link <?php if(Route::is('asset.index')): ?> <?php echo e('active'); ?> <?php endif; ?>">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Lihat Aset</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="<?php echo e(route('asset_categories.index')); ?>" class="nav-link">
+                    <a href="<?php echo e(route('asset_categories.index')); ?>" class="nav-link <?php if(Route::is('asset_categories.index')): ?> <?php echo e('active'); ?> <?php endif; ?>">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Lihat Kategori Aset</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="<?php echo e(route('asset.propose')); ?>" class="nav-link">
+                    <a href="<?php echo e(route('asset.propose')); ?>" class="nav-link <?php if(Route::is('asset.propose')): ?> <?php echo e('active'); ?> <?php endif; ?>">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Mengajukan Aset</p>
                     </a>
                 </li>
                 <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('is-admin')): ?>
                 <li class="nav-item">
-                    <a href="<?php echo e(route('admin.accept_asset.index')); ?>" class="nav-link">
+                    <a href="<?php echo e(route('admin.accept_asset.index')); ?>" class="nav-link <?php if(Route::is('admin.accept_asset.index')): ?> <?php echo e('active'); ?> <?php endif; ?>">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Menyetujui Aset</p>
                     </a>
@@ -141,7 +141,7 @@
             <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('is-jamaah')): ?>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a href="<?php echo e(route('santri.index')); ?>" class="nav-link">
+                        <a href="<?php echo e(route('santri.index')); ?>" class="nav-link <?php if(Route::is('santri.index')): ?> <?php echo e('active'); ?> <?php endif; ?>">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Pendaftaran Santri</p>
                         </a>
@@ -151,7 +151,7 @@
             <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('is-admin')): ?>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a href="<?php echo e(route('admin.accept_santri.index')); ?>" class="nav-link">
+                        <a href="<?php echo e(route('admin.accept_santri.index')); ?>" class="nav-link <?php if(Route::is('admin.accept_santri.index')): ?> <?php echo e('active'); ?> <?php endif; ?>">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Menerima Santri</p>
                         </a>

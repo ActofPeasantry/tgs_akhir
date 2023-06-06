@@ -25,7 +25,7 @@
     </li> --}}
     <li class="nav-header"> Navigasi </li>
     <li class="nav-item">
-        <a href="/home" class="nav-link">
+        <a href="/home" class="nav-link @if(Route::is('dashboard')) {{ 'active' }} @endif">
             <i class="nav-icon fas fa-desktop"></i>
             <p> Dashboard </p>
         </a>
@@ -42,7 +42,7 @@
             </a>
             <ul class="nav nav-treeview">
                 <li class="nav-item">
-                    <a href="{{ route('admin.user.index') }}" class="nav-link">
+                    <a href="{{ route('admin.user.index') }}" class="nav-link @if(Route::is('admin.user.index')) {{ 'active' }} @endif">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Lihat User</p>
                     </a>
@@ -91,7 +91,7 @@
             </a>
             <ul class="nav nav-treeview">
                 <li class="nav-item">
-                    <a href="{{ route('balance.index') }}" class="nav-link">
+                    <a href="{{ route('balance.index') }}" class="nav-link @if(Route::is('balance.index')) {{ 'active' }} @endif">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Lihat Laporan Keuangan</p>
                     </a>
@@ -103,7 +103,7 @@
                     </a>
                 </li> --}}
                 <li class="nav-item">
-                    <a href="{{ route('balance_categories.index') }}" class="nav-link">
+                    <a href="{{ route('balance_categories.index') }}" class="nav-link @if(Route::is('balance_categories.index')) {{ 'active' }} @endif">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Lihat Kategori</p>
                     </a>
@@ -119,26 +119,26 @@
             </a>
             <ul class="nav nav-treeview">
                 <li class="nav-item">
-                    <a href="{{ route('activity.index') }}" class="nav-link">
+                    <a href="{{ route('activity.index') }}" class="nav-link @if(Route::is('activity.index')) {{ 'active' }} @endif">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Lihat Kegiatan</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('activity_categories.index') }}" class="nav-link">
+                    <a href="{{ route('activity_categories.index') }}" class="nav-link @if(Route::is('activity_categories.index')) {{ 'active' }} @endif">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Lihat Kategori Kegiatan</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('activity.propose') }}" class="nav-link">
+                    <a href="{{ route('activity.propose') }}" class="nav-link @if(Route::is('activity.propose')) {{ 'active' }} @endif">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Mengajukan Kegiatan</p>
                     </a>
                 </li>
                 @can('is-admin')
                 <li class="nav-item">
-                    <a href="{{ route('admin.accept_activity.index') }}" class="nav-link">
+                    <a href="{{ route('admin.accept_activity.index') }}" class="nav-link @if(Route::is('admin.accept_activity.index')) {{ 'active' }} @endif">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Menyetujui Kegiatan</p>
                     </a>
@@ -155,26 +155,26 @@
             </a>
             <ul class="nav nav-treeview">
                 <li class="nav-item">
-                    <a href="{{ route('asset.index') }}" class="nav-link">
+                    <a href="{{ route('asset.index') }}" class="nav-link @if(Route::is('asset.index')) {{ 'active' }} @endif">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Lihat Aset</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('asset_categories.index') }}" class="nav-link">
+                    <a href="{{ route('asset_categories.index') }}" class="nav-link @if(Route::is('asset_categories.index')) {{ 'active' }} @endif">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Lihat Kategori Aset</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('asset.propose') }}" class="nav-link">
+                    <a href="{{ route('asset.propose') }}" class="nav-link @if(Route::is('asset.propose')) {{ 'active' }} @endif">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Mengajukan Aset</p>
                     </a>
                 </li>
                 @can('is-admin')
                 <li class="nav-item">
-                    <a href="{{ route('admin.accept_asset.index') }}" class="nav-link">
+                    <a href="{{ route('admin.accept_asset.index') }}" class="nav-link @if(Route::is('admin.accept_asset.index')) {{ 'active' }} @endif">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Menyetujui Aset</p>
                     </a>
@@ -196,7 +196,7 @@
             @can('is-jamaah')
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a href="{{ route('santri.index') }}" class="nav-link">
+                        <a href="{{ route('santri.index') }}" class="nav-link @if(Route::is('santri.index')) {{ 'active' }} @endif">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Pendaftaran Santri</p>
                         </a>
@@ -206,7 +206,7 @@
             @can('is-admin')
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a href="{{ route('admin.accept_santri.index') }}" class="nav-link">
+                        <a href="{{ route('admin.accept_santri.index') }}" class="nav-link @if(Route::is('admin.accept_santri.index')) {{ 'active' }} @endif">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Menerima Santri</p>
                         </a>
