@@ -9,7 +9,7 @@
 <?php $__env->startSection('breadcrumb'); ?>
     
     <?php echo breadcrumb([
-            'Laporan Keuangan' => 'Laporan Keuangan'
+            'Lihat Laporan Keuangan' => 'Lihat Laporan Keuangan',
         ]); ?>
 
 <?php $__env->stopSection(); ?>

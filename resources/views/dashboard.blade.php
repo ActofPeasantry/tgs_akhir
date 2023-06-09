@@ -84,7 +84,7 @@
 
 <div class="row">
     <!-- BAR CHART -->
-    <section class="col-lg-12">
+    <section class="col-lg-8">
         <div class="card card-success">
             <div class="card-header">
               <h3 class="card-title">Data Keuangan</h3>
@@ -135,8 +135,31 @@
         <!-- /.card -->
     </section>
 
+    <!-- DONUT CHART -->
+    <section class="col-lg-4">
+        <div class="card card-danger">
+            <div class="card-header">
+              <h3 class="card-title">Jumlah Aset Masjid</h3>
+
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                  <i class="fas fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-tool" data-card-widget="remove">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            </div>
+            <div class="card-body">
+              <canvas id="donutChart" style="min-height: 336px; height: 336px; max-height: 336px; max-width: 100%;"></canvas>
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+    </section>
+
     <!-- Right col -->
-    <section class="col-lg-7 connectedSortable">
+    <section class="col-lg-12 connectedSortable">
       <!-- Calendar -->
       <div class="card card-info">
           <div class="card-header border-0">
@@ -169,28 +192,6 @@
     </section>
     <!-- /.Right col -->
 
-    <!-- DONUT CHART -->
-    <section class="col-lg-4">
-        <div class="card card-danger">
-            <div class="card-header">
-              <h3 class="card-title">Jumlah Aset Masjid</h3>
-
-              <div class="card-tools">
-                <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                  <i class="fas fa-minus"></i>
-                </button>
-                <button type="button" class="btn btn-tool" data-card-widget="remove">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-            </div>
-            <div class="card-body">
-              <canvas id="donutChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
-            </div>
-            <!-- /.card-body -->
-          </div>
-          <!-- /.card -->
-    </section>
 </div>
 
 @endsection

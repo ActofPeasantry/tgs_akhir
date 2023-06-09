@@ -22,7 +22,7 @@ class ActivityController extends Controller
         $month = 0;
 
         $new_activities =  Activity::oldest();
-        $activities = $new_activities->whereYear('schedule_start', $year)->orderBy('schedule_start', 'DESC')->get();
+        $activities = $new_activities->whereMonth('schedule_start', date('m'))->whereYear('schedule_start', $year)->orderBy('schedule_start', 'DESC')->get();
         return view('backend.activity.index', compact('activities', 'month', 'year', 'years', ));
     }
 

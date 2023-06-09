@@ -3,13 +3,13 @@
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('page_name'); ?>
-    <h1>Kategori Kegiatan</h1>
+    <h1>Kategori Kegiatan Masjid</h1>
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('breadcrumb'); ?>
     
     <?php echo breadcrumb([
-            'Kegiatan' => 'Kegiatan'
+            'Kategori Kegiatan Masjid' => ' Kategori Kegiatan Masjid'
         ]); ?>
 
 <?php $__env->stopSection(); ?>
