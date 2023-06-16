@@ -9,7 +9,7 @@
 <?php $__env->startSection('breadcrumb'); ?>
     
     <?php echo breadcrumb([
-            'Aset Masjid' => 'Aset Masjid'
+            'Lihat Aset Masjid' => 'Lihat Aset Masjid'
         ]); ?>
 
 <?php $__env->stopSection(); ?>

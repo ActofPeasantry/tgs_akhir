@@ -55,7 +55,7 @@ class DashboardController extends Controller
         $total_sum = $sum_debit-$sum_credit;
 
         $events = array();
-        $activities = Activity::all();
+        $activities = Activity::where('submission_status', 1)->get();
         foreach($activities as $activity){
             // if($activity->submission_status == 1 ){ }
             switch ($activity->status) {

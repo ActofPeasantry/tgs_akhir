@@ -80,7 +80,7 @@
         </li> --}}
     @endcan
 
-    @canany(['is-admin', 'is-sekre'])
+    @cannot('is-jamaah')
         <li class="nav-item">
             <a href="" class="nav-link">
                 <i class="nav-icon fas fa-coins"></i>
@@ -130,12 +130,16 @@
                         <p>Lihat Kategori Kegiatan</p>
                     </a>
                 </li>
+
+                @can('is-sekre')
                 <li class="nav-item">
                     <a href="{{ route('activity.propose') }}" class="nav-link @if(Route::is('activity.propose')) {{ 'active' }} @endif">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Mengajukan Kegiatan</p>
                     </a>
                 </li>
+                @endcan
+
                 @can('is-admin')
                 <li class="nav-item">
                     <a href="{{ route('admin.accept_activity.index') }}" class="nav-link @if(Route::is('admin.accept_activity.index')) {{ 'active' }} @endif">
@@ -166,12 +170,16 @@
                         <p>Lihat Kategori Aset</p>
                     </a>
                 </li>
+
+                @can('is-sekre')
                 <li class="nav-item">
                     <a href="{{ route('asset.propose') }}" class="nav-link @if(Route::is('asset.propose')) {{ 'active' }} @endif">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Mengajukan Aset</p>
                     </a>
                 </li>
+                @endcan
+
                 @can('is-admin')
                 <li class="nav-item">
                     <a href="{{ route('admin.accept_asset.index') }}" class="nav-link @if(Route::is('admin.accept_asset.index')) {{ 'active' }} @endif">
@@ -182,9 +190,9 @@
                 @endcan
             </ul>
         </li>
-    @endcanany
+    @endcannot
 
-    @canany(['is-jamaah', 'is-admin'])
+    @cannot('is-sekre')
         <li class="nav-item">
             <a href="" class="nav-link">
                 <i class="nav-icon fas fa-file"></i>
@@ -193,6 +201,7 @@
                     <i class="right fas fa-angle-left"></i>
                 </p>
             </a>
+
             @can('is-jamaah')
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
@@ -203,16 +212,17 @@
                     </li>
                 </ul>
             @endcan
+
             @can('is-admin')
-                <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                        <a href="{{ route('admin.accept_santri.index') }}" class="nav-link @if(Route::is('admin.accept_santri.index')) {{ 'active' }} @endif">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Menerima Santri</p>
-                        </a>
-                    </li>
-                </ul>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="{{ route('admin.accept_santri.index') }}" class="nav-link @if(Route::is('admin.accept_santri.index')) {{ 'active' }} @endif">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Menerima Santri</p>
+                    </a>
+                </li>
+            </ul>
             @endcan
         </li>
-    @endcanany
+    @endcannot
 </ul>

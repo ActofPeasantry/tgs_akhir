@@ -30,7 +30,7 @@
         
     <?php endif; ?>
 
-    <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->any(['is-admin', 'is-sekre'])): ?>
+    <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->denies('is-jamaah')): ?>
         <li class="nav-item">
             <a href="" class="nav-link">
                 <i class="nav-icon fas fa-coins"></i>
@@ -75,12 +75,16 @@
                         <p>Lihat Kategori Kegiatan</p>
                     </a>
                 </li>
+
+                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('is-sekre')): ?>
                 <li class="nav-item">
                     <a href="<?php echo e(route('activity.propose')); ?>" class="nav-link <?php if(Route::is('activity.propose')): ?> <?php echo e('active'); ?> <?php endif; ?>">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Mengajukan Kegiatan</p>
                     </a>
                 </li>
+                <?php endif; ?>
+
                 <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('is-admin')): ?>
                 <li class="nav-item">
                     <a href="<?php echo e(route('admin.accept_activity.index')); ?>" class="nav-link <?php if(Route::is('admin.accept_activity.index')): ?> <?php echo e('active'); ?> <?php endif; ?>">
@@ -111,12 +115,16 @@
                         <p>Lihat Kategori Aset</p>
                     </a>
                 </li>
+
+                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('is-sekre')): ?>
                 <li class="nav-item">
                     <a href="<?php echo e(route('asset.propose')); ?>" class="nav-link <?php if(Route::is('asset.propose')): ?> <?php echo e('active'); ?> <?php endif; ?>">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Mengajukan Aset</p>
                     </a>
                 </li>
+                <?php endif; ?>
+
                 <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('is-admin')): ?>
                 <li class="nav-item">
                     <a href="<?php echo e(route('admin.accept_asset.index')); ?>" class="nav-link <?php if(Route::is('admin.accept_asset.index')): ?> <?php echo e('active'); ?> <?php endif; ?>">
@@ -129,7 +137,7 @@
         </li>
     <?php endif; ?>
 
-    <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->any(['is-jamaah', 'is-admin'])): ?>
+    <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->denies('is-sekre')): ?>
         <li class="nav-item">
             <a href="" class="nav-link">
                 <i class="nav-icon fas fa-file"></i>
@@ -138,6 +146,7 @@
                     <i class="right fas fa-angle-left"></i>
                 </p>
             </a>
+
             <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('is-jamaah')): ?>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
@@ -148,15 +157,16 @@
                     </li>
                 </ul>
             <?php endif; ?>
+
             <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('is-admin')): ?>
-                <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                        <a href="<?php echo e(route('admin.accept_santri.index')); ?>" class="nav-link <?php if(Route::is('admin.accept_santri.index')): ?> <?php echo e('active'); ?> <?php endif; ?>">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Menerima Santri</p>
-                        </a>
-                    </li>
-                </ul>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="<?php echo e(route('admin.accept_santri.index')); ?>" class="nav-link <?php if(Route::is('admin.accept_santri.index')): ?> <?php echo e('active'); ?> <?php endif; ?>">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Menerima Santri</p>
+                    </a>
+                </li>
+            </ul>
             <?php endif; ?>
         </li>
     <?php endif; ?>
