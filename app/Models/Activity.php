@@ -12,6 +12,8 @@ class Activity extends Model
         'user_id',
         'activity_name',
         'description',
+        'penceramah_name',
+        'penceramah_telp',
         'schedule_start',
         'schedule_end',
         'status',

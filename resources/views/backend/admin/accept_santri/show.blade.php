@@ -43,7 +43,7 @@
 
                 <div class="form-group col-mb-3">
                     <label class="form-label" for="telp_number">Nomor Telepon</label>
-                    <p>{{ splitPhoneNumber($santri->telp_number) }}</p>
+                    <p>{{ $santri->telp_number }}</p>
                 </div>
 
                 <div class="form-group col-mb-3">

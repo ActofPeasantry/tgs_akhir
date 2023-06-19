@@ -46,6 +46,13 @@
 @endsection
 
 @push('child-scripts')
+
+    <script>
+        $(document).ready(function(){
+            $(":input").inputmask();
+        });
+    </script>
+
     <script type="text/javascript">
         $(function () {
             $('#dtp_schedule-start').datetimepicker({

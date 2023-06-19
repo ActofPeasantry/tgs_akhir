@@ -17,6 +17,8 @@ return new class extends Migration
                 $table->id();
                 $table->string('activity_name');
                 $table->string('description')->nullable();
+                $table->string('penceramah_name')->nullable();
+                $table->string('penceramah_telp')->nullable();
                 $table->dateTime('schedule_start');
                 $table->dateTime('schedule_end');
                 $table->integer('status');

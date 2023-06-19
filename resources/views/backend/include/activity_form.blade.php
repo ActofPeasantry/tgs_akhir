@@ -23,6 +23,24 @@
         @enderror
     </div>
 
+    <div class="form-group col-mb-3">
+        <label class="form-label" for="penceramah_name">Nama Penceramah (Opsional)</label>
+        <input id="penceramah_name" type="text" class="form-control @error('penceramah_name') is-invalid @enderror" name="penceramah_name"
+        value="{{ old('penceramah_name', $activity) }}"
+        autocomplete="penceramah_name">
+
+        @error('penceramah_name')
+        <span class="invalid-feedback" role="alert">
+            <strong>{{ $message }}</strong>
+        </span>
+        @enderror
+    </div>
+
+    <div class="form-group col-mb-3">
+        <label class="form-label" for="penceramah_telp">Nomor Telepon Penceramah (Opsional)</label>
+        <input id="penceramah_telp" name="penceramah_telp" type="text" class="form-control" value="{{ old('penceramah_telp', $activity->penceramah_telp) }}" data-inputmask="'mask': ['9999-9999-99999', '+999 9999 99999']" inputmode="text" placeholder="____-____-_____ ">
+    </div>
+
     <div class="form-group mb-3">
         <label class="form-label" for="activity_categories_id">Kategori</label>
         <select name="activity_categories_id" id="activity_categories_id" class="form-control">
@@ -70,7 +88,7 @@
 @else
     <div class="form-group col-mb-3">
         <label class="form-label" for="activity_name">Nama Aktivitas</label>
-        <input id="activity_name" type="text" class="form-control @error('name') is-invalid @enderror" name="activity_name"
+        <input id="activity_name" type="text" class="form-control @error('activity_name') is-invalid @enderror" name="activity_name"
         value="{{ old('activity_name') }}"
         required autocomplete="activity_name">
 
@@ -80,6 +98,26 @@
         </span>
         @enderror
     </div>
+
+    <div class="form-group col-mb-3">
+        <label class="form-label" for="penceramah_name">Nama Penceramah (Opsional)</label>
+        <input id="penceramah_name" type="text" class="form-control @error('penceramah_name') is-invalid @enderror" name="penceramah_name"
+        value="{{ old('penceramah_name') }}"
+        autocomplete="penceramah_name">
+
+        @error('penceramah_name')
+        <span class="invalid-feedback" role="alert">
+            <strong>{{ $message }}</strong>
+        </span>
+        @enderror
+    </div>
+
+    <div class="form-group col-mb-3">
+        <label class="form-label" for="penceramah_telp">Nomor Telepon Penceramah (Opsional)</label>
+        <input id="penceramah_telp" name="penceramah_telp" type="text" class="form-control" data-inputmask="'mask': ['9999-9999-99999', '+999 9999 99999']" inputmode="text" placeholder="____-____-_____ ">
+    </div>
+
+
 
     <div class="form-group col-mb-3">
         <label class="form-label" for="description">Deskripsi</label>

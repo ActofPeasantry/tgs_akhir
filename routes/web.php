@@ -42,6 +42,7 @@ Route::resource('/profile', ProfileController::class)->middleware('auth')->only(
 // })->middleware('auth');
 
 // Route::get('/asset/approve', [AssetController::class, 'approve']);
+
 Route::prefix('admin')->middleware(['auth', 'auth.accessAdmin'])->name('admin.')->group(function(){
     Route::resource('/user', UserController::class);
 
@@ -61,8 +62,13 @@ Route::prefix('admin')->middleware(['auth', 'auth.accessAdmin'])->name('admin.')
     Route::resource('/accept_activity', AcceptActivityController::class)->only(['index', 'show']);
 });
 
+Route::middleware(['auth', 'auth.accessSekre'])->group(function(){
+    Route::get('/asset/propose', [AssetController::class, 'propose'])->name('asset.propose');
+    Route::get('/activity/propose', [ActivityController::class, 'propose'])->name('activity.propose');
+});
+
 Route::middleware(['auth', 'auth.accessJamaah'])->group(function(){
-    Route::resource('/santri', SantriController::class);
+    Route::get('/santri/propose', [SantriController::class, 'propose'])->name('santri.propose');
 });
 
 Route::middleware(['auth', 'auth.accessAdminAndSekre'])->group(function(){
@@ -70,14 +76,16 @@ Route::middleware(['auth', 'auth.accessAdminAndSekre'])->group(function(){
     Route::resource('/balance', BalanceController::class);
     Route::resource('/balance_categories', BalanceCategoryController::class);
 
-    Route::get('/asset/propose', [AssetController::class, 'propose'])->name('asset.propose');
     Route::resource('/asset', AssetController::class);
     Route::resource('/asset_categories', AssetCategoryController::class);
     Route::resource('/asset_detail', AssetDetailController::class);
 
     Route::post('/activity/search', [ActivityController::class, 'search'])->name('activity.search');
-    Route::get('/activity/propose', [ActivityController::class, 'propose'])->name('activity.propose');
     Route::resource('/activity', ActivityController::class);
     Route::resource('/activity_categories', ActivityCategoryController::class);
 });
 
+Route::middleware('auth')->group(function(){
+    // Route::post('/santri/search', [SantriController::class, 'search'])->name('santri.search');
+    Route::resource('/santri', SantriController::class);
+});

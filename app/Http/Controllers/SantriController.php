@@ -15,8 +15,7 @@ class SantriController extends Controller
      */
     public function index()
     {
-        $user = User::find(auth()->user()->id);
-        $santries = $user->Santries()->get();
+        $santries = Santri::all();
         // dd($santries);
         return view('backend.santri.index', compact('santries'));
     }
@@ -93,5 +92,13 @@ class SantriController extends Controller
     {
         Santri::destroy($santri->id);
         return redirect()->route('santri.index')->with('error', 'Data berhasil dihapus');
+    }
+
+    public function propose()
+    {
+        $user = User::find(auth()->user()->id);
+        $santries = $user->Santries()->get();
+        // dd($santries);
+        return view('backend.santri.propose', compact('santries'));
     }
 }
