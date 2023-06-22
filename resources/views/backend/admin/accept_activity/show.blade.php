@@ -36,6 +36,20 @@
                     <p>{{ $activity->description }}</p>
                 </div>
 
+                @if (isset($activity->penceramah_name))
+                <div class="form-group col-mb-3">
+                    <label class="form-label" for="description">Nama Penceramah</label>
+                    <p>{{ $activity->penceramah_name }}</p>
+                </div>
+                @endif
+
+                @if (isset($activity->penceramah_telp))
+                <div class="form-group col-mb-3">
+                    <label class="form-label" for="description">Nomor Telepon Penceramah</label>
+                    <p>{{ $activity->penceramah_telp }}</p>
+                </div>
+                @endif
+
                 <div class="form-group col-mb-3">
                     <label class="form-label" for="activity_categories_id">Kategori</label>
                     <p>{{ $activity->ActivityCategory->category_name }}</p>

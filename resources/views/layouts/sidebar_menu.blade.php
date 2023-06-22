@@ -72,7 +72,6 @@
                         <p>Lihat Kategori Kegiatan</p>
                     </a>
                 </li>
-    @endcanany
                 @can('is-sekre')
                 <li class="nav-item">
                     <a href="{{ route('activity.propose') }}" class="nav-link @if(Route::is('activity.propose')) {{ 'active' }} @endif">
@@ -92,6 +91,8 @@
                 @endcan
             </ul>
         </li>
+    @endcanany
+
     @canany(['is-admin','is-sekre'])
         <li class="nav-item">
             <a href="" class="nav-link">
@@ -113,7 +114,6 @@
                         <p>Lihat Kategori Aset</p>
                     </a>
                 </li>
-    @endcanany
 
                 @can('is-sekre')
                 <li class="nav-item">
@@ -134,6 +134,7 @@
                 @endcan
             </ul>
         </li>
+    @endcanany
 
     @canany(['is-admin', 'is-jamaah'])
         <li class="nav-item">

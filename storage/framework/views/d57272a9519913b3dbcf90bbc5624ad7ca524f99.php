@@ -9,7 +9,8 @@
 <?php $__env->startSection('breadcrumb'); ?>
     
     <?php echo breadcrumb([
-            'Laporan Keuangan' => 'Laporan Keuangan'
+            'Kategori Laporan Keuangan' => route('balance_categories.index'),
+            'Tambah Kategori Laporan Keuangan' => 'Tambah Kategori Laporan Keuangan'
         ]); ?>
 
 <?php $__env->stopSection(); ?>

@@ -72,7 +72,6 @@
                         <p>Lihat Kategori Kegiatan</p>
                     </a>
                 </li>
-    <?php endif; ?>
                 <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('is-sekre')): ?>
                 <li class="nav-item">
                     <a href="<?php echo e(route('activity.propose')); ?>" class="nav-link <?php if(Route::is('activity.propose')): ?> <?php echo e('active'); ?> <?php endif; ?>">
@@ -92,6 +91,8 @@
                 <?php endif; ?>
             </ul>
         </li>
+    <?php endif; ?>
+
     <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->any(['is-admin','is-sekre'])): ?>
         <li class="nav-item">
             <a href="" class="nav-link">
@@ -113,7 +114,6 @@
                         <p>Lihat Kategori Aset</p>
                     </a>
                 </li>
-    <?php endif; ?>
 
                 <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('is-sekre')): ?>
                 <li class="nav-item">
@@ -134,6 +134,7 @@
                 <?php endif; ?>
             </ul>
         </li>
+    <?php endif; ?>
 
     <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->any(['is-admin', 'is-jamaah'])): ?>
         <li class="nav-item">

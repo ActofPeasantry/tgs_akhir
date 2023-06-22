@@ -9,7 +9,8 @@
 <?php $__env->startSection('breadcrumb'); ?>
     
     <?php echo breadcrumb([
-            'Laporan Keuangan' => 'Laporan Keuangan'
+            'Lihat Laporan Keuangan' => route('balance.index'),
+            'Ubah Laporan Keuangan' => 'Ubah Laporan Keuangan'
         ]); ?>
 
 <?php $__env->stopSection(); ?>

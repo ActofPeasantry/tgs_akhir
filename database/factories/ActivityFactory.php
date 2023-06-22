@@ -23,7 +23,7 @@ class ActivityFactory extends Factory
             'activity_name'=>$this->faker->word(),
             'description'=>$this->faker->sentence(5),
             'schedule_start'=>$this->faker->dateTimeThisMonth('+1 days'),
-            'schedule_end'=>$this->faker->dateTimeThisMonth('+5 days'),
+            'schedule_end'=>$this->faker->dateTimeThisMonth('+1 days'),
             'status'=>0,
             'submission_status'=>1,
             'activity_categories_id'=>$this->faker->randomElement($activity_categories),

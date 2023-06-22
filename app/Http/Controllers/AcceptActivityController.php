@@ -28,7 +28,8 @@ class AcceptActivityController extends Controller
      */
     public function show($id)
     {
-        //
+        $activity= Activity::find($id);
+        return view('backend.admin.accept_activity.show', compact('activity'));
     }
 
     public function accept($id)

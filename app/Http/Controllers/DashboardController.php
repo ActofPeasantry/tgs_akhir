@@ -85,8 +85,8 @@ class DashboardController extends Controller
                         'title' => $activity->activity_name,
                         'start' => $activity->schedule_start,
                         'end' => $activity->schedule_end,
-                        'backgroundColor'=> '#dc3545', //red
-                        'borderColor'    => '#dc3545' //red
+                        'backgroundColor'=> 'orange', //red
+                        'borderColor'    => 'orange' //red
                     ];
                     break;
             }

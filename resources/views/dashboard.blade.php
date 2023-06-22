@@ -58,7 +58,7 @@
         <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span>
 
         <div class="info-box-content">
-          <span class="info-box-text">Total santri</span>
+          <span class="info-box-text">Total santri TPQ</span>
           <span class="info-box-number">{{ $s_total }}</span>
         </div>
         <!-- /.info-box-content -->
@@ -322,6 +322,15 @@
             options: barChartOptions
         })
 
+        const bgcolor = [];
+        for(i=0; i < asset_labels.length; i++){
+            const r = Math.floor(Math.random() * 255);
+            const g = Math.floor(Math.random() * 255);
+            const b = Math.floor(Math.random() * 255);
+            console.log('rgba(' +r+ ', '+g+ ',' +b+ ', 0.2)');
+            bgcolor.push('rgba(' +r+ ', '+g+ ',' +b+ ', 0.9)')
+        }
+
           //-------------
           //- DONUT CHART -
           //-------------
@@ -332,7 +341,7 @@
             datasets: [
               {
                 data: asset_data,
-                backgroundColor : ['#f56954', '#00a65a', '#f39c12', '#00c0ef', '#3c8dbc', '#d2d6de'],
+                backgroundColor : bgcolor,
               }
             ]
           }
