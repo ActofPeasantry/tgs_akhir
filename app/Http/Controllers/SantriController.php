@@ -79,7 +79,7 @@ class SantriController extends Controller
     {
         // dd($request->all());
         Santri::find($santri->id)->update($request->all());
-        return redirect()->route('santri.index')->with('success', 'Data berhasil diubah');
+        return redirect()->route('santri.propose')->with('success', 'Data berhasil diubah');
     }
 
     /**

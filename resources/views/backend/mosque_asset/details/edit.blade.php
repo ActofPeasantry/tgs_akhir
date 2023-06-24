@@ -42,5 +42,12 @@
             bsCustomFileInput.init();
         });
     </script>
+
+    <script type="text/javascript">
+        $(function () {
+            $('#dtp_procurement_date').datetimepicker({format:'DD-MM-YYYY', locale:'id'});
+        });
+    </script>
+
      @include('backend.include.alert.toastr')
 @endpush

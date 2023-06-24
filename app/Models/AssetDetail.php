@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class AssetDetail extends Model
 {
-    protected $fillable = ['quality', 'photo'];
+    protected $fillable = ['quality', 'procurement_date', 'photo'];
+    protected $casts = ['procurement_date' => 'date'];
 
     public function Asset(){
         return $this->belongsTo('App\Models\Asset', 'asset_id');

@@ -55,6 +55,7 @@
                     <thead>
                         <tr role="row">
                             <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column descending" aria-sort="ascending">ID Aset</th>
+                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Tgl Pengadaan Aset</th>
                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Foto Aset</th>
                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Kualitas Aset</th>
                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Opsi</th>
@@ -65,6 +66,9 @@
                             <tr class="">
                                 <td class="dtr-control sorting_1 text-center" tabindex="0">
                                     {{ $as_detail->id }} <br>
+                                </td>
+                                <td class="dtr-control sorting_1 text-center" tabindex="0">
+                                    {{ $as_detail->procurement_date->translatedFormat('d F Y') }}
                                 </td>
                                 @if ($as_detail->photo == null)
                                     <td class="dtr-control sorting_1 text-center">Tidak ada Foto</td>
@@ -97,6 +101,12 @@
 @endsection
 
 @push('child-scripts')
+    <script type="text/javascript">
+        $(function () {
+            $('#dtp_procurement_date').datetimepicker({format:'DD-MM-YYYY', locale:'id'});
+        });
+    </script>
+
     <script>
         $(function(){
             $('#example1').DataTable({
@@ -118,4 +128,5 @@
             bsCustomFileInput.init();
         });
     </script>
+    @include('backend.include.alert.toastr')
 @endpush

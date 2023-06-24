@@ -1,6 +1,16 @@
 <input type="hidden" name="asset_id" id="asset_id" value="{{ $as_id }}">
 @if (isset($as_detail->id))
     <div class="form-group mb-3">
+        <label class="form-label" for="procurement_date">Tanggal Pengadaan Aset</label>
+        <div class="input-group date" id="dtp_procurement_date" data-target-input="nearest">
+            <input name="procurement_date" type="text" class="form-control datetimepicker-input" data-target="#dtp_procurement_date" value="{{ old('procurement_date', $as_detail->procurement_date->format('d-m-Y')) }}" required />
+            <div class="input-group-append" data-target="#dtp_procurement_date" data-toggle="datetimepicker">
+                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group mb-3">
         <label class="form-label" for="quality">Kualitas Aset</label>
         <select name="quality" id="quality" class="form-control">
             <option value="1" {{ old('quality', $as_detail->quality) == 1 ? "selected" : ''}}>Baik</option>
@@ -18,6 +28,16 @@
         </div>
     </div>
 @else
+    <div class="form-group mb-3">
+        <label class="form-label" for="procurement_date">Tanggal Pengadaan Aset</label>
+        <div class="input-group date" id="dtp_procurement_date" data-target-input="nearest">
+            <input name="procurement_date" type="text" class="form-control datetimepicker-input" data-target="#dtp_procurement_date" required />
+            <div class="input-group-append" data-target="#dtp_procurement_date" data-toggle="datetimepicker">
+                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+            </div>
+        </div>
+    </div>
+
     <div class="form-group mb-3">
         <label class="form-label" for="quality">Kualitas Aset</label>
         <select name="quality" id="quality" class="form-control">
