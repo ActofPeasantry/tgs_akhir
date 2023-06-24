@@ -19,7 +19,7 @@ class Balance extends Model
     ];
 
     // reecognised as date
-    protected $dates = ['date_received'];
+    protected $casts = ['date_received' => 'datetime'];
 
     public function BalanceCategories(){
         return $this->belongsTo('App\Models\BalanceCategory', 'balance_category_id');

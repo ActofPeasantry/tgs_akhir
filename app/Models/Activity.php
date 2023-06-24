@@ -22,7 +22,7 @@ class Activity extends Model
     ];
 
     // reecognise as date
-    protected $dates = ['schedule_start', 'schedule_end'];
+    protected $casts = ['schedule_start' => 'datetime', 'schedule_end' => 'datetime'];
 
     public function ActivityCategory(){
         return $this->belongsTo('App\Models\ActivityCategory', 'activity_categories_id');
