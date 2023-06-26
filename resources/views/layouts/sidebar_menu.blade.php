@@ -96,7 +96,7 @@
     @canany(['is-admin','is-sekre'])
         <li class="nav-item">
             <a href="" class="nav-link">
-                <i class="nav-icon fas fa-user"></i>
+                <i class="nav-icon fas fa-file"></i>
                 <p>
                     Aset Masjid <i class="right fas fa-angle-left"></i>
                 </p>
@@ -139,7 +139,7 @@
     @canany(['is-admin', 'is-jamaah'])
         <li class="nav-item">
             <a href="" class="nav-link">
-                <i class="nav-icon fas fa-file"></i>
+                <i class="nav-icon fas fa-praying-hands"></i>
                 <p>
                     Santri Masjid
                     <i class="right fas fa-angle-left"></i>

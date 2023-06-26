@@ -87,7 +87,7 @@
     <section class="col-lg-8">
         <div class="card card-success">
             <div class="card-header">
-              <h3 class="card-title">Data Keuangan</h3>
+              <h3 class="card-title"> <i class="nav-icon fas fa-coins"></i> Laporan Keuangan Tahun Ini</h3>
 
               <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -139,7 +139,7 @@
     <section class="col-lg-4">
         <div class="card card-danger">
             <div class="card-header">
-              <h3 class="card-title">Jumlah Aset Masjid</h3>
+              <h3 class="card-title"> <i class="nav-icon fas fa-file"></i> Jumlah Aset Masjid</h3>
 
               <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -166,7 +166,7 @@
 
             <h3 class="card-title">
               <i class="far fa-calendar-alt"></i>
-              Calendar
+              Kalender
             </h3>
             <!-- tools card -->
             <div class="card-tools">

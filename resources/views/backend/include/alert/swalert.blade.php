@@ -49,7 +49,7 @@
                 // refresh page after 2 seconds
                 setTimeout(function(){
                     location.reload();
-                },2000);
+                },4000);
                 form.submit();
            }
          });
@@ -79,7 +79,7 @@
                 // refresh page after 2 seconds
                 setTimeout(function(){
                     location.reload();
-                },2000);
+                },4000);
                 form.submit();
            }
          });
@@ -109,7 +109,7 @@
                 // refresh page after 2 seconds
                 setTimeout(function(){
                     location.reload();
-                },2000);
+                },4000);
                 form.submit();
            }
          });
@@ -139,7 +139,7 @@
                 // refresh page after 2 seconds
                 setTimeout(function(){
                     location.reload();
-                },2000);
+                },4000);
                 form.submit();
            }
          });

@@ -22,10 +22,11 @@ class DatabaseSeeder extends Seeder
         $this->call(BalanceCategorySeeder::class);
         Balance::factory()->count(500)->create();
         $this->call(ActivityCategorySeeder::class);
-        Activity::factory()->count(10)->create();
+        $this->call(ActivitySeeder::class);
         $this->call(AssetCategorySeeder::class);
         Asset::factory()->count(3)->create();
         Santri::factory()->count(10)->create();
+        // Activity::factory()->count(10)->create();
         // $this->call(RoleSeeder::class);
         // \App\Models\User::factory(10)->create();
 
