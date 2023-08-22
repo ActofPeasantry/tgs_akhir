@@ -83,10 +83,19 @@
                     </div>
                 </div>
 
-                <div class="form-group col-mb-3">
-                    <label class="form-label" for="photo">Foto Santri</label> <br>
-                    <img src="{{ $santri->photo }}" alt="">
-                </div>
+
+                @if ($santri->photo == null)
+                    <div class="form-group col-mb-3">
+                        <label class="form-label" for="photo">Foto Santri</label> <br>
+                        <p>Tidak ada Foto</p>
+                    </div>
+                    {{-- <td class="dtr-control sorting_1 text-center">Tidak ada Foto</td> --}}
+                @else
+                    <div class="form-group col-mb-3">
+                        <label class="form-label" for="photo">Foto Santri</label> <br>
+                        <img src="{{ $santri->photo }}" alt="" width="100px" height="100px">
+                    </div>
+                @endif
 
                 <div class="form-group col-mb-3">
                     <label class="form-label" for="address">Alamat</label>

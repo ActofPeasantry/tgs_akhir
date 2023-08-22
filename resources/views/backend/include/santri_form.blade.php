@@ -122,7 +122,7 @@
     <div class="form-group col-mb-3">
         <label class="form-label" for="photo">Foto Santri</label> <br>
         <div class="custom-file col-8">
-            <input id="photo" type="file" class="custom-file-input @error('photo') is-invalid @enderror" name="photo"
+            <input id="photo" type="file" class="custom-file-input @error('photo')  is-invalid @enderror" name="photo" accept="image/*"
             value="{{ old('photo', $santri->photo) }}"
             autocomplete="photo">
 
@@ -260,7 +260,7 @@
     <div class="form-group col-mb-3">
         <label class="form-label" for="photo">Foto Santri</label> <br>
         <div class="custom-file col-8">
-            <input id="photo" type="file" class="custom-file-input @error('photo') is-invalid @enderror" name="photo"
+            <input id="photo" type="file" class="custom-file-input @error('photo') is-invalid @enderror" name="photo" accept="image/*"
             value="{{ old('photo') }}"
             autocomplete="photo">
 

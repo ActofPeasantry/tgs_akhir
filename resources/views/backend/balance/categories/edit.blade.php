@@ -5,7 +5,7 @@
 @endsection
 
 @section('page_name')
-    <h1>Laporan Keuangan</h1>
+    <h1>Ubah Kategori Laporan Keuangan</h1>
 @endsection
 
 @section('breadcrumb')
@@ -19,20 +19,22 @@
 @endsection
 
 @section('content')
-   <div class="card col-md-10">
-        <div class="card-header">
-            <h5 class="card-title">Ubah Data</h5>
-        </div>
-        <div class="card-body">
-            <div class="container-fluid">
-                <form method="POST" action="{{ route('balance_categories.update', $b_category->id) }}">
-                @csrf
-                @method("PATCH")
-                    @include('backend.include.balance_categories_form')
-                </form>
-            </div>
-        </div>
-    </div>
+<div class="col-md-10">
+    <div class="card card-primary">
+         <div class="card-header">
+             <h5 class="card-title">Ubah Data</h5>
+         </div>
+         <div class="card-body">
+             <div class="container-fluid">
+                 <form method="POST" action="{{ route('balance_categories.update', $b_category->id) }}">
+                 @csrf
+                 @method("PATCH")
+                     @include('backend.include.balance_categories_form')
+                 </form>
+             </div>
+         </div>
+     </div>
+</div>
 @endsection
 
 @push('child-scripts')

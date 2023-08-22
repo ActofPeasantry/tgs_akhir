@@ -83,7 +83,7 @@ class AssetDetailController extends Controller
     public function update(Request $request, AssetDetail $assetDetail)
     {
         // $asset = $assetDetail->asset_id;
-        // dd($asset);
+        // dd($request->file('photo'));
         $assetDetail->quality = $request->quality;
         $assetDetail->procurement_date = $request->procurement_date;
         if ( isset($request->photo) ) {

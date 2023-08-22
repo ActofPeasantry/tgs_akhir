@@ -5,7 +5,7 @@
 @endsection
 
 @section('page_name')
-    <h1>Laporan Keuangan</h1>
+    <h1>Ubah Laporan Keuangan</h1>
 @endsection
 
 @section('breadcrumb')
@@ -43,13 +43,10 @@
     </script>
     <script>
         // Jquery Dependency
-
-        $("#total_amount").on({
-            focus: function () {
-                formatCurrency($(this));
-                $('#hidden_total_amount').val($('#total_amount').val().replace(/\D/g, ""));
-                console.log($('#total_amount').val().replace(/\D/g, ""));
-            }
+        $(document).ready(function() {
+            formatCurrency($('#total_amount'));
+            $('#hidden_total_amount').val($('#total_amount').val().replace(/\D/g, ""));
+            console.log($('#total_amount').val().replace(/\D/g, ""));
         });
 
         $("#total_amount").on({

@@ -27,9 +27,9 @@
                 </div>
                 <div class="card-body">
                     <div class="container-fluid">
-                        <form action="{{ route("santri.update",[$santri->id]) }}" method="POST">
-                        @csrf
-                        @method('PATCH')
+                        <form action="{{ route("santri.update",[$santri->id]) }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            @method('PATCH')
                             @include('backend.include.santri_form')
                         </form>
                     </div>

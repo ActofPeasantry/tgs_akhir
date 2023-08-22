@@ -5,7 +5,7 @@
 @endsection
 
 @section('page_name')
-    <h1>Aset Masjid</h1>
+    <h1>Tambah Aset Masjid</h1>
 @endsection
 
 @section('breadcrumb')
@@ -19,16 +19,18 @@
 @endsection
 
 @section('content')
-    <div class="card card-primary">
-        <div class="card-header">
-            <h5 class="card-title">Tambah Data</h5>
-        </div>
-        <div class="card-body">
-            <div class="container-fluid">
-                <form action="{{ route("asset.store") }}" method="POST">
-                @csrf
-                    @include('backend.include.asset_form')
-                </form>
+    <div class="col-md-10">
+        <div class="card card-primary">
+            <div class="card-header">
+                <h5 class="card-title">Tambah Data</h5>
+            </div>
+            <div class="card-body">
+                <div class="container-fluid">
+                    <form action="{{ route("asset.store") }}" method="POST">
+                    @csrf
+                        @include('backend.include.asset_form')
+                    </form>
+                </div>
             </div>
         </div>
     </div>

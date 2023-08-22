@@ -74,7 +74,7 @@
                                     <td class="dtr-control sorting_1 text-center">Tidak ada Foto</td>
                                 @else
                                     <td class="dtr-control sorting_1 text-center">
-                                        <img src="{{ $as_detail->photo }}" alt="Girl in a jacket" width="200" height="200">
+                                        <img src="{{ $as_detail->photo }}" alt="" width="200" height="200">
                                     </td>
                                 @endif
                                 <td class="dtr-control sorting_1 text-center">{{ $as_detail->qualityText($as_detail->quality) }}</td>

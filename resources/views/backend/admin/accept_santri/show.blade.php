@@ -81,7 +81,7 @@
 
                 <div class="form-group col-mb-3">
                     <label class="form-label" for="photo">Foto Santri</label> <br>
-                    <img src="{{ $santri->photo }}" alt="">
+                    <img src="{{ $santri->photo }}" alt="" width="100px" height="100px">
                 </div>
 
                 <div class="form-group col-mb-3">

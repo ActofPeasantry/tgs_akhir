@@ -117,20 +117,17 @@ class BalanceController extends Controller
         $year = $request->year[0];
         // dd($year);
         if ($month != 0) {
-            $model_balances =  Balance::oldest();
-            $balances = $model_balances->whereMonth('date_received', $month)->whereYear('date_received', $year)->orderBy('date_received', 'DESC')->get();
+            $balances = $new_balance->whereMonth('date_received', $month)->whereYear('date_received', $year)->orderBy('date_received', 'DESC')->get();
             $sum_debit = $balances->where('debit_credit', 0)->sum('total_amount');
             $sum_credit = $balances->where('debit_credit', 1)->sum('total_amount');
             $total_sum = $sum_debit-$sum_credit;
-            // dd($balances);
             return view('backend.balance.index', compact('balances', 'month', 'year', 'years', 'sum_debit', 'sum_credit', 'total_sum'));
         }
-
-        $model_balances =  Balance::oldest();
-        $balances = $model_balances->whereYear('date_received', $year)->orderBy('date_received', 'DESC')->get();
+        $balances = $new_balance->whereYear('date_received', $year)->orderBy('balances.date_received', 'DESC')->get();
         $sum_debit = $balances->where('debit_credit', 0)->sum('total_amount');
         $sum_credit = $balances->where('debit_credit', 1)->sum('total_amount');
         $total_sum = $sum_debit-$sum_credit;
+        // dd($balances);
         return view('backend.balance.index', compact('balances', 'month', 'year', 'years', 'sum_debit', 'sum_credit', 'total_sum'));
     }
 }

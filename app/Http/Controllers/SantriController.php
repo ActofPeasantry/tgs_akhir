@@ -39,7 +39,28 @@ class SantriController extends Controller
     public function store(Request $request)
     {
         // dd($request->all());
-        Santri::create($request->all());
+        // Santri::create($request->all());
+        // return redirect()->route('santri.index')->with('success', 'Data berhasil ditambahkan');
+
+        $santri = new Santri;
+        $santri->user_id = $request->user_id;
+        $santri->santri_name = $request->santri_name;
+        $santri->tpq_grade = $request->tpq_grade;
+        $santri->birth_place = $request->birth_place;
+        $santri->birth_date = $request->birth_date;
+        $santri->sex = $request->sex;
+        $santri->address = $request->address;
+        $santri->father_name = $request->father_name;
+        $santri->mother_name = $request->mother_name;
+        $santri->school_name = $request->school_name;
+        $santri->school_grade = $request->school_grade;
+        $santri->telp_number = $request->telp_number;
+        $santri->submission_status = 0;
+        if ( isset($request->photo) ) {
+            $path=$request->file('photo')->store('santri_photos', 'public');
+            $santri->photo = '../../../storage/'.$path;
+        }
+        $santri->save();
         return redirect()->route('santri.index')->with('success', 'Data berhasil ditambahkan');
     }
 
@@ -77,8 +98,26 @@ class SantriController extends Controller
      */
     public function update(Request $request, Santri $santri)
     {
-        // dd($request->all());
-        Santri::find($santri->id)->update($request->all());
+        // dd($santri->id);
+        // Santri::find($santri->id)->update($request->all());
+        $santri->user_id = $request->user_id;
+        $santri->santri_name = $request->santri_name;
+        $santri->tpq_grade = $request->tpq_grade;
+        $santri->birth_place = $request->birth_place;
+        $santri->birth_date = $request->birth_date;
+        $santri->sex = $request->sex;
+        $santri->address = $request->address;
+        $santri->father_name = $request->father_name;
+        $santri->mother_name = $request->mother_name;
+        $santri->school_name = $request->school_name;
+        $santri->school_grade = $request->school_grade;
+        $santri->telp_number = $request->telp_number;
+        $santri->submission_status = 0;
+        if ( isset($request->photo) ) {
+            $path=$request->file('photo')->store('santri_photos', 'public');
+            $santri->photo = '../../../storage/'.$path;
+        }
+        $santri->save();
         return redirect()->route('santri.propose')->with('success', 'Data berhasil diubah');
     }
 

@@ -27,7 +27,7 @@
                 </div>
                 <div class="card-body">
                     <div class="container-fluid">
-                        <form action="{{ route("santri.store") }}" method="POST">
+                        <form action="{{ route("santri.store") }}" method="POST" enctype="multipart/form-data">
                         @csrf
                             @include('backend.include.santri_form')
                         </form>
