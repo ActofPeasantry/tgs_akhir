@@ -166,7 +166,7 @@
 
             <h3 class="card-title">
               <i class="far fa-calendar-alt"></i>
-              Kalender
+              Kalender Kegiatan
             </h3>
             <!-- tools card -->
             <div class="card-tools">

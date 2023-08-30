@@ -79,7 +79,7 @@ class UserController extends Controller
     {
         $user->find($user->id);
         // dd($user->roles->pluck('id')->toArray());
-        $roles = [UserRole::JAMAAH, UserRole::PENGURUS, UserRole::ADMIN];
+        $roles = [UserRole::JAMAAH, UserRole::PENGURUS, UserRole::ADMIN, UserRole::BENDAHARA];
         // dd($user->userRoles->pluck('role_id')->toArray());
         return view('backend.admin.users.edit', compact('user', 'roles'));
     }
@@ -118,6 +118,7 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        User::destroy($user->id);
+        return redirect()->route('admin.user.index')->with('error', 'Data berhasil dihapus');
     }
 }

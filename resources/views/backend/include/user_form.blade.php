@@ -92,18 +92,22 @@
 
     {{-- Roles --}}
     <div class="form-group">
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="role[]" value={{ $roles['jamaah'] }}>
-                <label class="form-check-label" for="">{{ rolesName($roles['jamaah']) }}</label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="role[]" value={{ $roles['pengurus'] }}>
-                <label class="form-check-label" for="">{{ rolesName($roles['pengurus']) }}</label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="role[]" value={{ $roles['admin'] }}>
-                <label class="form-check-label" for="">{{ rolesName($roles['admin']) }}</label>
-            </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="role[]" value={{ $roles['admin'] }}>
+            <label class="form-check-label" for="">{{ rolesName($roles['admin']) }}</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="role[]" value={{ $roles['bendahara'] }}>
+            <label class="form-check-label" for="">{{ rolesName($roles['bendahara']) }}</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="role[]" value={{ $roles['pengurus'] }}>
+            <label class="form-check-label" for="">{{ rolesName($roles['pengurus']) }}</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="role[]" value={{ $roles['jamaah'] }}>
+            <label class="form-check-label" for="">{{ rolesName($roles['jamaah']) }}</label>
+        </div>
     </div>
 @endif
 

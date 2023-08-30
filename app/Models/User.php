@@ -84,6 +84,9 @@ class User extends Authenticatable
             case UserRole::ADMIN:
                 return 'Admin';
                 break;
+            case UserRole::BENDAHARA:
+                return 'Bendahara';
+                break;
             default:
                 return NULL;
                 break;
@@ -106,6 +109,9 @@ class User extends Authenticatable
     }
     public function isJamaah(){
         return $this->hasAnyRole(UserRole::JAMAAH);
+    }
+    public function isBendahara(){
+        return $this->hasAnyRole(UserRole::BENDAHARA);
     }
     public function isAdminOrSekre(){
         return null !== $this->userRoles()->whereIn('role_id', [UserRole::ADMIN, UserRole::PENGURUS])->first();

@@ -14,7 +14,6 @@ class Balance extends Model
         'no_invoice',
         'date_received',
         'total_amount',
-        'debit_credit',
         'balance_category_id'
     ];
 

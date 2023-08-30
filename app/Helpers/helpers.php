@@ -32,6 +32,14 @@ function genderStatus($sex){
     return "Perempuan";
 }
 
+function balanceCategoryFormat($category){
+    if ($category == 0) {
+        return "(Debit)";
+    } else {
+        return "(Kredit)";
+    }
+}
+
 function balanceFormat($balance){
     $balance = "Rp " . number_format($balance,0,',','.');
     return $balance;
@@ -72,6 +80,8 @@ function rolesName($role){
             break;
         case 35:
             return "Admin";
+        case 46:
+            return "Bendahara";
             break;
         default:
             return "Sedang diproses";

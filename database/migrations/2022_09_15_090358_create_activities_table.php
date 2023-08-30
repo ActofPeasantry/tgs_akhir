@@ -21,6 +21,7 @@ return new class extends Migration
                 $table->string('penceramah_telp')->nullable();
                 $table->dateTime('schedule_start');
                 $table->dateTime('schedule_end');
+                $table->integer('budget');
                 $table->integer('status');
                 $table->integer('submission_status')->default(0);
                 $table->foreignId('user_id')->constrained()->onUpdate('cascade')->onDelete('cascade');

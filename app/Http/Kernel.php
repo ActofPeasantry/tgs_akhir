@@ -58,6 +58,7 @@ class Kernel extends HttpKernel
         'auth.accessAdmin' => \App\Http\Middleware\AccessAdmin::class,
         'auth.accessSekre' => \App\Http\Middleware\AccessSekre::class,
         'auth.accessJamaah' => \App\Http\Middleware\AccessJamaah::class,
+        'auth.accessBendahara' => \App\Http\Middleware\AccessBendahara::class,
         'auth.accessAdminAndSekre' => \App\Http\Middleware\AccessAdminAndSekre::class,
         'auth.session' => \Illuminate\Session\Middleware\AuthenticateSession::class,
         'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,

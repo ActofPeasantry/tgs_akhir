@@ -16,6 +16,7 @@ class Activity extends Model
         'penceramah_telp',
         'schedule_start',
         'schedule_end',
+        'budget',
         'status',
         'submission_status',
         'activity_categories_id'

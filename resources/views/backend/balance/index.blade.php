@@ -118,14 +118,14 @@
                             <td>{{ $balance->BalanceCategories->category_name }}</td>
                             <td>{{ $balance->no_invoice }}</td>
                             <td>{{ $balance->date_received->translatedFormat('d F Y') }}</td>
-                            @if ($balance->debit_credit == 0)
+                            @if ($balance->BalanceCategories->debit_credit == 0)
                                 <td>{{ balanceFormat($balance->total_amount) }}</td>
                                 <td>0</td>
-                                <td>{{ balanceFormat($balance->total_amount) }}</td>
-                            @else
-                                <td>0</td>
-                                <td>{{ balanceFormat($balance->total_amount) }}</td>
                                 <td> - {{ balanceFormat($balance->total_amount) }}</td>
+                                @else
+                                <td>0</td>
+                                <td>{{ balanceFormat($balance->total_amount) }}</td>
+                                <td>{{ balanceFormat($balance->total_amount) }}</td>
                             @endif
                             <td class="text-center">
                                 <a class='btn btn-warning' href="{{route('balance.edit', [$balance->id])}}">Edit</a>

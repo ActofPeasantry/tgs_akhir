@@ -15,6 +15,7 @@ class UserRole extends Model
     const JAMAAH = 13;
     const PENGURUS = 24;
     const ADMIN = 35;
+    const BENDAHARA = 46;
 
     public function users()
     {

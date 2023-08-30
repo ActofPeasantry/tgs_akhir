@@ -19,7 +19,13 @@ class ActivityCategorySeeder extends Seeder
             'category_name' => 'Pesantren',
         ]);
         DB::table('activity_categories')->insert([
-            'category_name' => 'Ceramah Mingguan',
+            'category_name' => 'Ceramah Mingguan Selasa Malam',
+        ]);
+        DB::table('activity_categories')->insert([
+            'category_name' => "Ceramah Mingguan Jum'at Malam",
+        ]);
+        DB::table('activity_categories')->insert([
+            'category_name' => "Khatib Jum'at",
         ]);
     }
 }

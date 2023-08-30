@@ -33,7 +33,7 @@
 
                 <div class="form-group col-mb-3">
                     <label class="form-label" for="birth_place">Tempat / Tanggal Lahir</label>
-                    <p>{{ $santri->birth_place }}, {{ $santri->birth_date }}</p>
+                    <p>{{ $santri->birth_place }}, {{ $santri->birth_date->translatedFormat('d F Y')}}</p>
                 </div>
 
                 <div class="form-group col-mb-3">

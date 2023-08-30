@@ -51,17 +51,11 @@
     <div class="form-group mb-3">
         <label class="form-label" for="balance_category_id">Kategori</label>
         <select name="balance_category_id" id="balance_category_id" class="form-control">
-            @foreach ($categories as $category => $value)
-                <option value="{{ $value }}" {{ old('balance_category_id', $balance) === $value ? "selected" : ""}}>{{ $category }}</option>
+            @foreach ($categories as $category)
+                <option value="{{ $category->id }}" {{ old('balance_category_id', $balance) === $category->id ? "selected" : ""}}>
+                    {{ $category->category_name }}  {{ balanceCategoryFormat($category->debit_credit) }}
+                </option>
             @endforeach
-        </select>
-    </div>
-
-    <div class="form-group mb-3">
-        <label class="form-label" for="debit_credit">Debet/Kredit</label>
-        <select name="debit_credit" id="debit_credit" class="form-control">
-            <option value="0" {{ old('debit_credit', $balance->debit_credit) == 0 ? "selected" : ''}}>Debet</option>
-            <option value="1" {{ old('debit_credit', $balance->debit_credit) == 1 ? "selected" : ''}}>Kredit</option>
         </select>
     </div>
 
@@ -130,17 +124,9 @@
     <div class="form-group mb-3">
         <label class="form-label" for="balance_category_id">Kategori</label>
         <select name="balance_category_id" id="balance_category_id" class="form-control">
-            @foreach ($categories as $category => $value)
-                <option value={{ $value }}>{{ $category }}</option>
+            @foreach ($categories as $category)
+                <option value={{ $category->id }}>{{ $category->category_name}} {{ balanceCategoryFormat($category->debit_credit) }}</option>
             @endforeach
-        </select>
-    </div>
-
-    <div class="form-group mb-3">
-        <label class="form-label" for="debit_credit">Debet/Kredit</label>
-        <select name="debit_credit" id="debit_credit" class="form-control">
-            <option value=0>Debet</option>
-            <option value=1>Kredit</option>
         </select>
     </div>
 

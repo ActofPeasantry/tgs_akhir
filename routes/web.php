@@ -71,10 +71,13 @@ Route::middleware(['auth', 'auth.accessJamaah'])->group(function(){
     Route::get('/santri/propose', [SantriController::class, 'propose'])->name('santri.propose');
 });
 
-Route::middleware(['auth', 'auth.accessAdminAndSekre'])->group(function(){
-    Route::post('/balance/search', [BalanceController::class, 'search'])->name('balance.search');
+// Route::middleware(['auth', 'auth.accessBendahara'])->group(function(){
+// });
+
+Route::middleware(['auth', 'auth.accessAdminAndSekre', 'auth.accessBendahara'])->group(function(){
     Route::resource('/balance', BalanceController::class);
     Route::resource('/balance_categories', BalanceCategoryController::class);
+    Route::post('/balance/search', [BalanceController::class, 'search'])->name('balance.search');
 
     Route::resource('/asset', AssetController::class);
     Route::resource('/asset_categories', AssetCategoryController::class);

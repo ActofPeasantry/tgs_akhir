@@ -1,7 +1,7 @@
 @extends('layouts/main')
 
 @section('title')
-    <title>SMKK | Debet&Kredit</title>
+    <title>SMKK | Kegiatan Masjid</title>
 @endsection
 
 @section('page_name')

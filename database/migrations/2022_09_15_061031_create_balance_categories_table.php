@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('balance_categories', function (Blueprint $table) {
             $table->id();
             $table->string('category_name');
+            $table->boolean('debit_credit');
             $table->timestamps();
         });
     }

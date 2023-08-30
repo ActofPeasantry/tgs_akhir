@@ -48,12 +48,14 @@
                                     <span class="badge badge-info">{{$user->callRoleName($userRoles->role_id)}}</span>
                                 @elseif ($userRoles->role_id ==  config('constants.user_role.jamaah'))
                                     <span class="badge badge-success">{{$user->callRoleName($userRoles->role_id)}}</span>
+                                @elseif ($userRoles->role_id ==  config('constants.user_role.bendahara'))
+                                    <span class="badge badge-warning">{{$user->callRoleName($userRoles->role_id)}}</span>
                                 @endif
                             @endforeach
                             </td>
                             <td class="text-center">
                                 <a class='btn btn-warning' href="{{route('admin.user.edit', [$user->id])}}">Edit</a>
-                                <form action="{{route('admin.user.destroy', [$user->id])}}" method="post" style="display: inline">
+                                <form action="{{ route('admin.user.destroy', [$user->id]) }}" method="post" style="display: inline">
                                     {{method_field('DELETE')}}
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                     <button class="btn btn-danger show_confirm" data-toggle="tooltip">Delete</button>

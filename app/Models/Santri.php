@@ -23,6 +23,7 @@ class Santri extends Model
         'telp_number',
         'submission_status'
     ];
+    protected $casts = ['birth_date' => 'date'];
 
     public function users()
     {

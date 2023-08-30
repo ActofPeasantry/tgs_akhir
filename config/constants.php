@@ -2,7 +2,7 @@
 
 return [
     'user_role' => [
-        'jamaah' => '13', 'pengurus' => '24', 'admin' => '35',
+        'jamaah' => '13', 'pengurus' => '24', 'admin' => '35', 'bendahara' => '46'
     ],
     'submission_status' => [
         'accepted' => '1', 'denied' => '2'

@@ -11,6 +11,15 @@
         </span>
         @enderror
     </div>
+
+    <div class="form-group mb-3">
+        <label class="form-label" for="debit_credit">Debet/Kredit</label>
+        <select name="debit_credit" id="debit_credit" class="form-control">
+            <option value="0" {{ old('debit_credit', $balance->debit_credit) == 0 ? "selected" : ''}}>Debet</option>
+            <option value="1" {{ old('debit_credit', $balance->debit_credit) == 1 ? "selected" : ''}}>Kredit</option>
+        </select>
+    </div>
+
 @else
     <div class="form-group col-mb-3">
         <label class="form-label" for="category_name">Nama Kategori</label>
@@ -23,6 +32,14 @@
             <strong>{{ $message }}</strong>
         </span>
         @enderror
+    </div>
+
+    <div class="form-group mb-3">
+        <label class="form-label" for="debit_credit">Debet/Kredit</label>
+        <select name="debit_credit" id="debit_credit" class="form-control">
+            <option value=0>Debet</option>
+            <option value=1>Kredit</option>
+        </select>
     </div>
 @endif
 
