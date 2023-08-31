@@ -24,17 +24,22 @@ class BalanceController extends Controller
         // dd($years);
 
         $model_balances =  Balance::oldest();
-        $balances = $model_balances->whereMonth('date_received', date('m'))->whereYear('date_received', date('Y'))->orderBy('date_received', 'DESC')->get();
+        $balances = $model_balances->whereMonth('date_received', date('m'))->whereYear('date_received', date('Y'))->orderBy('date_received', 'ASC')->get();
+
 
         $balances_debit = Balance::whereHas('BalanceCategories', function($query){
             $query->where('debit_credit', '=', 0);})
-        ->whereMonth('date_received', date('m'))->whereYear('date_received', date('Y'))->orderBy('date_received', 'DESC')->get();
+        ->whereMonth('date_received', date('m'))->whereYear('date_received', date('Y'))->orderBy('date_received', 'ASC')->get();
         $balances_credit = Balance::whereHas('BalanceCategories', function($query){
             $query->where('debit_credit', '=', 1);})
-        ->whereMonth('date_received', date('m'))->whereYear('date_received', date('Y'))->orderBy('date_received', 'DESC')->get();
+        ->whereMonth('date_received', date('m'))->whereYear('date_received', date('Y'))->orderBy('date_received', 'ASC')->get();
 
         $sum_debit = $balances_debit->sum('total_amount');
         $sum_credit = $balances_credit->sum('total_amount');
+        $total_sum = $sum_credit - $sum_debit;
+
+        $categories = BalanceCategory::pluck('id', 'category_name');
+        // dd($categories);
         // $sum_debit = $balances->whereHas('BalanceCategories', function($query){
         //     $query->where('debit_credit', '=', 0);
         //  })->get()->sum('total_amount');
@@ -44,9 +49,9 @@ class BalanceController extends Controller
         // })->get()->sum('total_amount');
 
         // dd([$sum_credit, $sum_debit]);
-        $total_sum = $sum_credit - $sum_debit;
+        // $total_sum = $sum_credit - $sum_debit;
 
-        return view('backend.balance.index', compact('month', 'year','balances', 'years', 'sum_debit', 'sum_credit', 'total_sum'));
+        return view('backend.balance.index', compact('month', 'year','balances', 'years', 'sum_debit', 'sum_credit', 'total_sum', 'categories'));
     }
 
     /**
@@ -127,14 +132,16 @@ class BalanceController extends Controller
     }
 
     public function search(Request $request){
-        // dd($request->month[0]);
+
+        // GET REQUESTED CATEGORY YEAR AND MONTH
         $new_balance = new Balance;
         $years = $new_balance->getYear();
-
         $month = $request->month[0];
         $year = $request->year[0];
-        // dd($year);
+        $category = $request->category[0];
+        // dd($category);
 
+        //QUERY BALANCE BASED ON DEBIT/CREDIT ON BALANCECATEGORIES
         $debit_balance = Balance::whereHas('BalanceCategories', function($query){
             $query->where('debit_credit', '=', 0);
         });
@@ -142,28 +149,49 @@ class BalanceController extends Controller
             $query->where('debit_credit', '=', 1);
         });
 
-        if ($month != 0) {
-            $balances = $new_balance->whereMonth('date_received', $month)->whereYear('date_received', $year)->orderBy('date_received', 'DESC')->get();
-            // $sum_debit = $balances->where('debit_credit', 0)->sum('total_amount');
-            // $sum_credit = $balances->where('debit_credit', 1)->sum('total_amount');
+        //KATEGORI LAPORAN KEUANGAN
+        $categories_default = array("--Seluruh Kategori--" => 0);
+        $categories_pluck = BalanceCategory::pluck('id', 'category_name')->all();
+        $categories = array_merge($categories_default, $categories_pluck);
+        // dd($categories);
+
+        //BALANCE REPORT BASED ON SEARCH
+
+        if ($category == 0 && $month == 0) {
+            $balances = $new_balance->whereYear('date_received', $year)->orderBy('balances.date_received', 'ASC')->get();
+
+            $sum_debit = $debit_balance->whereYear('date_received', $year)->sum('total_amount');
+            $sum_credit = $credit_balance->whereYear('date_received', $year)->sum('total_amount');
+            $total_sum = $sum_credit - $sum_debit;
+
+            return view('backend.balance.index', compact('balances', 'month', 'year', 'years', 'sum_debit', 'sum_credit', 'total_sum','categories'));
+        }
+
+        elseif ($category == 0 && $month != 0) {
+            $balances = $new_balance->whereMonth('date_received', $month)->whereYear('date_received', $year)->orderBy('date_received', 'ASC')->get();
             $sum_debit = $debit_balance->whereMonth('date_received', $month)->whereYear('date_received', $year)->sum('total_amount');
             $sum_credit = $credit_balance->whereMonth('date_received', $month)->whereYear('date_received', $year)->sum('total_amount');
 
             $total_sum = $sum_credit - $sum_debit;
-            return view('backend.balance.index', compact('balances', 'month', 'year', 'years', 'sum_debit', 'sum_credit', 'total_sum'));
+            return view('backend.balance.index', compact('balances', 'month', 'year', 'years', 'sum_debit', 'sum_credit', 'total_sum', 'categories'));
         }
-        $balances = $new_balance->whereYear('date_received', $year)->orderBy('balances.date_received', 'DESC')->get();
 
-        $sum_debit = $debit_balance->whereYear('date_received', $year)->sum('total_amount');
-        $sum_credit = $credit_balance->whereYear('date_received', $year)->sum('total_amount');
+        elseif ($category != 0 && $month == 0){
+            $balances = $new_balance->where('balance_category_id', $category)->whereYear('date_received', $year)->orderBy('date_received', 'ASC')->get();
+            $sum_debit = $debit_balance->where('balance_category_id', $category)->whereYear('date_received', $year)->sum('total_amount');
+            $sum_credit = $credit_balance->where('balance_category_id', $category)->whereYear('date_received', $year)->sum('total_amount');
 
-        // dd([$sum_debit, $sum_credit]);
-        $total_sum = $sum_credit - $sum_debit;
+            $total_sum = $sum_credit - $sum_debit;
+            return view('backend.balance.index', compact('balances', 'month', 'year', 'years', 'sum_debit', 'sum_credit', 'total_sum', 'categories'));
+        }
 
-        // $sum_debit = $balances->where('debit_credit', 0)->sum('total_amount');
-        // $sum_credit = $balances->where('debit_credit', 1)->sum('total_amount');
-        // $total_sum = $sum_debit-$sum_credit;
-        // dd($balances);
-        return view('backend.balance.index', compact('balances', 'month', 'year', 'years', 'sum_debit', 'sum_credit', 'total_sum'));
+        else{
+            $balances = $new_balance->where('balance_category_id', $category)->whereMonth('date_received', $month)->whereYear('date_received', $year)->orderBy('date_received', 'ASC')->get();
+            $sum_debit = $debit_balance->where('balance_category_id', $category)->whereMonth('date_received', $month)->whereYear('date_received', $year)->sum('total_amount');
+            $sum_credit = $credit_balance->where('balance_category_id', $category)->whereMonth('date_received', $month)->whereYear('date_received', $year)->sum('total_amount');
+
+            $total_sum = $sum_credit - $sum_debit;
+            return view('backend.balance.index', compact('balances', 'month', 'year', 'years', 'sum_debit', 'sum_credit', 'total_sum', 'categories'));
+        }
     }
 }

@@ -77,6 +77,20 @@
     </div>
 
     <div class="form-group mb-3">
+        <label class="form-label" for="budget"> Dana yang dibutuhkan (Rp)</label>
+        <input id="budget" type="text" class="form-control @error('budget') is-invalid @enderror" name="budget"
+        value="{{ old('budget', $activity->budget) }}"
+        required autocomplete="budget">
+
+        @error('budget')
+        <span class="invalid-feedback" role="alert">
+            <strong>{{ $message }}</strong>
+        </span>
+        @enderror
+    </div>
+    <input type="hidden"  id="hidden_total_amount" name="budget" value="">
+
+    <div class="form-group mb-3">
         <label class="form-label" for="status">Status</label>
         <select name="status" id="status" class="form-control">
             <option value=1 {{ old('status', $activity->status) == config('constants.activity_status.not_yet') ? "selected" : ''}}>Belum Berjalan</option>
@@ -194,6 +208,18 @@
             <option value=3>Success</option>
         </select>
     </div> --}}
+
+    <div class="form-group mb-3">
+        <label class="form-label" for="budget">Dana yang dibutuhkan (Rp)</label>
+        <input id="budget" type="text" class="form-control @error('budget') is-invalid @enderror" value="{{ old('budget') }}" required autocomplete="budget">
+
+        @error('budget')
+        <span class="invalid-feedback" role="alert">
+            <strong>{{ $message }}</strong>
+        </span>
+        @enderror
+    </div>
+    <input type="hidden"  id="hidden_total_amount" name="budget" value="">
 @endif
 
 <div class="row">

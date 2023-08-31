@@ -110,7 +110,7 @@ class ActivityController extends Controller
     }
 
     public function search(Request $request){
-        // dd($request->all());
+        // dd(auth()->user()->id);
         $new_activity = new Activity;
         $years = $new_activity->getYear();
 

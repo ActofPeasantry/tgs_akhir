@@ -25,8 +25,20 @@
             <div class="text-center mt-5">
                 <div class="form-group">
                     <div class="row">
-                        <h5 class="col-2 mt-1">Pilih Data</h5>
-                        <div class="col-4 ">
+                        <h5 class="col-1 mt-1 ml-3">Pilih Data</h5>
+                        <div class="col-3">
+                            <div class="input-group input-group-sm">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Kategori Keuangan</span>
+                                </div>
+                                <select class="custom-select" name="category[]" id="category">
+                                    @foreach ( $categories as $category => $value)
+                                        <option value="{{ $value }}" {{ $category == $value ? 'selected' : ''}} >{{ $category }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-3">
                             <div class="input-group input-group-sm">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">Bulan</span>
@@ -36,10 +48,10 @@
                                         <option value="{{ $value }}" {{ $month == $value ? 'selected' : ''}} >{{ $month_name }}</option>
                                     @endforeach
                                 </select>
-                                </div>
                             </div>
-                            <div class="col-4">
-                                <div class="input-group input-group-sm">
+                        </div>
+                        <div class="col-3">
+                            <div class="input-group input-group-sm">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">Tahun</span>
                                 </div>

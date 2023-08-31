@@ -79,4 +79,43 @@
             });
         });
     </script>
+
+    <script>
+        // Jquery Dependency
+        $(document).ready(function() {
+            formatCurrency($('#budget'));
+            $('#hidden_total_amount').val($('#budget').val().replace(/\D/g, ""));
+            console.log($('#budget').val().replace(/\D/g, ""));
+        });
+
+        $("#budget").on({
+            keyup: function () {
+                formatCurrency($(this));
+                $('#hidden_total_amount').val($('#budget').val().replace(/\D/g, ""));
+                console.log($('#budget').val().replace(/\D/g, ""));
+            }
+        });
+
+        function formatNumber(n) {
+            // format number 1000000 to 1,234,567
+            return n.replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+        }
+
+        function formatCurrency(input) {
+            // get input value
+            var input_val = input.val();
+            // don't validate empty input
+            if (input_val === "") {
+                return;
+            }
+
+            // no decimal entered
+            // remove all non-digits
+            input_val = formatNumber(input_val);
+            input_val = "Rp " + input_val;
+
+            // send updated string to input
+            input.val(input_val);
+        }
+    </script>
 @endpush

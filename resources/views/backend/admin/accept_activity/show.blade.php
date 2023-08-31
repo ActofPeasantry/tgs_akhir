@@ -71,6 +71,13 @@
                 </div>
 
                 <div class="form-group col-mb-3">
+                    <label class="form-label" for="schedule_end">Dana yang dibutuhkan</label>
+                    <p>
+                        {{ balanceFormat($activity->budget) }},
+                    </p>
+                </div>
+
+                <div class="form-group col-mb-3">
                     <label class="form-label" for="status">Status Kegiatan</label>
                     <p>{{ activityStatus($activity->status) }}</p>
                 </div>
