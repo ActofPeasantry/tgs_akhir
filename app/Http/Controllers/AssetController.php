@@ -18,7 +18,6 @@ class AssetController extends Controller
     public function index()
     {
         $assets =  Asset::all();
-        // dd($assets[0]->AssetDetail->count());
         // dd($assets[0]->totalAsset(1));
         return view('backend.mosque_asset.index', compact('assets'));
     }

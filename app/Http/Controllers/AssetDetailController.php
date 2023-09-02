@@ -41,6 +41,7 @@ class AssetDetailController extends Controller
         $asset->quality = $request->quality;
         $asset->asset_id = $request->asset_id;
         $asset->procurement_date = $request->procurement_date;
+        $asset->budget = $request->budget;
         if ( isset($request->photo) ) {
             $path=$request->file('photo')->store('mosque_assets', 'public');
             $asset->photo = '../../../storage/'.$path;
@@ -86,6 +87,7 @@ class AssetDetailController extends Controller
         // dd($request->file('photo'));
         $assetDetail->quality = $request->quality;
         $assetDetail->procurement_date = $request->procurement_date;
+        $assetDetail->budget = $request->budget;
         if ( isset($request->photo) ) {
             $path=$request->file('photo')->store('mosque_assets', 'public');
             $assetDetail->photo = '../../../storage/'.$path;

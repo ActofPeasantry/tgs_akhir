@@ -18,6 +18,7 @@ return new class extends Migration
             $table->integer('quality');
             $table->date('procurement_date');
             $table->integer('budget');
+            $table->integer('submission_status')->default(0);
             $table->string('photo')->nullable();
             $table->timestamps();
 

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class AssetDetail extends Model
 {
-    protected $fillable = ['quality', 'procurement_date', 'photo'];
+    protected $fillable = ['quality', 'procurement_date', 'photo', 'budget', 'submission_status'];
     protected $casts = ['procurement_date' => 'date'];
 
     public function Asset(){

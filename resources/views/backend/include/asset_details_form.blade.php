@@ -19,6 +19,20 @@
     </div>
 
     <div class="form-group mb-3">
+        <label class="form-label" for="budget"> Harga Aset (Rp)</label>
+        <input id="budget" type="text" class="form-control @error('budget') is-invalid @enderror" name="budget"
+        value="{{ old('budget', $as_detail->budget) }}"
+        required autocomplete="budget">
+
+        @error('budget')
+        <span class="invalid-feedback" role="alert">
+            <strong>{{ $message }}</strong>
+        </span>
+        @enderror
+    </div>
+    <input type="hidden"  id="hidden_total_amount" name="budget" value="">
+
+    <div class="form-group mb-3">
         <label for="form-label" for="photo">Foto Aset</label>
         <div class="input-group">
             <div class="custom-file">
@@ -45,6 +59,18 @@
             <option value=2>Tidak Baik</option>
         </select>
     </div>
+
+    <div class="form-group mb-3">
+        <label class="form-label" for="budget">Harga Aset (Rp)</label>
+        <input id="budget" type="text" class="form-control @error('budget') is-invalid @enderror" value="{{ old('budget') }}" required autocomplete="budget">
+
+        @error('budget')
+        <span class="invalid-feedback" role="alert">
+            <strong>{{ $message }}</strong>
+        </span>
+        @enderror
+    </div>
+    <input type="hidden"  id="hidden_total_amount" name="budget" value="">
 
     <div class="form-group mb-3">
         <label for="form-label" for="photo">Foto Aset</label>

@@ -28,25 +28,45 @@
             <table id="example1" class="table table-bordered table-hover dataTable dtr-inline" role="grid" aria-describedby="example1_info">
                 <thead>
                     <tr role="row">
-                        <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column descending" aria-sort="ascending">Nama Aset</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Kategori Aset</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Jumlah Aset</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Nama Pengaju</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Status</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Opsi</th>
+                        <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column descending" aria-sort="ascending">Nama Aset</th>
+                        <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">ID Aset</th>
+                        <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Tgl Pengadaan Aset</th>
+                        <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Foto Aset</th>
+                        <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Harga Aset (Rp)</th>
+                        <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Nama Pengaju</th>
+                        <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Kualitas Aset</th>
+                        <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Status</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($x_assets as $asset)
                         <tr class="">
+                            {{-- <input type="hidden" id="asset_id[]" name="asset_id[]" value="{{ $asset->asset_id }}"> --}}
                             <td class="dtr-control sorting_1" tabindex="0">
                                 <div class="icheck-primary d-inline ml-2">
-                                    <input class="asset_check" type="checkbox" id="asset_id{{ $asset->id }}" name="asset_id[]" value="{{ $asset->id }}">
-                                    <label for="submission_status">{{ $asset->asset_name }}</label>
+                                    <input class="asset_check" type="checkbox" id="asset_detail_id{{ $asset->id }}" name="asset_detail_id[]" value="{{ $asset->id }}">
+                                    <label for="submission_status">{{ $asset->Asset->asset_name }}</label>
                                 </div>
                             </td>
-                            <td class="dtr-control sorting_1 text-center">{{ $asset->AssetCategory->category_name }}</td>
-                            <td class="dtr-control sorting_1 text-center">{{ $asset->totalAsset($asset->id) }}</td>
-                            <td class="dtr-control sorting_1 text-center">{{ $asset->users->name }}</td>
-                            <td class="dtr-control sorting_1 text-center">{{ submissionStatus($asset->submission_status) }}</td>
-                            <td class="text-center">
-                                <a class='btn btn-primary' href="{{route('admin.accept_asset.show', [$asset->id])}}">Detail</a>
+                            <td class="dtr-control sorting_1 text-center" tabindex="0">
+                                {{ $asset->id }} <br>
                             </td>
+                            <td class="dtr-control sorting_1 text-center" tabindex="0">
+                                {{ $asset->procurement_date->translatedFormat('d F Y') }}
+                            </td>
+                            @if ($asset->photo == null)
+                            <td class="dtr-control sorting_1 text-center">Tidak ada Foto</td>
+                            @else
+                            <td class="dtr-control sorting_1 text-center">
+                                <img src="{{ $asset->photo }}" alt="" width="200" height="200">
+                            </td>
+                            @endif
+                            <td class="dtr-control sorting_1 text-center" tabindex="0">
+                                {{ balanceFormat($asset->budget) }} <br>
+                            </td>
+                            <td class="dtr-control sorting_1 text-center">{{ $asset->Asset->users->name }}</td>
+                            <td class="dtr-control sorting_1 text-center">{{ $asset->qualityText($asset->quality) }}</td>
+                            <td class="dtr-control sorting_1 text-center">{{ submissionStatus($asset->submission_status) }}</td>
                         </tr>
                     @endforeach
                 </tbody>
@@ -87,22 +107,41 @@
         <table id="example1" class="table table-bordered table-hover dataTable dtr-inline" role="grid" aria-describedby="example1_info">
             <thead>
                 <tr role="row">
-                    <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column descending" aria-sort="ascending">Nama Aset</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Kategori Aset</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Jumlah Aset</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Nama Pengaju</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Status</th>
+                    <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column descending" aria-sort="ascending">Nama Aset</th>
+                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">ID Aset</th>
+                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Tgl Pengadaan Aset</th>
+                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Foto Aset</th>
+                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Harga Aset (Rp)</th>
+                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Nama Pengaju</th>
+                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Kualitas Aset</th>
+                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Status</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($y_assets as $asset)
-                    <tr class="">
-                        <td class="dtr-control sorting_1" tabindex="0">
-                            <div class="icheck-primary d-inline ml-2">
-                                <label for="submission_status">{{ $asset->asset_name }}</label>
-                            </div>
-                        </td>
-                        <td class="dtr-control sorting_1 text-center">{{ $asset->AssetCategory->category_name }}</td>
-                        <td class="dtr-control sorting_1 text-center">{{ $asset->totalAsset($asset->id) }}</td>
-                        <td class="dtr-control sorting_1 text-center">{{ $asset->users->name }}</td>
-                        <td class="dtr-control sorting_1 text-center">{{ submissionStatus($asset->submission_status) }}</td>
-                    </tr>
+                <tr class="">
+                    {{-- <input type="hidden" id="asset_id[]" name="asset_id[]" value="{{ $asset->asset_id }}"> --}}
+                    <td class="dtr-control sorting_1" tabindex="0">{{ $asset->Asset->asset_name }}</td>
+                    <td class="dtr-control sorting_1 text-center" tabindex="0">
+                        {{ $asset->id }} <br>
+                    </td>
+                    <td class="dtr-control sorting_1 text-center" tabindex="0">
+                        {{ $asset->procurement_date->translatedFormat('d F Y') }}
+                    </td>
+                    @if ($asset->photo == null)
+                    <td class="dtr-control sorting_1 text-center">Tidak ada Foto</td>
+                    @else
+                    <td class="dtr-control sorting_1 text-center">
+                        <img src="{{ $asset->photo }}" alt="" width="200" height="200">
+                    </td>
+                    @endif
+                    <td class="dtr-control sorting_1 text-center" tabindex="0">
+                        {{ balanceFormat($asset->budget) }} <br>
+                    </td>
+                    <td class="dtr-control sorting_1 text-center">{{ $asset->Asset->users->name }}</td>
+                    <td class="dtr-control sorting_1 text-center">{{ $asset->qualityText($asset->quality) }}</td>
+                    <td class="dtr-control sorting_1 text-center">{{ submissionStatus($asset->submission_status) }}</td>
+                </tr>
                 @endforeach
             </tbody>
             <tfoot>

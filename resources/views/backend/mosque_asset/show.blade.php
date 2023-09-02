@@ -58,6 +58,7 @@
                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Tgl Pengadaan Aset</th>
                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Foto Aset</th>
                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Kualitas Aset</th>
+                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Harga Aset (Rp)</th>
                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Opsi</th>
                         </tr>
                     </thead>
@@ -78,7 +79,7 @@
                                     </td>
                                 @endif
                                 <td class="dtr-control sorting_1 text-center">{{ $as_detail->qualityText($as_detail->quality) }}</td>
-
+                                <td class="dtr-control sorting_1 text-center">{{ balanceFormat($as_detail->budget) }}</td>
                                 <td class="text-center">
                                     {{-- <a class='btn btn-primary' href="{{route('asset_detail.show', [$as_detail->id])}}">Detail</a> --}}
                                     <a class='btn btn-warning' href="{{route('asset_detail.edit', [$as_detail->id])}}">Edit</a>
@@ -128,5 +129,45 @@
             bsCustomFileInput.init();
         });
     </script>
+
+    <script>
+        // Jquery Dependency
+        $(document).ready(function() {
+            formatCurrency($('#budget'));
+            $('#hidden_total_amount').val($('#budget').val().replace(/\D/g, ""));
+            console.log($('#budget').val().replace(/\D/g, ""));
+        });
+
+        $("#budget").on({
+            keyup: function () {
+                formatCurrency($(this));
+                $('#hidden_total_amount').val($('#budget').val().replace(/\D/g, ""));
+                console.log($('#budget').val().replace(/\D/g, ""));
+            }
+        });
+
+        function formatNumber(n) {
+            // format number 1000000 to 1,234,567
+            return n.replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+        }
+
+        function formatCurrency(input) {
+            // get input value
+            var input_val = input.val();
+            // don't validate empty input
+            if (input_val === "") {
+                return;
+            }
+
+            // no decimal entered
+            // remove all non-digits
+            input_val = formatNumber(input_val);
+            input_val = "Rp " + input_val;
+
+            // send updated string to input
+            input.val(input_val);
+        }
+    </script>
+
     @include('backend.include.alert.toastr')
 @endpush

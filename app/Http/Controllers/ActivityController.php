@@ -157,6 +157,7 @@ class ActivityController extends Controller
         }
 
         $activity_cancel->update(['status' => 3]);
-        return redirect()->route('admin.accept_activity.index')->with('success', 'Data berhasil diubah');
+        return redirect()->back()->with('success', 'Data berhasil diubah');
+        // return redirect()->route('admin.accept_activity.index')->with('success', 'Data berhasil diubah');
     }
 }
