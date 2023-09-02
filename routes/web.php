@@ -83,6 +83,7 @@ Route::middleware(['auth', 'auth.accessAdminAndSekre', 'auth.accessBendahara'])-
     Route::resource('/asset_categories', AssetCategoryController::class);
     Route::resource('/asset_detail', AssetDetailController::class);
 
+    Route::patch('/activity/cancel/{id}', [ActivityController::class, 'cancel'])->name('activity.cancel');
     Route::post('/activity/search', [ActivityController::class, 'search'])->name('activity.search');
     Route::resource('/activity', ActivityController::class);
     Route::resource('/activity_categories', ActivityCategoryController::class);

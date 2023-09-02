@@ -19,15 +19,15 @@ return new class extends Migration
             DO BEGIN
                 UPDATE activities
                 SET status = 0
-                WHERE CURRENT_TIMESTAMP <= schedule_start AND CURRENT_TIMESTAMP <= schedule_end;
+                WHERE status != 3 AND CURRENT_TIMESTAMP <= schedule_start AND CURRENT_TIMESTAMP <= schedule_end;
 
                 UPDATE activities
                 SET status = 1
-                WHERE CURRENT_TIMESTAMP BETWEEN schedule_start AND schedule_end;
+                WHERE status != 3 AND CURRENT_TIMESTAMP BETWEEN schedule_start AND schedule_end;
 
                 UPDATE activities
                 SET status = 2
-                WHERE CURRENT_TIMESTAMP >= schedule_start AND CURRENT_TIMESTAMP >= schedule_end;
+                WHERE status != 3 AND CURRENT_TIMESTAMP >= schedule_start AND CURRENT_TIMESTAMP >= schedule_end;
             END;
         ');
     }

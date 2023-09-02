@@ -26,7 +26,7 @@ class ActivitySeeder extends Seeder
                 'status' => 0,
                 'submission_status' => 0,
                 'user_id' => 1,
-                'activity_categories_id' => 10,
+                'activity_categories_id' => 2,
         ]);
         DB::table('activities')->insert([
                 'activity_name' => 'Ceramah Wirid',
@@ -37,7 +37,7 @@ class ActivitySeeder extends Seeder
                 'status' => 0,
                 'submission_status' => 0,
                 'user_id' => 1,
-                'activity_categories_id' => 10,
+                'activity_categories_id' => 2,
         ]);
         DB::table('activities')->insert([
                 'activity_name' => 'Ceramah Wirid',
@@ -48,7 +48,7 @@ class ActivitySeeder extends Seeder
                 'status' => 0,
                 'submission_status' => 0,
                 'user_id' => 1,
-                'activity_categories_id' => 10,
+                'activity_categories_id' => 2,
         ]);
         DB::table('activities')->insert([
                 'activity_name' => 'Ceramah Wirid',
@@ -59,7 +59,7 @@ class ActivitySeeder extends Seeder
                 'status' => 0,
                 'submission_status' => 0,
                 'user_id' => 1,
-                'activity_categories_id' => 10,
+                'activity_categories_id' => 2,
         ]);
         DB::table('activities')->insert([
                 'activity_name' => 'Ceramah Wirid',
@@ -70,7 +70,7 @@ class ActivitySeeder extends Seeder
                 'status' => 0,
                 'submission_status' => 0,
                 'user_id' => 1,
-                'activity_categories_id' => 10,
+                'activity_categories_id' => 2,
         ]);
         DB::table('activities')->insert([
                 'activity_name' => 'Ceramah Wirid',
@@ -82,18 +82,18 @@ class ActivitySeeder extends Seeder
                 'status' => 0,
                 'submission_status' => 0,
                 'user_id' => 1,
-                'activity_categories_id' => 11,
+                'activity_categories_id' => 3,
         ]);
         DB::table('activities')->insert([
                 'activity_name' => 'Ceramah Wirid',
                 'description' => 'Ceramah wirid selasa malam',
-                'schedule_start' => '2023-08-11 19:00:00',
-                'schedule_end' => '2023-08-11 19:30:00',
+                'schedule_start' => '2023-08-3 19:00:00',
+                'schedule_end' => '2023-08-3 19:30:00',
                 'budget' => 150000,
                 'status' => 0,
                 'submission_status' => 0,
                 'user_id' => 1,
-                'activity_categories_id' => 11,
+                'activity_categories_id' => 3,
         ]);
         DB::table('activities')->insert([
                 'activity_name' => 'Ceramah Wirid',
@@ -104,7 +104,7 @@ class ActivitySeeder extends Seeder
                 'status' => 0,
                 'submission_status' => 0,
                 'user_id' => 1,
-                'activity_categories_id' => 11,
+                'activity_categories_id' => 3,
         ]);
         DB::table('activities')->insert([
                 'activity_name' => 'Ceramah Wirid',
@@ -115,7 +115,7 @@ class ActivitySeeder extends Seeder
                 'status' => 0,
                 'submission_status' => 0,
                 'user_id' => 1,
-                'activity_categories_id' => 11,
+                'activity_categories_id' => 3,
         ]);
         DB::table('activities')->insert([
                 'activity_name' => 'Ceramah Wirid',
@@ -127,7 +127,7 @@ class ActivitySeeder extends Seeder
                 'status' => 0,
                 'submission_status' => 0,
                 'user_id' => 1,
-                'activity_categories_id' => 10,
+                'activity_categories_id' => 2,
         ]);
         DB::table('activities')->insert([
                 'activity_name' => 'Ceramah Wirid',
@@ -138,7 +138,7 @@ class ActivitySeeder extends Seeder
                 'status' => 0,
                 'submission_status' => 0,
                 'user_id' => 1,
-                'activity_categories_id' => 10,
+                'activity_categories_id' => 2,
         ]);
         DB::table('activities')->insert([
                 'activity_name' => 'Ceramah Wirid',
@@ -149,7 +149,7 @@ class ActivitySeeder extends Seeder
                 'status' => 0,
                 'submission_status' => 0,
                 'user_id' => 1,
-                'activity_categories_id' => 10,
+                'activity_categories_id' => 2,
         ]);
         DB::table('activities')->insert([
                 'activity_name' => 'Ceramah Wirid',
@@ -160,7 +160,7 @@ class ActivitySeeder extends Seeder
                 'status' => 0,
                 'submission_status' => 0,
                 'user_id' => 1,
-                'activity_categories_id' => 10,
+                'activity_categories_id' => 2,
         ]);
     }
 }

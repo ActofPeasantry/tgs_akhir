@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\user;
 use App\Models\Activity;
 use App\Models\ActivityCategory;
+use App\Models\Balance;
+use App\Models\BalanceCategory;
 use Illuminate\Http\Request;
 
 class ActivityController extends Controller
@@ -98,6 +100,7 @@ class ActivityController extends Controller
      */
     public function destroy(Activity $activity)
     {
+        // dd($activity);
         Activity::destroy($activity->id);
         return redirect()->route('activity.index')->with('error', 'Data berhasil dihapus');
     }
@@ -127,5 +130,33 @@ class ActivityController extends Controller
         $new_activities =  Activity::oldest();
         $activities = $new_activities->whereYear('schedule_start', $year)->orderBy('schedule_start', 'DESC')->get();
         return view('backend.activity.index', compact('activities', 'month', 'year', 'years', ));
+    }
+
+    public function cancel($id){
+        $activity_cancel = Activity::find($id);
+        $check_balance_category = BalanceCategory::where('category_name', config('constants.activity_balance_cancel_category'))
+        ->get();
+        // dd(count($check_balance_category));
+
+        if (count($check_balance_category) <= 0) {
+            BalanceCategory::create([
+                'category_name' => config('constants.activity_balance_cancel_category'),
+                'debit_credit' => config('constants.debit_credit.credit'),
+            ]);
+        }
+
+        $category = BalanceCategory::where('category_name', config('constants.activity_balance_cancel_category'))->first();
+        if ($activity_cancel->budget > 0) {
+            Balance::create([
+                'user_id' => auth()->user()->id,
+                'description' => $activity_cancel->activity_name,
+                'date_received' => now(),
+                'total_amount' => $activity_cancel->budget,
+                'balance_category_id' => $category->id
+            ]);
+        }
+
+        $activity_cancel->update(['status' => 3]);
+        return redirect()->route('admin.accept_activity.index')->with('success', 'Data berhasil diubah');
     }
 }
