@@ -18,9 +18,8 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
-        'email',
-        'password',
+        'name', 'email', 'password',
+        'profile_name', 'penceramah_telp', 'penceramah_address',
     ];
 
     /**
@@ -115,6 +114,9 @@ class User extends Authenticatable
     }
     public function isAdminOrSekre(){
         return null !== $this->userRoles()->whereIn('role_id', [UserRole::ADMIN, UserRole::PENGURUS])->first();
+    }
+    public function isAdminOrBendahara(){
+        return null !== $this->userRoles()->whereIn('role_id', [UserRole::ADMIN, UserRole::BENDAHARA])->first();
     }
 
     /**

@@ -16,31 +16,16 @@ class BalanceCategorySeeder extends Seeder
     public function run()
     {
         DB::table('balance_categories')->insert([
-            'category_name' => 'SPP',
+            'category_name' => 'Infak Anak Yatim',
+            'debit_credit' => 1
         ]);
         DB::table('balance_categories')->insert([
-            'category_name' => 'KOTAK AMAL',
-        ]);
-        DB::table('balance_categories')->insert([
-            'category_name' => 'WAKAF',
-        ]);
-        DB::table('balance_categories')->insert([
-            'category_name' => 'DONASI',
-        ]);
-        DB::table('balance_categories')->insert([
-            'category_name' => 'Pembangunan',
-        ]);
-        DB::table('balance_categories')->insert([
-            'category_name' => 'Sisa Kas',
+            'category_name' => 'Infak kotak amal',
+            'debit_credit' => 1,
         ]);
         DB::table('balance_categories')->insert([
             'category_name' => 'Donatur Bulanan',
-        ]);
-        DB::table('balance_categories')->insert([
-            'category_name' => 'Anak Yatim',
-        ]);
-        DB::table('balance_categories')->insert([
-            'category_name' => 'Muallaf & Fakir Miskin',
+            'debit_credit' => 1,
         ]);
     }
 }

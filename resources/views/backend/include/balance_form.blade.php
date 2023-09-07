@@ -35,20 +35,6 @@
     </div>
 
     <div class="form-group mb-3">
-        <label class="form-label" for="no_invoice">Nomor Invoice</label>
-
-        <input id="no_invoice" type="number" class="form-control @error('name') is-invalid @enderror" name="no_invoice"
-        value="{{ old('no_invoice', $balance->no_invoice)}}"
-        required autocomplete="no_invoice">
-
-        @error('no_invoice')
-        <span class="invalid-feedback" role="alert">
-            <strong>{{ $message }}</strong>
-        </span>
-        @enderror
-    </div>
-
-    <div class="form-group mb-3">
         <label class="form-label" for="balance_category_id">Kategori</label>
         <select name="balance_category_id" id="balance_category_id" class="form-control">
             @foreach ($categories as $category)
@@ -102,19 +88,6 @@
         required autocomplete="description">
 
         @error('description')
-        <span class="invalid-feedback" role="alert">
-            <strong>{{ $message }}</strong>
-        </span>
-        @enderror
-    </div>
-
-    <div class="form-group mb-3">
-        <label class="form-label" for="no_invoice">Nomor Invoice</label>
-        <input id="no_invoice" type="number" class="form-control @error('no_invoice') is-invalid @enderror" name="no_invoice"
-        value="{{ old('no_invoice') }}"
-        required autocomplete="no_invoice">
-
-        @error('no_invoice')
         <span class="invalid-feedback" role="alert">
             <strong>{{ $message }}</strong>
         </span>

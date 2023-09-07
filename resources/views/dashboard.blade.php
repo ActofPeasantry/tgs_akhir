@@ -108,7 +108,7 @@
                   <div class="col-sm-4 col-8">
                     <div class="description-block border-right">
                       {{-- <span class="description-percentage text-success"><i class="fas fa-caret-up"></i> 17%</span> --}}
-                      <h5 class="description-header text-success">{{ balanceFormat($sum_debit) }}</h5>
+                      <h5 class="description-header text-danger">{{ balanceFormat($sum_debit) }}</h5>
                       <span class="description-text">Total Debet</span>
                     </div>
                   </div>
@@ -116,7 +116,7 @@
                   <div class="col-sm-4 col-8">
                     <div class="description-block border-right">
                       {{-- <span class="description-percentage text-warning"><i class="fas fa-caret-left"></i> 0%</span> --}}
-                      <h5 class="description-header text-danger">{{ balanceFormat($sum_credit) }}</h5>
+                      <h5 class="description-header text-success">{{ balanceFormat($sum_credit) }}</h5>
                       <span class="description-text">Total Kredit</span>
                     </div>
                   </div>

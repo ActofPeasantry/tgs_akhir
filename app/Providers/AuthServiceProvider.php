@@ -35,6 +35,7 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('is-sekre', fn(User $user) => $user->isSekre());
         Gate::define('is-jamaah', fn(User $user) => $user->isJamaah());
         Gate::define('is-admin-sekre', fn(User $user) => $user->isAdminOrSekre());
+        Gate::define('is-admin-bendahara', fn(User $user) => $user->isAdminOrBendahara());
         // Gate::define('is-admin', function($user){
         //     return $user->isAdmin();
         // });

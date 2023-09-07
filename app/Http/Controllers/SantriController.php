@@ -55,13 +55,14 @@ class SantriController extends Controller
         $santri->school_name = $request->school_name;
         $santri->school_grade = $request->school_grade;
         $santri->telp_number = $request->telp_number;
+        $santri->budget = $request->budget;
         $santri->submission_status = 0;
         if ( isset($request->photo) ) {
             $path=$request->file('photo')->store('santri_photos', 'public');
             $santri->photo = '../../../storage/'.$path;
         }
         $santri->save();
-        return redirect()->route('santri.index')->with('success', 'Data berhasil ditambahkan');
+        return redirect()->route('santri.propose')->with('success', 'Data berhasil ditambahkan');
     }
 
     /**
@@ -112,6 +113,7 @@ class SantriController extends Controller
         $santri->school_name = $request->school_name;
         $santri->school_grade = $request->school_grade;
         $santri->telp_number = $request->telp_number;
+        $santri->budget = $request->budget;
         $santri->submission_status = 0;
         if ( isset($request->photo) ) {
             $path=$request->file('photo')->store('santri_photos', 'public');

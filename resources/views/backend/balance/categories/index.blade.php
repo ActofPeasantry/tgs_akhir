@@ -33,7 +33,7 @@
                     <a type="button" class="btn btn-success btn-sm" href="{{ route("balance_categories.create") }}"> <i class="fa fa-plus"></i> Tambah Kategori</a>
                     @foreach ($b_categories as $b_category)
                         <tr class="">
-                            <td>{{ $b_category->category_name }}</td>
+                            <td>{{ $b_category->category_name }} {{ balanceCategoryFormat($b_category->debit_credit) }}</td>
                             <td class="text-center">
                                 <a class='btn btn-warning' href="{{route('balance_categories.edit', [$b_category->id])}}">Edit</a>
                                 <form action="{{route('balance_categories.destroy', [$b_category->id])}}" method="post" style="display: inline">

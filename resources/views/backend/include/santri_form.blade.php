@@ -135,6 +135,20 @@
         </div>
     </div>
     <input type="hidden"  id="user_id" name="user_id" value="{{ auth()->user()->id}}">
+
+    <div class="form-group mb-3">
+        <label class="form-label" for="budget"> Harga Aset (Rp)</label>
+        <input id="budget" type="text" class="form-control @error('budget') is-invalid @enderror" name="budget"
+        value="{{ old('budget', $santri->budget) }}"
+        required autocomplete="budget">
+
+        @error('budget')
+        <span class="invalid-feedback" role="alert">
+            <strong>{{ $message }}</strong>
+        </span>
+        @enderror
+    </div>
+    <input type="hidden"  id="hidden_total_amount" name="budget" value="">
 @else
     {{-- Nama Santri --}}
     <div class="form-group col-mb-3">
@@ -273,6 +287,18 @@
         </div>
     </div>
     <input type="hidden"  id="user_id" name="user_id" value="{{ auth()->user()->id}}">
+
+    <div class="form-group mb-3">
+        <label class="form-label" for="budget">Biaya Pendaftaran (Rp)</label>
+        <input id="budget" type="text" class="form-control @error('budget') is-invalid @enderror" value="{{ old('budget') }}" required autocomplete="budget">
+
+        @error('budget')
+        <span class="invalid-feedback" role="alert">
+            <strong>{{ $message }}</strong>
+        </span>
+        @enderror
+    </div>
+    <input type="hidden"  id="hidden_total_amount" name="budget" value="">
     {{-- <div class="form-group mb-3">
         <label class="form-label" for="asset_categories_id">Jenis Aset</label>
         <select name="asset_categories_id" id="asset_categories_id" class="form-control">

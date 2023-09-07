@@ -15,8 +15,8 @@
     <div class="form-group mb-3">
         <label class="form-label" for="debit_credit">Debet/Kredit</label>
         <select name="debit_credit" id="debit_credit" class="form-control">
-            <option value="0" {{ old('debit_credit', $balance->debit_credit) == 0 ? "selected" : ''}}>Debet</option>
-            <option value="1" {{ old('debit_credit', $balance->debit_credit) == 1 ? "selected" : ''}}>Kredit</option>
+            <option value="0" {{ old('debit_credit', $b_category->debit_credit) == 0 ? "selected" : ''}}>Debet</option>
+            <option value="1" {{ old('debit_credit', $b_category->debit_credit) == 1 ? "selected" : ''}}>Kredit</option>
         </select>
     </div>
 

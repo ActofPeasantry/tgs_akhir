@@ -38,7 +38,11 @@ class BalanceController extends Controller
         $sum_credit = $balances_credit->sum('total_amount');
         $total_sum = $sum_credit - $sum_debit;
 
-        $categories = BalanceCategory::pluck('id', 'category_name');
+        // $categories = BalanceCategory::pluck('id', 'category_name');
+        //KATEGORI LAPORAN KEUANGAN
+        $categories_default = array("--Seluruh Kategori--" => 0);
+        $categories_pluck = BalanceCategory::pluck('id', 'category_name')->all();
+        $categories = array_merge($categories_default, $categories_pluck);
         // dd($categories);
         // $sum_debit = $balances->whereHas('BalanceCategories', function($query){
         //     $query->where('debit_credit', '=', 0);

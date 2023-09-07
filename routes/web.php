@@ -74,7 +74,7 @@ Route::middleware(['auth', 'auth.accessJamaah'])->group(function(){
 // Route::middleware(['auth', 'auth.accessBendahara'])->group(function(){
 // });
 
-Route::middleware(['auth', 'auth.accessAdminAndSekre', 'auth.accessBendahara'])->group(function(){
+Route::middleware(['auth', 'auth.accessAdminAndBendahara'])->group(function(){
     Route::resource('/balance', BalanceController::class);
     Route::resource('/balance_categories', BalanceCategoryController::class);
     Route::post('/balance/search', [BalanceController::class, 'search'])->name('balance.search');
