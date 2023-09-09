@@ -41,6 +41,51 @@
         @enderror
     </div>
 
+    {{-- Name --}}
+    <div class="input-group mb-3">
+        <input id="profile_name" type="profile_name" class="form-control @error('profile_name') is-invalid @enderror" name="profile_name" value="{{ old('profile_name') }}" required autocomplete="profile_name" placeholder="Nama Jamaah" autofocus>
+        <div class="input-group-append">
+            <div class="input-group-text">
+                <span class="fas fa-praying-hands"></span>
+            </div>
+        </div>
+        @error('profile_name')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror
+    </div>
+
+    {{-- Address --}}
+    <div class="input-group mb-3">
+        <input id="profile_address" type="profile_address" class="form-control @error('profile_address') is-invalid @enderror" name="profile_address" value="{{ old('profile_address') }}" required autocomplete="profile_address" placeholder="Alamat" autofocus>
+        <div class="input-group-append">
+            <div class="input-group-text">
+                <span class="fas fa-house"></span>
+            </div>
+        </div>
+        @error('profile_address')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror
+    </div>
+
+    {{-- Telp --}}
+    <div class="input-group mb-3">
+        <input id="profile_telp" name="profile_telp" type="text" class="form-control" value="{{ old('profile_telp') }}" data-inputmask="'mask': ['9999-9999-99999', '+999 9999 99999']" inputmode="text" placeholder="____-____-_____ ">
+        <div class="input-group-append">
+            <div class="input-group-text">
+                <span class="fas fa-phone"></span>
+            </div>
+        </div>
+        @error('profile_telp')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror
+    </div>
+
     {{-- Password --}}
     <div class="input-group mb-3">
         <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="Password">

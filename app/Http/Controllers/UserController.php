@@ -78,6 +78,7 @@ class UserController extends Controller
     public function edit(User $user)
     {
         $user->find($user->id);
+        // dd($user->profile_telp);
         // dd($user->roles->pluck('id')->toArray());
         $roles = [UserRole::JAMAAH, UserRole::PENGURUS, UserRole::ADMIN, UserRole::BENDAHARA];
         // dd($user->userRoles->pluck('role_id')->toArray());

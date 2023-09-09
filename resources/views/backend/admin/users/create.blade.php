@@ -37,6 +37,13 @@
 @endsection
 
 @push('child-scripts')
+    {{-- Number Masking --}}
+    <script>
+        $(document).ready(function(){
+            $(":input").inputmask();
+        });
+    </script>
+
     <script>
         $(function(){
             $('#example1').DataTable({
