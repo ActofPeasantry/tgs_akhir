@@ -12,5 +12,6 @@ return [
     'activity_balance_category' => 'Pengeluaran Kegiatan',
     'activity_balance_cancel_category' => 'Pembatalan Kegiatan',
     'asset_balance_category' => 'Pembayaran Aset',
+    'santri_balance_category' => 'Pendaftaran Santri',
 ];
 

@@ -123,6 +123,7 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @php $counter = 0; @endphp
                     @foreach ($balances as $balance)
                         <tr class="">
                             <td>
@@ -135,12 +136,11 @@
                             @if ($balance->BalanceCategories->debit_credit == 0)
                                 <td>{{ balanceFormat($balance->total_amount) }}</td>
                                 <td>0</td>
-                                <td> - {{ balanceFormat($balance->total_amount) }}</td>
-                                @else
+                            @else
                                 <td>0</td>
                                 <td>{{ balanceFormat($balance->total_amount) }}</td>
-                                <td>{{ balanceFormat($balance->total_amount) }}</td>
                             @endif
+                            <td>{{ balanceFormat($saldo[$counter]) }}</td>
                             @canany(['is-admin', 'is-bendahara'])
                                 <td class="text-center">
                                     <a class='btn btn-warning' href="{{route('balance.edit', [$balance->id])}}">Edit</a>
@@ -153,6 +153,7 @@
                                 </td>
                             @endcanany
                         </tr>
+                        @php $counter++; @endphp
                     @endforeach
                 </tbody>
                 <tfoot>
