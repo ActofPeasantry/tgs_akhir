@@ -18,8 +18,15 @@ class BalanceController extends Controller
     {
         // dd(rolesName(1));
         $new_balance = new Balance;
-        $years = $new_balance->getYear();
-        $year = $years[0];
+        // dd();
+        if ($new_balance->get()->isNotEmpty()) {
+            $years = $new_balance->getYear();
+            $year = $years[0];
+        }
+        else {
+            $years = now();
+            $year = now();
+        }
         $month = 0;
         // dd($years);
 
@@ -28,22 +35,24 @@ class BalanceController extends Controller
 
         // SALDO COUNTER (ITS BAD I KNOW)
         $saldo = [];
-        if ($balances[0]->BalanceCategories->debit_credit == 0) {
-            $insert_amount = 0 - $balances[0]->total_amount;
-            array_push($saldo, $insert_amount);
-        } elseif($balances[0]->BalanceCategories->debit_credit == 1) {
-            $insert_amount = $balances[0]->total_amount;
-            array_push($saldo, $insert_amount);
-        }
-
-        for ($i=1; $i < $balances->count(); $i++) {
-            if ($balances[$i]->BalanceCategories->debit_credit == 0) {
-                $insert_amount = $saldo[$i-1] - $balances[$i]->total_amount;
+        if ($balances->isNotEmpty()) {
+            if ($balances[0]->BalanceCategories->debit_credit == 0) {
+                $insert_amount = 0 - $balances[0]->total_amount;
+                array_push($saldo, $insert_amount);
+            } elseif($balances[0]->BalanceCategories->debit_credit == 1) {
+                $insert_amount = $balances[0]->total_amount;
                 array_push($saldo, $insert_amount);
             }
-            elseif($balances[$i]->BalanceCategories->debit_credit == 1) {
-                $insert_amount = $saldo[$i-1] + $balances[$i]->total_amount;
-                array_push($saldo, $insert_amount);
+
+            for ($i=1; $i < $balances->count(); $i++) {
+                if ($balances[$i]->BalanceCategories->debit_credit == 0) {
+                    $insert_amount = $saldo[$i-1] - $balances[$i]->total_amount;
+                    array_push($saldo, $insert_amount);
+                }
+                elseif($balances[$i]->BalanceCategories->debit_credit == 1) {
+                    $insert_amount = $saldo[$i-1] + $balances[$i]->total_amount;
+                    array_push($saldo, $insert_amount);
+                }
             }
         }
         // dd($saldo);
@@ -160,149 +169,163 @@ class BalanceController extends Controller
 
         // GET REQUESTED CATEGORY YEAR AND MONTH
         $new_balance = new Balance;
-        $years = $new_balance->getYear();
-        $month = $request->month[0];
-        $year = $request->year[0];
-        $category = $request->category[0];
-        // dd($category);
-
-        //QUERY BALANCE BASED ON DEBIT/CREDIT ON BALANCECATEGORIES
-        $debit_balance = Balance::whereHas('BalanceCategories', function($query){
-            $query->where('debit_credit', '=', 0);
-        });
-        $credit_balance = Balance::whereHas('BalanceCategories', function($query){
-            $query->where('debit_credit', '=', 1);
-        });
-
-        //KATEGORI LAPORAN KEUANGAN
-        $categories_default = array("--Seluruh Kategori--" => 0);
-        $categories_pluck = BalanceCategory::pluck('id', 'category_name')->all();
-        $categories = array_merge($categories_default, $categories_pluck);
-        // dd($categories);
-
-        //BALANCE REPORT BASED ON SEARCH
-        if ($category == 0 && $month == 0) {
-            $balances = $new_balance->whereYear('date_received', $year)->orderBy('balances.date_received', 'ASC')->get();
-
-            // SALDO COUNTER (ITS BAD I KNOW)
-            $saldo = [];
-            if ($balances[0]->BalanceCategories->debit_credit == 0) {
-                $insert_amount = 0 - $balances[0]->total_amount;
-                array_push($saldo, $insert_amount);
-            } elseif($balances[0]->BalanceCategories->debit_credit == 1) {
-                $insert_amount = $balances[0]->total_amount;
-                array_push($saldo, $insert_amount);
-            }
-
-            for ($i=1; $i < $balances->count(); $i++) {
-                if ($balances[$i]->BalanceCategories->debit_credit == 0) {
-                    $insert_amount = $saldo[$i-1] - $balances[$i]->total_amount;
-                    array_push($saldo, $insert_amount);
-                }
-                elseif($balances[$i]->BalanceCategories->debit_credit == 1) {
-                    $insert_amount = $saldo[$i-1] + $balances[$i]->total_amount;
-                    array_push($saldo, $insert_amount);
-                }
-            }
-
-            $sum_debit = $debit_balance->whereYear('date_received', $year)->sum('total_amount');
-            $sum_credit = $credit_balance->whereYear('date_received', $year)->sum('total_amount');
-            $total_sum = $sum_credit - $sum_debit;
-
-            return view('backend.balance.index', compact('balances', 'month', 'year', 'years', 'sum_debit', 'sum_credit', 'total_sum','categories', 'saldo'));
-        }
-
-        elseif ($category == 0 && $month != 0) {
-            $balances = $new_balance->whereMonth('date_received', $month)->whereYear('date_received', $year)->orderBy('date_received', 'ASC')->get();
-
-            // SALDO COUNTER (ITS BAD I KNOW)
-            $saldo = [];
-            if ($balances[0]->BalanceCategories->debit_credit == 0) {
-                $insert_amount = 0 - $balances[0]->total_amount;
-                array_push($saldo, $insert_amount);
-            } elseif($balances[0]->BalanceCategories->debit_credit == 1) {
-                $insert_amount = $balances[0]->total_amount;
-                array_push($saldo, $insert_amount);
-            }
-
-            for ($i=1; $i < $balances->count(); $i++) {
-                if ($balances[$i]->BalanceCategories->debit_credit == 0) {
-                    $insert_amount = $saldo[$i-1] - $balances[$i]->total_amount;
-                    array_push($saldo, $insert_amount);
-                }
-                elseif($balances[$i]->BalanceCategories->debit_credit == 1) {
-                    $insert_amount = $saldo[$i-1] + $balances[$i]->total_amount;
-                    array_push($saldo, $insert_amount);
-                }
-            }
-
-            $sum_debit = $debit_balance->whereMonth('date_received', $month)->whereYear('date_received', $year)->sum('total_amount');
-            $sum_credit = $credit_balance->whereMonth('date_received', $month)->whereYear('date_received', $year)->sum('total_amount');
-
-            $total_sum = $sum_credit - $sum_debit;
-            return view('backend.balance.index', compact('balances', 'month', 'year', 'years', 'sum_debit', 'sum_credit', 'total_sum', 'categories', 'saldo'));
-        }
-
-        elseif ($category != 0 && $month == 0){
-            $balances = $new_balance->where('balance_category_id', $category)->whereYear('date_received', $year)->orderBy('date_received', 'ASC')->get();
-
-            // SALDO COUNTER (ITS BAD I KNOW)
-            $saldo = [];
-            if ($balances[0]->BalanceCategories->debit_credit == 0) {
-                $insert_amount = 0 - $balances[0]->total_amount;
-                array_push($saldo, $insert_amount);
-            } elseif($balances[0]->BalanceCategories->debit_credit == 1) {
-                $insert_amount = $balances[0]->total_amount;
-                array_push($saldo, $insert_amount);
-            }
-
-            for ($i=1; $i < $balances->count(); $i++) {
-                if ($balances[$i]->BalanceCategories->debit_credit == 0) {
-                    $insert_amount = $saldo[$i-1] - $balances[$i]->total_amount;
-                    array_push($saldo, $insert_amount);
-                }
-                elseif($balances[$i]->BalanceCategories->debit_credit == 1) {
-                    $insert_amount = $saldo[$i-1] + $balances[$i]->total_amount;
-                    array_push($saldo, $insert_amount);
-                }
-            }
-
-            $sum_debit = $debit_balance->where('balance_category_id', $category)->whereYear('date_received', $year)->sum('total_amount');
-            $sum_credit = $credit_balance->where('balance_category_id', $category)->whereYear('date_received', $year)->sum('total_amount');
-
-            $total_sum = $sum_credit - $sum_debit;
-            return view('backend.balance.index', compact('balances', 'month', 'year', 'years', 'sum_debit', 'sum_credit', 'total_sum', 'categories', 'saldo'));
+        if ($new_balance->get()->isEmpty()) {
+            return redirect()->route('balance.index');
         }
 
         else{
-            $balances = $new_balance->where('balance_category_id', $category)->whereMonth('date_received', $month)->whereYear('date_received', $year)->orderBy('date_received', 'ASC')->get();
+            $years = $new_balance->getYear();
+            $month = $request->month[0];
+            $year = $request->year[0];
+            $category = $request->category[0];
+            // dd($category);
 
-            // SALDO COUNTER (ITS BAD I KNOW)
-            $saldo = [];
-            if ($balances[0]->BalanceCategories->debit_credit == 0) {
-                $insert_amount = 0 - $balances[0]->total_amount;
-                array_push($saldo, $insert_amount);
-            } elseif($balances[0]->BalanceCategories->debit_credit == 1) {
-                $insert_amount = $balances[0]->total_amount;
-                array_push($saldo, $insert_amount);
+            //QUERY BALANCE BASED ON DEBIT/CREDIT ON BALANCECATEGORIES
+            $debit_balance = Balance::whereHas('BalanceCategories', function($query){
+                $query->where('debit_credit', '=', 0);
+            });
+            $credit_balance = Balance::whereHas('BalanceCategories', function($query){
+                $query->where('debit_credit', '=', 1);
+            });
+
+            //KATEGORI LAPORAN KEUANGAN
+            $categories_default = array("--Seluruh Kategori--" => 0);
+            $categories_pluck = BalanceCategory::pluck('id', 'category_name')->all();
+            $categories = array_merge($categories_default, $categories_pluck);
+            // dd($categories);
+
+            //BALANCE REPORT BASED ON SEARCH
+            if ($category == 0 && $month == 0) {
+                $balances = $new_balance->whereYear('date_received', $year)->orderBy('balances.date_received', 'ASC')->get();
+
+                // SALDO COUNTER (ITS BAD I KNOW)
+                $saldo = [];
+                if ($balances->isNotEmpty()) {
+                    if ($balances[0]->BalanceCategories->debit_credit == 0) {
+                        $insert_amount = 0 - $balances[0]->total_amount;
+                        array_push($saldo, $insert_amount);
+                    } elseif($balances[0]->BalanceCategories->debit_credit == 1) {
+                        $insert_amount = $balances[0]->total_amount;
+                        array_push($saldo, $insert_amount);
+                    }
+
+                    for ($i=1; $i < $balances->count(); $i++) {
+                        if ($balances[$i]->BalanceCategories->debit_credit == 0) {
+                            $insert_amount = $saldo[$i-1] - $balances[$i]->total_amount;
+                            array_push($saldo, $insert_amount);
+                        }
+                        elseif($balances[$i]->BalanceCategories->debit_credit == 1) {
+                            $insert_amount = $saldo[$i-1] + $balances[$i]->total_amount;
+                            array_push($saldo, $insert_amount);
+                        }
+                    }
+                }
+
+                $sum_debit = $debit_balance->whereYear('date_received', $year)->sum('total_amount');
+                $sum_credit = $credit_balance->whereYear('date_received', $year)->sum('total_amount');
+                $total_sum = $sum_credit - $sum_debit;
+
+                return view('backend.balance.index', compact('balances', 'month', 'year', 'years', 'sum_debit', 'sum_credit', 'total_sum','categories', 'saldo'));
             }
 
-            for ($i=1; $i < $balances->count(); $i++) {
-                if ($balances[$i]->BalanceCategories->debit_credit == 0) {
-                    $insert_amount = $saldo[$i-1] - $balances[$i]->total_amount;
-                    array_push($saldo, $insert_amount);
+            elseif ($category == 0 && $month != 0) {
+                $balances = $new_balance->whereMonth('date_received', $month)->whereYear('date_received', $year)->orderBy('date_received', 'ASC')->get();
+
+                // SALDO COUNTER (ITS BAD I KNOW)
+                $saldo = [];
+                if ($balances->isNotEmpty()) {
+                    if ($balances[0]->BalanceCategories->debit_credit == 0) {
+                        $insert_amount = 0 - $balances[0]->total_amount;
+                        array_push($saldo, $insert_amount);
+                    } elseif($balances[0]->BalanceCategories->debit_credit == 1) {
+                        $insert_amount = $balances[0]->total_amount;
+                        array_push($saldo, $insert_amount);
+                    }
+
+                    for ($i=1; $i < $balances->count(); $i++) {
+                        if ($balances[$i]->BalanceCategories->debit_credit == 0) {
+                            $insert_amount = $saldo[$i-1] - $balances[$i]->total_amount;
+                            array_push($saldo, $insert_amount);
+                        }
+                        elseif($balances[$i]->BalanceCategories->debit_credit == 1) {
+                            $insert_amount = $saldo[$i-1] + $balances[$i]->total_amount;
+                            array_push($saldo, $insert_amount);
+                        }
+                    }
                 }
-                elseif($balances[$i]->BalanceCategories->debit_credit == 1) {
-                    $insert_amount = $saldo[$i-1] + $balances[$i]->total_amount;
-                    array_push($saldo, $insert_amount);
-                }
+
+                $sum_debit = $debit_balance->whereMonth('date_received', $month)->whereYear('date_received', $year)->sum('total_amount');
+                $sum_credit = $credit_balance->whereMonth('date_received', $month)->whereYear('date_received', $year)->sum('total_amount');
+
+                $total_sum = $sum_credit - $sum_debit;
+                return view('backend.balance.index', compact('balances', 'month', 'year', 'years', 'sum_debit', 'sum_credit', 'total_sum', 'categories', 'saldo'));
             }
 
-            $sum_debit = $debit_balance->where('balance_category_id', $category)->whereMonth('date_received', $month)->whereYear('date_received', $year)->sum('total_amount');
-            $sum_credit = $credit_balance->where('balance_category_id', $category)->whereMonth('date_received', $month)->whereYear('date_received', $year)->sum('total_amount');
+            elseif ($category != 0 && $month == 0){
+                $balances = $new_balance->where('balance_category_id', $category)->whereYear('date_received', $year)->orderBy('date_received', 'ASC')->get();
 
-            $total_sum = $sum_credit - $sum_debit;
-            return view('backend.balance.index', compact('balances', 'month', 'year', 'years', 'sum_debit', 'sum_credit', 'total_sum', 'categories', 'saldo'));
+                // SALDO COUNTER (ITS BAD I KNOW)
+                $saldo = [];
+                if ($balances->isNotEmpty()) {
+                    if ($balances[0]->BalanceCategories->debit_credit == 0) {
+                        $insert_amount = 0 - $balances[0]->total_amount;
+                        array_push($saldo, $insert_amount);
+                    } elseif($balances[0]->BalanceCategories->debit_credit == 1) {
+                        $insert_amount = $balances[0]->total_amount;
+                        array_push($saldo, $insert_amount);
+                    }
+
+                    for ($i=1; $i < $balances->count(); $i++) {
+                        if ($balances[$i]->BalanceCategories->debit_credit == 0) {
+                            $insert_amount = $saldo[$i-1] - $balances[$i]->total_amount;
+                            array_push($saldo, $insert_amount);
+                        }
+                        elseif($balances[$i]->BalanceCategories->debit_credit == 1) {
+                            $insert_amount = $saldo[$i-1] + $balances[$i]->total_amount;
+                            array_push($saldo, $insert_amount);
+                        }
+                    }
+                }
+
+                $sum_debit = $debit_balance->where('balance_category_id', $category)->whereYear('date_received', $year)->sum('total_amount');
+                $sum_credit = $credit_balance->where('balance_category_id', $category)->whereYear('date_received', $year)->sum('total_amount');
+
+                $total_sum = $sum_credit - $sum_debit;
+                return view('backend.balance.index', compact('balances', 'month', 'year', 'years', 'sum_debit', 'sum_credit', 'total_sum', 'categories', 'saldo'));
+            }
+
+            else{
+                $balances = $new_balance->where('balance_category_id', $category)->whereMonth('date_received', $month)->whereYear('date_received', $year)->orderBy('date_received', 'ASC')->get();
+
+                // SALDO COUNTER (ITS BAD I KNOW)
+                $saldo = [];
+                if ($balances->isNotEmpty()) {
+                    if ($balances[0]->BalanceCategories->debit_credit == 0) {
+                        $insert_amount = 0 - $balances[0]->total_amount;
+                        array_push($saldo, $insert_amount);
+                    } elseif($balances[0]->BalanceCategories->debit_credit == 1) {
+                        $insert_amount = $balances[0]->total_amount;
+                        array_push($saldo, $insert_amount);
+                    }
+
+                    for ($i=1; $i < $balances->count(); $i++) {
+                        if ($balances[$i]->BalanceCategories->debit_credit == 0) {
+                            $insert_amount = $saldo[$i-1] - $balances[$i]->total_amount;
+                            array_push($saldo, $insert_amount);
+                        }
+                        elseif($balances[$i]->BalanceCategories->debit_credit == 1) {
+                            $insert_amount = $saldo[$i-1] + $balances[$i]->total_amount;
+                            array_push($saldo, $insert_amount);
+                        }
+                    }
+                }
+
+                $sum_debit = $debit_balance->where('balance_category_id', $category)->whereMonth('date_received', $month)->whereYear('date_received', $year)->sum('total_amount');
+                $sum_credit = $credit_balance->where('balance_category_id', $category)->whereMonth('date_received', $month)->whereYear('date_received', $year)->sum('total_amount');
+
+                $total_sum = $sum_credit - $sum_debit;
+                return view('backend.balance.index', compact('balances', 'month', 'year', 'years', 'sum_debit', 'sum_credit', 'total_sum', 'categories', 'saldo'));
+            }
         }
     }
 }

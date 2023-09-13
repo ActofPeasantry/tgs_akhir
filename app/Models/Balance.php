@@ -27,14 +27,16 @@ class Balance extends Model
     public function getYear(){
         $result=[];
         $year_balances = Balance::orderBy('date_received','DESC')->pluck('date_received');
+        // dd($year_balances->isNotEmpty());
+        if ($year_balances->isNotEmpty()) {
+            $x = $year_balances[0]->format('Y');
+            array_push($result, $x);
 
-        $x = $year_balances[0]->format('Y');
-        array_push($result, $x);
-
-        foreach ($year_balances as $year) {
-            if ($year->format('Y') != $x) {
-                $x = $year->format('Y');
-                array_push($result, $x);
+            foreach ($year_balances as $year) {
+                if ($year->format('Y') != $x) {
+                    $x = $year->format('Y');
+                    array_push($result, $x);
+                }
             }
         }
         return $result;
@@ -44,13 +46,15 @@ class Balance extends Model
         $result=[];
         $month_balances = Balance::orderBy('date_received','ASC')->whereYear('date_received', date('Y'))->pluck('date_received');
 
-        $x = $month_balances[0]->format('m');
-        array_push($result, $x);
+        if ($month_balances->isNotEmpty()) {
+            $x = $month_balances[0]->format('m');
+            array_push($result, $x);
 
-        foreach ($month_balances as $month) {
-            if ($month->format('m') != $x) {
-                $x = $month->format('m');
-                array_push($result, $x);
+            foreach ($month_balances as $month) {
+                if ($month->format('m') != $x) {
+                    $x = $month->format('m');
+                    array_push($result, $x);
+                }
             }
         }
         return $result;
