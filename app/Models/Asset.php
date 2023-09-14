@@ -20,13 +20,22 @@ class Asset extends Model
     }
 
     public function totalAsset($id){
-        $total = $this->AssetDetail()->where('asset_id', $id)->count();
+        $total = $this->AssetDetail()->where([['asset_id', $id], ['submission_status', 1]])->count();
         if ($total < 1) {
             return "Data Aset belum dimasukkan";
         } else {
             return $total;
         }
 
+    }
+    public function SubmittedAsset($id){
+        // dd($total);
+        $total = $this->AssetDetail()->where([['asset_id', $id], ['submission_status', 0]])->count();
+        if ($total < 1) {
+            return "";
+        } else {
+            return $total." asset sedang diproses";
+        }
     }
 
     public function users()

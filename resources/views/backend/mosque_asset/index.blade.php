@@ -38,13 +38,16 @@
                                 {{ $asset->asset_name }} <br>
                             </td>
                             <td class="dtr-control sorting_1 text-center">{{ $asset->AssetCategory->category_name }}</td>
-                            <td class="dtr-control sorting_1 text-center">{{ $asset->totalAsset($asset->id) }}</td>
                             <td class="dtr-control sorting_1 text-center">
-                                {{ balanceFormat($asset->AssetDetail()->sum('budget'))}}
+                                {{ $asset->totalAsset($asset->id)}}
+                            </td>
+                            <td class="dtr-control sorting_1 text-center">
+                                {{ balanceFormat($asset->AssetDetail()->where('submission_status', config('constants.submission_status.accepted'))->sum('budget'))}}
                             </td>
 
                             <td class="text-center">
                                 <a class='btn btn-primary' href="{{route('asset.show', [$asset->id])}}">Detail</a>
+                                @canany(['is-admin', 'is-bendahara'])
                                 <a class='btn btn-warning' href="{{route('asset.edit', [$asset->id])}}">Edit</a>
                                 <form action="{{route('asset.destroy', [$asset->id])}}" method="post" style="display: inline">
                                     {{method_field('DELETE')}}
@@ -52,6 +55,7 @@
                                     <button class="btn btn-danger show_confirm" data-toggle="tooltip">Delete</button>
                                     {{-- <button onclick="return confirm('Apakah anda yakin?')" class="btn btn-danger" type="submit">Delete</button> --}}
                                 </form>
+                                @endcanany
                             </td>
                         </tr>
                     @endif

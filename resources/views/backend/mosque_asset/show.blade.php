@@ -40,7 +40,7 @@
         </div>
     </div>
 
-    <div class="col-md-10">
+    <div class="col-md-11">
         <div class="card card-primary">
             <div class="card-header">
                 <h5 class="card-title">Detail Aset</h5>
@@ -59,6 +59,7 @@
                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Foto Aset</th>
                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Kualitas Aset</th>
                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Harga Aset (Rp)</th>
+                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Status</th>
                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Opsi</th>
                         </tr>
                     </thead>
@@ -80,6 +81,9 @@
                                 @endif
                                 <td class="dtr-control sorting_1 text-center">{{ $as_detail->qualityText($as_detail->quality) }}</td>
                                 <td class="dtr-control sorting_1 text-center">{{ balanceFormat($as_detail->budget) }}</td>
+                                <td class="dtr-control sorting_1 text-center" tabindex="0">
+                                    {{ submissionStatus($as_detail->submission_status) }}
+                                </td>
                                 <td class="text-center">
                                     {{-- <a class='btn btn-primary' href="{{route('asset_detail.show', [$as_detail->id])}}">Detail</a> --}}
                                     <a class='btn btn-warning' href="{{route('asset_detail.edit', [$as_detail->id])}}">Edit</a>

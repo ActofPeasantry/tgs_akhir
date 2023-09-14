@@ -56,12 +56,16 @@ class DashboardController extends Controller
         // }
         $asset_labels = array();
         $asset_data = array();
-        $assets = Asset::where('submission_status', config('constants.submission_status.accepted'))->get();
+        $assets = Asset::get();
         foreach ($assets as $asset) {
             // 'labels' => $asset->asset_name,
             // 'data' => $asset->AssetDetail()->where('asset_id', $asset->id)->count()
             array_push($asset_labels, $asset->asset_name);
-            array_push($asset_data, $asset->AssetDetail()->where([['asset_id', $asset->id], ['quality', 1]])->count());
+            array_push($asset_data, $asset->AssetDetail()->where([
+                ['asset_id', $asset->id],
+                ['quality', 1],
+                ['submission_status', 1]
+            ])->count());
         }
         // dd(Asset::pluck('asset_name'));
         // dd($asset[0]->totalAsset(1));
