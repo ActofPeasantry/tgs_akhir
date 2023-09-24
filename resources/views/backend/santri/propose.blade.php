@@ -46,7 +46,7 @@
                             <td class="dtr-control sorting_1 text-center">{{ $santri->school_grade }}</td>
                             <td class="dtr-control sorting_1 text-center">{{ genderStatus($santri->sex) }}</td>
                             <td class="dtr-control sorting_1 text-center">
-                                {{ balanceFormat($santri->budget)}}
+                                {{ balanceFormat($santri->regist_fee)}}
                             </td>
                             <td class="dtr-control sorting_1 text-center">{{ submissionStatus($santri->submission_status) }}</td>
                             <td class="text-center">

@@ -9,7 +9,7 @@ class Asset extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'asset_name','submission_status','asset_categories_id'];
+    protected $fillable = ['user_id', 'asset_name', 'submission_status', 'asset_categories_id'];
 
     public function AssetCategory(){
         return $this->belongsTo('App\Models\AssetCategory', 'asset_categories_id');

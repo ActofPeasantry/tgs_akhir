@@ -23,7 +23,7 @@ class BalanceFactory extends Factory
             'no_invoice' => $this->faker->randomDigit(),
             'date_received' => $this->faker->dateTimeBetween('-1 year'),
             'total_amount' => $this->faker->randomNumber(7, true),
-            'debit_credit' => $this->faker->numberBetween(0,3),
+            // 'debit_credit' => $this->faker->numberBetween(0,3),
             'balance_category_id' => $this->faker->randomElement($category_id),
             'user_id' => 1,
         ];

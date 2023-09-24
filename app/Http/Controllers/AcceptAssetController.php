@@ -61,31 +61,6 @@ class AcceptAssetController extends Controller
                     $asset->save();
                 }
             };
-
-            $check_balance_category = BalanceCategory::where('category_name', config('constants.asset_balance_category'))->get();
-            // dd(count($check_balance_category));
-            if (count($check_balance_category) <= 0) {
-                BalanceCategory::create([
-                    'category_name' => config('constants.asset_balance_category'),
-                    'debit_credit' => config('constants.debit_credit.debit'),
-                ]);
-            }
-
-            $category = BalanceCategory::where('category_name', 'Pembayaran Aset')->first();
-            $accepts = $accept_asset_detail->get();
-            // dd($accepts[1]->Asset->asset_name);
-            // dd($category);
-            foreach ($accepts as $accept) {
-                if ($accept->budget > 0) {
-                    Balance::create([
-                        'user_id' => auth()->user()->id,
-                        'description' => $accept->Asset->asset_name,
-                        'date_received' => now(),
-                        'total_amount' => $accept->budget,
-                        'balance_category_id' => $category->id
-                    ]);
-                }
-            }
         }
 
         $accept_asset_detail->update(['submission_status' => $request->accept_checked]);

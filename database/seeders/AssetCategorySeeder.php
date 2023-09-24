@@ -16,7 +16,12 @@ class AssetCategorySeeder extends Seeder
     public function run()
     {
         DB::table('asset_categories')->insert([
-            'category_name' => 'Perlengkapan',
+            'category_name' => 'Kendaraan',
+            'category_type' => 1,
+        ]);
+        DB::table('asset_categories')->insert([
+            'category_name' => 'Surat Tanah',
+            'category_type' => 2,
         ]);
     }
 }

@@ -67,16 +67,16 @@
     <script>
         // Jquery Dependency
         $(document).ready(function() {
-            formatCurrency($('#budget'));
-            $('#hidden_total_amount').val($('#budget').val().replace(/\D/g, ""));
-            console.log($('#budget').val().replace(/\D/g, ""));
+            formatCurrency($('#regist_fee'));
+            $('#hidden_total_amount').val($('#regist_fee').val().replace(/\D/g, ""));
+            console.log($('#regist_fee').val().replace(/\D/g, ""));
         });
 
-        $("#budget").on({
+        $("#regist_fee").on({
             keyup: function () {
                 formatCurrency($(this));
-                $('#hidden_total_amount').val($('#budget').val().replace(/\D/g, ""));
-                console.log($('#budget').val().replace(/\D/g, ""));
+                $('#hidden_total_amount').val($('#regist_fee').val().replace(/\D/g, ""));
+                console.log($('#regist_fee').val().replace(/\D/g, ""));
             }
         });
 

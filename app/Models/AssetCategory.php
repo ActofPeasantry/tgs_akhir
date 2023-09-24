@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class AssetCategory extends Model
 {
-    protected $fillable = ['category_name'];
+    protected $fillable = ['category_name', 'category_type'];
 
     use HasFactory;
 }

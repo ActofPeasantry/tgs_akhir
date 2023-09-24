@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(UserSeeder::class);
         $this->call(BalanceCategorySeeder::class);
-        // Balance::factory()->count(500)->create();
+        Balance::factory()->count(500)->create();
         $this->call(ActivityCategorySeeder::class);
         $this->call(ActivitySeeder::class);
         $this->call(AssetCategorySeeder::class);

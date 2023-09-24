@@ -27,7 +27,7 @@ return new class extends Migration
             $table->integer('school_grade');
             $table->string('telp_number')->nullable();
             $table->string('photo')->nullable();
-            $table->integer('budget');
+            $table->integer('regist_fee');
             $table->integer('submission_status')->default(0);
             $table->foreignId('user_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();

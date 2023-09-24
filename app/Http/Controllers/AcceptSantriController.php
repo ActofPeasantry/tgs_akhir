@@ -47,33 +47,7 @@ class AcceptSantriController extends Controller
     }
 
     public function accept_checked(Request $request){
-        $santries = Santri::whereIn('id', $request->santri_id);
-        $check_balance_category = BalanceCategory::where('category_name', config('constants.santri_balance_category'))->get();
-        // dd($santries->get());
-
-        if ($request->accept_checked == 1) {
-            if (count($check_balance_category) <= 0) {
-                BalanceCategory::create([
-                    'category_name' => config('constants.santri_balance_category'),
-                    'debit_credit' => config('constants.debit_credit.credit'),
-                ]);
-            }
-            $category = BalanceCategory::where('category_name', config('constants.santri_balance_category'))->first();
-            // dd($category->id);
-            foreach ($santries->get() as $santri) {
-                if ($santri->budget > 0) {
-                    Balance::create([
-                        'user_id' => auth()->user()->id,
-                        'description' => 'Pendaftaran santri '.$santri->santri_name,
-                        'date_received' => now(),
-                        'total_amount' => $santri->budget,
-                        'balance_category_id' => $category->id
-                    ]);
-                }
-            }
-        }
-
-        $santries->update(array('submission_status' => $request->accept_checked));
+        Santri::whereIn('id', $request->santri_id)->update(array('submission_status' => $request->accept_checked));
         return redirect()->route('admin.accept_santri.index')->with('success', 'Data berhasil diubah');
         // dd($santri->get());
     }

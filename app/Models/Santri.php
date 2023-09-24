@@ -21,7 +21,7 @@ class Santri extends Model
         'school_grade',
         'photo',
         'telp_number',
-        'budget',
+        'regist_fee',
         'submission_status'
     ];
     protected $casts = ['birth_date' => 'date'];

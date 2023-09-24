@@ -137,18 +137,18 @@
     <input type="hidden"  id="user_id" name="user_id" value="{{ auth()->user()->id}}">
 
     <div class="form-group mb-3">
-        <label class="form-label" for="budget"> Harga Aset (Rp)</label>
-        <input id="budget" type="text" class="form-control @error('budget') is-invalid @enderror" name="budget"
-        value="{{ old('budget', $santri->budget) }}"
-        required autocomplete="budget">
+        <label class="form-label" for="regist_fee"> Harga Aset (Rp)</label>
+        <input id="regist_fee" type="text" class="form-control @error('regist_fee') is-invalid @enderror" name="regist_fee"
+        value="{{ old('regist_fee', $santri->regist_fee) }}"
+        required autocomplete="regist_fee">
 
-        @error('budget')
+        @error('regist_fee')
         <span class="invalid-feedback" role="alert">
             <strong>{{ $message }}</strong>
         </span>
         @enderror
     </div>
-    <input type="hidden"  id="hidden_total_amount" name="budget" value="">
+    <input type="hidden"  id="hidden_total_amount" name="regist_fee" value="">
 @else
     {{-- Nama Santri --}}
     <div class="form-group col-mb-3">
@@ -289,16 +289,16 @@
     <input type="hidden"  id="user_id" name="user_id" value="{{ auth()->user()->id}}">
 
     <div class="form-group mb-3">
-        <label class="form-label" for="budget">Biaya Pendaftaran (Rp)</label>
-        <input id="budget" type="text" class="form-control @error('budget') is-invalid @enderror" value="{{ old('budget') }}" required autocomplete="budget">
+        <label class="form-label" for="regist_fee">Biaya Pendaftaran (Rp)</label>
+        <input id="regist_fee" type="text" class="form-control @error('regist_fee') is-invalid @enderror" value="{{ old('regist_fee') }}" required autocomplete="regist_fee">
 
-        @error('budget')
+        @error('regist_fee')
         <span class="invalid-feedback" role="alert">
             <strong>{{ $message }}</strong>
         </span>
         @enderror
     </div>
-    <input type="hidden"  id="hidden_total_amount" name="budget" value="">
+    <input type="hidden"  id="hidden_total_amount" name="regist_fee" value="">
     {{-- <div class="form-group mb-3">
         <label class="form-label" for="asset_categories_id">Jenis Aset</label>
         <select name="asset_categories_id" id="asset_categories_id" class="form-control">

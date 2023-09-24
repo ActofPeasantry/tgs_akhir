@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('asset_categories', function (Blueprint $table) {
             $table->id();
             $table->string('category_name');
+            $table->enum('category_type', ['Aset Operasional', 'Aset Non Operasional']);
             $table->timestamps();
         });
     }
