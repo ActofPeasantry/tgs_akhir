@@ -136,7 +136,7 @@
         </li>
     @endcanany
 
-    @canany(['is-admin', 'is-jamaah'])
+    @canany(['is-admin', 'is-bendahara'])
         <li class="nav-item">
             <a href="" class="nav-link">
                 <i class="nav-icon fas fa-praying-hands"></i>
@@ -148,14 +148,14 @@
 
             <ul class="nav nav-treeview">
                 <li class="nav-item">
-                    <a href="{{ route('santri.index') }}" class="nav-link @if(Route::is('santri.index')) {{ 'active' }} @endif">
+                    <a href="" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Lihat Santri</p>
                     </a>
                 </li>
             </ul>
 
-            @can('is-jamaah')
+            {{-- @can('is-jamaah')
             <ul class="nav nav-treeview">
                 <li class="nav-item">
                     <a href="{{ route('santri.propose') }}" class="nav-link @if(Route::is('santri.propose')) {{ 'active' }} @endif">
@@ -164,7 +164,7 @@
                     </a>
                 </li>
             </ul>
-            @endcan
+            @endcan --}}
 
             @can('is-admin')
             <ul class="nav nav-treeview">
@@ -176,6 +176,36 @@
                 </li>
             </ul>
             @endcan
+        </li>
+    @endcanany
+
+    @canany('is-jamaah')
+        <li class="nav-item">
+            <a href="" class="nav-link">
+                <i class="nav-icon fas fa-user-plus"></i>
+                <p>
+                    Pendaftaran Santri
+                    <i class="right fas fa-angle-left"></i>
+                </p>
+            </a>
+
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="{{ route('santri.index') }}" class="nav-link @if(Route::is('santri.index')) {{ 'active' }} @endif">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Biodata Santri</p>
+                    </a>
+                </li>
+            </ul>
+
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="{{ route('santri_registration.index') }}" class="nav-link @if(Route::is('santri_registration.index')) {{ 'active' }} @endif">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Mendaftarkan Santri</p>
+                    </a>
+                </li>
+            </ul>
         </li>
     @endcanany
 </ul>

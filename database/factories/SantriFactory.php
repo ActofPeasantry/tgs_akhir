@@ -30,7 +30,6 @@ class SantriFactory extends Factory
             'school_name'=>$this->faker->word(),
             'school_grade'=>$this->faker->numberBetween(0,7),
             'telp_number'=>$this->faker->phoneNumber(),
-            'submission_status'=>0
         ];
     }
 }

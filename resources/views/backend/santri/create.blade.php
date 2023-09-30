@@ -64,7 +64,7 @@
         });
     </script>
 
-    <script>
+    {{-- <script>
         // Jquery Dependency
         $(document).ready(function() {
             formatCurrency($('#regist_fee'));
@@ -101,5 +101,5 @@
             // send updated string to input
             input.val(input_val);
         }
-    </script>
+    </script> --}}
 @endpush

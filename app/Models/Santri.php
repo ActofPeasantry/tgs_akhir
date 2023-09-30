@@ -30,5 +30,10 @@ class Santri extends Model
     {
         return $this->belongsTo('App\Models\User', 'user_id');
     }
+
+    public function santriRegistrations(){
+        return $this->hasMany(SantriRegistration::class);
+    }
+
     use HasFactory;
 }

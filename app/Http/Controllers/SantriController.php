@@ -15,7 +15,8 @@ class SantriController extends Controller
      */
     public function index()
     {
-        $santries = Santri::all();
+        $user = User::find(auth()->user()->id);
+        $santries = $user->Santries()->get();
         // dd($santries);
         return view('backend.santri.index', compact('santries'));
     }
@@ -55,8 +56,8 @@ class SantriController extends Controller
         $santri->school_name = $request->school_name;
         $santri->school_grade = $request->school_grade;
         $santri->telp_number = $request->telp_number;
-        $santri->regist_fee = $request->regist_fee;
-        $santri->submission_status = 0;
+        // $santri->regist_fee = $request->regist_fee;
+        // $santri->submission_status = 0;
         if ( isset($request->photo) ) {
             $path=$request->file('photo')->store('santri_photos', 'public');
             $santri->photo = '../../../storage/'.$path;
@@ -113,8 +114,8 @@ class SantriController extends Controller
         $santri->school_name = $request->school_name;
         $santri->school_grade = $request->school_grade;
         $santri->telp_number = $request->telp_number;
-        $santri->regist_fee = $request->regist_fee;
-        $santri->submission_status = 0;
+        // $santri->regist_fee = $request->regist_fee;
+        // $santri->submission_status = 0;
         if ( isset($request->photo) ) {
             $path=$request->file('photo')->store('santri_photos', 'public');
             $santri->photo = '../../../storage/'.$path;

@@ -13,6 +13,7 @@ use App\Http\Controllers\AssetDetailController;
 use App\Http\Controllers\BalanceController;
 use App\Http\Controllers\BalanceCategoryController;
 use App\Http\Controllers\SantriController;
+use App\Http\Controllers\SantriRegistrationController;
 use App\Http\Controllers\userController;
 use App\Http\Controllers\ProfileController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
@@ -92,4 +93,5 @@ Route::middleware(['auth', 'auth.accessAdminAndBendahara'])->group(function(){
 Route::middleware('auth')->group(function(){
     // Route::post('/santri/search', [SantriController::class, 'search'])->name('santri.search');
     Route::resource('/santri', SantriController::class);
+    Route::resource('/santri_registration', SantriRegistrationController::class);
 });

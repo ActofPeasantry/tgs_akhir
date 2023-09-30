@@ -25,7 +25,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ActivitySeeder::class);
         $this->call(AssetCategorySeeder::class);
         // Asset::factory()->count(3)->create();
-        // Santri::factory()->count(10)->create();
+        Santri::factory()->count(10)->create();
 
 
         // Activity::factory()->count(10)->create();
