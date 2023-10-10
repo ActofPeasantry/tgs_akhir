@@ -136,48 +136,46 @@
         </li>
     @endcanany
 
-    @canany(['is-admin', 'is-bendahara'])
-        <li class="nav-item">
-            <a href="" class="nav-link">
-                <i class="nav-icon fas fa-praying-hands"></i>
-                <p>
-                    Santri Masjid
-                    <i class="right fas fa-angle-left"></i>
-                </p>
-            </a>
+    <li class="nav-item">
+        <a href="" class="nav-link">
+            <i class="nav-icon fas fa-praying-hands"></i>
+            <p>
+                Santri Masjid
+                <i class="right fas fa-angle-left"></i>
+            </p>
+        </a>
 
-            <ul class="nav nav-treeview">
-                <li class="nav-item">
-                    <a href="" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Lihat Santri</p>
-                    </a>
-                </li>
-            </ul>
+        <ul class="nav nav-treeview">
+            <li class="nav-item">
+                <a href="{{ route('santri_registration.accepted_list') }}" class="nav-link @if(Route::is('santri_registration.accepted_list')) {{ 'active' }} @endif">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Lihat Santri</p>
+                </a>
+            </li>
+        </ul>
 
-            {{-- @can('is-jamaah')
-            <ul class="nav nav-treeview">
-                <li class="nav-item">
-                    <a href="{{ route('santri.propose') }}" class="nav-link @if(Route::is('santri.propose')) {{ 'active' }} @endif">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Pendaftaran Santri</p>
-                    </a>
-                </li>
-            </ul>
-            @endcan --}}
+        {{-- @can('is-jamaah')
+        <ul class="nav nav-treeview">
+            <li class="nav-item">
+                <a href="{{ route('santri.propose') }}" class="nav-link @if(Route::is('santri.propose')) {{ 'active' }} @endif">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Pendaftaran Santri</p>
+                </a>
+            </li>
+        </ul>
+        @endcan --}}
 
-            @can('is-admin')
-            <ul class="nav nav-treeview">
-                <li class="nav-item">
-                    <a href="{{ route('admin.accept_santri.index') }}" class="nav-link @if(Route::is('admin.accept_santri.index')) {{ 'active' }} @endif">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Menerima Santri</p>
-                    </a>
-                </li>
-            </ul>
-            @endcan
-        </li>
-    @endcanany
+        @canany(['is-admin', 'is-bendahara'])
+        <ul class="nav nav-treeview">
+            <li class="nav-item">
+                <a href="{{ route('admin.accept_santri.index') }}" class="nav-link @if(Route::is('admin.accept_santri.index')) {{ 'active' }} @endif">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Menerima Santri</p>
+                </a>
+            </li>
+        </ul>
+        @endcanany
+    </li>
 
     @canany('is-jamaah')
         <li class="nav-item">

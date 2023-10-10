@@ -13,7 +13,8 @@ class TpqPeriodController extends Controller
      */
     public function index()
     {
-        //
+        $periods = TpqPeriod::all();
+        return view('backend.tpq_period.index', compact('periods'));
     }
 
     /**
@@ -21,7 +22,7 @@ class TpqPeriodController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.tpq_period.create');
     }
 
     /**
@@ -29,7 +30,9 @@ class TpqPeriodController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request->all());
+        TpqPeriod::create($request->all());
+        return redirect()->route('tpq_period.index')->with('success', 'Data berhasil ditambahkan');
     }
 
     /**
@@ -45,7 +48,9 @@ class TpqPeriodController extends Controller
      */
     public function edit(TpqPeriod $tpqPeriod)
     {
-        //
+        $tpqPeriod->find($tpqPeriod->id);
+        // dd($tpqPeriod);
+        return view('backend.tpq_period.edit', compact('tpqPeriod'));
     }
 
     /**
@@ -53,7 +58,9 @@ class TpqPeriodController extends Controller
      */
     public function update(Request $request, TpqPeriod $tpqPeriod)
     {
-        //
+        // dd('test');
+        $tpqPeriod->find($tpqPeriod->id)->update($request->all());
+        return redirect()->route('tpq_period.index')->with('success', 'Data berhasil diubah');
     }
 
     /**
@@ -61,6 +68,7 @@ class TpqPeriodController extends Controller
      */
     public function destroy(TpqPeriod $tpqPeriod)
     {
-        //
+        TpqPeriod::destroy($tpqPeriod->id);
+        return redirect()->route('tpq_period.index')->with('error', 'Data berhasil dihapus');
     }
 }

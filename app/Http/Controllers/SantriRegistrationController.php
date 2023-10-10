@@ -15,9 +15,11 @@ class SantriRegistrationController extends Controller
      */
     public function index()
     {
-
-        $user_id = auth()->user()->id;
-        $regists = SantriRegistration::find($user_id)->get();
+        $regists = SantriRegistration::whereHas('santris', function($query){
+            $user_id = auth()->user()->id;
+            $query->where('user_id', $user_id);
+        })->get();
+        // dd($regists);
         return view('backend.santri_registration.index', compact('regists'));
     }
 
@@ -27,9 +29,9 @@ class SantriRegistrationController extends Controller
     public function create()
     {
         $user_id = auth()->user()->id;
-        $santris = Santri::find($user_id)->pluck('id', 'santri_name');
-        $tpq_periods = TpqPeriod::find($user_id)->pluck('id', 'name');
-        // dd($tpq_period);
+        $santris = Santri::where('user_id', $user_id)->pluck('id', 'santri_name');
+        $tpq_periods = TpqPeriod::pluck('id', 'name');
+        // dd($santris);
         return view('backend.santri_registration.create', compact('santris', 'tpq_periods'));
     }
 
@@ -83,5 +85,29 @@ class SantriRegistrationController extends Controller
         // dd($santriRegistration);
         $santriRegistration->destroy($santriRegistration->id);
         return redirect()->route('santri_registration.index')->with('error', 'Data berhasil dihapus');
+    }
+
+    public function acceptedList(){
+        $periods = TpqPeriod::pluck('id', 'name');
+        $search_period = TpqPeriod::whereDate('start_date', '<=', date('Y-m-d'))->whereDate('end_date', '>=', date('Y-m-d'))->first();
+        // $user = User::find(auth()->user()->id);
+        // $santries = $user->Santries()->get();
+        $regists = SantriRegistration::where('submission_status', 1)->whereHas('TpqPeriods', function($query){
+            $query->whereDate('start_date', '<=', date('Y-m-d'))->whereDate('end_date', '>=', date('Y-m-d'));
+        })->get();
+        // dd($search_period->id);
+
+        return view('backend.santri_registration.registered', compact('regists', 'periods', 'search_period'));
+    }
+
+    public function searchList(Request $request){
+        $search_period = TpqPeriod::find($request->tpq_period)->first();
+
+        $periods = TpqPeriod::pluck('id', 'name');
+        $regists = SantriRegistration::where([['submission_status', 1],['tpq_period_id', $search_period->id]])->get();
+        // dd($search_period);
+        return view('backend.santri_registration.registered', compact('regists', 'periods', 'search_period'));
+
+        // $periods = TpqPeriod::pluck
     }
 }

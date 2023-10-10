@@ -1,18 +1,18 @@
 @extends('layouts/main')
 
 @section('title')
-    <title>SMKK | Biodata Santri</title>
+    <title>SMKK | Lihat Santri</title>
 @endsection
 
 @section('page_name')
-    <h1>Biodata Santri</h1>
+    <h1>Lihat Santri</h1>
 @endsection
 
 @section('breadcrumb')
     {{-- Custom helpers, cek app/Helpers/helpers.php dan composer.json di bagian file jalankan composer dump-autoload utk memakainya --}}
     {!!
         breadcrumb([
-            'Pendaftaran Santri' => 'Pendaftaran Santri'
+            'Pendaftaran Santri' => 'Lihat Santri'
         ])
     !!}
 @endsection

@@ -16,6 +16,7 @@ use App\Http\Controllers\SantriController;
 use App\Http\Controllers\SantriRegistrationController;
 use App\Http\Controllers\userController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TpqPeriodController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
@@ -32,6 +33,12 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 Route::get('/', function () {
     return view('auth.login');
+});
+
+Route::middleware('auth')->group(function(){
+    // Route::post('/santri/search', [SantriController::class, 'search'])->name('santri.search');
+    Route::get('/santri_registration/accepted_list', [SantriRegistrationController::class, 'acceptedList'])->name('santri_registration.accepted_list');
+    Route::post('/santri_registration/search_list', [SantriRegistrationController::class, 'searchList'])->name('santri_registration.search_list');
 });
 
 Route::get('/home', [DashboardController::class, 'index'])->middleware('auth')->name('dashboard');
@@ -70,6 +77,8 @@ Route::middleware(['auth', 'auth.accessSekre'])->group(function(){
 
 Route::middleware(['auth', 'auth.accessJamaah'])->group(function(){
     Route::get('/santri/propose', [SantriController::class, 'propose'])->name('santri.propose');
+    Route::resource('/santri', SantriController::class);
+    Route::resource('/santri_registration', SantriRegistrationController::class);
 });
 
 // Route::middleware(['auth', 'auth.accessBendahara'])->group(function(){
@@ -88,10 +97,7 @@ Route::middleware(['auth', 'auth.accessAdminAndBendahara'])->group(function(){
     Route::post('/activity/search', [ActivityController::class, 'search'])->name('activity.search');
     Route::resource('/activity', ActivityController::class);
     Route::resource('/activity_categories', ActivityCategoryController::class);
+
+    Route::resource('/tpq_period', TpqPeriodController::class);
 });
 
-Route::middleware('auth')->group(function(){
-    // Route::post('/santri/search', [SantriController::class, 'search'])->name('santri.search');
-    Route::resource('/santri', SantriController::class);
-    Route::resource('/santri_registration', SantriRegistrationController::class);
-});
